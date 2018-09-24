@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Button, Col } from 'antd';
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
-import { Input, Radio } from 'components/Forms';
+import { Input, Select, DatePicker , InputTextArea, UploadImage } from 'components/Forms';
 
 const formItemLayout = {
   labelCol: {
@@ -25,76 +25,74 @@ function AddPhotoSliderForm(props) {
     <Form noValidate>
 
       <Field
-        name="username"
-        type="text"
-        icon="user"
+        name="promotion"
+        type="select"
+        icon=""
         layout={formItemLayout}
-        label="Username"
-        placeholder="User name"
-        component={Input}
-      />
-
-      <Field
-        name="firstname"
-        type="text"
-        icon="user"
-        layout={formItemLayout}
-        label="First Name"
-        placeholder="First Name"
-        component={Input}
-      />
-
-      <Field
-        name="lastname"
-        type="text"
-        icon="user"
-        layout={formItemLayout}
-        label="Last Name"
-        placeholder="Last Name"
-        component={Input}
-      />
-
-      <Field
-        name="email_address"
-        type="email"
-        icon="mail"
-        layout={formItemLayout}
-        label="Email Address"
-        placeholder="Email Address"
-        component={Input}
-      />
-
-      <Field
-        name="user_role"
-        icon="user"
-        layout={formItemLayout}
+        label="Branches"
+        placeholder="Promotion Name"
+        mode="single"
         optionsList={[
-          {
-            label: "System Admin",
-            value: "1"
-          },
-          {
-            label: "Marketing Personnel",
-            value: "2",
-          }
+          { label: "Gas Up Now in the Nearest Unioil Station", value: 0 },
+          { label: "Up Now Gas in the Nearest Unioil Station", value: 1, },
+          { label: "In the Nearest Gas Unioil Station", value: 2 }
         ]}
-        label="User Role"
-        component={Radio}
+        component={Select}
       />
 
       <Field
-        name="generated_password"
+        name="title"
         type="text"
         icon=""
-        withActionBtn={{
-          action: ()=> { console.log('helow world') },
-          name: "Generate"
-        }}
         layout={formItemLayout}
-        label="Deafult Password"
+        label="Title"
+        placeholder="Title"
         component={Input}
       />
-      
+
+      <Field
+        name="description"
+        type="text"
+        icon=""
+        layout={formItemLayout}
+        label="Description"
+        placeholder="Description"
+        rows={6}
+        component={InputTextArea}
+      />
+
+      <Field
+        name="upload_image"
+        type="file"
+        icon="user"
+        layout={formItemLayout}
+        label="Upload Image"
+        placeholder="Upload Image"
+        component={UploadImage}
+      />
+
+
+      <Field
+        name="start_appeareance_date"
+        type="date"
+        icon=""
+        layout={formItemLayout}
+        label="Start Appearance Date"
+        placeholder="Start Appearance Date"
+        component={DatePicker}
+      />
+
+      <Field
+        name="end_appeareance_date"
+        type="date"
+        icon=""
+        layout={formItemLayout}
+        label="End Appearance Date"
+        placeholder="End Appearance Date"
+        component={DatePicker}
+      />
+
+       
     </Form>
   );
 };

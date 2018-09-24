@@ -22,7 +22,7 @@ export default class EditPhotoSlider extends Component {
           cancelBtnName="Cancel"
         />
         <div>
-          <h2 style={{margin: '25px 35px'}}>User Details</h2>
+          <h2 style={{margin: '25px 35px'}}>Photo Slider Content Details</h2>
           <Formik
               initialValues={{}}
               enableReinitialize={true}

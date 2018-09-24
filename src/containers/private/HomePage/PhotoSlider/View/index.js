@@ -15,7 +15,7 @@ export default class PhotoSliderView extends Component {
         <HeaderForm 
           title="Photo Slider Accounts"
           action={()=> {console.log('action button')}}
-          actionBtnName="Save"
+          actionBtnName="Update"
           deleteAction={()=> {console.log('delete button')}}
           deleteBtnName="Delete"
         />
