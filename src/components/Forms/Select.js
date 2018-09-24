@@ -39,9 +39,11 @@ class SelectForm extends Component {
       label,
       required,
       optionFilterProp,
+      mode,
+      optionsList,
       ...props
     } = this.props;
-
+    
     return (
       <FormItem
         {...layout}
@@ -56,13 +58,16 @@ class SelectForm extends Component {
           //   optionFilterProp ? 
           //   (input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0 : ''
           // }
-          mode="multiple"
+          mode={mode}
           onChange={this.handleChange}
           children={children}
           >
-          <Option value="red">Red</Option>
-          <Option value="green">Green</Option>
-          <Option value="blue">Blue</Option>
+          {
+              optionsList && (optionsList.map((item,i) => {
+                return <Option value={item.value} key={`${i}-${name}`}>{item.label}</Option>
+              }))
+          }
+         
         </Select>
       </FormItem>
     );

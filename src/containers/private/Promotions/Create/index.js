@@ -30,7 +30,7 @@ export default class CreateManagement extends Component {
           <h2 style={{margin: '25px 35px'}}>Promotion Content Details</h2>
           <Formik
               initialValues={{
-                username: ''
+                title: ''
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}

@@ -19,8 +19,16 @@ const InputForm = ({
   icon,
   layout,
   optionsList,
-  ...props
+  isRadioButton,
+  ...props,
 }) => {
+  let _props = {...props};
+  let _field = {...field};
+  
+  if(!_field.value) {
+    _field.value = _props.defaultValue
+  }
+
   return (
     <FormItem
       {...layout}
@@ -30,19 +38,24 @@ const InputForm = ({
       validateStatus={touched[field.name] && errors[field.name] && 'error'}
       help={touched[field.name] && errors[field.name]}
     >
-      <RadioGroup {...props} {...field}>
-        {
-          optionsList ? (
-            optionsList.map((item,i) => {
-              return <Radio value={item.value} key={i} style={styles}>
+    <Radio.Group {..._field} {..._props} >
+    {
+      optionsList ? (
+        optionsList.map((item,i) => {
+          if(isRadioButton) {
+            return <Radio.Button value={item.value} key={i} style={styles}>
                 {item.label}
-              </Radio>
-            })
-          ) : null
-        }
-        
-      </RadioGroup>
+            </Radio.Button>
+          }
+          return <Radio value={item.value} key={i} style={styles}>
+            {item.label}
+          </Radio>
+        })
+      ) : null
+    }
+    </Radio.Group>
     </FormItem>
+      
   );
 };
 

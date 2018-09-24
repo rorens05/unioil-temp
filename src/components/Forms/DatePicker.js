@@ -42,6 +42,7 @@ const DatePickerForm = ({
           onChange={(value) => onDateChange(value)}
           format={format}
           disabledDate={disabledDate}
+          style={{width: '250px'}}
         /> 
       }
 
