@@ -7,12 +7,7 @@ import { PAGE404 } from "components/PageError/index"
 
 class MyProfile extends Component {
   state = {
-    pageRoutes: [
-      {
-        path: `${this.props.match.url}`,
-        name: "My Profile",
-        component: MyProfileView,        
-      },   
+    pageRoutes: [  
     ],    
   }
 
@@ -21,7 +16,7 @@ class MyProfile extends Component {
   }
 
   render() {       
-    const { location } = this.props
+    
     const { pageRoutes } = this.state  
 
     return (

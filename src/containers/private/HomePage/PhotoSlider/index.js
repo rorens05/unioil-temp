@@ -17,33 +17,12 @@ import MainContent from 'components/Dashboard/Layout/components/MainContent';
 class PhotoSlider extends Component {
   state = {
     pageRoutes: [
-      // {
-      //   path: `${this.props.match.url}`,
-      //   name: "Photo Slider",
-      //   component: PhotoSliderList,        
-      // },
-      // {
-      //   path: `${this.props.match.url}/photo-slder/create`,
-      //   name: "Create User",
-      //   component: PhotoSliderCreate,
-      // },
-      // {
-      //   path: `${this.props.match.url}/photo-slder/edit`,
-      //   params: ':id',
-      //   name: "Edit User",
-      //   component: PhotoSliderEdit,
-      // },
-      // {
-      //   path: `${this.props.match.url}/photo-slder/view`,
-      //   params: ':id',
-      //   name: "Edit User",
-      //   component: PhotoSliderView,
-      // }
     ]
   }
 
 
   render() {
+    
     const { pageRoutes } = this.state;
 
     return (

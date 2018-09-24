@@ -14,28 +14,28 @@ import { PAGE404 } from "components/PageError/index"
 class Dashboard extends Component {
   state = {
     pageRoutes: [
-      {
-        path: `${this.props.match.url}`,
-        name: "User Management",
-        component: DashboardList,        
-      },   
-      {
-        path: `${this.props.match.url}/create`,
-        name: "Create User",
-        component: UserManagementCreate,
-      },
-      {
-        path: `${this.props.match.url}/edit`,
-        params: ':id',
-        name: "Edit User",
-        component: UserManagementEdit,
-      },
-      {
-        path: `${this.props.match.url}/view`,
-        params: ':id',
-        name: "Edit User",
-        component: UserManagementView,
-      }   
+      // {
+      //   path: `${this.props.match.url}`,
+      //   name: "User Management",
+      //   component: DashboardList,        
+      // },   
+      // {
+      //   path: `${this.props.match.url}/create`,
+      //   name: "Create User",
+      //   component: UserManagementCreate,
+      // },
+      // {
+      //   path: `${this.props.match.url}/edit`,
+      //   params: ':id',
+      //   name: "Edit User",
+      //   component: UserManagementEdit,
+      // },
+      // {
+      //   path: `${this.props.match.url}/view`,
+      //   params: ':id',
+      //   name: "Edit User",
+      //   component: UserManagementView,
+      // }   
     ],    
   }
 
@@ -44,8 +44,6 @@ class Dashboard extends Component {
   }
 
   render() {  
-    const { location } = this.props
-
     const { pageRoutes } = this.state        
 
     return (
