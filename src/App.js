@@ -26,11 +26,6 @@ const AsyncForgotPassword = Loadable({
   loading: Loading
 });
 
-const AsyncPosts = Loadable({
-  loader: () => import("./containers/private/Posts"),
-  loading: Loading
-});
-
 const AsyncMyProfile = Loadable({
   loader: () => import("./containers/private/MyProfile"),
   loading: Loading
@@ -43,6 +38,11 @@ const AsyncUserManagement = Loadable({
 
 const AsyncMemberManagement = Loadable({
   loader: () => import("./containers/private/MemberManagement"),
+  loading: Loading
+});
+
+const AsyncPhotoSlider = Loadable({
+  loader: () => import("./containers/private/HomePage/PhotoSlider"),
   loading: Loading
 });
 
@@ -124,14 +124,13 @@ class App extends Component {
                 component={AsyncMemberManagement} 
               />
               <DashboardRoute 
+                path="/home-page" 
+                component={AsyncPhotoSlider} 
+              />
+              <DashboardRoute 
                 path="/promotions" 
                 component={AsyncPromotions} 
               />
-              <DashboardRoute 
-                path="/posts" 
-                component={AsyncPosts} 
-              />
-
               <DashboardRoute 
                 path="/my-profile" 
                 component={AsyncMyProfile} 

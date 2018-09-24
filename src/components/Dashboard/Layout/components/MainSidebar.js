@@ -50,14 +50,14 @@ const navigation = [
   {
     key: 8 ,
     label: "Home Page",
-    path: "/homepage",
+    path: "/home-page",
     icon: "home",
     access: true,
     child: [
       {
        key: 0.0 ,
        label:"Photo Slider",
-       path:"/homepage/photo-slider",
+       path:"/home-page/photo-slider",
        access:true
      },
    ],

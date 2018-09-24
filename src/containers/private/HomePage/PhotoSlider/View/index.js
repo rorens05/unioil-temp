@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import HeaderForm from 'components/Forms/HeaderForm'
-import ViewUserManagementForm from './components/ViewUserManagementForm'
+import ViewPhotoSliderForm from './components/ViewPhotoSliderForm'
 
 
-export default class UserManagementView extends Component {
+export default class PhotoSliderView extends Component {
 
 
   render() {
@@ -13,14 +13,14 @@ export default class UserManagementView extends Component {
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
-          title="Promotions Details"
-          action={()=> {console.log('update Promotions action button')}}
-          actionBtnName="Update"
+          title="Photo Slider Accounts"
+          action={()=> {console.log('action button')}}
+          actionBtnName="Save"
           deleteAction={()=> {console.log('delete button')}}
           deleteBtnName="Delete"
         />
         <div>
-          <ViewUserManagementForm />
+          <ViewPhotoSliderForm />
         </div>
       </div>
     )

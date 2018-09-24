@@ -13,11 +13,7 @@ export default class CardMemberView extends Component {
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
-          title="User Accounts"
-          action={()=> {console.log('action button')}}
-          actionBtnName="Save"
-          deleteAction={()=> {console.log('delete button')}}
-          deleteBtnName="Delete"
+          title="Card Member Details"
         />
         <div>
           <CardMemberViewForm />

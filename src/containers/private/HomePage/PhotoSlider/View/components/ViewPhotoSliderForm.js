@@ -4,7 +4,7 @@ import { Icon, Avatar, Row , Col } from 'antd'
 
 import HeaderForm from "components/Forms/HeaderForm"
 
-function ViewUserManagementForm(props) {
+function ViewPhotoSliderForm(props) {
   const {
     isSubmitting,
   } = props;
@@ -15,10 +15,10 @@ function ViewUserManagementForm(props) {
             <div>
               <h2 style={{margin: '0 0 20px'}}>Details</h2>
               {/*Account Details */}
-              <h2 style={{fontWeight: 'bold', fontSize: '20px'}}>Card Details</h2>
+              <h2 style={{fontWeight: 'bold', fontSize: '20px'}}>User Details</h2>
               <Row>
-                <Col span={18} push={3}>{'11111000000123'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Card Numbber:</span></Col>
+                <Col span={18} push={3}>{'jdoe'}</Col>
+                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>UserName:</span></Col>
               </Row>
               <Row>
                 <Col span={18} push={3}>{'fnarciso'}</Col>
@@ -29,12 +29,12 @@ function ViewUserManagementForm(props) {
                 <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Last Name:</span></Col>
               </Row>
               <Row>
-              <Col span={18} push={3}>{'20-Aug-2018'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Birthday:</span></Col>
+                <Col span={18} push={3}><a style={{color: '#1890FF'}} href={`mailto:${'marketing.officer@unioil.com'}`}>loyalty.officer@unioil.com</a></Col>
+                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Email:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={3}>{'Classic Loyalty Card'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Card Type:</span></Col>
+                <Col span={18} push={3}>{'Marketing Personnel'}</Col>
+                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>User Role:</span></Col>
               </Row>
             </div>
              {/*Account Details */}
@@ -42,19 +42,23 @@ function ViewUserManagementForm(props) {
               <h2 style={{fontWeight: 'bold', fontSize: '20px'}}>Account Details</h2>
               <Row>
                 <Col span={18} push={3}>{'Active'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Account Status:</span></Col>
-              </Row>
-              <Row>
-                <Col span={18} push={3}>{'Account locked due to wrong OTP entered for 3 times during login'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Reason:</span></Col>
+                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Status:</span></Col>
               </Row>
               <Row>
                 <Col span={18} push={3}>{'20-Aug-2018'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Locked Date:</span></Col>
+                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Date Created:</span></Col>
               </Row>
               <Row>
                 <Col span={18} push={3}>{'Francine Narciso'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Unlocked By:</span></Col>
+                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Created By:</span></Col>
+              </Row>
+              <Row>
+                <Col span={18} push={3}>{'20-Aug-2018'}</Col>
+                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Last Update:</span></Col>
+              </Row>
+              <Row>
+                <Col span={18} push={3}>{'Francine Narciso'}</Col>
+                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Updated By:</span></Col>
               </Row>
             </div>
         </div>
@@ -63,12 +67,12 @@ function ViewUserManagementForm(props) {
 };
 
 
-ViewUserManagementForm = connect(
+ViewPhotoSliderForm = connect(
   state => ({
     
   }),
-)(ViewUserManagementForm);
+)(ViewPhotoSliderForm);
 
 
-export default ViewUserManagementForm;
+export default ViewPhotoSliderForm;
 

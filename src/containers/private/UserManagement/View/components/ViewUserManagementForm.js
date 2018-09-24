@@ -11,13 +11,6 @@ function ViewUserManagementForm(props) {
 
   return (
     <div>
-        <HeaderForm 
-          title="User Accounts"
-          action={()=> {console.log('action')}}
-          actionBtnName="Update"
-          deleteAction={()=> {console.log('delete')}}
-          deleteBtnName="Delete"
-        />
         <div style={{padding: '15px 30px 0px', borderTop: 0}}>
             <div>
               <h2 style={{margin: '0 0 20px'}}>Details</h2>
