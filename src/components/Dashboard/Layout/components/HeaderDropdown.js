@@ -38,7 +38,7 @@ class HeaderDropdown extends Component {
       <Menu style={{width: 150}} >
           <Menu.Item key="0">
               <a  
-                onClick={()=> history.push(`my-profile`)}
+                onClick={()=> history.push("/my-profile")}
                 role="button" 
                 rel="noopener noreferrer" >
                   <Icon type="user" /> My Profile

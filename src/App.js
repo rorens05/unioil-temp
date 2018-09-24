@@ -136,7 +136,7 @@ class App extends Component {
                 path="/my-profile" 
                 component={AsyncMyProfile} 
               />
-              {/* <Route exact path = "/404" component = { AsyncPage404 } /> */}
+              <Route exact path = "/404" component = { AsyncPage404 } />
               <DashboardRoute path = "*" component = { AsyncPage404 } />
             </Switch>
           
