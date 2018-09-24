@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Button, Col } from 'antd';
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
-import { Input, Radio } from 'components/Forms';
+import { Input, Radio, InputTextArea, UploadImage, Select, DatePicker } from 'components/Forms';
 
 const formItemLayout = {
   labelCol: {
@@ -24,76 +24,170 @@ function EditUserManagementForm(props) {
     <Form noValidate>
 
       <Field
-        name="username"
+        name="title"
         type="text"
-        icon="user"
+        icon=""
         layout={formItemLayout}
-        label="Username"
-        placeholder="User name"
+        label="Title"
+        placeholder="Title"
         component={Input}
       />
 
       <Field
-        name="firstname"
+        name="description"
         type="text"
+        icon=""
+        layout={formItemLayout}
+        label="Description"
+        placeholder="Description"
+        rows={6}
+        component={InputTextArea}
+      />
+
+      <Field
+        name="upload_image"
+        type="file"
         icon="user"
         layout={formItemLayout}
-        label="First Name"
-        placeholder="First Name"
+        label="Upload Image"
+        placeholder="Upload Image"
+        component={UploadImage}
+      />
+
+      <Field
+        name="content_type"
+        type="text"
+        icon=""
+        layout={formItemLayout}
+        label="Content Type"
+        placeholder="Promo"
         component={Input}
       />
 
       <Field
-        name="lastname"
-        type="text"
-        icon="user"
+        name="branch"
+        type="select"
+        icon=""
         layout={formItemLayout}
-        label="Last Name"
-        placeholder="Last Name"
-        component={Input}
-      />
-
-      <Field
-        name="email"
-        type="text"
-        icon="user"
-        layout={formItemLayout}
-        label="Email Address"
-        placeholder="Email Address"
-        component={Input}
-      />
-
-      <Field
-        name="radio"
-        icon="user"
-        layout={formItemLayout}
+        label="Branches"
+        placeholder="Select Branches"
+        mode="multiple"
         optionsList={[
-          {
-            label: "System Admin",
-            value: "1"
-          },
-          {
-            label: "Marketing Personnel",
-            value: "2",
-          }
+          { label: "Guadalupe", value: "Guadalupe" },
+          { label: "BGC", value: "BGC", },
+          { label: "Makati", value: "Makati", }
         ]}
-        label="User Role"
+        component={Select}
+      />
+
+      <Field
+        name="content_type"
+        type="date"
+        icon=""
+        layout={formItemLayout}
+        label="Content Type"
+        placeholder="Promo"
+        component={DatePicker}
+      />
+
+      <Field
+        name="start_date"
+        type="date"
+        icon=""
+        layout={formItemLayout}
+        label="Start Date"
+        placeholder="Start Date"
+        component={DatePicker}
+      />
+
+      <Field
+        name="end_date"
+        type="date"
+        icon=""
+        layout={formItemLayout}
+        label="End Date"
+        placeholder="End Date"
+        component={DatePicker}
+      />
+
+      <Field
+        name="start_appeareance_date"
+        type="date"
+        icon=""
+        layout={formItemLayout}
+        label="Start Appearance Date"
+        placeholder="Start Appearance Date"
+        component={DatePicker}
+      />
+
+      <Field
+        name="end_appeareance_date"
+        type="date"
+        icon=""
+        layout={formItemLayout}
+        label="End Appearance Date"
+        placeholder="End Appearance Date"
+        component={DatePicker}
+      />
+
+      <Field
+        name="whats_hot"
+        icon="user"
+        layout={formItemLayout}
+        defaultValue={0}
+        isRadioButton
+        optionsList={[
+          { label: "Yes", value: 1 },
+          { label: "No", value: 0, }
+        ]}
+        label="Add in What's Hot?"
         component={Radio}
       />
 
       <Field
-        name="email"
-        type="text"
+        name="add_top_promos"
         icon="user"
-        withActionBtn={{
-          action: ()=> { console.log('helow world') },
-          name: "Generate"
-        }}
         layout={formItemLayout}
-        label="Deafult Password"
-        component={Input}
+        defaultValue={0}
+        isRadioButton
+        optionsList={[
+          { label: "Yes", value: 1 },
+          { label: "No", value: 0, }
+        ]}
+        label="Add in Top 2 Promos"
+        component={Radio}
       />
 
+      <Field
+        name="branch"
+        type="select"
+        icon=""
+        layout={formItemLayout}
+        label="Branches"
+        placeholder="Select Branches"
+        mode="single"
+        optionsList={[
+          { label: "Red", value: "Red" },
+          { label: "Green", value: "Green", },
+          { label: "Blue", value: "Blue", }
+        ]}
+        component={Select}
+      />
+
+      <Field
+        name="add_gps"
+        icon="user"
+        layout={formItemLayout}
+        defaultValue={0}
+        isRadioButton
+        optionsList={[
+          { label: "Yes", value: 1 },
+          { label: "No", value: 0, }
+        ]}
+        label="Add in GPS?"
+        component={Radio}
+      />
+       
     </Form>
   );
 };
