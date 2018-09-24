@@ -1,0 +1,8 @@
+export const LOGOUT = 'LOGOUT'
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
+export const LOGOUT_RESET = 'LOGOUT_RESET'
+
+export const FETCH_DATA = 'FETCH_DATA'
+export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS'
+export const FETCH_DATA_ERROR = 'FETCH_DATA_ERROR'
+export const FETCH_DATA_RESET = 'FETCH_DATA_RESET'

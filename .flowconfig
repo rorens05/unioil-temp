@@ -1,0 +1,12 @@
+[ignore]
+./components
+[include]
+
+[libs]
+.*/node_modules/*
+[lints]
+
+[options]
+
+
+[strict]
