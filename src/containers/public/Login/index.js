@@ -45,12 +45,15 @@ class Login extends Component {
     const { password } = values;
     const { setErrors, setSubmitting } = actions;
     const { username } = this.state;
-    let { history } = this.props;
+    let { history, location } = this.props;
     
+    let usernameInitialValue = location.state && location.state.username;
+    let userName = usernameInitialValue ? usernameInitialValue : username;
+
     this.props.customAction({
       type: "LOGIN" ,
       payload: {
-        username, // username
+        username : userName,
         password,
         setSubmitting,
         setErrors,
@@ -66,7 +69,7 @@ class Login extends Component {
     });
   }
 
-  showModalChangetPassword = () => {
+  showModalChangePassword = () => {
     this.setState({
       isModalVisible: true,
       forgotUsername: false
@@ -83,7 +86,7 @@ class Login extends Component {
 
   
   render() {
-    const { isAuthenticated } = this.props
+    const { isAuthenticated, location } = this.props
     const { from } = this.props.location.state || { from: { pathname: "/user-management" } };    
     
     const { userVerified, isModalVisible, forgotUsername } = this.state;
@@ -91,6 +94,8 @@ class Login extends Component {
     if (isAuthenticated) {
       return <Redirect to={from} />;
     }
+
+    let usernameInitialValue = location.state && location.state.username;
 
     return (
         <Row>
@@ -106,17 +111,19 @@ class Login extends Component {
 
             <Formik
               initialValues={{
-                username: '',
+                username: usernameInitialValue ? usernameInitialValue : '',
+                username_2: '',
                 password: '', 
                 remember_me: false
               }}
               enableReinitialize={true}
               validationSchema={loginSchema}
-              onSubmit={userVerified ? this.handleLoginApi : this.handleCheckUserApi }
+              onSubmit={userVerified || usernameInitialValue ? this.handleLoginApi : this.handleCheckUserApi }
               render = {(props)=> 
                 <LoginForm 
                   {...props}
                   userVerified={userVerified}
+                  usernameInitialValue={usernameInitialValue}
                   showModalForgotUsername={this.showModalForgotUsername}
                   showModalChangePassword={this.showModalChangePassword}
                 />

@@ -6,3 +6,12 @@ export const fnQueryParams = (params) => {
     query = query.slice(0, -1);
     return "?"+query;
 }
+
+export const  isEmpty = (obj) => {
+    for(var key in obj) {
+      if(obj.hasOwnProperty(key))
+        return false;
+    }
+    return true;
+}
+  

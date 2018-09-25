@@ -18,7 +18,7 @@ class ChangePassword extends Component {
 
   componentDidMount() {
     let { history } = this.props;
-  
+    
     if(history) {
       if(!history.location.state) {
         notification.error({ message: 'Error', description: 'Login first before changing password.' });
@@ -34,6 +34,7 @@ class ChangePassword extends Component {
     const { setSubmitting } = actions;
     let { history } = this.props;
     let params = {
+      username: history.location.state.username,
       admin_uuid: history.location.state.admin_uuid,
       password: confirmpassword
     }
@@ -42,7 +43,7 @@ class ChangePassword extends Component {
 
     if(response.data.code == 200) {
       notification.success({ message: 'Password Succesfully Updated', description: `You may now login using your new password.` });
-      history.replace("/login");
+      history.replace({ pathname: '/login', state: { username: params.username } });
     } else {
       notification.error({ message: 'Error Changing Password', description: response.data.data.password ? `${response.data.data.password}.` : response.data.message });
       setSubmitting(false);

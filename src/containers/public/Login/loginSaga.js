@@ -15,9 +15,9 @@ function* loginFlow({ payload }) {
 
   try {
     const { data } = yield call(() => API_UNI_OIL.post('login_password', { username, password })); //username
-    console.log(data,'testadata');
+   
     if(data.data.prompt_password)
-      return history.push({ pathname: '/forgot-password', state: { admin_uuid : data.data.admin_uuid, password } });
+      return history.push({ pathname: '/forgot-password', state: { username, admin_uuid : data.data.admin_uuid, password } });
 
     if(data.data.token) {
       API_UNI_OIL.defaults.headers.common['Authorization'] = `Bearer ${data.data.token}`;
@@ -27,13 +27,6 @@ function* loginFlow({ payload }) {
     }
     
   } catch ({response: error}) {
-  
-    // if(!error) // error is undefined/null
-    //   return notification.error({ message: 'Error', description: 'Something went wrong.' });
-    // if(error && error.status == 500) 
-    //   return notification.error({ message: 'Error', description: '500 Internal Error refresh the page, no internet connection.' });
-    
-    const { password } = error.data.data;
     setErrors({ password : "Incorrect Password"});
     setSubmitting(false);
   }
