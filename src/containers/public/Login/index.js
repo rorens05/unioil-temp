@@ -24,22 +24,18 @@ class Login extends Component {
   handleCheckUserApi = async (values, actions) => {
    
     console.log('handleCheckUserApi',values , 'values', actions);
-    const { email } = values;
+    const { username } = values;
     const { setErrors, setSubmitting } = actions;
 
     try {
-      const { data } = await API_ENDPOINT_V1.post('/login_email', {
-        email
+      const { data } = await API_UNI_OIL.post('/login_username', {
+        username
       });
-      const { is_verified, token } = data.data;
-      this.setState({ token, email, userVerified: true });
-      //this.setState({ username, userVerified: is_verified });
-      // console.log(token,'tokentokentoken')
+      const { is_verified } = data.data;
+      this.setState({ username, userVerified: is_verified });
       setSubmitting(false);
-      console.log(data,'datadata')
     } catch ({response: error}) {
-      setErrors({ email: error.data.message});
-      //setErrors({ username: error.data.message});
+      setErrors({ username: "Username doesn't exist"});
       setSubmitting(false);
     }
   }
@@ -48,14 +44,13 @@ class Login extends Component {
   
     const { password } = values;
     const { setErrors, setSubmitting } = actions;
-    const { token } = this.state;
-    //const { username } = this.state;
+    const { username } = this.state;
     let { history } = this.props;
     
     this.props.customAction({
       type: "LOGIN" ,
       payload: {
-        token, // username
+        username, // username
         password,
         setSubmitting,
         setErrors,
@@ -111,7 +106,7 @@ class Login extends Component {
 
             <Formik
               initialValues={{
-                email: '',
+                username: '',
                 password: '', 
                 remember_me: false
               }}

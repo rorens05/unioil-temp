@@ -2,11 +2,7 @@
 import * as Yup from 'yup'
 
 export const loginSchema = Yup.object().shape({
-
-  // password: Yup.string()
-  //   .min(6, "C'mon, your name is longer than that")
-  //   .required('Password is required.'),
-  email: Yup.string()
+  username: Yup.string()
     .required('Username is required!')
     .matches(
       /^[a-zA-Z0-9_@.]+$/,
@@ -15,8 +11,16 @@ export const loginSchema = Yup.object().shape({
         excludeEmptyString: true,
       },
     ),
-  remember_me: Yup.boolean()
-    .required('remember me is required!'),
+  //password: Yup.string()
+  
+    //.min(10,'Atleast 10 character')
+    // .matches(
+    //   /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/,
+    //   {
+    //     message: 'Invalid password atleast 1 upper and lower case letter, 1 special character , 1 numbers.',
+    //     excludeEmptyString: true,
+    //   },
+    // )
 })
 
 

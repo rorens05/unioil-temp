@@ -1,10 +1,14 @@
 //@flow
 import React, { Component } from 'react';
-import { Row, Col , Alert} from 'antd';
+import { connect } from "react-redux";
+import { Row, Col , notification} from 'antd';
 import { Formik, Field, Form } from 'formik'
 import ForgotUsernameForm from './components/ForgotUsernameForm'
 import { forgotPasswordSchema } from './validationSchema'
+import { API_POST } from "utils/Api";
 
+// HELPER FUNCTIONS
+import { customAction } from "actions";
 
 
 class ForgotPassword extends Component {
@@ -12,22 +16,35 @@ class ForgotPassword extends Component {
     username: null
   }
 
+  componentDidMount() {
+    let { history } = this.props;
+    if(history) {
+      if(!history.location.state.admin_uuid) {
+        return history.push({ pathname: '/login' });
+      }
+    }
+  }
 
-  handleLoginApi = (values, actions) => {
+  handleLoginApi = async (values, actions) => {
   
-    const { password } = values;
-    const { setErrors, setSubmitting } = actions;
-    const { token } = this.state;
-    
-    // this.props.customAction({
-    //   type: "LOGIN" ,
-    //   payload: {
-    //     token, // username
-    //     password,
-    //     setSubmitting,
-    //     setErrors
-    //   }
-    // });
+    const { confirmpassword } = values;
+    let { history } = this.props;
+    let params = {
+      admin_uuid: history.location.state.admin_uuid,
+      password: confirmpassword
+    }
+
+    try {
+      let passwordMessage = await API_POST("login_changePassword", params);
+
+      if(passwordMessage) {
+        notification.success({ message: 'Password Succesfully Updated', description: `You may now login using your new password.` });
+        history.replace("/login");
+      } 
+    } catch (error) {
+      notification.error({ message: 'Error', description: `Something went wrong changing password.` });
+    }
+
   }
 
 
@@ -60,6 +77,10 @@ class ForgotPassword extends Component {
 }
 
 
-
+ForgotPassword = connect(
+  state => ({
+  }),
+  { customAction }
+)(ForgotPassword);
 
 export default ForgotPassword;

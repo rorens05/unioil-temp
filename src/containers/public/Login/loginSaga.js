@@ -5,21 +5,22 @@ import { notification } from "antd";
 
 function* loginFlow({ payload }) {
   const {
-    token, //username
+    username, //username
     password,
     setSubmitting,
     setErrors,
-    history
+    history,
+    admin_uuid
   } = payload;
-console.log(token,'usernameusername');
+
   try {
-    const { data } = yield call(() => API_ENDPOINT_V1.post('login_password', { token, password })); //username
-    
-    if(data.data.isUserPasswordChange)
-      return history.push({ pathname: 'forgot-password' });
-console.log(data,'testadata');
+    const { data } = yield call(() => API_UNI_OIL.post('login_password', { username, password })); //username
+    console.log(data,'testadata');
+    if(data.data.prompt_password)
+      return history.push({ pathname: '/forgot-password', state: { admin_uuid : data.data.admin_uuid, password } });
+
     if(data.data.token) {
-      API_ENDPOINT_V1.defaults.headers.common['Authorization'] = `Bearer ${data.data.token}`;
+      API_UNI_OIL.defaults.headers.common['Authorization'] = `Bearer ${data.data.token}`;
       setCookie({ token: data.data.token }, "TOKEN");
   
       yield put({ type: "LOGIN_SUCCESS", payload: data.data });
@@ -27,13 +28,13 @@ console.log(data,'testadata');
     
   } catch ({response: error}) {
   
-    if(!error) // error is undefined/null
-      return notification.error({ message: 'Error', description: 'Something went wrong.' });
-    if(error && error.status == 500) 
-      return notification.error({ message: 'Error', description: '500 Internal Error refresh the page, no internet connection.' });
+    // if(!error) // error is undefined/null
+    //   return notification.error({ message: 'Error', description: 'Something went wrong.' });
+    // if(error && error.status == 500) 
+    //   return notification.error({ message: 'Error', description: '500 Internal Error refresh the page, no internet connection.' });
     
     const { password } = error.data.data;
-    setErrors({ password });
+    setErrors({ password : "Incorrect Password"});
     setSubmitting(false);
   }
 }

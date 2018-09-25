@@ -33,40 +33,37 @@ export const fetchData = async (url) => {
 
 export const API_GET = async (url, params) => {
   try {
-    return await API_ENDPOINT_V1.get(url, {
-      params,
-      paramsSerializer: function(params) {
-        return queryString.stringify(params, { encode: false });
-      }
-    });
+    return await API_ENDPOINT_V1.get(url, { params });
   } catch ({response}) {
+    if(response.status === 422) return response;
     store.dispatch({ type: 'UNCAUGHT_ERROR', payload: response });
   }
 }
 
-
 export const API_POST = async (url, params) => {
   try {
-    return await API_ENDPOINT_V1.post(url, params)
-  } catch ({response: error}) {
-    store.dispatch({ type: "LOGOUT", payload: error });
+    return await API_UNI_OIL.post(url, params)
+  } catch ({response}) {
+    if(response.status === 422) return response;
+    store.dispatch({ type: 'UNCAUGHT_ERROR', payload: response });
   }
-  
 }
 
 export const API_PUT = async (url, params) => {
-  // try {
-  //   return await API_ENDPOINT_V1.put(url, params)
-  // } catch ({response: error}) {
-  //   store.dispatch({ type: LOGOUT, payload: error });
-  // }
+  try {
+    return await API_UNI_OIL.put(url, params)
+  } catch ({response}) {
+    if(response.status === 422) return response;
+    store.dispatch({ type: 'UNCAUGHT_ERROR', payload: response });
+  }
 }
 
 // NOT MOST COMMONLY USED
 export const API_DELETE = async (url, params) => {
-  // try {
-  //   return await API_ENDPOINT_V1.delete(url, params)
-  // } catch (error) {
-  //   store.dispatch({ type: LOGOUT });
-  // }
+  try {
+    return await API_UNI_OIL.delete(url, { params })
+  } catch ({response}) {
+    if(response.status === 422) return response;
+    store.dispatch({ type: 'UNCAUGHT_ERROR', payload: response });
+  }
 }

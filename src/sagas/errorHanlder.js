@@ -1,6 +1,5 @@
 import { takeLatest, put } from "redux-saga/effects";
 import { delay } from "redux-saga";
-import { LOGOUT_SUCCESS } from "constants/Types";
 import { API_ENDPOINT_V1 } from "utils/Api";
 import { removeCookie } from "utils/cookie";
 import { notification } from "antd";
@@ -14,7 +13,7 @@ function* handleErrors({payload}){
     if(status === 401){
       API_ENDPOINT_V1.defaults.headers.common['Authorization'] = undefined;
       removeCookie('TOKEN');
-      yield put({ type: LOGOUT_SUCCESS }); 
+      yield put({ type: "LOGOUT_SUCCESS" }); 
       notification.error({ message: data.message, description: '' });
     }else if(status === 404){
       yield put(replace('/404'))

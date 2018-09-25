@@ -18,7 +18,7 @@ function Login(props) {
 
       <label style={{fontWeight: '500'}}>Enter Username</label>
       <Field
-        name="email"
+        name="username"
         type="text"
         icon="user"
         placeholder="User name"
