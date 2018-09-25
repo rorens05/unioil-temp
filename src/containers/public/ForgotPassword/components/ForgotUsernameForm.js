@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Button, Col, Popover } from 'antd';
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
-import { Input } from 'components/Forms'
+import { InputPassword } from 'components/Forms'
 
 const content = (
   <div style={{fontSize: '10px'}}>
@@ -31,7 +31,7 @@ function ForgotUsernameForm(props) {
           type="password"
           icon="lock"
           placeholder="New Password"
-          component={Input}
+          component={InputPassword}
         />
         <div style={{position: 'absolute', top: '8px', right: '-33px' }}>
           <Popover placement="bottomRight" content={content} trigger="hover">
@@ -47,7 +47,7 @@ function ForgotUsernameForm(props) {
           type="password"
           icon="lock"
           placeholder="Confirm Password"
-          component={Input}
+          component={InputPassword}
         />
       </div>
 

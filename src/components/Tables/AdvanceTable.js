@@ -80,17 +80,11 @@ class AdvanceTable extends Component {
   fetch = async (params = {}) => {
     console.log(params,'defaultdefault', this.props.url.default);
     try {
-      let { history, location } = this.props;
-      let { pathname } = location;
       let response = await API_GET(this.props.url.default, params);
+      let data = response.data.data.length > 0 ? response.data.data : null;
+      let total = response.data.data.length > 0 ? response.data.meta.total : 0
       
-      
-
-      this.setState({
-        data    : response.data.data || [],
-        total   : response.data.meta.total || 0,
-        loading : false
-      });
+      this.setState({ data, total, loading : false });
     } catch (error) {
       this.setState({ loading : false, total: 0 })
     }

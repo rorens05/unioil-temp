@@ -18,33 +18,36 @@ class ForgotPassword extends Component {
 
   componentDidMount() {
     let { history } = this.props;
+  
     if(history) {
-      if(!history.location.state.admin_uuid) {
+      if(!history.location.state) {
+        notification.error({ message: 'Error', description: 'Login first before changing password.' });
         return history.push({ pathname: '/login' });
-      }
+      } 
     }
   }
+  
 
-  handleLoginApi = async (values, actions) => {
+  handleLoginApi = async(values, actions) => {
   
     const { confirmpassword } = values;
+    const { setSubmitting } = actions;
     let { history } = this.props;
     let params = {
       admin_uuid: history.location.state.admin_uuid,
       password: confirmpassword
     }
 
-    try {
-      let passwordMessage = await API_POST("login_changePassword", params);
+    let response = await API_POST("login_changePassword", params);
 
-      if(passwordMessage) {
-        notification.success({ message: 'Password Succesfully Updated', description: `You may now login using your new password.` });
-        history.replace("/login");
-      } 
-    } catch (error) {
-      notification.error({ message: 'Error', description: `Something went wrong changing password.` });
+    if(response.data.code == 200) {
+      notification.success({ message: 'Password Succesfully Updated', description: `You may now login using your new password.` });
+      history.replace("/login");
+    } else {
+      notification.error({ message: 'Error Changing Password', description: response.data.data.password ? `${response.data.data.password}.` : response.data.message });
+      setSubmitting(false);
     }
-
+      
   }
 
 

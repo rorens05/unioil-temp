@@ -16,7 +16,7 @@ export const sampleJsonApi = axios.create({
 });
 
 export const API_UNI_OIL = axios.create({
-  baseURL: 'http://192.168.0.68/UniOilLoyaltyApp-BackEnd/public/index.php/api/cms',
+  baseURL: process.env.REACT_APP_DEV,
   responseType: 'json'
 });
 
