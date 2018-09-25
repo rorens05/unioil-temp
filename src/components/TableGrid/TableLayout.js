@@ -6,7 +6,7 @@ import { Table, Button, Popconfirm, Popover, message,
 import { withRouter } from "react-router-dom";
 import queryString from 'query-string';
 
-import { fetchAllItem , jsonServerApi } from 'utils/Api';
+//import { fetchAllItem , jsonServerApi } from 'utils/Api';
 import { fnQueryParams } from "utils/helper";
 const Search = Input.Search;
 const RangePicker = DatePicker.RangePicker;
@@ -51,34 +51,34 @@ class TableLayout extends Component {
         const { api } = this.props;
         this.setState({ loading: true });
         let url = api.default;
-        let asysnData = await fetchAllItem(url, {
-            ...values
-        });
-        if(asysnData) {
-            this.setState({
-                loading: false,
-                data: asysnData.data,
-                total: asysnData.headers['x-total-count'],
-                search: values.search
-            });
-        }
+        // let asysnData = await fetchAllItem(url, {
+        //     ...values
+        // });
+        // if(asysnData) {
+        //     this.setState({
+        //         loading: false,
+        //         data: asysnData.data,
+        //         total: asysnData.headers['x-total-count'],
+        //         search: values.search
+        //     });
+        // }
     }
 
     remove = async (params={}) => {
         let { path, uuid } = params
 
         try {
-            const response = await jsonServerApi.delete(`${path}/${uuid}`);
+            // const response = await jsonServerApi.delete(`${path}/${uuid}`);
     
-            if(response) {
+            // if(response) {
 
-                this.fetch()
+            //     this.fetch()
 
-                notification.success({
-                    message: 'Success',
-                    description: `Delete Successfull.`,
-                })
-            }
+            //     notification.success({
+            //         message: 'Success',
+            //         description: `Delete Successfull.`,
+            //     })
+            // }
         } catch (error) {
             
             if(error) {

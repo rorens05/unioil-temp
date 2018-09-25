@@ -12,7 +12,7 @@ import {
   Row, 
   Col 
 } from "antd";
-import { callApi } from "utils/Api";
+//import { callApi } from "utils/Api";
 import { Link, withRouter } from "react-router-dom";
 import querystring from "querystring";
 import { encrypt, decrypt } from 'utils/encrypto'
@@ -173,22 +173,22 @@ class CustomTable extends React.PureComponent {
       search: stringified
     });
     try {
-      let response = await callApi({
-        url: url.default,
-        params: {
-          _page: params._page,
-          _limit: params._limit,
-          ...params
-        }
-      });
+      // let response = await callApi({
+      //   url: url.default,
+      //   params: {
+      //     _page: params._page,
+      //     _limit: params._limit,
+      //     ...params
+      //   }
+      // });
 
-      if (response.status === 200) {
-        this.setState({
-          loading: false,
-          data: response.data,
-          totalData: response.data.total ? response.data.total : 100
-        });
-      }
+      // if (response.status === 200) {
+      //   this.setState({
+      //     loading: false,
+      //     data: response.data,
+      //     totalData: response.data.total ? response.data.total : 100
+      //   });
+      // }
     } catch (error) {}
   };
 

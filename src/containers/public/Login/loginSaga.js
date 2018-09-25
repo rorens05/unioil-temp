@@ -1,5 +1,5 @@
 import { call, takeLatest, put } from "redux-saga/effects";
-import { API_ENDPOINT_V1 } from "utils/Api";
+import { API_UNI_OIL,API_ENDPOINT_V1 } from "utils/Api";
 import { setCookie } from "utils/cookie";
 import { notification } from "antd";
 
@@ -11,17 +11,19 @@ function* loginFlow({ payload }) {
     setErrors,
     history
   } = payload;
-
+console.log(token,'usernameusername');
   try {
     const { data } = yield call(() => API_ENDPOINT_V1.post('login_password', { token, password })); //username
     
     if(data.data.isUserPasswordChange)
       return history.push({ pathname: 'forgot-password' });
-
-    API_ENDPOINT_V1.defaults.headers.common['Authorization'] = `Bearer ${data.data.token}`;
-    setCookie({ token: data.data.token }, "TOKEN");
-
-    yield put({ type: "LOGIN_SUCCESS", payload: data.data });
+console.log(data,'testadata');
+    if(data.data.token) {
+      API_ENDPOINT_V1.defaults.headers.common['Authorization'] = `Bearer ${data.data.token}`;
+      setCookie({ token: data.data.token }, "TOKEN");
+  
+      yield put({ type: "LOGIN_SUCCESS", payload: data.data });
+    }
     
   } catch ({response: error}) {
   

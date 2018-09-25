@@ -10,7 +10,7 @@ import { loginSchema } from './validationSchema'
 
 // HELPER FUNCTIONS
 import { customAction } from "actions";
-import { API_ENDPOINT_V1 } from "utils/Api";
+import { API_UNI_OIL, API_ENDPOINT_V1 } from "utils/Api";
 
 
 class Login extends Component {
@@ -31,12 +31,15 @@ class Login extends Component {
       const { data } = await API_ENDPOINT_V1.post('/login_email', {
         email
       });
-      const { token } = data.data
+      const { is_verified, token } = data.data;
       this.setState({ token, email, userVerified: true });
-      console.log(token,'tokentokentoken')
+      //this.setState({ username, userVerified: is_verified });
+      // console.log(token,'tokentokentoken')
       setSubmitting(false);
+      console.log(data,'datadata')
     } catch ({response: error}) {
       setErrors({ email: error.data.message});
+      //setErrors({ username: error.data.message});
       setSubmitting(false);
     }
   }
@@ -46,6 +49,7 @@ class Login extends Component {
     const { password } = values;
     const { setErrors, setSubmitting } = actions;
     const { token } = this.state;
+    //const { username } = this.state;
     let { history } = this.props;
     
     this.props.customAction({

@@ -10,11 +10,11 @@ class ListDataDisplay extends Component {
   };
 
   async componentDidMount() {
-    const { url } = this.props;
-    const response = await fetchData(url);
-    this.setState({
-      data: response.data
-    })
+    // const { url } = this.props;
+    // const response = await fetchData(url);
+    // this.setState({
+    //   data: response.data
+    // })
   }
 
   render() {

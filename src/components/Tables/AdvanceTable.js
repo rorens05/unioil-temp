@@ -78,6 +78,7 @@ class AdvanceTable extends Component {
   }
 
   fetch = async (params = {}) => {
+    console.log(params,'defaultdefault', this.props.url.default);
     try {
       let { history, location } = this.props;
       let { pathname } = location;

@@ -15,8 +15,8 @@ export const sampleJsonApi = axios.create({
   baseURL: 'http://jsonplaceholder.typicode.com/',
 });
 
-export const unioilApi = axios.create({
-  baseURL: 'https://reqres.in/api',
+export const API_UNI_OIL = axios.create({
+  baseURL: 'http://192.168.0.68/UniOilLoyaltyApp-BackEnd/public/index.php/api/cms',
   responseType: 'json'
 });
 
@@ -30,28 +30,6 @@ export let API_ENDPOINT_V1 = axios.create({
 export const fetchData = async (url) => {
   return await defaultApi.get(url);
 }
-
-export async function fetchAllItem(url, params=null) {
-	//let token = readCookie();
-
-	let response = await axios.get(url, {
-		params,
-		//headers: { 'X-Auth-Token': token },
-	});
-
-	return response;
-}
-
-
-export const callApi = async ({url, params}) => {
-  let response = await sampleJsonApi.get(url, {
-		params,
-		//headers: { 'X-Auth-Token': token },
-	});
-
-	return response;
-}
-
 
 export const API_GET = async (url, params) => {
   try {
