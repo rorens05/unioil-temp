@@ -33,7 +33,7 @@ export const fetchData = async (url) => {
 
 export const API_GET = async (url, params) => {
   try {
-    return await API_ENDPOINT_V1.get(url, { params });
+    return await API_UNI_OIL.get(url, { params });
   } catch ({response}) {
     if(response.status === 422) return response;
     store.dispatch({ type: 'UNCAUGHT_ERROR', payload: response });
