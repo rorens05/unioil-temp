@@ -21,8 +21,8 @@ const AsyncRegistration = Loadable({
   loading: Loading
 });
 
-const AsyncForgotPassword = Loadable({
-  loader: () => import("./containers/public/ForgotPassword"),
+const AsyncChangePassword = Loadable({
+  loader: () => import("./containers/public/ChangePassword"),
   loading: Loading
 });
 
@@ -111,7 +111,7 @@ class App extends Component {
               <LoginLayoutRoute
                 exact
                 path="/forgot-password"
-                component={AsyncForgotPassword}
+                component={AsyncChangePassword}
               />
 
               {/* PRIVATE ROUTES */}

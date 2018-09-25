@@ -16,7 +16,7 @@ const content = (
   </div>
 );
 
-function ForgotUsernameForm(props) {
+function ChangePasswordForm(props) {
   const {
     isSubmitting, 
   } = props;
@@ -69,12 +69,12 @@ function ForgotUsernameForm(props) {
 };
 
 
-ForgotUsernameForm = connect(
+ChangePasswordForm = connect(
   state => ({
     
   }),
-)(ForgotUsernameForm);
+)(ChangePasswordForm);
 
 
-export default ForgotUsernameForm;
+export default ChangePasswordForm;
 

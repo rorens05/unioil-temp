@@ -1,7 +1,7 @@
 
 import * as Yup from 'yup'
 
-export const forgotPasswordSchema = Yup.object().shape({
+export const changePasswordSchema = Yup.object().shape({
   newpassword: Yup.string()
     .required('New password is required!')
     .min(10,'Password must be alteast 10 characters')

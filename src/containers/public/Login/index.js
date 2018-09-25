@@ -66,7 +66,7 @@ class Login extends Component {
     });
   }
 
-  showModalForgotPassword = () => {
+  showModalChangetPassword = () => {
     this.setState({
       isModalVisible: true,
       forgotUsername: false
@@ -118,7 +118,7 @@ class Login extends Component {
                   {...props}
                   userVerified={userVerified}
                   showModalForgotUsername={this.showModalForgotUsername}
-                  showModalForgotPassword={this.showModalForgotPassword}
+                  showModalChangePassword={this.showModalChangePassword}
                 />
               }
             />

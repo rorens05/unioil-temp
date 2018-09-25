@@ -10,7 +10,7 @@ function Login(props) {
     isSubmitting, 
     userVerified,
     showModalForgotUsername,
-    showModalForgotPassword
+    showModalChangePassword
   } = props;
 
   return (
@@ -43,7 +43,7 @@ function Login(props) {
         <Col span={12} style={{marginTop: '3px'}}>
           {
             userVerified 
-              ? <div onClick={showModalForgotPassword} style={{color: '#005598', cursor: 'pointer'}}>Forgot Password</div>
+              ? <div onClick={showModalChangePassword} style={{color: '#005598', cursor: 'pointer'}}>Forgot Password</div>
               : <div onClick={showModalForgotUsername} style={{color: '#005598', cursor: 'pointer'}}>Forgot Username</div>
           }
         </Col>

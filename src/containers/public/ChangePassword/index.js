@@ -3,15 +3,15 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Row, Col , notification} from 'antd';
 import { Formik, Field, Form } from 'formik'
-import ForgotUsernameForm from './components/ForgotUsernameForm'
-import { forgotPasswordSchema } from './validationSchema'
+import ChangePasswordForm from './components/ChangePasswordForm'
+import { changePasswordSchema } from './validationSchema'
 import { API_POST } from "utils/Api";
 
 // HELPER FUNCTIONS
 import { customAction } from "actions";
 
 
-class ForgotPassword extends Component {
+class ChangePassword extends Component {
   state = {
     username: null
   }
@@ -65,10 +65,10 @@ class ForgotPassword extends Component {
 
             <Formik
               enableReinitialize={true}
-              validationSchema={forgotPasswordSchema}
+              validationSchema={changePasswordSchema}
               onSubmit={this.handleLoginApi}
               render = {(props)=> 
-                <ForgotUsernameForm 
+                <ChangePasswordForm 
                   {...props}
                 />
               }
@@ -80,10 +80,10 @@ class ForgotPassword extends Component {
 }
 
 
-ForgotPassword = connect(
+ChangePassword = connect(
   state => ({
   }),
   { customAction }
-)(ForgotPassword);
+)(ChangePassword);
 
-export default ForgotPassword;
+export default ChangePassword;
