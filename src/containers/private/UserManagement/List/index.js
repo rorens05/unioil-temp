@@ -34,9 +34,11 @@ class DashboardList extends Component {
           actionBtnName="Add User"
         />
         <AdvanceTable 
-            keyValue="user_uuid"
+            keyValue="admin_uuid"
             url={{ 
-              default: 'admin?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
+              //default: 'admin?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
+              default: 'admin',
+              filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}
             filterValues ={["role", "status"]}
             columns={

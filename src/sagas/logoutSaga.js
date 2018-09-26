@@ -3,20 +3,20 @@ import { notification } from "antd";
 import { LOGOUT, LOGOUT_SUCCESS } from "constants/Types";
 
 import { removeCookie } from "utils/cookie";
-import { API_ENDPOINT_V1 } from "utils/Api";
+import { API_UNI_OIL } from "utils/Api";
 
 
 function* logoutFlow({payload}) {
     try {
-        yield call(() => API_ENDPOINT_V1.post('logout'));
-        API_ENDPOINT_V1.defaults.headers.common['Authorization'] = undefined;
+        yield call(() => API_UNI_OIL.post('logout'));
+        API_UNI_OIL.defaults.headers.common['Authorization'] = undefined;
         removeCookie('TOKEN');
-        yield put({ type: LOGOUT_SUCCESS });
+        yield put({ type: "LOGOUT_SUCCESS" });
         notification.success({ message: 'Success', description: `Logout successfully.` });
     } catch ({ response: error }) {
-      API_ENDPOINT_V1.defaults.headers.common['Authorization'] = undefined;
+      API_UNI_OIL.defaults.headers.common['Authorization'] = undefined;
       removeCookie('TOKEN');
-      yield put({ type: LOGOUT_SUCCESS });
+      yield put({ type: "LOGOUT_SUCCESS" });
   
       notification.error({ message: 'Error', description: error.data.message });
     }
