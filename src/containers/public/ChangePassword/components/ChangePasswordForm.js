@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Button, Col, Popover } from 'antd';
+import { Link } from "react-router-dom";
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 import { InputPassword } from 'components/Forms'
@@ -52,7 +53,14 @@ function ChangePasswordForm(props) {
       </div>
 
       <Row style={{marginTop: '30px'}}>
-        <Col span={12} style={{marginTop: '3px'}}></Col>
+        <Col span={12} style={{marginTop: '3px'}}>
+          {
+           <Link
+            style={{color: '#005598', cursor: 'pointer'}}
+            className="login-form-forgot"
+            to="/login">Back to Login</Link>
+          }
+        </Col>
         <Col span={12}>
           <Button  
             loading={isSubmitting}

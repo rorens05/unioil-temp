@@ -110,7 +110,7 @@ class App extends Component {
 
               <LoginLayoutRoute
                 exact
-                path="/forgot-password"
+                path="/change-password"
                 component={AsyncChangePassword}
               />
 

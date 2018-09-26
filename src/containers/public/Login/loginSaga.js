@@ -17,7 +17,7 @@ function* loginFlow({ payload }) {
     const { data } = yield call(() => API_UNI_OIL.post('login_password', { username, password })); //username
    
     if(data.data.prompt_password)
-      return history.push({ pathname: '/forgot-password', state: { username, admin_uuid : data.data.admin_uuid, password } });
+      return history.push({ pathname: '/change-password', state: { username, admin_uuid : data.data.admin_uuid, password } });
 
     if(data.data.token) {
       API_UNI_OIL.defaults.headers.common['Authorization'] = `Bearer ${data.data.token}`;
