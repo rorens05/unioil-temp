@@ -27,7 +27,7 @@ function* loginFlow({ payload }) {
     }
     
   } catch ({response: error}) {
-    setErrors({ password : "Incorrect Password"});
+    setErrors({ password : error.data.message});
     setSubmitting(false);
   }
 }

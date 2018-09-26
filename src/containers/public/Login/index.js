@@ -35,7 +35,8 @@ class Login extends Component {
       this.setState({ username, userVerified: is_verified });
       setSubmitting(false);
     } catch ({response: error}) {
-      setErrors({ username: "Username doesn't exist"});
+      console.log(error.data.message,'tests')
+      setErrors({ username: error.data.message });
       setSubmitting(false);
     }
   }
@@ -86,7 +87,11 @@ class Login extends Component {
   }
 
   backToLogin =(values)=> {
-    values.setFieldValue('username','')
+    if(values) {
+      values.setFieldValue('username','')
+      values.setFieldValue('password','')
+    }
+    
     let { history } = this.props;
     this.setState({userVerified: false})
     history.push({ pathname: '/login' });
