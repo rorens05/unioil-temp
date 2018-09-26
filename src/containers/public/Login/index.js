@@ -42,18 +42,19 @@ class Login extends Component {
 
   handleLoginApi = (values, actions) => {
   
-    const { password } = values;
+    const { password, username } = values;
     const { setErrors, setSubmitting } = actions;
-    const { username } = this.state;
+    //const { username } = this.state;
     let { history, location } = this.props;
-    
-    let usernameInitialValue = location.state && location.state.username;
-    let userName = usernameInitialValue ? usernameInitialValue : username;
+
+    //let usernameInitialValue = location.state && location.state.username;
+    //let userName = username ? username : usernameInitialValue;
 
     this.props.customAction({
       type: "LOGIN" ,
       payload: {
-        username : userName,
+        //username : userName,
+        username,
         password,
         setSubmitting,
         setErrors,
@@ -111,14 +112,13 @@ class Login extends Component {
 
             <Formik
               initialValues={{
-                username: usernameInitialValue ? usernameInitialValue : '',
-                username_2: '',
+                username: '',
                 password: '', 
                 remember_me: false
               }}
               enableReinitialize={true}
               validationSchema={loginSchema}
-              onSubmit={userVerified || usernameInitialValue ? this.handleLoginApi : this.handleCheckUserApi }
+              onSubmit={userVerified ? this.handleLoginApi : this.handleCheckUserApi }
               render = {(props)=> 
                 <LoginForm 
                   {...props}
