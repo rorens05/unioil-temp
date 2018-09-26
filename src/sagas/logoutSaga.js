@@ -8,7 +8,7 @@ import { API_UNI_OIL } from "utils/Api";
 
 function* logoutFlow({payload}) {
     try {
-        yield call(() => API_UNI_OIL.post('logout'));
+        yield call(() => API_UNI_OIL.get('logout'));
         API_UNI_OIL.defaults.headers.common['Authorization'] = undefined;
         removeCookie('TOKEN');
         yield put({ type: "LOGOUT_SUCCESS" });
