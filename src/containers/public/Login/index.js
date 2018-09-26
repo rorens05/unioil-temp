@@ -85,6 +85,13 @@ class Login extends Component {
     this.setState({ isModalVisible: false });
   }
 
+  backToLogin =(values)=> {
+    values.setFieldValue('username','')
+    let { history } = this.props;
+    this.setState({userVerified: false})
+    history.push({ pathname: '/login' });
+  }
+
   
   render() {
     const { isAuthenticated, location } = this.props
@@ -126,6 +133,7 @@ class Login extends Component {
                   usernameInitialValue={usernameInitialValue}
                   showModalForgotUsername={this.showModalForgotUsername}
                   showModalChangePassword={this.showModalChangePassword}
+                  backToLogin={this.backToLogin}
                 />
               }
             />

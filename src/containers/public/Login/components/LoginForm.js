@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Button, Col } from 'antd';
+import { Row, Button, Col, Icon } from 'antd';
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 import { Input, InputPassword } from 'components/Forms';
@@ -10,23 +10,29 @@ function Login(props) {
     userVerified,
     showModalForgotUsername,
     showModalChangePassword,
-    handleBlur
+    backToLogin
   } = props;
-
+console.log(props,'propss');
   return (
     <Form noValidate>
 
-      <label style={{fontWeight: '500'}}>Enter Username</label>
-      <Field
-        name="username"
-        type="text"
-        icon="user"
-        placeholder="User name"
-        component={Input}
-        // readOnly='test'
-        // disabled={'test'}
-        onBlur={handleBlur}
-      />
+      <div style={{position: 'relative'}}>
+        <label style={{fontWeight: '500'}}>Enter Username</label>
+        <Field
+          name="username"
+          type="text"
+          icon="user"
+          placeholder="User name"
+          component={Input}
+          readOnly={userVerified}
+        />
+        { 
+          userVerified && (<Icon type="close"
+            style={{position: 'absolute', top: '28px', right: '4px', cursor: 'pointer' ,fontSize: '12px', padding: '7px'}} 
+            onClick={()=>backToLogin(props)}/>
+          ) 
+        }
+      </div>
       
       {
           userVerified
