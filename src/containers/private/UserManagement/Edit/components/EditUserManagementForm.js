@@ -90,7 +90,7 @@ function EditUserManagementForm(props) {
           name: "Generate"
         }}
         layout={formItemLayout}
-        label="Deafult Password"
+        label="Default Password"
         component={Input}
       />
 

@@ -42,30 +42,30 @@ class DashboardList extends Component {
             columns={
               [
                 {
-                  title: 'Name',
-                  dataIndex: 'name',
-                  key: 'name',
+                  title: 'Username',
+                  dataIndex: 'username',
+                  key: 'username',
                   sorter: true,
                   filters: []
                 },
                 {
-                  title: 'Username',
-                  dataIndex: 'email',
-                  key: 'email',
+                  title: 'First Name',
+                  dataIndex: 'firstname',
+                  key: 'firstname',
                   sorter: true,
                   filters:[]
                 },
                 {
-                  title: 'Date Registered',
-                  dataIndex: 'created_at',
-                  key: 'created_at',
+                  title: 'Last Name',
+                  dataIndex: 'lastname',
+                  key: 'lastname',
                   sorter: true,
                   filters:[],
                   width: 150
                 },
                 {
-                  title: 'Role',
-                  dataIndex: 'role_name',
+                  title: 'User Role',
+                  dataIndex: 'role',
                   key: 'role',
                   sorter: true,
                   filters: [
@@ -73,14 +73,25 @@ class DashboardList extends Component {
                   ]
                 },
                 {
-                  title: 'Status',
-                  dataIndex: 'status',
-                  key: 'status',
+                  title: 'Email',
+                  dataIndex: 'email',
+                  key: 'email',
                   sorter: true,
                   width: 110,
                   filters: [
                     { text: 'Active', value: 'Active' },
                     { text: 'Inactive', value: 'Inactive' },
+                  ]
+                },
+                {
+                  title: 'Status',
+                  dataIndex: 'is_active',
+                  key: 'is_active',
+                  sorter: true,
+                  width: 110,
+                  filters: [
+                    { text: 'Active', value: 1 },
+                    { text: 'Inactive', value: 2 },
                   ]
                 },
                 {

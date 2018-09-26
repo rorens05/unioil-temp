@@ -23,6 +23,8 @@ function Login(props) {
         icon="user"
         placeholder="User name"
         component={Input}
+        // readOnly='test'
+        // disabled={'test'}
         onBlur={handleBlur}
       />
       

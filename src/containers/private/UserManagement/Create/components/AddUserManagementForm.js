@@ -18,7 +18,8 @@ const formItemLayout = {
 function AddUserManagementForm(props) {
   const {
     isSubmitting,
-    handleSubmit
+    handleSubmit,
+    generatePassword
   } = props;
 
   return (
@@ -87,11 +88,12 @@ function AddUserManagementForm(props) {
         type="text"
         icon=""
         withActionBtn={{
-          action: ()=> { console.log('helow world') },
+          action: generatePassword,
           name: "Generate"
         }}
+        readOnly
         layout={formItemLayout}
-        label="Deafult Password"
+        label="Default Password"
         component={Input}
       />
       
