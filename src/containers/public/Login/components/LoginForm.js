@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Button, Col, Icon } from 'antd';
+import { Row, Button, Col, Icon, Avatar } from 'antd';
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 import { Input, InputPassword } from 'components/Forms';
@@ -12,24 +12,38 @@ function Login(props) {
     showModalChangePassword,
     backToLogin
   } = props;
-console.log(props,'propss');
+
   return (
     <Form noValidate>
 
       <div style={{position: 'relative'}}>
-        <label style={{fontWeight: '500'}}>Enter Username</label>
-        <Field
-          name="username"
-          type="text"
-          icon="user"
-          placeholder="User name"
-          component={Input}
-          readOnly={userVerified}
-        />
+        
+        {
+          !userVerified && (
+            <div>
+             <label style={{fontWeight: '500', color: '#005598'}}>Enter Username</label>
+              <Field
+              name="username"
+              type="text"
+              icon="user"
+              placeholder="User name"
+              component={Input}
+              readOnly={userVerified}
+            />
+            </div>
+          )
+        }
+        
         { 
-          userVerified && (<Icon type="close"
-            style={{position: 'absolute', top: '28px', right: '4px', cursor: 'pointer' ,fontSize: '12px', padding: '7px'}} 
-            onClick={()=>backToLogin(props)}/>
+          userVerified && (
+          <div style={{position: 'relative' ,display: 'flex', justifyContent: 'flex-start', background: 'rgb(251, 251, 251)', border: '1px solid #d9d9d9', borderRadius: '4px', margin: '-12px 0 24px' }}>
+            <Avatar icon="user" size={19} style={{margin: '7px 8px', color: '#5A5E76', fontSize: '10px' }}/>
+            <div style={{margin: '5px 0', color: '#8E8E93'}}>{props.values && props.values.username}</div>
+            <Icon type="close"
+              style={{position: 'absolute', color: '#8E8E93', top: '4px', right: '4px', cursor: 'pointer' ,fontSize: '12px', padding: '7px'}} 
+              onClick={()=>backToLogin(props)}
+            />
+          </div>
           ) 
         }
       </div>
@@ -37,7 +51,7 @@ console.log(props,'propss');
       {
           userVerified
           ? <div style={{marginTop: '-8px'}}>
-              <label style={{fontWeight: '500'}}>Password</label>
+              <label style={{fontWeight: '500',  color: '#005598'}}>Enter Password</label>
               <Field
                 name="password"
                 type="password"

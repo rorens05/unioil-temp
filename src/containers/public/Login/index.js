@@ -114,7 +114,7 @@ class Login extends Component {
             </div>
             <div style={{marginBottom: '20px'}}>
               <h1 style={{marginBottom: 0}}>Welcome</h1>
-              <span style={{fontSize: '12px'}}>Sign in to continue</span>
+              { !userVerified && <span style={{fontSize: '12px'}}>Sign in to continue</span> }
             </div>
 
             <Formik
