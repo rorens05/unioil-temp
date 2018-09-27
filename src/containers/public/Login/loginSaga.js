@@ -15,7 +15,7 @@ function* loginFlow({ payload }) {
 
   try {
     const { data } = yield call(() => API_UNI_OIL.post('login_password', { username, password })); //username
-   
+
     if(data.data.prompt_password)
       return history.push({ pathname: '/change-password', state: { username, admin_uuid : data.data.admin_uuid, password } });
 

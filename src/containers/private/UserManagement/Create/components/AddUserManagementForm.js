@@ -19,7 +19,8 @@ function AddUserManagementForm(props) {
   const {
     isSubmitting,
     handleSubmit,
-    generatePassword
+    generatePassword,
+    loading
   } = props;
 
   return (
@@ -56,7 +57,7 @@ function AddUserManagementForm(props) {
       />
 
       <Field
-        name="email_address"
+        name="email"
         type="email"
         icon="mail"
         layout={formItemLayout}
@@ -66,7 +67,7 @@ function AddUserManagementForm(props) {
       />
 
       <Field
-        name="user_role"
+        name="role"
         icon="user"
         layout={formItemLayout}
         optionsList={[
@@ -84,11 +85,12 @@ function AddUserManagementForm(props) {
       />
 
       <Field
-        name="generated_password"
+        name="password"
         type="text"
         icon=""
+        loading={loading}
         withActionBtn={{
-          action: generatePassword,
+          action: ()=>generatePassword(props),
           name: "Generate"
         }}
         readOnly

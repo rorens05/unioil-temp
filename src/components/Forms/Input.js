@@ -11,6 +11,7 @@ const InputForm = ({
   layout,
   withActionBtn,
   action,
+  loading,
   ...props
 }) => {
   return (
@@ -40,7 +41,7 @@ const InputForm = ({
           /> 
         </Col>
         <Col span={12}>
-          <Button style={{background: '#E74610', borderColor:'#E74610', color: '#fff'}} onClick={withActionBtn.action}>{withActionBtn.name}</Button>
+          <Button  loading={loading} style={{background: '#E74610', borderColor:'#E74610', color: '#fff'}} onClick={withActionBtn.action}>{withActionBtn.name}</Button>
         </Col>
       </Row>
     }

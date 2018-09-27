@@ -35,7 +35,6 @@ class Login extends Component {
       this.setState({ username, userVerified: is_verified });
       setSubmitting(false);
     } catch ({response: error}) {
-      console.log(error.data.message,'tests')
       setErrors({ username: error.data.message });
       setSubmitting(false);
     }
