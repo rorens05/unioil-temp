@@ -23,13 +23,13 @@ class DashboardLayout extends React.Component {
     return (
       <Layout style={{ height: '100%' }}>
         <MainSidebar collapsed={this.state.collapsed}  />
-        <Layout style={{background: '#fcfcfc'}}>
+        <Layout style={{background: '#fcfcfc', paddingBottom: '10px'}}>
           <MainHeader 
             collapsed={this.state.collapsed}  
             toggle={this.toggle}
           />
             {children}
-          <MainFooter style={{background: '#fcfcfc'}}/>
+          {/* <MainFooter style={{background: '#fcfcfc'}}/> */}
         </Layout>
       </Layout>
     );

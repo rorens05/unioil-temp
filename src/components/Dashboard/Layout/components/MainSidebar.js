@@ -157,7 +157,7 @@ const navigation = [
   {
     key: 8 ,
     label: "System Preferences",
-    path: "/system",
+    path: "/system-preferences",
     icon: "setting",
     access: true,
   },
@@ -167,7 +167,7 @@ const navigation = [
 function MainSidebar(props) {
 
   const { collapsed, match, location } = props;
-  
+
   let newURL = location.pathname.split( '/' );
   let appendedUrl = newURL[2]
   if(appendedUrl == 'create' || appendedUrl == 'view' || appendedUrl == 'edit' ) appendedUrl = null

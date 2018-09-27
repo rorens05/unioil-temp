@@ -87,8 +87,8 @@ class DashboardList extends Component {
                 },
                 {
                   title: 'Status',
-                  dataIndex: 'is_active',
-                  key: 'is_active',
+                  dataIndex: 'status',
+                  key: 'status',
                   sorter: true,
                   width: 110,
                   filters: [

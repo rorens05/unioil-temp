@@ -51,6 +51,11 @@ const AsyncPromotions = Loadable({
   loading: Loading
 });
 
+const AsyncSystemPreferences = Loadable({
+  loader: () => import("./containers/private/SystemPreferences"),
+  loading: Loading
+});
+
 
 const AsyncPage404 = Loadable({
   loader: () => import("./components/PageError/404"),
@@ -130,6 +135,10 @@ class App extends Component {
               <DashboardRoute 
                 path="/promotions" 
                 component={AsyncPromotions} 
+              />
+              <DashboardRoute 
+                path="/system-preferences" 
+                component={AsyncSystemPreferences} 
               />
               <DashboardRoute 
                 path="/my-profile" 
