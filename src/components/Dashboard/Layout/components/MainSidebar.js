@@ -165,26 +165,15 @@ const navigation = [
 
 
 function MainSidebar(props) {
-  const {
-    collapsed,
-    match,
-    location
-  } = props;
 
+  const { collapsed, match, location } = props;
+  
+  let newURL = location.pathname.split( '/' );
+  let appendedUrl = newURL[2]
+  if(appendedUrl == 'create' || appendedUrl == 'view' || appendedUrl == 'edit' ) appendedUrl = null
+  let isSeondDaryPathExist = appendedUrl ? `/${appendedUrl}` : ''
+  let secondaryURL = `${match.path}${isSeondDaryPathExist}`
 
-
-
-
-
-
-let parentRoute = location.pathname.split('/').filter(i => i)
-
-let selectedMenu = ""
-if (parentRoute.length > 2) {
-  selectedMenu = `/${parentRoute[0]}/${parentRoute[1]}`
-} else {
-  selectedMenu = match.path
-}
   return (
     <Sider
       trigger={null}
@@ -208,8 +197,9 @@ if (parentRoute.length > 2) {
       style={{ borderRight: !collapsed ? 0 : null, height: '560px', overflow: 'hidden auto', paddingTop: '17px'}}
       //inlineIndent={10}
       defaultOpenKeys={[match.path]}
-      defaultSelectedKeys={[match.path, location.pathname]} 
-      selectedKeys={[ location.pathname,`${location.pathname}${location.search}`]} 
+      selectedKeys={[secondaryURL]} 
+      //defaultSelectedKeys={[match.path]} 
+      //selectedKeys={[ location.pathname,`${location.pathname}${location.search}`]} 
       mode="inline">
       {
         navigation.map((item) => { 
