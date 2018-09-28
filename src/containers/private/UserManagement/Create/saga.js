@@ -29,7 +29,7 @@ function* userManagementSagaFlow({ payload }) {
       message: 'Error', 
       description: <div>
         {error.data.data && error.data.data.username[0] && (<div> {error.data.data.username[0]} </div>) }
-        {error.data.data && error.data.data.username[0] && (<div> {error.data.data.username[0]} </div>) }
+        {error.data.data && error.data.data.email[0] && (<div> {error.data.data.email[0]} </div>) }
       </div>
     });
     setSubmitting(false); _self.setState({loading: false})

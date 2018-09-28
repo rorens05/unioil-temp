@@ -16,7 +16,9 @@ export const userDetailsSchema = Yup.object().shape({
   lastname: Yup.string()
     .required('Last Name is required!'),
   email: Yup.string()
-    .required('Email is required!'),
+    .required('Email is required!')
+    .matches(/^[A-Za-z0-9@_. ]+$/, { excludeEmptyString: false, message: "Invalid characters" })
+    .email("Invalid Email"),
   role: Yup.string()
     .required('Role is required!'),
   password: Yup.string()

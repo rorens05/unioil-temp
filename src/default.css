@@ -2,6 +2,17 @@
 
 #root { height: 100%; overflow: hidden; }
 
+.ant-dropdown-menu-item-active {
+    background: #fef4f1 !important;
+    color: #e74610 !important;
+}
+
+.ant-dropdown-menu-item-active > a {
+    color: #e74610 !important;
+}
+.cXBAwU:hover {
+    background-color: #e746100f !important;
+}
 .kOsaSu:hover {
     color: #e74610;
 }
