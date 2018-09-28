@@ -29,8 +29,8 @@ function* userManagementSagaFlow({ payload }) {
       message: 'Error', 
       description: <div>
         Something went wrong creating new user.
-        {error.data.data && error.data.data.username && (<div> {error.data.data.username[0]} </div>) }
-        {error.data.data && error.data.data.email && (<div> {error.data.data.email[0]} </div>) }
+        {error.data.data && error.data.data.username && (<div>- {error.data.data.username[0]} </div>) }
+        {error.data.data && error.data.data.email && (<div>- {error.data.data.email[0]} </div>) }
       </div>
     });
     yield put({ type: USERMANAGEMENT_CREATE_ERROR });

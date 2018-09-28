@@ -135,9 +135,13 @@ class AdvanceTable extends Component {
                   if(action.key == "delete") { 
                     actionBtn = action.action 
                     
-                    return (<Popconfirm placement="top" key={action.key}
-                              title={'Are you sure want to delete.'} 
-                              onConfirm={actionBtn} okText="Yes" cancelText="No"
+                    return (<Popconfirm 
+                              placement="bottomRight" 
+                              key={action.key}
+                              title={'Delete this record?'} 
+                              onConfirm={()=>actionBtn(record[keyValue])} 
+                              okText="Yes" cancelText="No"
+                              icon={ <Icon type="close-circle" /> }
                             >
                                 <Icon
                                   type={action.icon} 

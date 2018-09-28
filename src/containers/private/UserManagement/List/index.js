@@ -1,26 +1,31 @@
  
+// LIBRARIES
 import React, { Component } from 'react';
-import { message } from 'antd';
+import { notification, Icon, message } from "antd"
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
 
-import { customAction } from 'actions';
+// COMPONENTS
 import AdvanceTable from "components/Tables/AdvanceTable";
 import HeaderForm from "components/Forms/HeaderForm";
 
-class DashboardList extends Component {
+// HELPER FUNCTIONS
+import { API_UNI_OIL } from "utils/Api";
+import { customAction } from 'actions';
 
-  componentDidMount() {
-   
-  }
+class UserManagementList extends Component {
 
-  componentDidUpdate() {
-  }
 
-  delete =()=> {
-    let success = true;
-    if(success)
-      message.info('Clicked on Yes.');
+  delete =(admin_uuid)=> {
+    const { history } = this.props;
+    API_UNI_OIL.delete(`admin/${admin_uuid}`)        
+    .then((response) => {
+      history.push({ pathname: '/' })
+      message.info('Succesfully delete record.');
+    })
+    .catch(({response: error}) => {
+      notification.error({ message: "Error", description: error.data.message , duration: 20, });
+    }); 
   }
 
   render() {
@@ -131,13 +136,13 @@ class DashboardList extends Component {
   }
 }
 
-DashboardList = connect(
+UserManagementList = connect(
   state => ({
     //user: state.viewUser.data,
     //status: state.viewUser.code,
     //responseMsg: state.viewUser.messages
   }),
   { customAction }
-)(DashboardList);
+)(UserManagementList);
 
-export default DashboardList;
+export default UserManagementList;
