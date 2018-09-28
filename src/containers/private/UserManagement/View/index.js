@@ -1,15 +1,45 @@
+// LIBRARIES
 import React, { Component } from 'react'
+import { withRouter } from "react-router-dom"
+import { notification, Icon } from "antd"
+
+// COMPONENTS
 import HeaderForm from 'components/Forms/HeaderForm'
 import ViewUserManagementForm from './components/ViewUserManagementForm'
 
+// HELPER FUNCTIONS
+import { API_UNI_OIL } from "utils/Api";
 
-export default class UserManagementView extends Component {
 
+class UserManagementView extends Component {
+  state = {
+    mounted: false,
+    userInfo: null
+  }
+  
+  async componentDidMount() {
+
+    const { match } = this.props;
+
+    API_UNI_OIL.get(`admin/${match.params.id}`)        
+    .then((response) => {
+      this.setState({
+        userInfo: {...response.data.data},
+        mounted: true
+      })
+    })
+    .catch(({response: error}) => {
+      notification.error({ message: "Error", description: error.data.message , duration: 20, });
+      this.setState({ mounted: false })
+    });
+    
+  }
 
   render() {
 
+    const { userInfo } = this.state
     const { history, match } = this.props
-
+    
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
@@ -21,9 +51,12 @@ export default class UserManagementView extends Component {
           deleteBtnName="Delete"
         />
         <div>
-          <ViewUserManagementForm />
+          <ViewUserManagementForm userInfo={userInfo} />
         </div>
       </div>
     )
   }
 }
+
+
+export default withRouter(UserManagementView);
