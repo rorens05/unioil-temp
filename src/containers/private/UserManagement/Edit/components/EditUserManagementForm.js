@@ -18,6 +18,8 @@ const formItemLayout = {
 function EditUserManagementForm(props) {
   const {
     isSubmitting,
+    generatePassword,
+    loading,
   } = props;
 
   return (
@@ -64,17 +66,17 @@ function EditUserManagementForm(props) {
       />
 
       <Field
-        name="radio"
+        name="role"
         icon="user"
         layout={formItemLayout}
         optionsList={[
           {
             label: "System Admin",
-            value: "1"
+            value: 1
           },
           {
             label: "Marketing Personnel",
-            value: "2",
+            value: 2,
           }
         ]}
         label="User Role"
@@ -82,11 +84,12 @@ function EditUserManagementForm(props) {
       />
 
       <Field
-        name="email"
+        name="password"
         type="text"
         icon="user"
+        loading={loading}
         withActionBtn={{
-          action: ()=> { console.log('helow world') },
+          action: ()=>generatePassword(props),
           name: "Generate"
         }}
         layout={formItemLayout}
