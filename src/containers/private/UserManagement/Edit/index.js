@@ -92,7 +92,7 @@ class EditUserManagement extends Component {
 
   render() {
 
-    if(!this.state.mounted) return <div> <Icon type="warning" />  No Data To load</div>;
+    if(!this.state.mounted) return null;
 
     const { loading, userInfo, timerCount } = this.state
 
