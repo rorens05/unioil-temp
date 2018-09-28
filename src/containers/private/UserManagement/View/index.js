@@ -14,8 +14,8 @@ export default class UserManagementView extends Component {
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
           title="User Accounts"
-          action={()=> {console.log('action button')}}
-          actionBtnName="Save"
+          action={()=> {this.props.history.push("/user-management/edit/123")}}
+          actionBtnName="Update"
           deleteAction={()=> {console.log('delete button')}}
           deleteBtnName="Delete"
         />

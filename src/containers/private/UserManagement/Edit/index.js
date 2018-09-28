@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { Formik } from 'formik'
 import { withRouter } from "react-router-dom"
-import { notification } from "antd"
+import { notification, Icon } from "antd"
 
 // COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
@@ -11,7 +11,7 @@ import EditUserManagementForm from './components/EditUserManagementForm'
 // HELPER FUNCTIONS
 import { userDetailsSchema } from './validationSchema'
 import { API_GET, API_PUT, API_POST } from "utils/Api";
-
+import { API_UNI_OIL } from "utils/Api";
 
 class EditUserManagement extends Component {
   state = {
@@ -25,18 +25,18 @@ class EditUserManagement extends Component {
 
     const { match } = this.props;
 
-    let response = await API_GET(`admin/${match.params.id}`);
-
-    if(response.status === 200){
-      const { data } = response.data;
+    API_UNI_OIL.get(`admin/${match.params.id}`)        
+    .then((response) => {
       this.setState({
-        userInfo: {...data},
+        userInfo: {...response.data.data},
         mounted: true
       })
-    } else{
-      notification.error({ message: "Error", description: response.data.data.message });
-      this.setState({ mounted: true })
-    }
+    })
+    .catch(({response: error}) => {
+      notification.error({ message: "Error", description: error.data.message , duration: 20, });
+      this.setState({ mounted: false })
+    });
+    
   }
 
   handleEditUserManagement =()=> {
@@ -92,7 +92,7 @@ class EditUserManagement extends Component {
 
   render() {
 
-    if(!this.state.mounted) return null;
+    if(!this.state.mounted) return <div> <Icon type="warning" />  No Data To load</div>;
 
     const { loading, userInfo, timerCount } = this.state
 
@@ -102,8 +102,9 @@ class EditUserManagement extends Component {
           loading={loading}
           title="Update User"
           action={this.handleEditUserManagement}
-          actionBtnName="Save"
-          cancel={()=> {console.log('cancel button')}}
+          actionBtnName="Update"
+          withConfirm={{message: "Save changes to this record?"}}
+          cancel={()=> { this.props.history.push("/user-management")}}
           cancelBtnName="Cancel"
         />
         <div>
