@@ -32,6 +32,7 @@ function* userManagementSagaFlow({ payload }) {
         {error.data.data && error.data.data.email[0] && (<div> {error.data.data.email[0]} </div>) }
       </div>
     });
+    yield put({ type: USERMANAGEMENT_CREATE_ERROR });
     setSubmitting(false); _self.setState({loading: false})
   }
 }

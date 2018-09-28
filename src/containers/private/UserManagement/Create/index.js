@@ -71,9 +71,9 @@ class CreateUserManagement extends Component {
   }
 
   render() {
-
+    const { userManagement } = this.props
     const { loading } = this.state;
-
+    
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
@@ -102,7 +102,7 @@ class CreateUserManagement extends Component {
               render = {(props)=> 
                 <AddUserManagementForm 
                   {...props}
-                  loading={loading}
+                  loading={userManagement.createRequestPending || loading}
                   generatePassword={this.generatePassword}
                 />
               }
@@ -117,6 +117,7 @@ class CreateUserManagement extends Component {
 CreateUserManagement = connect(
   state => ({
     //userInfo: state
+    userManagement: state.userManagement,
   }),
   { customAction }
 )(CreateUserManagement);
