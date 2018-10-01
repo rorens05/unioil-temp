@@ -17,6 +17,7 @@ class CardMemberList extends Component {
   }
 
   render() {
+    
     const { match, history } = this.props;
 
     return (

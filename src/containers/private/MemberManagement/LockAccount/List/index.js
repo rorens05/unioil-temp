@@ -25,7 +25,7 @@ class LockedAccountList extends Component {
           title="Locked Accounts"
         />
         <AdvanceTable 
-            keyValue="user_uuid"
+            keyValue="lcard_uuid"
             url={{ 
               apiDelete: 'memberBatchDelete',
               default: 'member?_locked=1',
