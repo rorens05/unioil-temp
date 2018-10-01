@@ -79,10 +79,9 @@
     margin-bottom: 5px !important;
 }
 
-.ant-popover-message > .anticon {
-    top: 29px !important;
+.ant-popover-inner-content {
+    position: relative;
 }
-
 .ant-btn-sm {
     padding: 0 20px !important;
     height: 27px !important;

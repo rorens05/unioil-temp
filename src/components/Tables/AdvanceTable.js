@@ -138,9 +138,10 @@ class AdvanceTable extends Component {
     try {
       await API_UNI_OIL.delete(this.props.url.apiDelete, {data});
       this.handleFilterChange({});
-      notification.success({ message: 'Success', description: `Records succesfully deleted.` });
+      message.success('Records succesfully deleted.');
     } catch (error) {
       this.handleFilterChange({});
+      message.info('Something went wrong deleting records.');
     }
 
   }
@@ -266,18 +267,25 @@ class AdvanceTable extends Component {
 
         <Row type="flex" justify="space-between" style={{ marginTop: 20 }}>
           <Col>
-              <Button
-                  type="danger"
-                  onClick={this.handleBatchDelete}
-                  disabled={!hasSelected}
-                  icon="delete" 
-                  loading={loading}
+          <div>
+              <Popconfirm 
+                placement="top" title={'Delete this record?'} 
+                onConfirm={this.handleBatchDelete} okText="Yes" cancelText="No"
+                icon={ <Icon type="close-circle" /> }
               >
-                  Delete All
-              </Button>
-              <span style={{ marginLeft: 8 }}>
-                  {hasSelected ? `Selected ${selectedRowKeys.length} item(s)` : ''}
-              </span>
+                <Button
+                    type="danger"
+                    disabled={!hasSelected}
+                    icon="delete" 
+                    loading={loading}
+                >
+                    Delete All
+                </Button>
+                <span style={{ marginLeft: 8 }}>
+                    {hasSelected ? `Selected ${selectedRowKeys.length} item(s)` : ''}
+                </span>
+              </Popconfirm>
+              </div>
           </Col>
 
           <Col>
