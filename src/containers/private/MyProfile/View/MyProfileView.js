@@ -28,7 +28,7 @@ export default class MyProfileView extends Component {
               <h2 style={{fontWeight: 'bold', fontSize: '20px'}}>My Information</h2>
               <Row>
                 <Col span={18} push={3}>{userInfo && userInfo.username}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>UserName:</span></Col>
+                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Username:</span></Col>
               </Row>
               <Row>
                 <Col span={18} push={3}><a style={{color: '#1890FF'}} href={`mailto:${userInfo && userInfo.email}`}>loyalty.officer@unioil.com</a></Col>
