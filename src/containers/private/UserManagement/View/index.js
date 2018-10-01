@@ -1,7 +1,7 @@
 // LIBRARIES
 import React, { Component } from 'react'
 import { withRouter } from "react-router-dom"
-import { notification, Icon } from "antd"
+import { notification, message } from "antd"
 
 // COMPONENTS
 import HeaderForm from 'components/Forms/HeaderForm'
@@ -41,6 +41,18 @@ class UserManagementView extends Component {
     
   }
 
+  delete = async (uuid) => {
+
+    const { match } = this.props;
+
+    try {
+      await API_UNI_OIL.delete(`admin/${match.params.id}`);
+      message.success('Succesfully delete record.');
+    } catch (error) {
+      message.info('Something went wrong deleting record.');
+    }
+  }
+
   render() {
 
     const { userInfo } = this.state
@@ -53,7 +65,7 @@ class UserManagementView extends Component {
           action={()=> {this.props.history.push(`/user-management/edit/${match.params.id}`)}}
           actionBtnName="Update"
           styleBtn={{background: 'white', borderColor: 'rgb(184, 187, 201)',color: 'rgb(101, 105, 127)'}}
-          deleteAction={()=> {console.log('delete button')}}
+          deleteAction={this.delete}
           deleteBtnName="Delete"
         />
         <div>

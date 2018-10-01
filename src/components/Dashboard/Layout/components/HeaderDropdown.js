@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { customAction } from 'actions'
 import styled from 'styled-components';
 
-import { API_UNI_OIL } from 'utils/Api'
+import { API_UNI_OIL , API_POST } from 'utils/Api'
  
 const HeaderButton = styled.a`
   /* This renders the buttons above... Edit me! */
@@ -30,21 +30,19 @@ class HeaderDropdown extends Component {
   state = {
     userInfo: null
   }
+
   async componentDidMount() {
 
-    const { match } = this.props;
-
-    API_UNI_OIL.post(`adminProfile`)        
-    .then((response) => {
+    try {
+      let response = await API_POST(`adminProfile`);
       this.setState({
         userInfo: {...response.data.data[0]},
         mounted: true
       })
-    })
-    .catch(({response: error}) => {
-      notification.error({ message: "Error", description: error.data.message , duration: 20, });
+    } catch ({response: error}) {
+      notification.error({ message: "Error", description: "Something went wrong your not Authenticated." , duration: 20, });
       this.setState({ mounted: false })
-    });
+    }
     
   }
 

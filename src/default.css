@@ -86,3 +86,7 @@
     padding: 0 20px !important;
     height: 27px !important;
 }
+
+.ant-spin-nested-loading > div > .ant-spin {
+    top: 70% !important;
+}

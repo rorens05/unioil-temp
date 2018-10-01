@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Button,Popconfirm, message } from 'antd';
+import { Button,Popconfirm, Icon } from 'antd';
 
 
 class HeaderForm extends Component {
@@ -72,13 +72,21 @@ class HeaderForm extends Component {
             }
             {
               deleteAction && 
-                <Button  
-                  loading={loading} 
-                  onClick={deleteAction}
-                  style={{ margin: '0 4px', width: '135px', display: 'block', background: 'white', borderColor:'#b8bbc9', color: '#65697f' }}
-                >
-                  {deleteBtnName}
-                </Button>
+                (
+                  <Popconfirm 
+                    placement="bottom" title={'Delete this record?'} 
+                    onConfirm={deleteAction} okText="Yes" cancelText="No"
+                    icon={ <Icon type="close-circle" /> }
+                  >
+                    <Button  
+                        type="danger"
+                        loading={loading} 
+                        style={{ margin: '0 4px', width: '135px', display: 'block', background: 'white', borderColor:'#b8bbc9', color: '#65697f' }}
+                      >
+                      {deleteBtnName}
+                    </Button>
+                  </Popconfirm>
+                )
             }
           </div>
         </div>
