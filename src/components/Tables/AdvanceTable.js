@@ -248,8 +248,8 @@ class AdvanceTable extends Component {
               />
           </Col>
           <Col className="table-operations">
-            <Button onClick = {this.clearFilters}>Clear filters</Button>
-            <Button onClick = {this.clearAll}>Clear filters and sorters</Button>
+            {/* <Button onClick = {this.clearFilters}>Clear filters</Button>
+            <Button onClick = {this.clearAll}>Clear filters and sorters</Button> */}
             {/* <DropdownExport /> */}
           </Col>
         </Row>
