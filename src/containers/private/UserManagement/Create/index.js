@@ -20,23 +20,16 @@ class CreateUserManagement extends Component {
   }
 
   componentDidMount() {
-    // try {
-    //   let response = await API_POST('adminProfile/234')
-    //   if(response) {
-    //     this.setState({userInfo: {...response.data.data[0]} });
-    //   }
-    // } catch ({response: error}) {
-    //   console.log(error,'errrtest')
-    //   notification.error({ message: 'Error', description: "Something went wrong getting user info."})
-    // }
+
   }
 
   handleSubmit = async (values, actions) => {
 
     const { setErrors, setSubmitting } = actions;
-    let { history,userInfo } = this.props;
-    let _self = this;
+    let { history } = this.props;
+    let _self = this; 
     this.setState({loading: true})
+    values.role = parseInt(values.role);
 
     this.props.customAction({
       type: "USERMANAGEMENT_CREATE_REQUEST",
@@ -49,6 +42,7 @@ class CreateUserManagement extends Component {
       }
     });
   }
+  
   handleAddUser =()=> {
     this.form.submitForm()
   }
@@ -56,7 +50,7 @@ class CreateUserManagement extends Component {
   generatePassword = async (props) => {
 
     this.setState({loading: true})
-    
+
     try {
       let adminProfile = await API_POST('adminProfile'); 
       let userInfo = { ...adminProfile.data.data[0]}

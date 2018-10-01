@@ -1,7 +1,7 @@
  
 // LIBRARIES
 import React, { Component } from 'react';
-import { notification, Icon, message } from "antd"
+import { Menu, Dropdown, notification, Icon, message } from "antd"
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
 
@@ -17,15 +17,18 @@ class UserManagementList extends Component {
 
 
   delete =(admin_uuid)=> {
-    const { history } = this.props;
-    API_UNI_OIL.delete(`admin/${admin_uuid}`)        
-    .then((response) => {
-      history.push({ pathname: '/user-management' })
-      message.info('Succesfully delete record.');
-    })
-    .catch(({response: error}) => {
-      notification.error({ message: "Error", description: error.data.message , duration: 20, });
-    }); 
+    
+  }
+
+  updateDropDown = async(e) => {
+    let params = e.item.props.record;
+    params = { admin_uuid : params.admin_uuid , status: params.status}
+    try {
+      const response = await API_UNI_OIL.post(`adminChangeStatus`,params);
+      message.success("User Successfuly update status" );
+    } catch (error) {
+      message.error("Something went wrong updating status.")
+    }
   }
 
   render() {
@@ -54,14 +57,16 @@ class UserManagementList extends Component {
                   dataIndex: 'username',
                   key: 'username',
                   sorter: true,
-                  filters: []
+                  filters: [],
+                  width: "11%",
                 },
                 {
                   title: 'First Name',
                   dataIndex: 'firstname',
                   key: 'firstname',
                   sorter: true,
-                  filters:[]
+                  filters:[],
+                  width: "12%",
                 },
                 {
                   title: 'Last Name',
@@ -69,23 +74,30 @@ class UserManagementList extends Component {
                   key: 'lastname',
                   sorter: true,
                   filters:[],
-                  width: 150
+                  width: 150,
+                  width: "12%",
                 },
                 {
                   title: 'User Role',
                   dataIndex: 'role',
                   key: 'role',
                   sorter: true,
+                  width: "13%",
                   filters: [
                     { text: 'Administrator', value: 'Administrator' }
-                  ]
+                  ],
+                  render: (text, record) => (
+                    <span className={record.status === "Active" ? "dark-gray" : "inactive-label"}>
+                      {record && record.role ==  1 ? "Admin": "Marketing Personnel"}
+                    </span>
+                  )
                 },
                 {
                   title: 'Email',
                   dataIndex: 'email',
                   key: 'email',
                   sorter: true,
-                  width: 110,
+                  width: "20%",
                   filters: [
                     { text: 'Active', value: 'Active' },
                     { text: 'Inactive', value: 'Inactive' },
@@ -96,11 +108,27 @@ class UserManagementList extends Component {
                   dataIndex: 'status',
                   key: 'status',
                   sorter: true,
-                  width: 110,
                   filters: [
-                    { text: 'Active', value: 1 },
-                    { text: 'Inactive', value: 2 },
-                  ]
+                    { text: 'Active', value: 'active' },
+                    { text: 'Inactive', value: 'inactive' },
+                  ],
+                  width: "13%",
+                  render: (text, record) => {
+                    const menu = (
+                      <Menu>
+                        <Menu.Item key="active" onClick={this.updateDropDown} record={record}>Active</Menu.Item>
+                        <Menu.Item key="inactive" onClick={this.updateDropDown} record={record}>Inactive</Menu.Item>
+                      </Menu>
+                    );
+                    return(
+                      <Dropdown overlay={menu} trigger={['click']}>
+                        <a className="ant-dropdown-link" href="#">
+                          {text} <Icon type="caret-down" theme="outlined"
+                          style={{ position: "relative", top: -4, fontSize: 7 }} />
+                        </a>
+                      </Dropdown>
+                    )
+                  },
                 },
                 {
                   title: 'Action',
