@@ -21,17 +21,23 @@ class UserManagementView extends Component {
 
     const { match } = this.props;
 
-    API_UNI_OIL.get(`admin/${match.params.id}`)        
-    .then((response) => {
+    try {
+      let response = await API_UNI_OIL.get(`admin/${match.params.id}`) 
       this.setState({
         userInfo: {...response.data.data},
         mounted: true
       })
-    })
-    .catch(({response: error}) => {
-      notification.error({ message: "Error", description: error.data.message , duration: 20, });
+    } catch ({response: error}) {
+      notification.error({ 
+        message: "Error", 
+        description: <div>
+          <div>Something went wrong.</div>
+        - {error.data.message}
+        </div> , 
+        duration: 20, 
+      });
       this.setState({ mounted: false })
-    });
+    }
     
   }
 
