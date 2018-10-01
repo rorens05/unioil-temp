@@ -14,7 +14,9 @@ import { API_UNI_OIL } from "utils/Api";
 import { customAction } from 'actions';
 
 class UserManagementList extends Component {
-
+  state= {
+    updating: false,
+  }
 
   delete =(admin_uuid)=> {
     
@@ -26,6 +28,7 @@ class UserManagementList extends Component {
     try {
       const response = await API_UNI_OIL.post(`adminChangeStatus`,params);
       message.success("User Successfuly update status" );
+      this.setState({ updating: !this.state.updating });
     } catch (error) {
       message.error("Something went wrong updating status.")
     }
@@ -42,6 +45,7 @@ class UserManagementList extends Component {
           actionBtnName="Add User"
         />
         <AdvanceTable 
+            updating = { this.state.updating }
             keyValue="admin_uuid"
             url={{ 
               //default: 'admin?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'

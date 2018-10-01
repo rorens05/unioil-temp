@@ -21,7 +21,8 @@ class AdvanceTable extends Component {
       columns: [],
   
       mounted: false,
-      test: true
+      test: true,
+      updating: false
     };
 
     this.delayFetchRequest = _.debounce(this.fetch, 500);
@@ -32,6 +33,21 @@ class AdvanceTable extends Component {
     this.handleFilterChange({});
   }
 
+  componentDidUpdate(prevProps, prevState, snapshot){
+    
+    if(prevState.updating !== prevProps.updating){
+      this.setState({ updating: prevProps.updating });
+    }
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    if(nextProps.updating !== nextState.updating){
+      this.handleFilterChange({});
+      return true;
+    }
+    return true
+  }
+  
   handleTableChange = (pagination, filters, sorter) => {
     let _sort_order;
     if(sorter.order) _sort_order = sorter.order === 'ascend' ? 'asc' : 'desc';
