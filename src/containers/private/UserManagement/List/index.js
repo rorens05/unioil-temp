@@ -20,7 +20,7 @@ class UserManagementList extends Component {
     const { history } = this.props;
     API_UNI_OIL.delete(`admin/${admin_uuid}`)        
     .then((response) => {
-      history.push({ pathname: '/' })
+      history.push({ pathname: '/user-management' })
       message.info('Succesfully delete record.');
     })
     .catch(({response: error}) => {

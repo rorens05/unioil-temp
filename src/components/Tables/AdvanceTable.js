@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import queryString from "query-string";
 import _ from 'lodash';
 import { Table, Button, Row, Col, Input, Icon, Pagination, Tooltip, 
-        notification, Popconfirm } from 'antd';
+        notification, Popconfirm, message } from 'antd';
 
 import { DropdownExport } from "components/Dropdown/index";
 import { fnQueryParams } from "utils/helper";
@@ -44,7 +44,7 @@ class AdvanceTable extends Component {
   }
 
   onPaginationChange = (page, page_size) => {
-    this.handleFilterChange({page})
+    this.handleFilterChange({page,page_size})
   }
 
   handleFilterChange = (props, isClearFilter) => {
@@ -104,6 +104,17 @@ class AdvanceTable extends Component {
     })  
   }
 
+  delete = async (uuid) => {
+    try {
+      await API_UNI_OIL.delete(`${this.props.url.default}/${uuid}`);
+      this.handleFilterChange({});
+      message.info('Succesfully delete record.');
+    } catch (error) {
+      this.handleFilterChange({});
+      message.info('Something went wrong deleting record.');
+    }
+  }
+
   handleBatchDelete = async() => {
     const data = { [this.props.keyValue]: this.state.selectedRowKeys }
     this.setState({ selectedRowKeys: [] });
@@ -156,8 +167,8 @@ class AdvanceTable extends Component {
                     return (<Popconfirm 
                               placement="bottomRight" 
                               key={action.key}
-                              title={'Delete this record?'} 
-                              onConfirm={()=>actionBtn(record[keyValue])} 
+                              title={'Delete this record?'}  
+                              onConfirm={()=> this.delete(record[keyValue]) }
                               okText="Yes" cancelText="No"
                               icon={ <Icon type="close-circle" /> }
                             >
@@ -254,14 +265,22 @@ class AdvanceTable extends Component {
           </Col>
 
           <Col>
-            <Pagination
-              defaultCurrent    = {parseInt(urlParamsObject.page, 10) || 1} 
-              defaultPageSize   = {parseInt(urlParamsObject.page_size, 10) || 10}
-              total             = {this.state.total} 
-              showTotal         = {(total, range) => `Showing ${ this.state.total > 0 ? range[0] : 0}-${this.state.total > 0 ? range[1] : 0 } of ${this.state.total > 0 ? total : 0}`}
-              onChange          = {this.onPaginationChange}
-              onShowSizeChange  = {this.onPaginationChange} 
-            />
+              {   
+                  this.state.total > 0 
+                  ? 
+                  <Pagination 
+                      style={{float: 'right'}}
+                      showSizeChanger 
+                      defaultCurrent={parseInt(urlParamsObject.page, 10) || 1} 
+                      defaultPageSize={parseInt(urlParamsObject.page_size, 10) || 10}
+                      pageSizeOptions={['5','10','15','20']}
+                      total={this.state.total} 
+                      showTotal= {(total, range) => `Showing ${ this.state.total > 0 ? range[0] : 0}-${this.state.total > 0 ? range[1] : 0 } of ${this.state.total > 0 ? total : 0}`}
+                      onChange= {this.onPaginationChange}
+                      onShowSizeChange = {this.onPaginationChange} 
+                  />
+                  : null
+                }
           </Col>
         </Row>
       </div>
