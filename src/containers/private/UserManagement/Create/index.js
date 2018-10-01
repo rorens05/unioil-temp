@@ -19,15 +19,16 @@ class CreateUserManagement extends Component {
     loading: false
   }
 
-  async componentDidMount() {
-    try {
-      let response = await API_POST('adminProfile')
-      if(response) {
-        this.setState({userInfo: {...response.data.data[0]} });
-      }
-    } catch (error) {
-      notification.error({ message: 'Error', description: "Something went wrong getting user info."})
-    }
+  componentDidMount() {
+    // try {
+    //   let response = await API_POST('adminProfile/234')
+    //   if(response) {
+    //     this.setState({userInfo: {...response.data.data[0]} });
+    //   }
+    // } catch ({response: error}) {
+    //   console.log(error,'errrtest')
+    //   notification.error({ message: 'Error', description: "Something went wrong getting user info."})
+    // }
   }
 
   handleSubmit = async (values, actions) => {
@@ -54,17 +55,17 @@ class CreateUserManagement extends Component {
 
   generatePassword = async (props) => {
 
-    const { userInfo } = this.state;
-    let params = {}; params.admin_uuid = userInfo.admin_uuid
-
     this.setState({loading: true})
+    
     try {
-      let response = await API_POST('generatePassword', params)
+      let adminProfile = await API_POST('adminProfile'); 
+      let userInfo = { ...adminProfile.data.data[0]}
+      let response = await API_POST('generatePassword', userInfo.admin_uuid)
       if(response) {
         props.setValues({...props.values, password: response.data.data.password})
         this.setState({loading: false})
       }
-    } catch (error) {
+    } catch ({response:error}) {
       notification.error({ message: 'Error', description: "Something went wrong generating password."})
       this.setState({loading: false})
     }
