@@ -62,7 +62,7 @@ class UserManagementList extends Component {
                   key: 'username',
                   sorter: true,
                   filters: [],
-                  width: "11%",
+                  width: "13%",
                 },
                 {
                   title: 'First Name',
@@ -116,7 +116,7 @@ class UserManagementList extends Component {
                     { text: 'Active', value: 'active' },
                     { text: 'Inactive', value: 'inactive' },
                   ],
-                  width: "13%",
+                  width: "10%",
                   render: (text, record) => {
                     const menu = (
                       <Menu>

@@ -27,52 +27,57 @@ class LockedAccountList extends Component {
         <AdvanceTable 
             keyValue="user_uuid"
             url={{ 
-              default: 'users'
+              apiDelete: 'memberBatchDelete',
+              default: 'member?_locked=1',
+              filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}
             filterValues ={["role", "status"]}
             columns={
               [
                 {
-                  title: 'Name',
-                  dataIndex: 'name',
-                  key: 'name',
+                  title: 'Card Number',
+                  dataIndex: 'card_number',
+                  key: 'card_number',
                   sorter: true,
-                  filters: []
+                  filters: [],
+                  width: "15%",
                 },
                 {
-                  title: 'Username',
-                  dataIndex: 'email',
-                  key: 'email',
-                  sorter: true,
-                  filters:[]
-                },
-                {
-                  title: 'Date Registered',
-                  dataIndex: 'created_at',
-                  key: 'created_at',
+                  title: 'First Name',
+                  dataIndex: 'firstname',
+                  key: 'firstname',
                   sorter: true,
                   filters:[],
-                  width: 150
+                  width: "12%",
                 },
                 {
-                  title: 'Role',
-                  dataIndex: 'role_name',
-                  key: 'role',
+                  title: 'Last Name',
+                  dataIndex: 'lastname',
+                  key: 'lastname',
                   sorter: true,
-                  filters: [
-                    { text: 'Administrator', value: 'Administrator' }
-                  ]
+                  filters:[],
+                  width: "12%",
+                },
+                {
+                  title: 'Birtday',
+                  dataIndex: 'birthdate',
+                  key: 'birthdate',
+                  sorter: true,
+                  width: "15%",
+                },
+                {
+                  title: 'Card Type',
+                  dataIndex: 'card_type',
+                  key: 'card_type',
+                  sorter: true,
+                  width: "15%",
                 },
                 {
                   title: 'Status',
-                  dataIndex: 'status',
-                  key: 'status',
+                  dataIndex: 'civil_status',
+                  key: 'civil_status',
                   sorter: true,
-                  width: 110,
-                  filters: [
-                    { text: 'Active', value: 'Active' },
-                    { text: 'Inactive', value: 'Inactive' },
-                  ]
+                  width: "10%",
                 },
                 {
                   title: 'Action',
