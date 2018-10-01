@@ -42,6 +42,7 @@ class UserManagementList extends Component {
             keyValue="admin_uuid"
             url={{ 
               //default: 'admin?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
+              apiDelete: 'adminBatchDelete',
               default: 'admin',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}

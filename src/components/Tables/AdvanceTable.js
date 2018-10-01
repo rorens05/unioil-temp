@@ -7,7 +7,7 @@ import { Table, Button, Row, Col, Input, Icon, Pagination, Tooltip,
 
 import { DropdownExport } from "components/Dropdown/index";
 import { fnQueryParams } from "utils/helper";
-import { API_GET } from "utils/Api";
+import { API_UNI_OIL, API_GET, API_DELETE } from "utils/Api";
 import "./index.css"
 
 class AdvanceTable extends Component {
@@ -104,19 +104,37 @@ class AdvanceTable extends Component {
     })  
   }
 
+  handleBatchDelete = async() => {
+    const data = { [this.props.keyValue]: this.state.selectedRowKeys }
+    this.setState({ selectedRowKeys: [] });
+
+    try {
+      await API_UNI_OIL.delete(this.props.url.apiDelete, {data});
+      this.handleFilterChange({});
+      notification.success({ message: 'Success', description: `Records succesfully deleted.` });
+    } catch (error) {
+      this.handleFilterChange({});
+    }
+
+  }
+
+  onSelectChange = (selectedRowKeys) => {
+    this.setState({ selectedRowKeys });
+  }
+
   render(){
-    let { history, keyValue, location } = this.props;
+    
     if(!this.state.mounted) return null;
-    const rowSelection = {
-      onChange: (selectedRowKeys, selectedRows) => {
-        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-      }
-    };
+    const { loading,selectedRowKeys } = this.state;
+    const rowSelection = { selectedRowKeys, onChange: this.onSelectChange };
+    const hasSelected = selectedRowKeys.length > 0;
+
+    let { history, keyValue, location } = this.props;
+
 
     let { search } = this.props.location;
     let urlParamsObject = queryString.parse(search);
     let { _sort_order } = urlParamsObject;
-
     if(_sort_order) _sort_order = _sort_order === 'asc' ? 'ascend' : 'descend';
     
       const columns = this.props.columns.map( data => {
@@ -219,16 +237,33 @@ class AdvanceTable extends Component {
           loading       = {this.state.loading}
         />
 
-        <div align="right" style={{ paddingTop: 25 }}>
-          <Pagination
-            defaultCurrent    = {parseInt(urlParamsObject.page, 10) || 1} 
-            defaultPageSize   = {parseInt(urlParamsObject.page_size, 10) || 10}
-            total             = {this.state.total} 
-            showTotal         = {(total, range) => `${ this.state.total > 0 ? range[0] : 0}-${range[1] } of ${total}`}
-            onChange          = {this.onPaginationChange}
-            onShowSizeChange  = {this.onPaginationChange} 
-          />
-        </div>
+        <Row type="flex" justify="space-between" style={{ marginTop: 20 }}>
+          <Col>
+              <Button
+                  type="danger"
+                  onClick={this.handleBatchDelete}
+                  disabled={!hasSelected}
+                  icon="delete" 
+                  loading={loading}
+              >
+                  Delete All
+              </Button>
+              <span style={{ marginLeft: 8 }}>
+                  {hasSelected ? `Selected ${selectedRowKeys.length} item(s)` : ''}
+              </span>
+          </Col>
+
+          <Col>
+            <Pagination
+              defaultCurrent    = {parseInt(urlParamsObject.page, 10) || 1} 
+              defaultPageSize   = {parseInt(urlParamsObject.page_size, 10) || 10}
+              total             = {this.state.total} 
+              showTotal         = {(total, range) => `Showing ${ this.state.total > 0 ? range[0] : 0}-${this.state.total > 0 ? range[1] : 0 } of ${this.state.total > 0 ? total : 0}`}
+              onChange          = {this.onPaginationChange}
+              onShowSizeChange  = {this.onPaginationChange} 
+            />
+          </Col>
+        </Row>
       </div>
     )
   }
