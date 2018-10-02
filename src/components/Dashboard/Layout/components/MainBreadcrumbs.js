@@ -15,9 +15,9 @@ function MainBreadcrumbs(props) {
 
   const pathSnippets = location.pathname.split('/').filter(i => i);
   const extraBreadcrumbItems = pathSnippets.map((route, index) => {
-    const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
-    const routeCompare = pageRoutes.find((myRoute) => myRoute.path === url)
-    const paramsId = pathSnippets[pathSnippets.length - 1]
+  const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
+  const routeCompare = pageRoutes.find((myRoute) => myRoute.path === url)
+  const paramsId = pathSnippets[pathSnippets.length - 1]
  
     if (routeCompare) {
       if (routeCompare.params) {
@@ -43,7 +43,10 @@ function MainBreadcrumbs(props) {
   })
   if (root) {
     return (
-      <Breadcrumb style={{ padding: '9px 24px' }}>
+      <Breadcrumb 
+        separator={<Icon type="right" style={{fontSize: '10px', opacity: 0.6}} />} 
+        routeComparestyle={{ padding: '11px 24px 9px', fontSize: '12px' }}
+      >
         <Breadcrumb.Item>
           <Link to='/user-management'>
             <Icon type="home" /> {` Home`}
@@ -53,7 +56,10 @@ function MainBreadcrumbs(props) {
     );
   } else {
     return (
-      <Breadcrumb style={{ padding: '9px 24px' }}>
+      <Breadcrumb 
+        separator={<Icon type="right" style={{fontSize: '10px', opacity: 0.6}} />} 
+        style={{ padding: '11px 24px 9px', fontSize: '12px' }}
+      >
         <Breadcrumb.Item>
           <Link to='/user-management'>
             <Icon type="home" /> {` Home`}

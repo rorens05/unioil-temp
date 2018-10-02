@@ -17,14 +17,37 @@ import MainContent from 'components/Dashboard/Layout/components/MainContent';
 class MemberManagement extends Component {
   state = {
     pageRoutes: [
-    ]
+      
+      {
+        path: `${this.props.match.url}/card-member`,
+        name: "Card Member",
+        component: CardMemberList,        
+      }, 
+      {
+        path: `${this.props.match.url}/card-member/view`,
+        params: ':id',
+        name: "View Card Member",
+        component: CardMemberView,
+      },
+      {
+        path: `${this.props.match.url}/lock-account`,
+        name: "Locked Accounts",
+        component: CardMemberList,        
+      }, 
+      {
+        path: `${this.props.match.url}/lock-account/view`,
+        params: ':id',
+        name: "View Locked Account",
+        component: CardMemberView,
+      }   
+    ],    
   }
 
 
   render() {
     
     const { pageRoutes } = this.state;
-
+    
     return (
 
       <div style={{position: 'relative'}}>

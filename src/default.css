@@ -90,3 +90,11 @@
 .ant-spin-nested-loading > div > .ant-spin {
     top: 70% !important;
 }
+
+.ant-breadcrumb a:focus {
+    text-decoration: none;
+}
+
+.ant-breadcrumb a:hover {
+    color: #e74610 !important;
+}
