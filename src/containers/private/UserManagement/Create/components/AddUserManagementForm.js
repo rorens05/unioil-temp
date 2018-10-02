@@ -87,7 +87,7 @@ function AddUserManagementForm(props) {
       <Field
         name="password"
         type="text"
-        icon=""
+        icon="lock"
         loading={loading}
         withActionBtn={{
           action: ()=>generatePassword(props),

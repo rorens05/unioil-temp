@@ -58,7 +58,7 @@ function EditUserManagementForm(props) {
       <Field
         name="email"
         type="text"
-        icon="user"
+        icon="mail"
         layout={formItemLayout}
         label="Email Address"
         placeholder="Email Address"
@@ -86,7 +86,7 @@ function EditUserManagementForm(props) {
       <Field
         name="password"
         type="text"
-        icon="user"
+        icon="lock"
         loading={loading}
         withActionBtn={{
           action: ()=>generatePassword(props),
