@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
+import Helmet from 'react-helmet';
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import store, { history } from "./store";
@@ -15,9 +16,12 @@ if (process.env.NODE_ENV !== "production") {
 
 ReactDOM.render(
   <Provider store={store}>
-      <BrowserRouter hitstory={history}>
-        <App />
-      </BrowserRouter>
+      <div style={{height: '100%'}}>
+        <Helmet titleTemplate="Unioil - %s" />
+        <BrowserRouter hitstory={history}>
+            <App />
+        </BrowserRouter>
+      </div>
   </Provider>,
   document.getElementById("root")
 );

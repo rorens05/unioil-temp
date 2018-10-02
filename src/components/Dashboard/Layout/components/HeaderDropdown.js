@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {  Icon, Avatar, Dropdown, Menu, notification } from "antd";
 import { Link, withRouter } from "react-router-dom";
+import Helmet from 'react-helmet';
 
 import { connect } from "react-redux";
 import { customAction } from 'actions'
@@ -76,13 +77,16 @@ class HeaderDropdown extends Component {
           </Menu>
     );
     return (
-      <Dropdown overlay={menu}>
-        <HeaderButton role="button" style={{marginRight: 16, color: '#8E8E93'}} > 
-          <Avatar size="small"  
-            style={{ background: '#B8BBC9', marginRight: 5 }} icon="user" 
-          />  { userInfo && (`${userInfo.firstname} ${userInfo.lastname}`) } <Icon type="down" />
-        </HeaderButton>
-      </Dropdown>
+      <div>
+        <Helmet title = "Dashboard" />
+        <Dropdown overlay={menu}>
+          <HeaderButton role="button" style={{marginRight: 16, color: '#8E8E93'}} > 
+            <Avatar size="small"  
+              style={{ background: '#B8BBC9', marginRight: 5 }} icon="user" 
+            />  { userInfo && (`${userInfo.firstname} ${userInfo.lastname}`) } <Icon type="down" />
+          </HeaderButton>
+        </Dropdown>
+      </div>
     );
   }
 }

@@ -48,6 +48,7 @@ class UserManagementView extends Component {
     try {
       await API_UNI_OIL.delete(`admin/${match.params.id}`);
       message.success('Succesfully delete record.');
+      this.props.history.push("/user-management");
     } catch (error) {
       message.info('Something went wrong deleting record.');
     }

@@ -1,6 +1,7 @@
 //@flow
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import Helmet from 'react-helmet';
 import LoginForm from './components/LoginForm'
 import { Row, Col , Modal, Button} from 'antd';
 import { Formik } from 'formik';
@@ -112,7 +113,7 @@ class Login extends Component {
     return (
         <Row>
           <Col span={12} offset={6}>
-          
+            <Helmet title = "Login Page" />
             <div>
               <img src={ require("assets/img/logo_unioil.png") } style={{margin: '60px auto 50px'}}/>
             </div>
