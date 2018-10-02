@@ -18,155 +18,133 @@ const LogoPlaceholder = styled.div`
 `
 
 
-const navigation = [
-  {
-    key: 0 ,
-    label: "User Management",
-    path: "/user-management",
-    icon: "team",
-    access: true,
-  },
-  {
-    key: 4 ,
-    label: "Member Management",
-    path: "/member-management",
-    icon: "credit-card",
-    access: true,
-    child: [
-      {
-       key: 0.0 ,
-       label:"Card Member",
-       path:"/member-management/card-member",
-       access:true
-      },
-      {
-        key: 0.1 ,
-        label:"Locked Accounts",
-        path:"/member-management/lock-account",
-        access:true
-      },
-    ],
-  },
-  {
-    key: 8 ,
-    label: "Home Page",
-    path: "/home-page",
-    icon: "home",
-    access: true,
-    child: [
-      {
-       key: 0.0 ,
-       label:"Photo Slider",
-       path:"/home-page/photo-slider",
-       access:true
-     },
-   ],
-  },
-  {
-    key: 3 ,
-    label: "Promotions",
-    path: "/promotions",
-    icon: "tags",
-    access: true,
-    // child: [
-    //    {
-    //     key: 0.0 ,
-    //     label:"Top-Up",
-    //     path:"/posts",
-    //     icon: "close",
-    //     access:true
-    //   },
-    //   {
-    //     key: 1.0 ,
-    //     label:"Create",
-    //     path:"/posts/create",
-    //     icon: "close",
-    //     access:true
-    //   },
-    //   {
-    //     key: 2.0 ,
-    //     label:"User Role",
-    //     path:"/posts/view/12",
-    //     icon: "close",
-    //     access:true
-    //   },
-    // ],
-  },
- 
-  {
-    key: 2 ,
-    label: "Top-Up",
-    path: "/topup",
-    icon: "plus-circle",
-    access: true
-  },
-  {
-    key: 6 ,
-    label: "About Us",
-    path: "/about",
-    icon: "info-circle",
-    access: true,
-    child: [
-      {
-       key: 0.6 ,
-       label:"Card Types",
-       path:"/about/card-types",
-       access:true
-      },
-      {
-        key: 0.5 ,
-        label:"Term & Privacy",
-        path:"/about/term-privacy",
-        access:true
-      },
-   ],
-  },
-  {
-    key: 7 ,
-    label: "Reports",
-    path: "/reports",
-    icon: "file-text",
-    access: true,
-    child: [
-      {
-       key: 0.7,
-       label:"Registration Report",
-       path:"/reports/registration-report",
-       access:true
-     },
-     {
-      key: 0.8 ,
-      label:"Top-Up Usage Report",
-      path:"/reports/top-up",
-      access:true
-     },
-     {
-      key: 0.9 ,
-      label:"Mobile Usage Report",
-      path:"/reports/mobile-report",
-      access:true
-     },
-     {
-      key: 0.10,
-      label:"Station Rating Report",
-      path:"/reports/station-rating",
-      access:true
-     },
-   ],
-  },
-  {
-    key: 8 ,
-    label: "System Preferences",
-    path: "/system-preferences",
-    icon: "setting",
-    access: true,
-  },
-]
-
-
 function MainSidebar(props) {
 
-  const { collapsed, match, location } = props;
+  const { collapsed, match, location, userInfo } = props;
+
+  const navigation = [
+    {
+      key: 0 ,
+      label: "User Management",
+      path: "/user-management",
+      icon: "team",
+      access: userInfo && userInfo.role == 1 ? true : false,
+    },
+    {
+      key: 4 ,
+      label: "Member Management",
+      path: "/member-management",
+      icon: "credit-card",
+      access: userInfo && userInfo.role == 1 ? true : false,
+      child: [
+        {
+         key: 0.0 ,
+         label:"Card Member",
+         path:"/member-management/card-member",
+         access:true
+        },
+        {
+          key: 0.1 ,
+          label:"Locked Accounts",
+          path:"/member-management/lock-account",
+          access:true
+        },
+      ],
+    },
+    {
+      key: 8 ,
+      label: "Home Page",
+      path: "/home-page",
+      icon: "home",
+      access: true,
+      child: [
+        {
+         key: 0.0 ,
+         label:"Photo Slider",
+         path:"/home-page/photo-slider",
+         access:true
+       },
+     ],
+    },
+    {
+      key: 3 ,
+      label: "Promotions",
+      path: "/promotions",
+      icon: "tags",
+      access: true,
+    },
+   
+    {
+      key: 2 ,
+      label: "Top-Up",
+      path: "/topup",
+      icon: "plus-circle",
+      access: userInfo && userInfo.role == 1 ? true : false
+    },
+    {
+      key: 6 ,
+      label: "About Us",
+      path: "/about",
+      icon: "info-circle",
+      access: userInfo && userInfo.role == 1 ? true : false,
+      child: [
+        {
+         key: 0.6 ,
+         label:"Card Types",
+         path:"/about/card-types",
+         access:true
+        },
+        {
+          key: 0.5 ,
+          label:"Term & Privacy",
+          path:"/about/term-privacy",
+          access:true
+        },
+     ],
+    },
+    {
+      key: 7 ,
+      label: "Reports",
+      path: "/reports",
+      icon: "file-text",
+      access: true,
+      child: [
+        {
+         key: 0.7,
+         label:"Registration Report",
+         path:"/reports/registration-report",
+         access:true
+       },
+       {
+        key: 0.8 ,
+        label:"Top-Up Usage Report",
+        path:"/reports/top-up",
+        access:true
+       },
+       {
+        key: 0.9 ,
+        label:"Mobile Usage Report",
+        path:"/reports/mobile-report",
+        access:true
+       },
+       {
+        key: 0.10,
+        label:"Station Rating Report",
+        path:"/reports/station-rating",
+        access:true
+       },
+     ],
+    },
+    {
+      key: 8 ,
+      label: "System Preferences",
+      path: "/system-preferences",
+      icon: "setting",
+      access: true,
+    },
+  ]
+
+  
 
   let newURL = location.pathname.split( '/' );
   let appendedUrl = newURL[2]
@@ -197,9 +175,7 @@ function MainSidebar(props) {
       style={{ borderRight: !collapsed ? 0 : null, height: '560px', overflow: 'hidden auto', paddingTop: '17px'}}
       //inlineIndent={10}
       defaultOpenKeys={[match.path]}
-      selectedKeys={[secondaryURL]} 
-      //defaultSelectedKeys={[match.path]} 
-      //selectedKeys={[ location.pathname,`${location.pathname}${location.search}`]} 
+      selectedKeys={[secondaryURL]}  
       mode="inline">
       {
         navigation.map((item) => { 

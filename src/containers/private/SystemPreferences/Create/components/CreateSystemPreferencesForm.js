@@ -18,7 +18,7 @@ const formItemLayout = {
 function CreateSystemPreferencesForm(props) {
   const {
     isSubmitting,
-    handleSubmit
+    handleSubmit,
   } = props;
 
   return (
@@ -26,7 +26,7 @@ function CreateSystemPreferencesForm(props) {
 
       <h2 style={{margin: '25px 35px'}}>Company Logo</h2>
       <Field
-        name="upload_image"
+        name="logo"
         type="file"
         icon="user"
         layout={formItemLayout}
@@ -37,7 +37,7 @@ function CreateSystemPreferencesForm(props) {
       <div style={styles.borderDivision}></div>
       <h2 style={{margin: '25px 35px'}}>GPS Radius</h2>
       <Field
-        name="gps_radius_meters"
+        name="gps"
         type="text"
         icon=""
         layout={formItemLayout}
@@ -58,7 +58,7 @@ function CreateSystemPreferencesForm(props) {
         component={Input}
       />
       <Field
-        name="contact_number"
+        name="contact_number_mobile"
         type="text"
         icon=""
         layout={formItemLayout}
@@ -69,7 +69,7 @@ function CreateSystemPreferencesForm(props) {
       <div style={styles.borderDivision}></div>
       <h2 style={{margin: '25px 35px'}}>System Administrator Details</h2>
       <Field
-        name="contact_details"
+        name="sys_add_contact_number"
         type="text"
         icon=""
         layout={formItemLayout}

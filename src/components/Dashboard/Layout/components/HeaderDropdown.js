@@ -29,23 +29,8 @@ const HeaderButton = styled.a`
 
 class HeaderDropdown extends Component {
   state = {
-    userInfo: null
   }
 
-  async componentDidMount() {
-
-    try {
-      let response = await API_POST(`adminProfile`);
-      this.setState({
-        userInfo: {...response.data.data[0]},
-        mounted: true
-      })
-    } catch ({response: error}) {
-      notification.error({ message: "Error", description: "Something went wrong your not Authenticated." , duration: 20, });
-      this.setState({ mounted: false })
-    }
-    
-  }
 
   handleLogout = () => {
     this.props.customAction({type: 'LOGOUT'});
@@ -53,12 +38,12 @@ class HeaderDropdown extends Component {
   
   render() {
 
-    const { userInfo } = this.state
-    const { history } = this.props;
+    //const { userInfo } = this.state
+    const { history, userInfo } = this.props;
 
     const menu = (
       <Menu style={{width: 150}} >
-          <Menu.Item key="0">
+           <Menu.Item key="0">
               <a  
                 onClick={()=> history.push("/my-profile")}
                 role="button" 

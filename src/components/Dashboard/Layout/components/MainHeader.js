@@ -54,6 +54,7 @@ function MainHeader(props) {
   const {
     collapsed,
     toggle,
+    userInfo,
   } = props
 
   return (
@@ -64,7 +65,7 @@ function MainHeader(props) {
         onClick={toggle}
       />
       <RightHeader>
-        <HeaderDropdown/>
+        <HeaderDropdown userInfo={userInfo}/>
       </RightHeader>
     </Header>
   );
