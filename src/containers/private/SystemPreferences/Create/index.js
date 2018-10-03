@@ -46,45 +46,41 @@ class CreateSystemPreferences extends Component {
 
 
   handleSubmit = async (values, actions) => {
+    
     const { fileUpload } = this.state;
   
     console.log('handleSubmit', 'fileUpload' , fileUpload , values );
 
-
     try {
-
-        if(fileUpload) {
-          
           const headers = {
             'ContentType': 'multipart/form-data',
           }; 
-      
           const formData = new FormData();
       
-          fileUpload.forEach((t, i) => {
-            // formData.append(`fileType${i}`, t.type);
-            // formData.append(`file_${i}`, t);
-            // formData.append(`fileName${i}`, t.name);
-            // formData.append(`fileType${i}`, t.type);
-            formData.append( `logo`, t.originFileObj);
-            formData.append('gps', values.gps);
-            formData.append('contact_email_address_mobile', values.contact_email_address_mobile)
-            formData.append('contact_number_mobile', values.contact_number_mobile);
-            formData.append('contact_details', values.contact_details);
-          }); 
-      
+          if(fileUpload) {
+            fileUpload.forEach((t, i) => {
+              formData.append( `logo`, t.originFileObj);
+            }); 
+          } 
+
+          formData.append('gps', values.gps);
+          formData.append('contact_email_address_mobile', values.contact_email_address_mobile)
+          formData.append('contact_number_mobile', values.contact_number_mobile);
+          formData.append('contact_details', values.contact_details);
+          
           await API_UNI_OIL.post('systemPreference', formData , headers)
 
-          message.success('New record added.');
-        }   
+          message.success('New record added.');  
         
     } catch ({response: error}) {
       notification.error({ 
         message: 'Error', 
         description: <div>
           Something went wrong creating new user.
-          {error.data.data && error.data.data.contact_email_address_mobile && (<div>- {error.data.data.contact_email_address_mobile[0]} </div>) }
-          {error.data.data && error.data.data.contact_number_mobile && (<div>- {error.data.data.contact_number_mobile[0]} </div>) }
+          {error.data && error.data.data  && error.data.data.contact_email_address_mobile 
+                && (<div>- {error.data.data.contact_email_address_mobile[0]} </div>) }
+          {error.data && error.data.data && error.data.data.contact_number_mobile
+               && (<div>- {error.data.data.contact_number_mobile[0]} </div>) }
         </div>
       });
     }

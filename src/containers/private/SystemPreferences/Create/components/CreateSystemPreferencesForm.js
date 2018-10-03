@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Button, Col } from 'antd';
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
-import { Input, Radio, InputTextArea, UploadImage, Select, DatePicker } from 'components/Forms';
+import { Input, Radio, InputNumber, UploadImage, Select, DatePicker } from 'components/Forms';
 
 const formItemLayout = {
   labelCol: {
@@ -19,7 +19,8 @@ function CreateSystemPreferencesForm(props) {
   const {
     isSubmitting,
     handleSubmit,
-    handleFileUpload
+    handleFileUpload,
+    onRemoveImage
   } = props;
 
   return (
@@ -40,7 +41,6 @@ function CreateSystemPreferencesForm(props) {
           //   thumbUrl: `${process.env.REACT_APP_DEV}/${props.values.logo}`,
           // }
         ]}
-        disabled
         messageUpload="Click this area to upload"
         className="upload-list-inline"
         icon="user"
@@ -50,7 +50,6 @@ function CreateSystemPreferencesForm(props) {
         component={UploadImage}
         handleFileUpload={handleFileUpload}
         beforeUpload={()=> { return false}}
-        
       />
       <div style={styles.borderDivision}></div>
       <h2 style={{margin: '25px 35px'}}>GPS Radius</h2>
