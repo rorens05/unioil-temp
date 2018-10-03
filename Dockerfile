@@ -6,7 +6,8 @@ ENV PATH /usr/src/app/node_modules/.bin:$PATH
 ARG REACT_APP_PATH
 ARG REACT_APP_DOMAIN
 ENV REACT_APP_API $REACT_APP_DOMAIN/$REACT_APP_PATH
-RUN echo "DEBUG": $REACT_APP_API
+ENV REACT_APP_IMG_URL $REACT_APP_DOMAIN/UniOilLoyaltyApp-BackEnd/storage/app
+RUN echo "DEBUG": $REACT_APP_API $REACT_APP_IMG_URL
 
 COPY package.json package-lock.json /usr/src/app/
 RUN npm i
