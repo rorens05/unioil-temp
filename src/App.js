@@ -93,7 +93,9 @@ class App extends Component {
   
 
   render() {
-
+console.log('====================================');
+console.log(process.env.REACT_APP_API, process.env.REACT_APP_IMG_URL,"API LIST!!!");
+console.log('====================================');
     if(this.state.mounting) return null;
 
     return (

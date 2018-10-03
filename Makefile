@@ -1,18 +1,31 @@
-dockerDev:
-	docker-compose up -d --build
-.PHONY: dockerDev
+dev-server:
+	docker-compose up -d --build dev-build
+.PHONY: test-server
 
-dockerDevStop:
-	docker-compose down
-.PHONY: dockerDevStop
+dev-server-stop:
+	docker-compose stop -t 1 dev-build
+.PHONY: test-server-stop
 
-dockerBuild:
+test-server:
+	docker-compose up -d --build test-build
+.PHONY: test-server
+
+test-server-stop:
+	docker-compose stop -t 1 test-build
+.PHONY: test-server-stop
+
+prod-server:
 	docker-compose -f docker-compose-prod.yml up -d --build
 .PHONY: dockerBuild
 
-dockerBuildStop:
+prod-server-stop:
 	docker-compose -f docker-compose-prod.yml down
 .PHONY: dockerBuildStop
 
+
+stop:
+	docker-compose down
+.PHONY: stop
+
 clean:
-	docker system prune -a -f
+	docker system prune --volumes -f

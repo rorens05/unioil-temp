@@ -4,7 +4,7 @@ import queryString from "query-string";
 
 
 export const API_UNI_OIL = axios.create({
-  baseURL: process.env.REACT_APP_DEV,
+  baseURL: process.env.REACT_APP_API,
   responseType: 'json'
 });
 
