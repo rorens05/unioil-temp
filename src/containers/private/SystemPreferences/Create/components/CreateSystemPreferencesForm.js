@@ -41,7 +41,7 @@ function CreateSystemPreferencesForm(props) {
           //   thumbUrl: `${process.env.REACT_APP_DEV}/${props.values.logo}`,
           // }
         ]}
-        messageUpload="Click this area to upload"
+        imageUrl={`${process.env.REACT_APP_DEV}/${props.values.logo}`}
         className="upload-list-inline"
         icon="user"
         layout={formItemLayout}
