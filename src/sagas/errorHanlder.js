@@ -1,6 +1,6 @@
 import { takeLatest, put } from "redux-saga/effects";
 import { delay } from "redux-saga";
-import { API_ENDPOINT_V1 } from "utils/Api";
+import { API_UNI_OIL } from "utils/Api";
 import { removeCookie } from "utils/cookie";
 import { notification } from "antd";
 import { replace } from 'react-router-redux';
@@ -11,7 +11,7 @@ function* handleErrors({payload}){
   if(payload){
     let { status, data } = payload;
     if(status === 401){
-      API_ENDPOINT_V1.defaults.headers.common['Authorization'] = undefined;
+      API_UNI_OIL.defaults.headers.common['Authorization'] = undefined;
       removeCookie('TOKEN');
       yield put({ type: "LOGOUT_SUCCESS" }); 
       notification.error({ message: data.message, description: '' });

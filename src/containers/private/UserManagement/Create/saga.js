@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { call, takeLatest, put } from "redux-saga/effects";
-import { API_UNI_OIL,API_ENDPOINT_V1 } from "utils/Api";
+import { API_UNI_OIL } from "utils/Api";
 import { setCookie } from "utils/cookie";
 import { notification, message } from "antd";
 

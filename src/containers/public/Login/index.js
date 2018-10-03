@@ -11,7 +11,7 @@ import { loginSchema } from './validationSchema'
 
 // HELPER FUNCTIONS
 import { customAction } from "actions";
-import { API_UNI_OIL, API_ENDPOINT_V1 } from "utils/Api";
+import { API_UNI_OIL } from "utils/Api";
 
 
 class Login extends Component {

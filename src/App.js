@@ -9,7 +9,7 @@ import Loading from './components/Loading';
 
 import { getCookie } from './utils/cookie';
 import { customAction } from './actions';
-import { API_ENDPOINT_V1 } from "utils/Api";
+import { API_UNI_OIL } from "utils/Api";
 
 const AsyncLogin = Loadable({
   loader: () => import("./containers/public/Login"),
@@ -83,7 +83,7 @@ class App extends Component {
       let { history, customAction } = this.props;
       let { replace, location } = history;
 
-      API_ENDPOINT_V1.defaults.headers.common['Authorization'] = `Bearer ${getCookie("TOKEN").token}`;
+      API_UNI_OIL.defaults.headers.common['Authorization'] = `Bearer ${getCookie("TOKEN").token}`;
       customAction({type: 'LOGIN_SUCCESS' });
 
       if(publicRoutes.includes(location.pathname)) replace("/user-management");

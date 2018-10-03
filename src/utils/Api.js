@@ -2,33 +2,15 @@ import axios from 'axios'
 import store from "store/index"
 import queryString from "query-string";
 
-export const defaultApi = axios.create({
-  baseURL: 'https://reqres.in/api',
-  responseType: 'json'
-});
-
-export const jsonServerApi = axios.create({
-  baseURL: 'http://localhost:3004',
-});
-
-export const sampleJsonApi = axios.create({
-  baseURL: 'http://jsonplaceholder.typicode.com/',
-});
 
 export const API_UNI_OIL = axios.create({
   baseURL: process.env.REACT_APP_DEV,
   responseType: 'json'
 });
 
-export let API_ENDPOINT_V1 = axios.create({
-  baseURL: 'http://192.168.0.65/api/v1/admin',
-  responseType: 'json'
-});
-
-
 
 export const fetchData = async (url) => {
-  return await defaultApi.get(url);
+  return await false;
 }
 
 export const API_GET = async (url, params) => {
