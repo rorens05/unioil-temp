@@ -41,7 +41,7 @@ function CreateSystemPreferencesForm(props) {
           //   thumbUrl: `${process.env.REACT_APP_DEV}/${props.values.logo}`,
           // }
         ]}
-        imageUrl={`${process.env.REACT_APP_DEV}/${props.values.logo}`}
+        imageUrl={`${process.env.REACT_APP_IMG_URL}/${props.values.logo}`}
         className="upload-list-inline"
         icon="user"
         layout={formItemLayout}

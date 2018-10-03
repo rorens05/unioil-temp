@@ -51,6 +51,7 @@ class CreateSystemPreferences extends Component {
   
     console.log('handleSubmit', 'fileUpload' , fileUpload , values );
 
+    this.setState({loading: true})
     try {
           const headers = {
             'ContentType': 'multipart/form-data',
@@ -68,9 +69,13 @@ class CreateSystemPreferences extends Component {
           formData.append('contact_number_mobile', values.contact_number_mobile);
           formData.append('contact_details', values.contact_details);
           
-          await API_UNI_OIL.post('systemPreference', formData , headers)
+          let response = await API_UNI_OIL.post('systemPreference', formData , headers)
 
-          message.success('New record added.');  
+          if(response) {
+            message.success('Successful update system preferences.');  
+            this.setState({loading: false})
+          }
+          
         
     } catch ({response: error}) {
       notification.error({ 
@@ -82,7 +87,8 @@ class CreateSystemPreferences extends Component {
           {error.data && error.data.data && error.data.data.contact_number_mobile
                && (<div>- {error.data.data.contact_number_mobile[0]} </div>) }
         </div>
-      });
+      }); 
+      this.setState({loading: false})
     }
     
   }
@@ -104,13 +110,14 @@ class CreateSystemPreferences extends Component {
 
     if(!this.state.mounted) return null;
 
-    const { systemPreference } = this.state
+    const { systemPreference, loading } = this.state
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
           title="System Preferences"
           action={this.handleAddUser}
+          loading={loading}
           actionBtnName="Save"
           cancel={()=> {console.log('cancel button')}}
           cancelBtnName="Cancel"
