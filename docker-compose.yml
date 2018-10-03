@@ -1,16 +1,38 @@
-version: '3'
-
+version: '3.5'
 services:
-
-  dev-build:
-    container_name: dev-build
+  test-build:
+    container_name: test-build
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - REACT_APP_DOMAIN=http://192.168.0.65:4000
+        - REACT_APP_PATH=api/v1/admin
+    restart: always
+    ports:
+      - 8089:80
     volumes:
       - '.:/usr/src/app'
       - '/usr/src/app/node_modules'
-    ports:
-      - '3000:3000'
+  dev-build:
+    container_name: dev-build
+    env_file:
+      - .env
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_DOMAIN=http://192.168.0.65
+        - REACT_APP_PATH=api/v1/admin
+    restart: always
+    ports:
+      - 8081:80
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
