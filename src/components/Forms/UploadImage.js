@@ -10,12 +10,12 @@ class UploadImage extends Component {
   }
 
   normFile = (e) => {
-    console.log('Upload event:', e);
-    
-    if (Array.isArray(e)) {
-      return this.setState({fileUpload: e});
-    }
-    return e && this.setState({fileUpload: e.fileList});
+    const { handleFileUpload } = this.props;
+    handleFileUpload(e)
+    // if (Array.isArray(e)) {
+    //   return this.setState({fileUpload: e});
+    // }
+    // return e && this.setState({fileUpload: e.fileList});
   }
   
   render() {
@@ -28,6 +28,8 @@ class UploadImage extends Component {
       layout,
       withActionBtn,
       action,
+      fileList,
+      messageUpload,
       ...props
     } = this.props;
 
@@ -36,12 +38,14 @@ class UploadImage extends Component {
     
     const { onChange, onBlur, ...restField } = field;
     const { fileUpload } =this.state;
-    // _field.type = _props.type;
-    // if(fileUpload) {
-    //   console.log(_field.value,'pasok');
-    //   _field.value = fileUpload[0].originFileObj
-    // }
-    // console.log(_field.value,'pasok');
+
+    let props_list_image = {
+      action: '',
+      listType: 'picture',
+      defaultFileList: [...fileList],
+      className: 'upload-list-inline',
+    };
+
     return (
       <FormItem
         {...layout}
@@ -52,12 +56,12 @@ class UploadImage extends Component {
         help={touched[field.name] && errors[field.name]}
       >
     
-        <Upload.Dragger {..._props} {..._field} onChange={this.normFile} >
+        <Upload.Dragger {..._props} {..._field} {...props_list_image} onChange={this.normFile} >
           <p className="ant-upload-drag-icon">
               <Icon type="inbox" />
           </p>
-          <p className="ant-upload-text">Click or drag file to this area to upload</p>
-          <p className="ant-upload-hint">Support for a single or bulk upload.</p>
+          <p className="ant-upload-text">{messageUpload && messageUpload}</p>
+          {/* <p className="ant-upload-hint">Support for a single or bulk upload.</p> */}
         </Upload.Dragger>
       
       </FormItem>

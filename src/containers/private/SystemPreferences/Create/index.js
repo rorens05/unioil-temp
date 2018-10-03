@@ -16,7 +16,8 @@ class CreateSystemPreferences extends Component {
   state = {
     loading: false,
     mounted: false,
-    systemPreference: null
+    systemPreference: null,
+    fileUpload: null
   }
 
   async componentDidMount() {
@@ -43,12 +44,62 @@ class CreateSystemPreferences extends Component {
     
   }
 
+
   handleSubmit = async (values, actions) => {
-    console.log('handleSubmit',values);
-    message.success('New record added.');
+    const { fileUpload } = this.state;
+  
+    console.log('handleSubmit', 'fileUpload' , fileUpload , values );
+
+
+    try {
+
+        if(fileUpload) {
+          
+          const headers = {
+            'ContentType': 'multipart/form-data',
+          }; 
+      
+          const formData = new FormData();
+      
+          fileUpload.forEach((t, i) => {
+            // formData.append(`fileType${i}`, t.type);
+            // formData.append(`file_${i}`, t);
+            // formData.append(`fileName${i}`, t.name);
+            // formData.append(`fileType${i}`, t.type);
+            formData.append( `logo`, t.originFileObj);
+            formData.append('gps', values.gps);
+            formData.append('contact_email_address_mobile', values.contact_email_address_mobile)
+            formData.append('contact_number_mobile', values.contact_number_mobile);
+            formData.append('contact_details', values.contact_details);
+          }); 
+      
+          await API_UNI_OIL.post('systemPreference', formData , headers)
+
+          message.success('New record added.');
+        }   
+        
+    } catch ({response: error}) {
+      notification.error({ 
+        message: 'Error', 
+        description: <div>
+          Something went wrong creating new user.
+          {error.data.data && error.data.data.contact_email_address_mobile && (<div>- {error.data.data.contact_email_address_mobile[0]} </div>) }
+          {error.data.data && error.data.data.contact_number_mobile && (<div>- {error.data.data.contact_number_mobile[0]} </div>) }
+        </div>
+      });
+    }
+    
   }
+
   handleAddUser =()=> {
     this.form.submitForm()
+  }
+
+  handleFileUpload =(e)=> {
+    if (Array.isArray(e)) {
+      return this.setState({fileUpload: e});
+    }
+    return e && this.setState({fileUpload: e.fileList});
   }
 
   render() {
@@ -71,12 +122,11 @@ class CreateSystemPreferences extends Component {
         <div>
           <Formik
               initialValues={{
-                title: systemPreference.username  || '',
-                password: systemPreference.password || '',
-                firstname: systemPreference.firstname || '',
-                lastname: systemPreference.lastname || '',
-                email: systemPreference.email || '',
-                role: systemPreference.role || ''
+                logo: systemPreference.logo || '',
+                gps: systemPreference.gps || '',
+                contact_email_address_mobile: systemPreference.contact_email_address_mobile || '',
+                contact_number_mobile: systemPreference.contact_number_mobile || '',
+                contact_details: systemPreference.contact_details  || '',
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
@@ -85,6 +135,7 @@ class CreateSystemPreferences extends Component {
               render = {(props)=> 
                 <CreateSystemPreferencesForm 
                   {...props}
+                  handleFileUpload={this.handleFileUpload}
                 />
               }
           />

@@ -19,6 +19,7 @@ function CreateSystemPreferencesForm(props) {
   const {
     isSubmitting,
     handleSubmit,
+    handleFileUpload
   } = props;
 
   return (
@@ -28,11 +29,28 @@ function CreateSystemPreferencesForm(props) {
       <Field
         name="logo"
         type="file"
+        accept=".jpg , .png"
+        multiple={false}
+        fileList = {[
+          // {
+          //   uid: '123-dbeser',
+          //   name: props.values.logo,
+          //   status: 'done',
+          //   url: `${process.env.REACT_APP_DEV}/${props.values.logo}`,
+          //   thumbUrl: `${process.env.REACT_APP_DEV}/${props.values.logo}`,
+          // }
+        ]}
+        disabled
+        messageUpload="Click this area to upload"
+        className="upload-list-inline"
         icon="user"
         layout={formItemLayout}
         label="Upload Image"
         placeholder="Upload Image"
         component={UploadImage}
+        handleFileUpload={handleFileUpload}
+        beforeUpload={()=> { return false}}
+        
       />
       <div style={styles.borderDivision}></div>
       <h2 style={{margin: '25px 35px'}}>GPS Radius</h2>
@@ -42,19 +60,19 @@ function CreateSystemPreferencesForm(props) {
         icon=""
         layout={formItemLayout}
         label="GPS Radius (in meters)"
-        placeholder="GPS Radius (in meters)"
+        placeholder="0"
         rows={6}
-        component={InputTextArea}
+        component={Input}
       />
       <div style={styles.borderDivision}></div>
       <h2 style={{margin: '25px 35px'}}>Customer Service Details</h2>
       <Field
-        name="contact_email"
+        name="contact_email_address_mobile"
         type="email"
         icon=""
         layout={formItemLayout}
         label="Contact Email Address"
-        placeholder="Contact Email Address"
+        placeholder="username@domain.com"
         component={Input}
       />
       <Field
@@ -63,13 +81,13 @@ function CreateSystemPreferencesForm(props) {
         icon=""
         layout={formItemLayout}
         label="Contact Number"
-        placeholder="Contact Number"
+        placeholder="63 9 687 8877"
         component={Input}
       />
       <div style={styles.borderDivision}></div>
       <h2 style={{margin: '25px 35px'}}>System Administrator Details</h2>
       <Field
-        name="sys_add_contact_number"
+        name="contact_details"
         type="text"
         icon=""
         layout={formItemLayout}

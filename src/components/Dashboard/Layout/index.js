@@ -19,7 +19,7 @@ class DashboardLayout extends React.Component {
     try {
       let response = await API_POST(`adminProfile`);
       this.setState({
-        userInfo: {...response.data.data[0]},
+        userInfo: {...response.data.data},
         mounted: true
       })
     } catch ({response: error}) {
@@ -35,9 +35,9 @@ class DashboardLayout extends React.Component {
   }
   render() {
 
-    const { userInfo } = this.state;
+    const { userInfo } = this.state
     const { children } = this.props
-
+    
     return (
       <Layout style={{ height: '100%' }}>
         <MainSidebar collapsed={this.state.collapsed}  userInfo={userInfo}/>
