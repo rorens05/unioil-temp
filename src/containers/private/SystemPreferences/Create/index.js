@@ -1,16 +1,19 @@
+// LIBRARIES
 import React, { Component } from 'react'
 import { Formik } from 'formik'
 import { message } from 'antd';
 import { connect } from "react-redux"
 import { notification, Icon } from "antd"
-
-import { userDetailsSchema } from './validationSchema'
+ 
+// COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
 import CreateSystemPreferencesForm from './components/CreateSystemPreferencesForm'
-
+ 
 // HELPER FUNCTIONS
 import { customAction } from "actions";
 import { API_GET, API_PUT, API_POST, API_UNI_OIL } from "utils/Api";
+import { userDetailsSchema } from './validationSchema'
+
 
 class CreateSystemPreferences extends Component {
   state = {

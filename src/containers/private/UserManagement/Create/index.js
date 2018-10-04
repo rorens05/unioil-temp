@@ -1,15 +1,17 @@
+// LIBRARIES
 import React, { Component } from 'react'
 import { connect } from "react-redux"
 import { Formik } from 'formik'
 import { message,notification } from 'antd';
 
-import { userDetailsSchema } from './validationSchema'
+// COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
 import AddUserManagementForm from './components/AddUserManagementForm'
 
-import { API_GET, API_POST } from "utils/Api";
 // HELPER FUNCTIONS
+import { userDetailsSchema } from './validationSchema'
 import { customAction } from "actions";
+import { API_GET, API_POST } from "utils/Api";
 
 
 class CreateUserManagement extends Component {
