@@ -20,6 +20,7 @@ function EditUserManagementForm(props) {
     isSubmitting,
     generatePassword,
     loading,
+    isGenerated
   } = props;
 
   return (
@@ -90,8 +91,10 @@ function EditUserManagementForm(props) {
         loading={loading}
         withActionBtn={{
           action: ()=>generatePassword(props),
-          name: "Generate"
+          name: "Generate",
+          disabled: isGenerated
         }}
+        readOnly
         layout={formItemLayout}
         label="Default Password"
         component={Input}

@@ -23,7 +23,7 @@ class DashboardLayout extends React.Component {
         mounted: true
       })
     } catch ({response: error}) {
-      notification.error({ message: "Error", description: "Something went wrong your not Authenticated." , duration: 20, });
+      //notification.error({ message: "Error", description: "Something went wrong your not Authenticated." , duration: 20, });
       this.setState({ mounted: false })
     }
   }

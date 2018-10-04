@@ -16,7 +16,8 @@ class CreateUserManagement extends Component {
   state = {
     generated_password: null,
     userInfo: null,
-    loading: false
+    loading: false,
+    isGenerated: false
   }
 
   componentDidMount() {
@@ -28,7 +29,7 @@ class CreateUserManagement extends Component {
     const { setErrors, setSubmitting } = actions;
     let { history } = this.props;
     let _self = this; 
-    this.setState({loading: true})
+    this.setState({loading: true, isGenerated: false})
     values.role = parseInt(values.role);
 
     this.props.customAction({
@@ -57,7 +58,7 @@ class CreateUserManagement extends Component {
       let response = await API_POST('generatePassword', userInfo.admin_uuid)
       if(response) {
         props.setValues({...props.values, password: response.data.data.password})
-        this.setState({loading: false})
+        this.setState({loading: false, isGenerated: true})
       }
     } catch ({response:error}) {
       notification.error({ message: 'Error', description: "Something went wrong generating password."})
@@ -67,7 +68,7 @@ class CreateUserManagement extends Component {
 
   render() {
     const { userManagement } = this.props
-    const { loading } = this.state;
+    const { loading, isGenerated } = this.state;
     
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
@@ -99,6 +100,7 @@ class CreateUserManagement extends Component {
                   {...props}
                   loading={userManagement.createRequestPending || loading}
                   generatePassword={this.generatePassword}
+                  isGenerated={isGenerated}
                 />
               }
           />

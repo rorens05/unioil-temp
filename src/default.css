@@ -104,3 +104,7 @@
     font-weight: 500;
     opacity: 0.85;
 }
+
+.generated-input .ant-input-disabled {
+    cursor: text !important;
+}

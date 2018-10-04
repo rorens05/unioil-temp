@@ -37,11 +37,15 @@ const InputForm = ({
           <Input
             {...props}
             {...field}
+            className="generated-input"
             prefix={icon && <Icon type={icon} style={{ color: 'rgba(0,0,0,.25)' }} />} 
           /> 
         </Col>
         <Col span={12}>
-          <Button  loading={loading} style={{background: '#E74610', borderColor:'#E74610', color: '#fff'}} onClick={withActionBtn.action}>{withActionBtn.name}</Button>
+          <Button 
+            loading={loading}
+            disabled={withActionBtn.disabled}
+            style={{opacity: withActionBtn.disabled ? 0.8 : 'initial' ,background:  '#E74610', borderColor:'#E74610', color: '#fff'}} onClick={withActionBtn.action}>{withActionBtn.name}</Button>
         </Col>
       </Row>
     }

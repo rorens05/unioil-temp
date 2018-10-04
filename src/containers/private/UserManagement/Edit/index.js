@@ -18,7 +18,8 @@ class EditUserManagement extends Component {
     loading: false,
     userInfo: null,
     mounted: false,
-    timerCount: 20
+    timerCount: 20,
+    isGenerated: false
   }
 
   async componentDidMount() {
@@ -81,7 +82,7 @@ class EditUserManagement extends Component {
       let response = await API_POST('generatePassword', params)
       if(response) {
         props.setValues({...props.values, password: response.data.data.password})
-        this.setState({loading: false})
+        this.setState({loading: false, isGenerated: true})
       }
     } catch (error) {
       notification.error({ message: 'Error', description: "Something went wrong generating password."})
@@ -93,7 +94,7 @@ class EditUserManagement extends Component {
 
     if(!this.state.mounted) return null;
 
-    const { loading, userInfo, timerCount } = this.state
+    const { loading, userInfo, timerCount, isGenerated } = this.state
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
@@ -115,7 +116,8 @@ class EditUserManagement extends Component {
                 firstname: userInfo.firstname || '',
                 lastname: userInfo.lastname || '',
                 email: userInfo.email || '',
-                role: userInfo.role || ''
+                role: userInfo.role || '',
+                password: userInfo.password || ''
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
@@ -126,6 +128,7 @@ class EditUserManagement extends Component {
                   {...props}
                   loading={loading}
                   generatePassword={this.generatePassword}
+                  isGenerated={(isGenerated || userInfo.password) && true}
                 />
               }
           />
