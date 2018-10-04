@@ -121,8 +121,8 @@ class CreateSystemPreferences extends Component {
           action={this.handleAddUser}
           loading={loading}
           actionBtnName="Save"
-          cancel={()=> {console.log('cancel button')}}
-          cancelBtnName="Cancel"
+          // cancel={()=> {console.log('cancel button')}}
+          // cancelBtnName="Cancel"
         />
         <div>
           <Formik
