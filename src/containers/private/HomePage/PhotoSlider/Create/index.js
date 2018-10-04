@@ -1,10 +1,16 @@
+// LIBRARIES
 import React, { Component } from 'react'
 import { Formik } from 'formik'
 import { message } from 'antd';
 
-import { userDetailsSchema } from './validationSchema'
+// COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
 import AddPhotoSliderForm from './components/AddPhotoSliderForm'
+
+// HELPER FUNCTIONS
+import { userDetailsSchema } from './validationSchema'
+
+
 
 export default class CreatePhotoSlider extends Component {
 

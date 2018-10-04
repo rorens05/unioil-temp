@@ -1,9 +1,15 @@
+// LIBRARIES
 import React, { Component } from 'react'
 import { Formik } from 'formik'
 
-import { userDetailsSchema } from './validationSchema'
+// COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
 import EditPhotoSliderForm from './components/EditPhotoSliderForm'
+
+// HELPER FUNCTIONS
+import { userDetailsSchema } from './validationSchema'
+
+
 
 export default class EditPhotoSlider extends Component {
 

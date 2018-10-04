@@ -1,17 +1,17 @@
-//@flow
+// LIBRARIES
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+// COMPONENTS
 import PhotoSliderList from './List';
 import PhotoSliderView from './View';
 import PhotoSliderEdit from './Edit';
 import PhotoSliderCreate from './Create';
-
-
 import { PAGE404 } from "components/PageError/index"
-
-
 import MainContent from 'components/Dashboard/Layout/components/MainContent';
+
+// HELPER FUNCTIONS
+
 
 
 class PhotoSlider extends Component {

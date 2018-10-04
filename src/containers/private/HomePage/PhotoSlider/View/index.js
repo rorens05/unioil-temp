@@ -1,6 +1,12 @@
+// LIBRARIES
 import React, { Component } from 'react'
+import { Switch, Route, Redirect } from 'react-router-dom';
+
+// COMPONENTS
 import HeaderForm from 'components/Forms/HeaderForm'
 import ViewPhotoSliderForm from './components/ViewPhotoSliderForm'
+
+// HELPER FUNCTIONS
 
 
 export default class PhotoSliderView extends Component {
