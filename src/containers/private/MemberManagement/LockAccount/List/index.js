@@ -74,10 +74,19 @@ class LockedAccountList extends Component {
                 },
                 {
                   title: 'Status',
-                  dataIndex: 'civil_status',
-                  key: 'civil_status',
+                  dataIndex: 'is_locked',
+                  key: 'is_locked',
                   sorter: true,
                   width: "10%",
+                  filters: [
+                    { text: 'Locked', value: 1 },
+                    { text: 'Active', value: 0 }
+                  ],
+                  render: (text, record) => (
+                    <span>
+                      {record && record.is_locked ==  1 ? "Locked": "Active"}
+                    </span>
+                  )
                 },
                 {
                   title: 'Action',

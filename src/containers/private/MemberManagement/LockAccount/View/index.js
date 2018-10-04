@@ -21,7 +21,7 @@ class LockAccountView extends Component {
     const { match } = this.props;
 
     try {
-      let response = await API_UNI_OIL.get(`locked/${match.params.id}`) 
+      let response = await API_UNI_OIL.get(`member/${match.params.id}`) 
       this.setState({
         userInfo: {...response.data.data},
         mounted: true
@@ -41,6 +41,7 @@ class LockAccountView extends Component {
 
   render() {
 
+    const { userInfo } = this.state
     const { history } = this.props
 
     return (
@@ -51,7 +52,7 @@ class LockAccountView extends Component {
           actionBtnName="Activate Account"
         />
         <div>
-          <LockAccountViewForm />
+          <LockAccountViewForm userInfo={userInfo}/>
         </div>
       </div>
     )
