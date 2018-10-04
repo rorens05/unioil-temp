@@ -84,20 +84,20 @@ function MainSidebar(props) {
     {
       key: 6 ,
       label: "About Us",
-      path: "/about",
+      path: "/about-us",
       icon: "info-circle",
       access: userInfo && userInfo.role == 1 ? true : false,
       child: [
         {
          key: 0.6 ,
          label:"Card Types",
-         path:"/about/card-types",
+         path:"/about-us/card-types",
          access:true
         },
         {
           key: 0.5 ,
           label:"Term & Privacy",
-          path:"/about/term-privacy",
+          path:"/about-us/term-privacy",
           access:true
         },
      ],

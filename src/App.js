@@ -56,6 +56,11 @@ const AsyncTopUp = Loadable({
   loading: Loading
 });
 
+const AsyncCardTypes = Loadable({
+  loader: () => import("./containers/private/AboutUs"),
+  loading: Loading
+});
+
 const AsyncSystemPreferences = Loadable({
   loader: () => import("./containers/private/SystemPreferences"),
   loading: Loading
@@ -147,7 +152,10 @@ console.log('====================================');
                 path="/top-up" 
                 component={AsyncTopUp} 
               />
-              
+              <DashboardRoute 
+                path="/about-us" 
+                component={AsyncCardTypes} 
+              />
               <DashboardRoute 
                 path="/system-parameters" 
                 component={AsyncSystemPreferences} 
