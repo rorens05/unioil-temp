@@ -108,3 +108,7 @@
 .generated-input .ant-input-disabled {
     cursor: text !important;
 }
+
+.ant-message-notice-content {
+    background: #fdfdfd;
+}

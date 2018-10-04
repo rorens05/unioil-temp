@@ -117,7 +117,7 @@ class EditUserManagement extends Component {
                 lastname: userInfo.lastname || '',
                 email: userInfo.email || '',
                 role: userInfo.role || '',
-                password: userInfo.password || ''
+                password: userInfo.generated_password || ''
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
@@ -128,7 +128,7 @@ class EditUserManagement extends Component {
                   {...props}
                   loading={loading}
                   generatePassword={this.generatePassword}
-                  isGenerated={(isGenerated || userInfo.password) && true}
+                  isGenerated={(isGenerated || userInfo.generated_password) && true}
                 />
               }
           />
