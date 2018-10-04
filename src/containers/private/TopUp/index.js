@@ -1,15 +1,16 @@
-//@flow
+// LIBRARIES
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-
+// COMPONENTS
 import TopUpList from './List';
 import TopUpCreate from './Create';
 import TopUpEdit from './Edit';
 import TopUpView from './View';
-
 import MainContent from '../../../components/Dashboard/Layout/components/MainContent';
 import { PAGE404 } from "components/PageError/index"
+
+// HELPER FUNCTIONS
 
 class TopUp extends Component {
   state = {
