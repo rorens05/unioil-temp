@@ -48,8 +48,7 @@ class CreateSystemPreferences extends Component {
   handleSubmit = async (values, actions) => {
     
     const { fileUpload } = this.state;
-  
-    console.log('handleSubmit', 'fileUpload' , fileUpload , values );
+
 
     this.setState({loading: true})
     try {
@@ -63,11 +62,14 @@ class CreateSystemPreferences extends Component {
               formData.append( `logo`, t.originFileObj);
             }); 
           } 
-
-          formData.append('gps', values.gps);
-          formData.append('contact_email_address_mobile', values.contact_email_address_mobile)
-          formData.append('contact_number_mobile', values.contact_number_mobile);
-          formData.append('contact_details', values.contact_details);
+          
+          let newNumber = values && values.contact_number_mobile 
+              && values.contact_number_mobile && String(values.contact_number_mobile).split(' ').join('')
+          
+          values.gps && (formData.append('gps', values.gps));
+          values.contact_email_address_mobile && (formData.append('contact_email_address_mobile', values.contact_email_address_mobile))
+          values.contact_details && (formData.append('contact_details', values.contact_details));
+          newNumber && (formData.append('contact_number_mobile', newNumber ));
           
           let response = await API_UNI_OIL.post('systemPreference', formData , headers)
 

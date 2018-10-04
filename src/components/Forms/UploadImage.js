@@ -45,7 +45,7 @@ class UploadImage extends Component {
   }
   
   beforeUpload =(file)=> {
-    const isJPG = file.type === 'image/jpeg' || file.type === 'image/png' ;
+    const isJPG = file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/gif' ;
     if (!isJPG) {
       message.error('You can only upload JPG or PNG file!');
     }
@@ -119,7 +119,7 @@ class UploadImage extends Component {
                 name="avatar"
                 listType="picture-card"
                 className="avatar-uploader"
-                accept=".jpg , .png"
+                accept=".jpg , .png , .gif"
                 showUploadList={false}
                 beforeUpload={this.beforeUpload}
                 onChange={this.normFile}

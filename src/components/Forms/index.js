@@ -8,6 +8,7 @@ import InputPassword from './InputPassword';
 import InputTextArea from './InputTextArea';
 import UploadImage from './UploadImage';
 import MultiSelectOptions from './MultiSelectOptions';
+import InputMaskNumber from './InputMaskNumber';
 
 
 export {
@@ -20,5 +21,6 @@ export {
   InputPassword,
   InputTextArea,
   UploadImage,
-  MultiSelectOptions
+  MultiSelectOptions,
+  InputMaskNumber
 }

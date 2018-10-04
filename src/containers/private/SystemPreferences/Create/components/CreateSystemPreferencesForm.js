@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Button, Col } from 'antd';
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
-import { Input, Radio, InputNumber, UploadImage, Select, DatePicker } from 'components/Forms';
+import { Input, Radio, InputNumber, UploadImage, Select, DatePicker, InputMaskNumber } from 'components/Forms';
 
 const formItemLayout = {
   labelCol: {
@@ -80,8 +80,9 @@ function CreateSystemPreferencesForm(props) {
         icon=""
         layout={formItemLayout}
         label="Contact Number"
-        placeholder="63 9 687 8877"
-        component={Input}
+        placeholder="63 947 687 9999"
+        mask="99 999 999 9999"
+        component={InputMaskNumber}
       />
       <div style={styles.borderDivision}></div>
       <h2 style={{margin: '25px 35px'}}>System Administrator Details</h2>
