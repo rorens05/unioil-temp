@@ -137,8 +137,8 @@ function MainSidebar(props) {
     },
     {
       key: 8 ,
-      label: "System Preferences",
-      path: "/system-preferences",
+      label: "System Parameters",
+      path: "/system-parameters",
       icon: "setting",
       access: true,
     },

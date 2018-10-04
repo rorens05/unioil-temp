@@ -139,7 +139,7 @@ console.log('====================================');
                 component={AsyncPromotions} 
               />
               <DashboardRoute 
-                path="/system-preferences" 
+                path="/system-parameters" 
                 component={AsyncSystemPreferences} 
               />
               <DashboardRoute 

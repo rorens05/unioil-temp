@@ -74,7 +74,7 @@ class CreateSystemPreferences extends Component {
           let response = await API_UNI_OIL.post('systemPreference', formData , headers)
 
           if(response) {
-            message.success('Successful update system preferences.');  
+            message.success('Successful update system parameters.');  
             this.setState({loading: false})
           }
           
@@ -117,7 +117,7 @@ class CreateSystemPreferences extends Component {
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
-          title="System Preferences"
+          title="System Parameters"
           action={this.handleAddUser}
           loading={loading}
           actionBtnName="Save"

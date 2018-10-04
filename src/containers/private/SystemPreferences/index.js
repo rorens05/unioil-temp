@@ -27,10 +27,7 @@ class SystemPreferences extends Component {
     <div style={{position: 'relative'}}>
         <MainContent pageRoutes={pageRoutes}>
           <Switch>
-            <Route exact path = "/system-preferences" component = { CreateSystemPreferences } />
-            {/* <Route exact path = "/system-preferences/create" component = { UserManagementCreate } />
-            <Route exact path = "/system-preferences/edit/:id" component = { UserManagementEdit } />
-            <Route exact path = "/system-preferences/view/:id" component = { UserManagementView } /> */}
+            <Route exact path = "/system-parameters" component = { CreateSystemPreferences } />
             <PAGE404 />
           </Switch>
         </MainContent>
