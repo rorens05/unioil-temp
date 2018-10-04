@@ -1,19 +1,20 @@
 // LIBRARIES
 import React, { Component } from 'react'
 import { withRouter } from "react-router-dom"
-import { notification, Icon } from "antd"
+import { notification, Icon, message } from "antd"
 
 // COMPONENTS
 import HeaderForm from 'components/Forms/HeaderForm'
 import LockAccountViewForm from './components/LockAccountViewForm'
 
 // HELPER FUNCTIONS
-import { API_UNI_OIL } from "utils/Api";
+import { API_UNI_OIL, API_POST } from "utils/Api";
 
 class LockAccountView extends Component {
   
   state = { 
-    userInfo: null
+    userInfo: null,
+    loading: false
   }
 
   async componentDidMount() {
@@ -39,17 +40,32 @@ class LockAccountView extends Component {
     }
   }
 
+  activateAccount = async ()=> {
+    const { match,history } = this.props;
+
+    this.setState({loading: true})
+    try {
+      let response = await API_POST(`memberActivate/${match.params.id}`);
+      message.success('Succesfully update lock account records');
+      history.replace({ pathname: '/member-management/lock-account' });
+    } catch ({response: error}) {
+      this.setState({loading: false})
+      notification.error({ message: 'Error', description: "Something went wrong updating record."})
+    }
+  }
+
   render() {
 
-    const { userInfo } = this.state
+    const { userInfo,loading } = this.state
     const { history } = this.props
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
           title="Locked Accounts"
-          action={()=> {console.log('activate account')}}
+          action={this.activateAccount}
           actionBtnName="Activate Account"
+          loading={loading}
         />
         <div>
           <LockAccountViewForm userInfo={userInfo}/>
