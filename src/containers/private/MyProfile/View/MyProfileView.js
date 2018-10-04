@@ -1,8 +1,13 @@
+// LIBRARIES
 import React, { Component } from 'react'
 import { Icon, Avatar, Row , Col } from 'antd'
 
-
+// COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
+
+// HELPER FUNCTIONS
+
+
 
 export default class MyProfileView extends Component {
   
