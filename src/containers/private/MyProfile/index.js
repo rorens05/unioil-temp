@@ -27,7 +27,7 @@ class MyProfile extends Component {
     API_UNI_OIL.post(`adminProfile`)        
     .then((response) => {
       this.setState({
-        userInfo: {...response.data.data[0]},
+        userInfo: {...response.data.data},
         mounted: true
       })
     })
