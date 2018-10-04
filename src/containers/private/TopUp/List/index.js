@@ -18,121 +18,52 @@ class TopUpList extends Component {
     updating: false,
   }
 
-  delete =(admin_uuid)=> {
-    
-  }
-
-  updateDropDown = async(e) => {
-    let params = e.item.props.record;
-    params = { admin_uuid : params.admin_uuid , status: params.status}
-    try {
-      const response = await API_UNI_OIL.post(`adminChangeStatus`,params);
-      message.success("User Successfuly update status" );
-      this.setState({ updating: !this.state.updating });
-    } catch (error) {
-      message.error("Something went wrong updating status.")
-    }
-  }
-
   render() {
     const { match, history } = this.props;
 
     return (
       <div style={{border:'1px solid #E6ECF5'}}>
         <HeaderForm 
-          title="User Management"
+          title="Top-Up"
           action={()=> history.push({ pathname: `${match.url}/create` })}
-          actionBtnName="Add User"
+          actionBtnName="Add"
         />
         <AdvanceTable 
             updating = { this.state.updating }
-            keyValue="admin_uuid"
+            keyValue="topup_uuid"
             url={{ 
               //default: 'admin?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
               apiDelete: 'adminBatchDelete',
-              default: 'admin',
+              default: 'topUp',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}
             filterValues ={["role", "status"]}
             columns={
               [
                 {
-                  title: 'Username',
-                  dataIndex: 'username',
-                  key: 'username',
+                  title: 'Fee Code',
+                  dataIndex: 'fee_code',
+                  key: 'fee_code',
                   sorter: true,
                   filters: [],
-                  width: "13%",
+                  //width: "13%",
                 },
                 {
-                  title: 'First Name',
-                  dataIndex: 'firstname',
-                  key: 'firstname',
+                  title: 'Name',
+                  dataIndex: 'name',
+                  key: 'name',
                   sorter: true,
                   filters:[],
-                  width: "12%",
+                  width: "25%",
                 },
                 {
-                  title: 'Last Name',
-                  dataIndex: 'lastname',
-                  key: 'lastname',
+                  title: 'Amount',
+                  dataIndex: 'amount',
+                  key: 'amount',
                   sorter: true,
                   filters:[],
                   width: 150,
-                  width: "12%",
-                },
-                {
-                  title: 'User Role',
-                  dataIndex: 'role',
-                  key: 'role',
-                  sorter: true,
-                  width: "13%",
-                  filters: [
-                    { text: 'Administrator', value: 'Administrator' }
-                  ],
-                  render: (text, record) => (
-                    <span className={record.status === "Active" ? "dark-gray" : "inactive-label"}>
-                      {record && record.role ==  1 ? "Admin": "Marketing Personnel"}
-                    </span>
-                  )
-                },
-                {
-                  title: 'Email',
-                  dataIndex: 'email',
-                  key: 'email',
-                  sorter: true,
-                  width: "20%",
-                  filters: [
-                    { text: 'Active', value: 'Active' },
-                    { text: 'Inactive', value: 'Inactive' },
-                  ]
-                },
-                {
-                  title: 'Status',
-                  dataIndex: 'status',
-                  key: 'status',
-                  sorter: true,
-                  filters: [
-                    { text: 'Active', value: 'active' },
-                    { text: 'Inactive', value: 'inactive' },
-                  ],
-                  width: "10%",
-                  render: (text, record) => {
-                    const menu = (
-                      <Menu>
-                        <Menu.Item key="active" onClick={this.updateDropDown} record={record}>Active</Menu.Item>
-                        <Menu.Item key="inactive" onClick={this.updateDropDown} record={record}>Inactive</Menu.Item>
-                      </Menu>
-                    );
-                    return(
-                      <Dropdown overlay={menu} trigger={['click']}>
-                        <a className="ant-dropdown-link" href="#">
-                          {text} <Icon type="caret-down" theme="outlined"
-                          style={{ position: "relative", top: -4, fontSize: 7 }} />
-                        </a>
-                      </Dropdown>
-                    )
-                  },
+                  width: "25%",
                 },
                 {
                   title: 'Action',
@@ -144,7 +75,7 @@ class TopUpList extends Component {
                       key: 'edit',
                       title: "Edit",
                       icon: 'edit',
-                      url: '/user-management/edit'
+                      url: '/top-up/edit'
                     },
                     {
                       key: 'delete',
@@ -157,7 +88,7 @@ class TopUpList extends Component {
                       key: 'view',
                       title: "View",
                       icon: 'right-circle-o',
-                      url: '/user-management/view'
+                      url: '/top-up/view'
                     }
                   ]
                 },

@@ -69,6 +69,7 @@ function AddPhotoSliderForm(props) {
         label="Upload Image"
         placeholder="Upload Image"
         component={UploadImage}
+        multipleFileUpload
       />
 
 

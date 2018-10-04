@@ -79,12 +79,12 @@ class UploadImage extends Component {
     const { onChange, onBlur, ...restField } = field;
     const { fileUpload } =this.state;
 
-    let props_list_image = {
-      action: '',
-      listType: 'picture',
-      defaultFileList: [...fileList],
-      className: 'upload-list-inline',
-    };
+    // let props_list_image = {
+    //   action: '',
+    //   listType: 'picture',
+    //   defaultFileList: [...fileList],
+    //   className: 'upload-list-inline',
+    // };
 
     const uploadButton = (
       <div>
@@ -106,7 +106,11 @@ class UploadImage extends Component {
       {
         multipleFileUpload ? 
           (
-            <Upload.Dragger {..._props} {..._field} {...props_list_image} onChange={this.normFile} >
+            <Upload.Dragger 
+              {..._props} {..._field} 
+              //{...props_list_image} 
+              onChange={this.normFile} 
+            >
               <p className="ant-upload-drag-icon">
                   <Icon type="inbox" />
               </p>

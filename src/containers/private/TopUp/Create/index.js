@@ -74,22 +74,19 @@ class TopUpCreate extends Component {
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
           loading={loading}
-          title="Add User"
+          title="Top-Up"
           action={this.handleAddUser}
           actionBtnName="Save"
-          cancel={()=> { this.props.history.push("/user-management")}}
+          cancel={()=> { this.props.history.push("/top-up")}}
           cancelBtnName="Cancel"
         />
         <div>
-          <h2 style={{margin: '25px 35px'}}>User Details</h2>
+          <h2 style={{margin: '25px 35px'}}>Top-Up Details</h2>
           <Formik
               initialValues={{
-                username: '',
-                password: '',
-                firstname: '',
-                lastname: '',
-                email: '',
-                role: ''
+                fee_code: '',
+                name: '',
+                amount: '',
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}

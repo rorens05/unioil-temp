@@ -52,6 +52,7 @@ function EditUserManagementForm(props) {
         label="Upload Image"
         placeholder="Upload Image"
         component={UploadImage}
+        multipleFileUpload
       />
 
       <Field
