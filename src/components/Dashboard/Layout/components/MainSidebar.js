@@ -77,7 +77,7 @@ function MainSidebar(props) {
     {
       key: 2 ,
       label: "Top-Up",
-      path: "/topup",
+      path: "/top-up",
       icon: "plus-circle",
       access: userInfo && userInfo.role == 1 ? true : false
     },

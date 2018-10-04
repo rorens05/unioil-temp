@@ -51,6 +51,11 @@ const AsyncPromotions = Loadable({
   loading: Loading
 });
 
+const AsyncTopUp = Loadable({
+  loader: () => import("./containers/private/TopUp"),
+  loading: Loading
+});
+
 const AsyncSystemPreferences = Loadable({
   loader: () => import("./containers/private/SystemPreferences"),
   loading: Loading
@@ -138,6 +143,11 @@ console.log('====================================');
                 path="/promotions" 
                 component={AsyncPromotions} 
               />
+              <DashboardRoute 
+                path="/top-up" 
+                component={AsyncTopUp} 
+              />
+              
               <DashboardRoute 
                 path="/system-parameters" 
                 component={AsyncSystemPreferences} 
