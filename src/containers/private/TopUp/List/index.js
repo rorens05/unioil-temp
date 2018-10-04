@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import { Menu, Dropdown, notification, Icon, message } from "antd"
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom'
 
 // COMPONENTS
 import AdvanceTable from "components/Tables/AdvanceTable";
@@ -32,7 +31,6 @@ class TopUpList extends Component {
             updating = { this.state.updating }
             keyValue="topup_uuid"
             url={{ 
-              //default: 'admin?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
               apiDelete: 'adminBatchDelete',
               default: 'topUp',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'

@@ -18,8 +18,6 @@ class TopUpEdit extends Component {
     loading: false,
     userInfo: null,
     mounted: false,
-    timerCount: 20,
-    isGenerated: false
   }
 
   async componentDidMount() {
@@ -72,24 +70,6 @@ class TopUpEdit extends Component {
 
   }
 
-  generatePassword = async (props) => {
-
-    const { userInfo } = this.state;
-    let params = {}; params.admin_uuid = userInfo.admin_uuid
-
-    this.setState({loading: true})
-    try {
-      let response = await API_POST('generatePassword', params)
-      if(response) {
-        props.setValues({...props.values, password: response.data.data.password})
-        this.setState({loading: false, isGenerated: true})
-      }
-    } catch (error) {
-      notification.error({ message: 'Error', description: "Something went wrong generating password."})
-      this.setState({loading: false})
-    }
-  }
-
   render() {
 
     if(!this.state.mounted) return null;
@@ -111,13 +91,9 @@ class TopUpEdit extends Component {
           <h2 style={{margin: '25px 35px'}}>User Details</h2>
           <Formik
               initialValues={{
-                username: userInfo.username  || '',
-                password: userInfo.password || '',
-                firstname: userInfo.firstname || '',
-                lastname: userInfo.lastname || '',
-                email: userInfo.email || '',
-                role: userInfo.role || '',
-                password: userInfo.generated_password || ''
+                fee_code: userInfo.fee_code  || '',
+                name: userInfo.name || '',
+                amount: userInfo.amount || ''
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
@@ -127,8 +103,6 @@ class TopUpEdit extends Component {
                 <EditUserManagementForm 
                   {...props}
                   loading={loading}
-                  generatePassword={this.generatePassword}
-                  isGenerated={(isGenerated || userInfo.generated_password) && true}
                 />
               }
           />
