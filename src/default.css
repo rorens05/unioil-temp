@@ -98,3 +98,9 @@
 .ant-breadcrumb a:hover {
     color: #e74610 !important;
 }
+
+.ant-breadcrumb > span:last-child a{
+    color: #4D4D4D;
+    font-weight: 500;
+    opacity: 0.85;
+}
