@@ -1,11 +1,15 @@
- 
+// LIBRARIES
 import React, { Component } from 'react';
 import { message } from 'antd';
 import { connect } from "react-redux";
 
-import { customAction } from 'actions';
+// COMPONENTS
 import AdvanceTable from "components/Tables/AdvanceTable";
 import HeaderForm from "components/Forms/HeaderForm";
+
+// HELPER FUNCTIONS
+import { customAction } from 'actions';
+
 
 class CardMemberList extends Component {
 

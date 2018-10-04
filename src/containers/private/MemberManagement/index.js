@@ -1,17 +1,17 @@
-//@flow
+// LIBRARIES
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+// COMPONENTS
 import CardMemberList from './CardMember/List';
 import CardMemberView from './CardMember/View';
-
 import LockAccountList from './LockAccount/List';
 import LockAccountView from './LockAccount/View';
-
 import { PAGE404 } from "components/PageError/index"
-
-
 import MainContent from 'components/Dashboard/Layout/components/MainContent';
+
+// HELPER FUNCTIONS
+
 
 
 class MemberManagement extends Component {
