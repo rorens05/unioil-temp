@@ -1,12 +1,13 @@
-//@flow
+// LIBRARIES
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-
+// COMPONENTS
 import CreateSystemPreferences from './Create';
-
 import MainContent from '../../../components/Dashboard/Layout/components/MainContent';
 import { PAGE404 } from "components/PageError/index"
+
+// HELPER FUNCTIONS
 
 class SystemPreferences extends Component {
   state = {
