@@ -1,8 +1,12 @@
+// LIBRARIES
 import React from 'react'
 import { connect } from 'react-redux'
 import { Icon, Avatar, Row , Col } from 'antd'
 
+// COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
+
+// HELPER FUNCTIONS
 
 function ViewUserManagementForm(props) {
   const {

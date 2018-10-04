@@ -1,5 +1,4 @@
- 
-// LIBRARIES
+ // LIBRARIES
 import React, { Component } from 'react';
 import { Menu, Dropdown, notification, Icon, message } from "antd"
 import { connect } from "react-redux";
