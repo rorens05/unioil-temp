@@ -1,8 +1,8 @@
-//@flow
+// LIBRARIES
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-
-
+ 
+// COMPONENTS
 import DashboardList from './List';
 import UserManagementCreate from './Create';
 import UserManagementEdit from './Edit';
@@ -10,6 +10,9 @@ import UserManagementView from './View';
 
 import MainContent from '../../../components/Dashboard/Layout/components/MainContent';
 import { PAGE404 } from "components/PageError/index"
+ 
+// HELPER FUNCTIONS
+
 
 class Promotions extends Component {
   state = {

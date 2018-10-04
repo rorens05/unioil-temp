@@ -1,8 +1,15 @@
+// LIBRARIES
 import React from 'react';
 import { Row, Button, Col } from 'antd';
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
+ 
+// COMPONENTS
 import { Input, Radio, InputTextArea, UploadImage, Select, DatePicker } from 'components/Forms';
+ 
+// HELPER FUNCTIONS
+
+
 
 const formItemLayout = {
   labelCol: {

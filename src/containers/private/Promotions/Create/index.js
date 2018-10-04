@@ -1,10 +1,16 @@
+// LIBRARIES
 import React, { Component } from 'react'
 import { Formik } from 'formik'
 import { message } from 'antd';
-
-import { userDetailsSchema } from './validationSchema'
+ 
+// COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
 import AddUserManagementForm from './components/AddUserManagementForm'
+ 
+// HELPER FUNCTIONS
+import { userDetailsSchema } from './validationSchema'
+
+
 
 export default class CreateManagement extends Component {
 

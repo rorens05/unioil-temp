@@ -1,6 +1,12 @@
+// LIBRARIES
 import React, { Component } from 'react'
+ 
+// COMPONENTS
 import HeaderForm from 'components/Forms/HeaderForm'
 import ViewUserManagementForm from './components/ViewUserManagementForm'
+ 
+// HELPER FUNCTIONS
+
 
 
 export default class UserManagementView extends Component {
