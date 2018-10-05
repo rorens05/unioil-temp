@@ -2,27 +2,19 @@
 import * as Yup from 'yup'
 
 export const userDetailsSchema = Yup.object().shape({
-  username: Yup.string()
-    .required('Username is required!')
-    .matches(
-      /^[a-zA-Z0-9_@. ]+$/,
-      {
-        message: 'Invalid username.',
-        excludeEmptyString: true,
-      },
-    ),
-  firstname: Yup.string()
-    .required('First Name is required!'),
-  lastname: Yup.string()
-    .required('Last Name is required!'),
-  email: Yup.string()
-    .required('Email is required!')
-    .matches(/^[A-Za-z0-9@_. ]+$/, { excludeEmptyString: false, message: "Invalid characters" })
-    .email("Invalid Email"),
-  role: Yup.string()
-    .required('Role is required!'),
-  password: Yup.string()
-    .required('Default Password is required!')
+  code: Yup.string()
+    .required('Card Code is required!')
+    .max(12,"Card Code must be 20 characters only. "),
+  type: Yup.string()
+    .required('Card Type is required!'),
+  description: Yup.string()
+    .required('Description is required!'),
+  // image: Yup.image()
+  // .required('Image is required!'),
+  terms_and_conditions: Yup.string()
+    .required('Terms and Condition is required!'),
+  faqs: Yup.string()
+    .required('FAQs is required!')
 })
 
 

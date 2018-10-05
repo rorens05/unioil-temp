@@ -39,7 +39,8 @@ class CardTypeEdit extends Component {
 
   handleSubmit = async (values, actions) => {
     
-    const { fileUpload } = this.state;
+    const { fileUpload, userInfo } = this.state;
+    const { history } = this.props;
 
 
     this.setState({loading: true})
@@ -63,11 +64,12 @@ class CardTypeEdit extends Component {
           values.faqs && (formData.append('faqs', values.faqs));
           
 
-          let response = await API_UNI_OIL.post('cardType', formData , headers)
+          let response = await API_UNI_OIL.post(`cardTypeUpdate/${userInfo.cardtype_uuid}`, formData , headers)
 
           if(response) {
             message.success('Successful create new record.');  
             this.setState({loading: false})
+            history.push({ pathname: "/about-us/card-types" })
           }
           
         
@@ -76,8 +78,10 @@ class CardTypeEdit extends Component {
         message: 'Error', 
         description: <div>
           Something went wrong creating new user.
-          {error.data && error.data.data  && error.data.data.image 
-                && (<div>- {error.data.data.image[0]} </div>) }
+          {
+            error.data && error.data.data  && error.data.data.image 
+                && (<div>- {error.data.data.image[0]} </div>) 
+          }
         </div>
       }); 
       this.setState({loading: false})
@@ -85,7 +89,7 @@ class CardTypeEdit extends Component {
     
   }
 
-  handleAddUser =()=> {
+  handleEditCardTypes =()=> {
     this.form.submitForm()
   }
 
@@ -107,7 +111,7 @@ class CardTypeEdit extends Component {
         <HeaderForm 
           loading={loading}
           title="Update Card Type"
-          action={this.handleEditUserManagement}
+          action={this.handleEditCardTypes}
           actionBtnName="Update"
           withConfirm={{message: "Save changes to this record?"}}
           cancel={()=> { this.props.history.push("/user-management")}}
@@ -118,7 +122,7 @@ class CardTypeEdit extends Component {
           <Formik
               initialValues={{
                 code: userInfo.code  || '',
-                type: userInfo.type || '',
+                type: userInfo.name || '',
                 description: userInfo.description || '',
                 image: userInfo.image || '',
                 terms_and_conditions: userInfo.terms_and_conditions || '',
