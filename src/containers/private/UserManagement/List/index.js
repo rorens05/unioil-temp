@@ -87,7 +87,8 @@ class UserManagementList extends Component {
                   sorter: true,
                   width: "13%",
                   filters: [
-                    { text: 'Administrator', value: 1 }
+                    { text: 'System Admin', value: 1 },
+                    { text: 'Marketing Personnel', value: 2 }
                   ],
                   render: (text, record) => (
                     <span className={record.status === "Active" ? "dark-gray" : "inactive-label"}>
@@ -101,10 +102,6 @@ class UserManagementList extends Component {
                   key: 'email',
                   sorter: true,
                   width: "20%",
-                  filters: [
-                    { text: 'Active', value: 'Active' },
-                    { text: 'Inactive', value: 'Inactive' },
-                  ]
                 },
                 {
                   title: 'Status',
