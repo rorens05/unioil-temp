@@ -29,6 +29,7 @@ class CardTypeCreate extends Component {
   handleSubmit = async (values, actions) => {
     
     const { fileUpload } = this.state;
+    const { history } = this.props;
 
 
     this.setState({loading: true})
@@ -57,6 +58,7 @@ class CardTypeCreate extends Component {
           if(response) {
             message.success('Successful create new record.');  
             this.setState({loading: false})
+            history.push({ pathname: "/about-us/card-types" })
           }
           
         

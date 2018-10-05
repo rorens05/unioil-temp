@@ -48,7 +48,7 @@ class CardTypeList extends Component {
             keyValue="cardtype_uuid"
             url={{ 
               //default: 'admin?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
-              apiDelete: 'adminBatchDelete',
+              apiDelete: 'cardTypeBatchDelete',
               default: 'cardType',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}

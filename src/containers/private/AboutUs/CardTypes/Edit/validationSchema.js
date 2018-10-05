@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 export const userDetailsSchema = Yup.object().shape({
   code: Yup.string()
     .required('Card Code is required!')
-    .max(12,"Card Code must be 20 characters only. "),
+    .max(12,"Card Code must be 12 characters only. "),
   type: Yup.string()
     .required('Card Type is required!'),
   description: Yup.string()
