@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { withRouter} from 'react-router-dom'
 
 function Page404(){
-    const error = "Page not found";;
+    const error = "Page not found";
     const errorMessage = "Sorry, but the page you are looking for doesn't exist";
     
     return <Fragment>
