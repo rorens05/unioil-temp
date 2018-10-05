@@ -22,10 +22,11 @@ const formItemLayout = {
   },
 };
 
-function AddUserManagementForm(props) {
+function AddPromotionForm(props) {
   const {
     isSubmitting,
-    handleSubmit
+    handleSubmit,
+    branchesOptionList
   } = props;
 
   return (
@@ -78,14 +79,10 @@ function AddUserManagementForm(props) {
         type="select"
         icon=""
         layout={formItemLayout}
-        label="Branches"
+        label="Branch"
         placeholder="Select Branches"
         mode="multiple"
-        optionsList={[
-          { label: "Guadalupe", value: "Guadalupe" },
-          { label: "BGC", value: "BGC", },
-          { label: "Makati", value: "Makati", }
-        ]}
+        optionsList={branchesOptionList}
         component={Select}
       />
 
@@ -172,8 +169,8 @@ function AddUserManagementForm(props) {
         type="select"
         icon=""
         layout={formItemLayout}
-        label="Branches"
-        placeholder="Select Branches"
+        label="Promo Type?"
+        placeholder="Select Promo Type"
         mode="single"
         optionsList={[
           { label: "Red", value: "Red" },
@@ -202,12 +199,12 @@ function AddUserManagementForm(props) {
 };
 
 
-AddUserManagementForm = connect(
+AddPromotionForm = connect(
   state => ({
     
   }),
-)(AddUserManagementForm);
+)(AddPromotionForm);
 
 
-export default AddUserManagementForm;
+export default AddPromotionForm;
 
