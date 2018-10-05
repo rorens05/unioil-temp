@@ -58,7 +58,7 @@ function MainHeader(props) {
   } = props
 
   return (
-    <Header style={{ background: '#fff', padding: 0, height: '65px', lineHeight: '69px' }}>
+    <Header style={{ background: '#fff', padding: 0, height: '66px', lineHeight: '69px', borderBottom: '1px solid rgb(230, 236, 245)',  }}>
       <IconTrigger
         className="trigger"
         type={collapsed ? 'menu-unfold' : 'menu-fold'}

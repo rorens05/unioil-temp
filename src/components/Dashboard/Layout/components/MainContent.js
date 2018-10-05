@@ -17,7 +17,6 @@ function MainContent(props) {
       props.location && props.location.key && (
         <div key={1} style={{
             background: '#fff' , 
-            borderTop: '1px solid rgb(230, 236, 245)', 
             marginBottom: '75px',
             position: 'fixed',
             marginTop: '-110px',
