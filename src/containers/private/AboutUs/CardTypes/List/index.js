@@ -45,93 +45,31 @@ class CardTypeList extends Component {
         />
         <AdvanceTable 
             updating = { this.state.updating }
-            keyValue="admin_uuid"
+            keyValue="cardtype_uuid"
             url={{ 
               //default: 'admin?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
               apiDelete: 'adminBatchDelete',
-              default: 'admin',
+              default: 'cardType',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}
             filterValues ={["role", "status"]}
             columns={
               [
                 {
-                  title: 'Username',
-                  dataIndex: 'username',
-                  key: 'username',
+                  title: 'Card Code',
+                  dataIndex: 'code',
+                  key: 'code',
                   sorter: true,
                   filters: [],
-                  width: "13%",
+                  //width: "13%",
                 },
                 {
-                  title: 'First Name',
-                  dataIndex: 'firstname',
-                  key: 'firstname',
+                  title: 'Card Type Description',
+                  dataIndex: 'description',
+                  key: 'description',
                   sorter: true,
                   filters:[],
-                  width: "12%",
-                },
-                {
-                  title: 'Last Name',
-                  dataIndex: 'lastname',
-                  key: 'lastname',
-                  sorter: true,
-                  filters:[],
-                  width: 150,
-                  width: "12%",
-                },
-                {
-                  title: 'User Role',
-                  dataIndex: 'role',
-                  key: 'role',
-                  sorter: true,
-                  width: "13%",
-                  filters: [
-                    { text: 'Administrator', value: 1 }
-                  ],
-                  render: (text, record) => (
-                    <span className={record.status === "Active" ? "dark-gray" : "inactive-label"}>
-                      {record && record.role ==  1 ? "Admin": "Marketing Personnel"}
-                    </span>
-                  )
-                },
-                {
-                  title: 'Email',
-                  dataIndex: 'email',
-                  key: 'email',
-                  sorter: true,
-                  width: "20%",
-                  filters: [
-                    { text: 'Active', value: 'Active' },
-                    { text: 'Inactive', value: 'Inactive' },
-                  ]
-                },
-                {
-                  title: 'Status',
-                  dataIndex: 'status',
-                  key: 'status',
-                  sorter: true,
-                  filters: [
-                    { text: 'Active', value: 'active' },
-                    { text: 'Inactive', value: 'inactive' },
-                  ],
-                  width: "10%",
-                  render: (text, record) => {
-                    const menu = (
-                      <Menu>
-                        <Menu.Item key="active" onClick={this.updateDropDown} record={record}>Active</Menu.Item>
-                        <Menu.Item key="inactive" onClick={this.updateDropDown} record={record}>Inactive</Menu.Item>
-                      </Menu>
-                    );
-                    return(
-                      <Dropdown overlay={menu} trigger={['click']}>
-                        <a className="ant-dropdown-link" href="#">
-                          {text} <Icon type="caret-down" theme="outlined"
-                          style={{ position: "relative", top: -4, fontSize: 7 }} />
-                        </a>
-                      </Dropdown>
-                    )
-                  },
+                 // width: "12%",
                 },
                 {
                   title: 'Action',

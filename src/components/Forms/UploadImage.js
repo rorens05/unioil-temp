@@ -18,8 +18,10 @@ class UploadImage extends Component {
 
   normFile = (info) => {
     const { handleFileUpload } = this.props;
-    
-    if(info) {
+    const isJPG = info.file.type === 'image/jpeg' || info.file.type === 'image/png' || info.file.type === 'image/gif' ;
+
+    if(isJPG) {
+   
       this.getBase64(info.file.originFileObj, imageUrl => this.setState({
         imageUrl,
         loading: false,
