@@ -5,7 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
-import { Input, Radio } from 'components/Forms';
+import { Input, InputTextArea, UploadImage } from 'components/Forms';
 
 // HELPER FUNCTIONS
 
@@ -23,86 +23,80 @@ const formItemLayout = {
 function EditUserManagementForm(props) {
   const {
     isSubmitting,
-    generatePassword,
     loading,
-    isGenerated
+    handleFileUpload
   } = props;
 
   return (
     <Form noValidate>
 
       <Field
-        name="username"
+        name="code"
         type="text"
+        //icon="user"
+        layout={formItemLayout}
+        label="Card Code"
+        placeholder="Card Code"
+        component={Input}
+      />
+
+      <Field
+        name="type"
+        type="text"
+        //icon="user"
+        layout={formItemLayout}
+        label="Card Type"
+        placeholder="Card Type"
+        component={Input}
+      />
+
+      <Field
+        name="description"
+        type="text"
+        icon=""
+        layout={formItemLayout}
+        label="Short Description"
+        placeholder="Short Description"
+        rows={4}
+        component={InputTextArea}
+      />
+
+      <Field
+        name="image"
+        type="file"
+        accept=".jpg , .png, .gif"
+        multiple={false}
+        imageUrl={props.values.image && `${process.env.REACT_APP_IMG_URL}/${props.values.image}`}
+        className="upload-list-inline"
         icon="user"
         layout={formItemLayout}
-        label="Username"
-        placeholder="User name"
-        component={Input}
+        label="Upload Image"
+        placeholder="Upload Image"
+        component={UploadImage}
+        imgWidth="294px"
+        handleFileUpload={handleFileUpload}
       />
 
+      <h4 style={{marginLeft: '109px'}}>DATA PRIVACY</h4>
       <Field
-        name="firstname"
+        name="terms_and_conditions"
         type="text"
-        icon="user"
+        icon=""
         layout={formItemLayout}
-        label="First Name"
-        placeholder="First Name"
-        component={Input}
+        label={`Terms & Conditions`}
+        placeholder={`Terms & Conditions`}
+        rows={10}
+        component={InputTextArea}
       />
-
       <Field
-        name="lastname"
+        name="faqs"
         type="text"
-        icon="user"
+        icon=""
         layout={formItemLayout}
-        label="Last Name"
-        placeholder="Last Name"
-        component={Input}
-      />
-
-      <Field
-        name="email"
-        type="text"
-        icon="mail"
-        layout={formItemLayout}
-        label="Email Address"
-        placeholder="Email Address"
-        component={Input}
-      />
-
-      <Field
-        name="role"
-        icon="user"
-        layout={formItemLayout}
-        optionsList={[
-          {
-            label: "System Admin",
-            value: 1
-          },
-          {
-            label: "Marketing Personnel",
-            value: 2,
-          }
-        ]}
-        label="User Role"
-        component={Radio}
-      />
-
-      <Field
-        name="password"
-        type="text"
-        icon="lock"
-        loading={loading}
-        withActionBtn={{
-          action: ()=>generatePassword(props),
-          name: "Generate",
-          disabled: isGenerated
-        }}
-        readOnly
-        layout={formItemLayout}
-        label="Default Password"
-        component={Input}
+        label="FAQs"
+        placeholder="FAQs"
+        rows={10}
+        component={InputTextArea}
       />
 
     </Form>

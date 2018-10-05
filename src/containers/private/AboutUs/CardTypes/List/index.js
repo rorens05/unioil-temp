@@ -80,7 +80,7 @@ class CardTypeList extends Component {
                       key: 'edit',
                       title: "Edit",
                       icon: 'edit',
-                      url: '/user-management/edit'
+                      url: 'about-us/card-types/edit'
                     },
                     {
                       key: 'delete',
@@ -93,7 +93,7 @@ class CardTypeList extends Component {
                       key: 'view',
                       title: "View",
                       icon: 'right-circle-o',
-                      url: '/user-management/view'
+                      url: 'about-us/card-types/view'
                     }
                   ]
                 },

@@ -22,7 +22,7 @@ class CardTypeView extends Component {
     const { match } = this.props;
 
     try {
-      let response = await API_UNI_OIL.get(`admin/${match.params.id}`) 
+      let response = await API_UNI_OIL.get(`cardType/${match.params.id}`) 
       this.setState({
         userInfo: {...response.data.data},
         mounted: true

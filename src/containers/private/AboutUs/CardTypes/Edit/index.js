@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { Formik } from 'formik'
 import { withRouter } from "react-router-dom"
-import { notification, Icon } from "antd"
+import { notification, message } from "antd"
 
 // COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
@@ -18,8 +18,6 @@ class CardTypeEdit extends Component {
     loading: false,
     userInfo: null,
     mounted: false,
-    timerCount: 20,
-    isGenerated: false
   }
 
   async componentDidMount() {
@@ -27,7 +25,7 @@ class CardTypeEdit extends Component {
     const { match } = this.props;
     
     try {
-      let response = await API_UNI_OIL.get(`admin/${match.params.id}`);
+      let response = await API_UNI_OIL.get(`cardType/${match.params.id}`);
       this.setState({
         userInfo: {...response.data.data},
         mounted: true
@@ -39,62 +37,70 @@ class CardTypeEdit extends Component {
     
   }
 
-  handleEditUserManagement =()=> {
+  handleSubmit = async (values, actions) => {
+    
+    const { fileUpload } = this.state;
+
+
+    this.setState({loading: true})
+    try {
+          const headers = {
+            'ContentType': 'multipart/form-data',
+          }; 
+          const formData = new FormData();
+      
+          if(fileUpload) {
+            fileUpload.forEach((t, i) => {
+              formData.append( `image`, t.originFileObj);
+            }); 
+          } 
+          
+          
+          values.code && (formData.append('code', values.code));
+          values.type && (formData.append('type', values.type));
+          values.description && (formData.append('description', values.description));
+          values.terms_and_conditions && (formData.append('terms_and_conditions', values.terms_and_conditions));
+          values.faqs && (formData.append('faqs', values.faqs));
+          
+
+          let response = await API_UNI_OIL.post('cardType', formData , headers)
+
+          if(response) {
+            message.success('Successful create new record.');  
+            this.setState({loading: false})
+          }
+          
+        
+    } catch ({response: error}) {
+      notification.error({ 
+        message: 'Error', 
+        description: <div>
+          Something went wrong creating new user.
+          {error.data && error.data.data  && error.data.data.image 
+                && (<div>- {error.data.data.image[0]} </div>) }
+        </div>
+      }); 
+      this.setState({loading: false})
+    }
+    
+  }
+
+  handleAddUser =()=> {
     this.form.submitForm()
   }
 
-  handleSubmit = async (values, actions) => {
-
-    const { setErrors, setSubmitting } = actions;
-    const { userInfo } = this.state;
-    let { history } = this.props;
-
-    const params = {
-      ...values,
+  handleFileUpload =(e)=> {
+    if (Array.isArray(e)) {
+      return this.setState({fileUpload: e});
     }
-
-    this.setState({loading: true})
-    try {
-      const response = await API_PUT(`admin/${userInfo.admin_uuid}`, params);    
-      if(response.status === 422){
-        notification.error({ message: "Success", description: "Something went wrong updating record" });
-        setSubmitting(false)
-        this.setState({loading: false})
-      }else {
-        notification.success({ message: "Success", description: "User Successfuly updated" });
-        this.setState({loading: false})
-        this.props.history.push("/user-management");
-      }
-    } catch (error) {
-      setSubmitting(false)
-      this.setState({loading: false})
-    }
-
-  }
-
-  generatePassword = async (props) => {
-
-    const { userInfo } = this.state;
-    let params = {}; params.admin_uuid = userInfo.admin_uuid
-
-    this.setState({loading: true})
-    try {
-      let response = await API_POST('generatePassword', params)
-      if(response) {
-        props.setValues({...props.values, password: response.data.data.password})
-        this.setState({loading: false, isGenerated: true})
-      }
-    } catch (error) {
-      notification.error({ message: 'Error', description: "Something went wrong generating password."})
-      this.setState({loading: false})
-    }
+    return e && this.setState({fileUpload: e.fileList});
   }
 
   render() {
 
     if(!this.state.mounted) return null;
 
-    const { loading, userInfo, timerCount, isGenerated } = this.state
+    const { loading, userInfo } = this.state
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
@@ -111,13 +117,12 @@ class CardTypeEdit extends Component {
           <h2 style={{margin: '25px 35px'}}>User Details</h2>
           <Formik
               initialValues={{
-                username: userInfo.username  || '',
-                password: userInfo.password || '',
-                firstname: userInfo.firstname || '',
-                lastname: userInfo.lastname || '',
-                email: userInfo.email || '',
-                role: userInfo.role || '',
-                password: userInfo.generated_password || ''
+                code: userInfo.code  || '',
+                type: userInfo.type || '',
+                description: userInfo.description || '',
+                image: userInfo.image || '',
+                terms_and_conditions: userInfo.terms_and_conditions || '',
+                faqs: userInfo.faqs || '',
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
@@ -127,8 +132,7 @@ class CardTypeEdit extends Component {
                 <EditUserManagementForm 
                   {...props}
                   loading={loading}
-                  generatePassword={this.generatePassword}
-                  isGenerated={(isGenerated || userInfo.generated_password) && true}
+                  handleFileUpload={this.handleFileUpload}
                 />
               }
           />
