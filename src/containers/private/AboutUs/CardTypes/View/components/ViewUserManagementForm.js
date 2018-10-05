@@ -20,50 +20,37 @@ function ViewUserManagementForm(props) {
             <div>
               <h2 style={{margin: '0 0 20px'}}>Details</h2>
               {/*Account Details */}
-              <h2 style={{fontWeight: 'bold', fontSize: '20px'}}>User Details</h2>
+              <h2 style={{fontWeight: 'bold', fontSize: '16px'}}>CARD DETAILS</h2>
               <Row>
-                <Col span={18} push={3}>{userInfo && userInfo.username}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>UserName:</span></Col>
+                <Col span={18} push={4}>{userInfo && userInfo.code}</Col>
+                <Col span={4} pull={18}><span style={{fontWeight: '600'}}>Card Code:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={3}>{userInfo && userInfo.firstname}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>First Name:</span></Col>
+                <Col span={18} push={4}>{userInfo && userInfo.name}</Col>
+                <Col span={4} pull={18}><span style={{fontWeight: '600'}}>Card Type:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={3}>{userInfo && userInfo.lastname}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Last Name:</span></Col>
-              </Row>
-              <Row>
-                <Col span={18} push={3}><a style={{color: '#1890FF'}} href={`mailto:${userInfo && userInfo.email}`}>{userInfo && userInfo.email}</a></Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Email:</span></Col>
-              </Row>
-              <Row>
-                <Col span={18} push={3}>{userInfo && userInfo.role == "1" ? "System Admin" : userInfo && "Marketing Personnel" }</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>User Role:</span></Col>
+                <Col span={18} push={4}>
+                    <img 
+                      src={userInfo && userInfo.image && `${process.env.REACT_APP_IMG_URL}storage/app/${userInfo.image}`} 
+                      alt="avatar"
+                      width="300"
+                      style={{maxHeight: '250px'}}
+                    />
+                </Col>
+                <Col span={4} pull={18}><span style={{fontWeight: '600'}}>Image:</span></Col>
               </Row>
             </div>
              {/*Account Details */}
             <div style={{margin: '12px 0'}}>
-              <h2 style={{fontWeight: 'bold', fontSize: '20px'}}>Account Details</h2>
+              <h2 style={{fontWeight: 'bold', fontSize: '16px'}}>DATA PRIVACY DETAILS</h2>
               <Row>
-                <Col span={18} push={3}>{userInfo && userInfo.status}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Status:</span></Col>
+                <Col span={18} push={4}>{userInfo && userInfo.terms_and_conditions}</Col>
+                <Col span={4} pull={18}><span style={{fontWeight: '600'}}>{`Terms & Conditions:`}</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={3}>{userInfo && userInfo.created_at}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Date Created:</span></Col>
-              </Row>
-              <Row>
-                <Col span={18} push={3}>{userInfo && userInfo.created_by}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Created By:</span></Col>
-              </Row>
-              <Row>
-                <Col span={18} push={3}>{userInfo && userInfo.updated_at}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Last Update:</span></Col>
-              </Row>
-              <Row>
-                <Col span={18} push={3}>{userInfo && userInfo.updated_by}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Updated By:</span></Col>
+                <Col span={18} push={4}>{userInfo && userInfo.faqs}</Col>
+                <Col span={4} pull={18}><span style={{fontWeight: '600'}}>FAQs:</span></Col>
               </Row>
             </div>
         </div>

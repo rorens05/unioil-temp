@@ -63,7 +63,7 @@ class CardTypeView extends Component {
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
           title="Card Type Details"
-          action={()=> {this.props.history.push(`/user-management/edit/${match.params.id}`)}}
+          action={()=> {this.props.history.push(`/about-us/card-types/edit/${match.params.id}`)}}
           actionBtnName="Update"
           styleBtn={{background: 'white', borderColor: 'rgb(184, 187, 201)',color: 'rgb(101, 105, 127)'}}
           deleteAction={this.delete}
