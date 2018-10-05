@@ -47,7 +47,9 @@ class DashboardLayout extends React.Component {
             toggle={this.toggle}
             userInfo={userInfo}
           />
+          <div style={{ overflow: 'auto', marginTop: '94px', paddingTop: '16px', position: 'relative' }}>
             {children}
+          </div>
           {/* <MainFooter style={{background: '#fcfcfc'}}/> */}
         </Layout>
       </Layout>
