@@ -6,12 +6,12 @@ import { message,notification } from 'antd';
 
 // COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
-import AddUserManagementForm from './components/AddUserManagementForm'
+import AddCardForm from './components/AddCardForm'
 
 // HELPER FUNCTIONS
 import { userDetailsSchema } from './validationSchema'
 import { customAction } from "actions";
-import { API_GET, API_POST } from "utils/Api";
+import { API_GET, API_POST, API_UNI_OIL } from "utils/Api";
 
 
 class CardTypeCreate extends Component {
@@ -19,7 +19,7 @@ class CardTypeCreate extends Component {
     generated_password: null,
     userInfo: null,
     loading: false,
-    isGenerated: false
+    fileUpload: null
   }
 
   componentDidMount() {
@@ -27,45 +27,63 @@ class CardTypeCreate extends Component {
   }
 
   handleSubmit = async (values, actions) => {
+    
+    const { fileUpload } = this.state;
 
-    const { setErrors, setSubmitting } = actions;
-    let { history } = this.props;
-    let _self = this; 
-    this.setState({loading: true, isGenerated: false})
-    values.role = parseInt(values.role);
 
-    this.props.customAction({
-      type: "USERMANAGEMENT_CREATE_REQUEST",
-      payload: {
-        values,
-        setSubmitting,
-        setErrors,
-        history,
-        _self
-      }
-    });
+    this.setState({loading: true})
+    try {
+          const headers = {
+            'ContentType': 'multipart/form-data',
+          }; 
+          const formData = new FormData();
+      
+          if(fileUpload) {
+            fileUpload.forEach((t, i) => {
+              formData.append( `image`, t.originFileObj);
+            }); 
+          } 
+          
+          
+          values.code && (formData.append('code', values.code));
+          values.type && (formData.append('type', values.type));
+          values.description && (formData.append('description', values.description));
+          values.terms_and_conditions && (formData.append('terms_and_conditions', values.terms_and_conditions));
+          values.faqs && (formData.append('faqs', values.faqs));
+          
+
+          let response = await API_UNI_OIL.post('cardType', formData , headers)
+
+          if(response) {
+            message.success('Successful create new record.');  
+            this.setState({loading: false})
+          }
+          
+        
+    } catch ({response: error}) {
+      notification.error({ 
+        message: 'Error', 
+        description: <div>
+          Something went wrong creating new user.
+          {error.data && error.data.data  && error.data.data.image 
+                && (<div>- {error.data.data.image[0]} </div>) }
+        </div>
+      }); 
+      this.setState({loading: false})
+    }
+    
   }
+
   
   handleAddUser =()=> {
     this.form.submitForm()
   }
 
-  generatePassword = async (props) => {
-
-    this.setState({loading: true})
-
-    try {
-      let adminProfile = await API_POST('adminProfile'); 
-      let userInfo = { ...adminProfile.data.data[0]}
-      let response = await API_POST('generatePassword', userInfo.admin_uuid)
-      if(response) {
-        props.setValues({...props.values, password: response.data.data.password})
-        this.setState({loading: false, isGenerated: true})
-      }
-    } catch ({response:error}) {
-      notification.error({ message: 'Error', description: "Something went wrong generating password."})
-      this.setState({loading: false})
+  handleFileUpload =(e)=> {
+    if (Array.isArray(e)) {
+      return this.setState({fileUpload: e});
     }
+    return e && this.setState({fileUpload: e.fileList});
   }
 
   render() {
@@ -76,33 +94,32 @@ class CardTypeCreate extends Component {
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
           loading={loading}
-          title="Add User"
+          title="Card Types"
           action={this.handleAddUser}
           actionBtnName="Save"
-          cancel={()=> { this.props.history.push("/user-management")}}
+          cancel={()=> { this.props.history.push("/about-us")}}
           cancelBtnName="Cancel"
         />
         <div>
-          <h2 style={{margin: '25px 35px'}}>User Details</h2>
+          <h2 style={{margin: '25px 35px'}}>Card Type Details</h2>
           <Formik
               initialValues={{
-                username: '',
-                password: '',
-                firstname: '',
-                lastname: '',
-                email: '',
-                role: ''
+                code: '',
+                type: '',
+                description: '',
+                image: '',
+                terms_and_conditions: '',
+                faqs: ''
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
               validationSchema={userDetailsSchema}
               onSubmit={this.handleSubmit }
               render = {(props)=> 
-                <AddUserManagementForm 
+                <AddCardForm 
                   {...props}
-                  loading={userManagement.createRequestPending || loading}
-                  generatePassword={this.generatePassword}
-                  isGenerated={isGenerated}
+                  loading={loading}
+                  handleFileUpload={this.handleFileUpload}
                 />
               }
           />

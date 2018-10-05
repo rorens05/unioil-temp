@@ -41,7 +41,7 @@ class CardTypeList extends Component {
         <HeaderForm 
           title="Card Types"
           action={()=> history.push({ pathname: `${match.url}/create` })}
-          actionBtnName="Add User"
+          actionBtnName="Add Card"
         />
         <AdvanceTable 
             updating = { this.state.updating }
@@ -61,7 +61,7 @@ class CardTypeList extends Component {
                   key: 'code',
                   sorter: true,
                   filters: [],
-                  //width: "13%",
+                  width: "14%",
                 },
                 {
                   title: 'Card Type Description',
@@ -69,7 +69,6 @@ class CardTypeList extends Component {
                   key: 'description',
                   sorter: true,
                   filters:[],
-                 // width: "12%",
                 },
                 {
                   title: 'Action',

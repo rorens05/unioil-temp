@@ -72,6 +72,7 @@ class UploadImage extends Component {
       fileList,
       messageUpload,
       multipleFileUpload,
+      imgWidth,
       ...props
     } = this.props;
 
@@ -121,19 +122,22 @@ class UploadImage extends Component {
             </Upload.Dragger>
           ) :
           (
-            <Upload
-                name="avatar"
-                listType="picture-card"
-                className="avatar-uploader"
-                accept=".jpg , .png , .gif"
-                showUploadList={false}
-                beforeUpload={this.beforeUpload}
-                onChange={this.normFile}
-              >
-                {imageUrl ? <img src={imageUrl} alt="avatar" width="250"/> : uploadButton}
-                <p className="ant-upload-text">Click or drag file to this area to upload.</p>
-                <p className="ant-upload-hint">Support for a single upload only.</p>
-            </Upload>
+              <Upload
+                  name="avatar"
+                  listType="picture-card"
+                  className="avatar-uploader"
+                  accept=".jpg , .png , .gif"
+                  showUploadList={false}
+                  beforeUpload={this.beforeUpload}
+                  onChange={this.normFile}
+                  className="upload-image"
+                >
+                  {imageUrl ? <img src={imageUrl} alt="avatar" width="250"/> : uploadButton}
+                  <div style={{width: imgWidth ? imgWidth : 'initial'}}>
+                    <p className="ant-upload-text">Click or drag file to this area to upload.</p>
+                    <p className="ant-upload-hint">Support for a single upload only.</p>
+                  </div>
+              </Upload>
           )
       }
       
