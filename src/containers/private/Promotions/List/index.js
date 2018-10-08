@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import { message } from 'antd';
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import moment from 'moment'
  
 // COMPONENTS
 import AdvanceTable from "components/Tables/AdvanceTable";
@@ -33,48 +34,53 @@ class DashboardList extends Component {
     return (
       <div style={{border:'1px solid #E6ECF5'}}>
         <HeaderForm 
-          title="Photo Slider"
+          title="Promotions"
           action={()=> history.push({ pathname: `${match.url}/create` })}
           actionBtnName="Add Content"
         />
         <AdvanceTable 
-            keyValue="user_uuid"
+            keyValue="promotion_uuid"
             url={{ 
-              default: 'promotion'
+              apiDelete: 'promotionBatchDelete',
+              default: 'promotion',
+              filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}
             filterValues ={["role", "status"]}
             columns={
               [
                 {
-                  title: 'Name',
-                  dataIndex: 'name',
-                  key: 'name',
+                  title: 'Title',
+                  dataIndex: 'title',
+                  key: 'title',
                   sorter: true,
                   filters: []
                 },
                 {
-                  title: 'Username',
-                  dataIndex: 'email',
-                  key: 'email',
+                  title: 'Type',
+                  dataIndex: 'promo_type',
+                  key: 'promo_type',
                   sorter: true,
-                  filters:[]
-                },
-                {
-                  title: 'Date Registered',
-                  dataIndex: 'created_at',
-                  key: 'created_at',
-                  sorter: true,
+                  render: promo=> `${promo.name}`,
                   filters:[],
                   width: 150
                 },
                 {
-                  title: 'Role',
-                  dataIndex: 'role_name',
-                  key: 'role',
+                  title: 'Start Date',
+                  dataIndex: 'date_start',
+                  key: 'date_start',
                   sorter: true,
-                  filters: [
-                    { text: 'Administrator', value: 'Administrator' }
-                  ]
+                  render: date => moment(date).format("DD-MMM-YYYY"),
+                  filters:[],
+                  width: 150
+                },
+                {
+                  title: 'End Date',
+                  dataIndex: 'date_end',
+                  key: 'date_end',
+                  sorter: true,
+                  render: date => moment(date).format("DD-MMM-YYYY"),
+                  filters:[],
+                  width: 150
                 },
                 {
                   title: 'Status',
@@ -82,10 +88,6 @@ class DashboardList extends Component {
                   key: 'status',
                   sorter: true,
                   width: 110,
-                  filters: [
-                    { text: 'Active', value: 'Active' },
-                    { text: 'Inactive', value: 'Inactive' },
-                  ]
                 },
                 {
                   title: 'Action',

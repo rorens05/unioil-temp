@@ -2,15 +2,28 @@
 import * as Yup from 'yup'
 
 export const userDetailsSchema = Yup.object().shape({
-  username: Yup.string()
-    .required('Username is required!')
-    .matches(
-      /^[a-zA-Z0-9_@.]+$/,
-      {
-        message: 'Invalid username.',
-        excludeEmptyString: true,
-      },
-    ),
+    station_uuid: Yup.string()
+      .required('Branch is required!'),
+    title: Yup.string()
+      .required('Title is required!'),
+    description: Yup.string()
+      .required('Description is required!'),
+    // image: Yup.image()
+    // .required('Image is required!'),
+    date_start: Yup.string()
+      .required('Start Date is required!'),
+    date_end: Yup.string()
+      .required('End Date is required!'),
+    start_time: Yup.string()
+      .required('Start Time is required!'),
+    end_time: Yup.string()
+      .required('End Time is required!'),
+    is_toppromotion: Yup.string(),
+    //   .required('FAQs is required!'),
+    promo_type: Yup.string()
+      .required('Promo Type is required!'),
+    is_gps: Yup.string(),
+    //   .required('FAQs is required!'),
 })
 
 
