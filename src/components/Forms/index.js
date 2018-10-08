@@ -9,6 +9,7 @@ import InputTextArea from './InputTextArea';
 import UploadImage from './UploadImage';
 import MultiSelectOptions from './MultiSelectOptions';
 import InputMaskNumber from './InputMaskNumber';
+import TimePickerForm from './TimePicker'
 
 
 export {
@@ -22,5 +23,6 @@ export {
   InputTextArea,
   UploadImage,
   MultiSelectOptions,
-  InputMaskNumber
+  InputMaskNumber,
+  TimePickerForm
 }

@@ -5,7 +5,8 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
  
 // COMPONENTS
-import { Input, Radio, InputTextArea, UploadImage, Select, DatePicker } from 'components/Forms';
+import { Input, Radio, InputTextArea, UploadImage, Select, 
+  DatePicker, TimePickerForm } from 'components/Forms';
  
 // HELPER FUNCTIONS
 
@@ -26,7 +27,9 @@ function AddPromotionForm(props) {
   const {
     isSubmitting,
     handleSubmit,
-    branchesOptionList
+    branchesOptions,
+    promoTypeOptions,
+    handleFileUpload
   } = props;
 
   return (
@@ -54,50 +57,35 @@ function AddPromotionForm(props) {
       />
 
       <Field
-        name="upload_image"
+        name="image"
         type="file"
+        accept=".jpg , .png, .gif"
+        multiple={false}
+        imageUrl={props.values.image && `${process.env.REACT_APP_IMG_URL}/${props.values.image}`}
+        className="upload-list-inline"
         icon="user"
         layout={formItemLayout}
         label="Upload Image"
         placeholder="Upload Image"
         component={UploadImage}
-        multipleFileUpload
+        imgWidth="294px"
+        handleFileUpload={handleFileUpload}
       />
 
       <Field
-        name="content_type"
-        type="text"
-        icon=""
-        layout={formItemLayout}
-        label="Content Type"
-        placeholder="Promo"
-        component={Input}
-      />
-
-      <Field
-        name="branch"
+        name="station_uuid"
         type="select"
         icon=""
         layout={formItemLayout}
         label="Branch"
         placeholder="Select Branches"
         mode="multiple"
-        optionsList={branchesOptionList}
+        optionsList={branchesOptions}
         component={Select}
       />
 
       <Field
-        name="content_type"
-        type="date"
-        icon=""
-        layout={formItemLayout}
-        label="Content Type"
-        placeholder="Promo"
-        component={DatePicker}
-      />
-
-      <Field
-        name="start_date"
+        name="date_start"
         type="date"
         icon=""
         layout={formItemLayout}
@@ -107,7 +95,7 @@ function AddPromotionForm(props) {
       />
 
       <Field
-        name="end_date"
+        name="date_end"
         type="date"
         icon=""
         layout={formItemLayout}
@@ -117,41 +105,27 @@ function AddPromotionForm(props) {
       />
 
       <Field
-        name="start_appeareance_date"
+        name="start_time"
         type="date"
         icon=""
         layout={formItemLayout}
-        label="Start Appearance Date"
-        placeholder="Start Appearance Date"
-        component={DatePicker}
+        label="Start Time"
+        placeholder="Start Time"
+        component={TimePickerForm}
       />
 
       <Field
-        name="end_appeareance_date"
+        name="end_time"
         type="date"
         icon=""
         layout={formItemLayout}
-        label="End Appearance Date"
-        placeholder="End Appearance Date"
-        component={DatePicker}
+        label="End Time"
+        placeholder="End Time"
+        component={TimePickerForm}
       />
 
       <Field
-        name="whats_hot"
-        icon="user"
-        layout={formItemLayout}
-        defaultValue={0}
-        isRadioButton
-        optionsList={[
-          { label: "Yes", value: 1 },
-          { label: "No", value: 0, }
-        ]}
-        label="Add in What's Hot?"
-        component={Radio}
-      />
-
-      <Field
-        name="add_top_promos"
+        name="is_toppromotion"
         icon="user"
         layout={formItemLayout}
         defaultValue={0}
@@ -165,23 +139,19 @@ function AddPromotionForm(props) {
       />
 
       <Field
-        name="branch"
+        name="promo_type"
         type="select"
         icon=""
         layout={formItemLayout}
         label="Promo Type?"
         placeholder="Select Promo Type"
         mode="single"
-        optionsList={[
-          { label: "Red", value: "Red" },
-          { label: "Green", value: "Green", },
-          { label: "Blue", value: "Blue", }
-        ]}
+        optionsList={promoTypeOptions}
         component={Select}
       />
 
       <Field
-        name="add_gps"
+        name="is_gps"
         icon="user"
         layout={formItemLayout}
         defaultValue={0}

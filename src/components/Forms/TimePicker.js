@@ -1,9 +1,9 @@
 import React from 'react';
-import { Form, DatePicker } from 'antd';
+import { Form, DatePicker, TimePicker } from 'antd';
 const FormItem = Form.Item;
 const { RangePicker } = DatePicker;
 
-const DatePickerForm = ({
+const TimePickerForm = ({
   field: { ...field },
   form: { touched, errors, handleSubmit, setFieldValue, handlePanelChange, ...form },
   type,
@@ -37,26 +37,15 @@ const DatePickerForm = ({
         validateStatus={touched[field.name] && errors[field.name] && 'error'}
         help={touched[field.name] && errors[field.name]}
     >
-      { type === 'date'  && 
-        <DatePicker
-          {...props} 
+        <TimePicker
+          {...props}
           onChange={(value) => onDateChange(value)}
           format={format}
-          disabledDate={disabledDate}
+          //disabledDate={disabledDate}
           style={{width: '250px'}}
         /> 
-      }
-
-      { type === 'range' && 
-        <RangePicker
-          {...props}
-          onChange={(value) => onDateChange(value, true)}
-          format={format}
-          disabledDate={disabledDate}
-        />
-      }
     </FormItem>
   );
 };
 
-export default DatePickerForm;
+export default TimePickerForm;

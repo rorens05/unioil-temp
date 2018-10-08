@@ -33,8 +33,8 @@ class SelectForm extends Component {
     }
 
     const {
-      field: { name, /* ...field */ },
-      form: { errors, /* ...form */ },
+      field: { ...field },
+      form: { touched, errors, ...form },
       layout,
       label,
       required,
@@ -49,8 +49,9 @@ class SelectForm extends Component {
         {...layout}
         required={required}
         label={label}
-        validateStatus={errors[name] && 'error'}
-        help={errors[name]}
+        style={{marginBottom: '10px'}}
+        validateStatus={touched[field.name] && errors[field.name] && 'error'}
+        help={touched[field.name] && errors[field.name]}
       >
         <Select 
           {...props}
@@ -64,7 +65,7 @@ class SelectForm extends Component {
           >
           {
               optionsList && (optionsList.map((item,i) => {
-                return <Option value={item.value} key={`${i}-${name}`}>{item.label}</Option>
+                return <Option value={item.value} key={`${i}-${field.name}`}>{item.label}</Option>
               }))
           }
          

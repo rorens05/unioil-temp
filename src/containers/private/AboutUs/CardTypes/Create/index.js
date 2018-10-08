@@ -45,14 +45,12 @@ class CardTypeCreate extends Component {
             }); 
           } 
           
-          
           values.code && (formData.append('code', values.code));
           values.type && (formData.append('type', values.type));
           values.description && (formData.append('description', values.description));
           values.terms_and_conditions && (formData.append('terms_and_conditions', values.terms_and_conditions));
           values.faqs && (formData.append('faqs', values.faqs));
           
-
           let response = await API_UNI_OIL.post('cardType', formData , headers)
 
           if(response) {
@@ -61,7 +59,6 @@ class CardTypeCreate extends Component {
             history.push({ pathname: "/about-us/card-types" })
           }
           
-        
     } catch ({response: error}) {
       notification.error({ 
         message: 'Error', 
@@ -77,7 +74,7 @@ class CardTypeCreate extends Component {
   }
 
   
-  handleAddUser =()=> {
+  handleAddCardTypes =()=> {
     this.form.submitForm()
   }
 
@@ -97,7 +94,7 @@ class CardTypeCreate extends Component {
         <HeaderForm 
           loading={loading}
           title="Card Types"
-          action={this.handleAddUser}
+          action={this.handleAddCardTypes}
           actionBtnName="Save"
           cancel={()=> { this.props.history.push("/about-us")}}
           cancelBtnName="Cancel"
