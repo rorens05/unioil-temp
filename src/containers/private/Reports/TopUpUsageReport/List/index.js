@@ -47,9 +47,7 @@ class TopUpList extends Component {
             updating = { this.state.updating }
             keyValue="cardtype_uuid"
             url={{ 
-              //default: 'admin?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
-              apiDelete: 'cardTypeBatchDelete',
-              default: 'cardType',
+              default: 'reportTopUp',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}
             filterValues ={["role", "status"]}

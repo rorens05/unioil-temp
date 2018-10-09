@@ -182,7 +182,7 @@ class AdvanceTable extends Component {
     const rowSelection = { selectedRowKeys, onChange: this.onSelectChange };
     const hasSelected = selectedRowKeys.length > 0;
 
-    let { history, keyValue, location } = this.props;
+    let { history, keyValue, location, url: {apiDelete} } = this.props;
 
 
     let { search } = this.props.location;
@@ -283,7 +283,7 @@ class AdvanceTable extends Component {
 
         <Table
           size          = "middle"
-          rowSelection  = {rowSelection}
+          rowSelection  = {apiDelete && (rowSelection)}
           columns       = {columns}
           dataSource    = {this.state.data ? this.state.data : null}
           pagination    = {false}
@@ -294,25 +294,29 @@ class AdvanceTable extends Component {
 
         <Row type="flex" justify="space-between" style={{ marginTop: 20 }}>
           <Col>
-          <div>
-              <Popconfirm 
-                placement="top" title={'Delete this record?'} 
-                onConfirm={this.handleBatchDelete} okText="Yes" cancelText="No"
-                icon={ <Icon type="close-circle" /> }
-              >
-                <Button
-                    type="danger"
-                    disabled={!hasSelected}
-                    icon="delete" 
-                    loading={loading}
+            {
+              apiDelete && (
+              <div>
+                <Popconfirm 
+                  placement="top" title={'Delete this record?'} 
+                  onConfirm={this.handleBatchDelete} okText="Yes" cancelText="No"
+                  icon={ <Icon type="close-circle" /> }
                 >
-                    Delete All
-                </Button>
-                <span style={{ marginLeft: 8 }}>
-                    {hasSelected ? `Selected ${selectedRowKeys.length} item(s)` : ''}
-                </span>
-              </Popconfirm>
+                  <Button
+                      type="danger"
+                      disabled={!hasSelected}
+                      icon="delete" 
+                      loading={loading}
+                  >
+                      Delete All
+                  </Button>
+                  <span style={{ marginLeft: 8 }}>
+                      {hasSelected ? `Selected ${selectedRowKeys.length} item(s)` : ''}
+                  </span>
+                </Popconfirm>
               </div>
+              )
+            }
           </Col>
 
           <Col>
