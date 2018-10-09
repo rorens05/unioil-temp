@@ -285,11 +285,11 @@ class AdvanceTable extends Component {
           size          = "middle"
           rowSelection  = {rowSelection}
           columns       = {columns}
-          dataSource    = {this.state.data}
+          dataSource    = {this.state.data ? this.state.data : null}
           pagination    = {false}
           rowKey        = {record => record[this.props.keyValue]}
           onChange      = {this.handleTableChange}
-          loading       = {this.state.loading}
+          loading       = {loading}
         />
 
         <Row type="flex" justify="space-between" style={{ marginTop: 20 }}>
