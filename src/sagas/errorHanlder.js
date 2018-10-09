@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import { takeLatest, put } from "redux-saga/effects";
 import { delay } from "redux-saga";
 import { API_UNI_OIL } from "utils/Api";
@@ -14,11 +15,22 @@ function* handleErrors({payload}){
       API_UNI_OIL.defaults.headers.common['Authorization'] = undefined;
       removeCookie('TOKEN');
       yield put({ type: "LOGOUT_SUCCESS" }); 
-      notification.error({ message: data.message, description: '' });
+      notification.error({ message: 'Error', 
+        description: <div>
+          <div>Something went wrong</div>
+          - {data.message}
+        </div> 
+      });
     }else if(status === 404){
       yield put(replace('/404'))
     }else {
-      notification.error({ message: data.message, description: '' });
+      notification.error({ 
+        message: 'Error', 
+        description: <div>
+          <div>Something went wrong</div>
+          - {data.message}
+        </div>
+      });
     }
   }else {
     // TO BE ADDED LATER WHEN ALL API IS COMPLETED
