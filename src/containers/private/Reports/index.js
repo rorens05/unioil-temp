@@ -4,9 +4,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 // COMPONENTS
 import TopUpList from './TopUpUsageReport/List';
-import TopUpCreate from './TopUpUsageReport/Create';
-import TopUpEdit from './TopUpUsageReport/Edit';
-import TopUpView from './TopUpUsageReport/View';
+
+import StationList from './StationRatingReport/List';
 
 import { PAGE404 } from "components/PageError/index"
 import MainContent from 'components/Dashboard/Layout/components/MainContent';
@@ -23,24 +22,12 @@ class Reports extends Component {
         name: "Top-Up Usage Report",
         component: TopUpList,        
       }, 
-      {
-        path: `${this.props.match.url}/top-up/create`,
-        name: "Create Top-Up Usage Report",
-        component: TopUpCreate,
-      },
-      {
-        path: `${this.props.match.url}/top-up/edit`,
-        params: ':id',
-        name: "Update Top-Up Usage Report",
-        component: TopUpEdit,
-      },
-      {
-        path: `${this.props.match.url}/top-up/view`,
-        params: ':id',
-        name: "View Top-Up Usage Report",
-        component: TopUpView,
-      }  
 
+      {
+        path: `${this.props.match.url}/station-rating`,
+        name: "Top-Up Usage Report",
+        component: StationList,        
+      }, 
 
       // {
       //   path: `${this.props.match.url}/lock-account`,
@@ -69,19 +56,18 @@ class Reports extends Component {
 
             <Redirect exact from="/reports" to="/reports/top-up"/>
             <Route exact path = "/reports/top-up" component = { TopUpList } />
-            <Route exact path = "/reports/top-up/create" component = { TopUpCreate } />
-            <Route exact path = "/reports/top-up/view/:id" component = { TopUpView } />
-            <Route exact path = "/reports/top-up/edit/:id" component = { TopUpEdit } />
 
-           {/*
-            <Route exact path = "/reports/terms-privacy" component = { LockAccountList } />
-            <Route exact path = "/reports/terms-privacy/create" component = { UserManagementCreate } />
-            <Route exact path = "/reports/terms-privacy/view/:id" component = { LockAccountView } />
-            <Route exact path = "/reports/terms-privacy/edit/:id" component = { UserManagementEdit } />
-            */}
-      
+            <Redirect exact from="/reports" to="/reports/station-rating"/>
+            <Route exact path = "/reports/station-rating" component = { StationList } />
+
+            {/* <Route exact path = "/reports/top-up/create" component = { TopUpCreate } />
+            <Route exact path = "/reports/top-up/view/:id" component = { TopUpView } />
+            <Route exact path = "/reports/top-up/edit/:id" component = { TopUpEdit } /> */}
+
+
 
             <PAGE404 />
+
           </Switch>
         </MainContent>
       </div>
