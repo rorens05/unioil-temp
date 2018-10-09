@@ -3,12 +3,14 @@ import { withRouter } from "react-router-dom";
 import queryString from "query-string";
 import _ from 'lodash';
 import { Table, Button, Row, Col, Input, Icon, Pagination, Tooltip, 
-        notification, Popconfirm, message } from 'antd';
+        notification, Popconfirm, message, DatePicker } from 'antd';
 
 import { DropdownExport } from "components/Dropdown/index";
 import { fnQueryParams } from "utils/helper";
 import { API_UNI_OIL, API_GET, API_DELETE } from "utils/Api";
 import "./index.css"
+
+const { RangePicker } = DatePicker;
 
 class AdvanceTable extends Component {
   constructor(props){
@@ -175,6 +177,13 @@ class AdvanceTable extends Component {
     this.setState({ selectedRowKeys });
   }
 
+  handleDateRangePicker = async (date, dateString) => {
+    this.handleFilterChange({ 
+      date_start: dateString[0],
+      date_end: dateString[1],
+    });
+  }
+
   render(){
     
     if(!this.state.mounted) return null;
@@ -263,16 +272,22 @@ class AdvanceTable extends Component {
       <div style={{ margin: '0 24px', padding: '24px 0'}}>
         <Row type="flex" justify="space-between" align="bottom" style={{paddingBottom: 25}}>
           <Col>
-          <Input
-            onChange={ this.handleSearchChange }
-            style={{ width: 300 }}
-            value={ this.state.search_filter }
-            prefix={
-              <Icon type="search"
-                style={{ color: 'rgba(0,0,0,.25)' }} />}
-                type="text"
-                placeholder="Search"
-              />
+            {
+              this.props.filterDateRange ? 
+              (
+                <RangePicker onChange={this.handleDateRangePicker} />
+              ) :
+              (
+                <Input
+                  onChange={ this.handleSearchChange }
+                  style={{ width: 300 }}
+                  value={ this.state.search_filter }
+                  prefix={ <Icon type="search" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                  type="text"
+                  placeholder="Search Parking Area"
+                />
+              )
+            }
           </Col>
           <Col className="table-operations">
             {/* <Button onClick = {this.clearFilters}><b>Clear filters</b></Button>*/}
