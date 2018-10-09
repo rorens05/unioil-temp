@@ -61,6 +61,11 @@ const AsyncCardTypes = Loadable({
   loading: Loading
 });
 
+const AsyncReports = Loadable({
+  loader: () => import("./containers/private/Reports"),
+  loading: Loading
+});
+
 const AsyncSystemPreferences = Loadable({
   loader: () => import("./containers/private/SystemPreferences"),
   loading: Loading
@@ -155,6 +160,10 @@ console.log('====================================');
               <DashboardRoute 
                 path="/about-us" 
                 component={AsyncCardTypes} 
+              />
+              <DashboardRoute 
+                path="/reports" 
+                component={AsyncReports} 
               />
               <DashboardRoute 
                 path="/system-parameters" 
