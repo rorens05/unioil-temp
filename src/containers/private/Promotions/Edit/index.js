@@ -138,25 +138,25 @@ class EditManagement extends Component {
           } 
 
           let date_start =  moment(values.date_start).format('YYYY-MM-DD');
-          let start_time = moment(values.start_time).format('hh:mm:ss');
+          let start_time = moment(values.start_time).format('THH:mm:ss');
 
           if(start_time == 'Invalid date') {
             start_time = values.start_time
           } else {
-            start_time = moment(values.start_time).format('hh:mm:ss');
+            start_time = moment(values.start_time).format('THH:mm:ss');
           }
 
           let date_end =  moment(values.date_end).format('YYYY-MM-DD');
-          let end_time = moment(values.end_time).format('hh:mm:ss');
+          let end_time = moment(values.end_time).format('THH:mm:ss');
 
           if(end_time == 'Invalid date') {
             end_time = values.end_time
           } else {
-            end_time = moment(values.end_time).format('hh:mm:ss');
+            end_time = moment(values.end_time).format('THH:mm:ss');
           }
 
-          let startDateTime = moment(date_start + ' ' + start_time, 'YYYY-MM-DD hh:mm:ss');
-          let endDateTime = moment(date_end + ' ' + end_time, 'YYYY-MM-DD hh:mm:ss');
+          let startDateTime = moment(date_start + ' ' + start_time, 'YYYY-MM-DDTHH:mm:ss');
+          let endDateTime = moment(date_end + ' ' + end_time, 'YYYY-MM-DDTHH:mm:ss');
 
           let branchesList = []
           
@@ -171,12 +171,20 @@ class EditManagement extends Component {
           values.station_uuid && (formData.append('station_uuid', JSON.stringify(branchesList)));
           values.title && (formData.append('title', values.title));
           values.description && (formData.append('description', values.description));
-          values.date_start && (formData.append('date_start', startDateTime.format('YYYY-MM-DD hh:mm:ss') ) );
-          values.date_end && (formData.append('date_end', endDateTime.format('YYYY-MM-DD hh:mm:ss') ) );
+          values.date_start && (formData.append('date_start', startDateTime.format('YYYY-MM-DDTHH:mm:ss') ) );
+          values.date_end && (formData.append('date_end', endDateTime.format('YYYY-MM-DDTHH:mm:ss') ) );
           formData.append('is_toppromotion', values.is_toppromotion ? values.is_toppromotion : 0);
           formData.append('is_gps', values.is_gps ? values.is_gps : 0);
           values.promo_type && (formData.append('promo_type', values.promo_type));
           
+          console.log(start_time , 'start_time', values.start_time)
+          console.log(end_time , 'end_time' , values.end_time)
+
+          // log formdata
+          // for (var pair of formData.entries()) {
+          //   console.log(pair[0]+ ', ' + pair[1]); 
+          // }
+
           let response = await API_UNI_OIL.post(`updatePromotion/${userInfo.promotion_uuid}`, formData , headers)
 
           if(response) {
@@ -235,10 +243,10 @@ class EditManagement extends Component {
                 title: userInfo.title || '',
                 description: userInfo.description || '',
                 image: userInfo.image || '',
-                date_start: moment(userInfo.date_start, 'YYYY-MM-DD hh:mm:ss').format('YYYY-MM-DD') || '',
-                date_end: moment( userInfo.date_end, 'YYYY-MM-DD hh:mm:ss').format('YYYY-MM-DD') || '',
-                start_time: moment(userInfo.date_start, 'YYYY-MM-DD hh:mm:ss').format('hh:mm:ss') || '',
-                end_time: moment(userInfo.date_end, 'YYYY-MM-DD hh:mm:ss' ).format('hh:mm:ss') || '',
+                date_start: moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm:ss').format('YYYY-MM-DD') || '',
+                date_end: moment( userInfo.date_end, 'YYYY-MM-DDTHH:mm:ss').format('YYYY-MM-DD') || '',
+                start_time: moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm:ss').format('THH:mm:ss') || '',
+                end_time: moment(userInfo.date_end, 'YYYY-MM-DDTHH:mm:ss' ).format('THH:mm:ss') || '',
                 is_toppromotion: userInfo.is_toppromotion || '',
                 is_gps: userInfo.is_gps || '',
                 promo_type: promoTypeDefaultKeyValue || '',
