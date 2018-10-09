@@ -22,15 +22,7 @@ class TopUpList extends Component {
   }
 
   updateDropDown = async(e) => {
-    let params = e.item.props.record;
-    params = { admin_uuid : params.admin_uuid , status: params.status}
-    try {
-      const response = await API_UNI_OIL.post(`adminChangeStatus`,params);
-      message.success("User Successfuly update status" );
-      this.setState({ updating: !this.state.updating });
-    } catch (error) {
-      message.error("Something went wrong updating status.")
-    }
+    
   }
 
   render() {
