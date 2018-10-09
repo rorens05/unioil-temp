@@ -6,6 +6,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import TopUpList from './TopUpUsageReport/List';
 import StationList from './StationRatingReport/List';
 import MobileList from './MobileUsageReport/List';
+import RegistrationList from './RegistrationReport/List';
 
 import { PAGE404 } from "components/PageError/index"
 import MainContent from 'components/Dashboard/Layout/components/MainContent';
@@ -33,6 +34,12 @@ class Reports extends Component {
         path: `${this.props.match.url}/mobile-report`,
         name: "Mobile Usage Report",
         component: MobileList,        
+      },
+
+      {
+        path: `${this.props.match.url}/registration-report`,
+        name: "Registration Report",
+        component: RegistrationList,        
       },
 
       // {
@@ -68,6 +75,9 @@ class Reports extends Component {
 
             <Redirect exact from="/reports" to="/reports/mobile-report"/>
             <Route exact path = "/reports/mobile-report" component = { MobileList } />
+
+            <Redirect exact from="/reports" to="/reports/registration-report"/>
+            <Route exact path = "/reports/registration-report" component = { RegistrationList } />
 
             {/* <Route exact path = "/reports/top-up/create" component = { TopUpCreate } />
             <Route exact path = "/reports/top-up/view/:id" component = { TopUpView } />
