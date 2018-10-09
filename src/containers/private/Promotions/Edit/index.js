@@ -138,21 +138,21 @@ class EditManagement extends Component {
           } 
 
           let date_start =  moment(values.date_start).format('YYYY-MM-DD');
-          let start_time = moment(values.start_time).format('THH:mm:ss');
+          let start_time = moment(values.start_time).format('HH:mm:ss');
 
           if(start_time == 'Invalid date') {
             start_time = values.start_time
           } else {
-            start_time = moment(values.start_time).format('THH:mm:ss');
+            start_time = moment(values.start_time).format('HH:mm:ss');
           }
 
           let date_end =  moment(values.date_end).format('YYYY-MM-DD');
-          let end_time = moment(values.end_time).format('THH:mm:ss');
+          let end_time = moment(values.end_time).format('HH:mm:ss');
 
           if(end_time == 'Invalid date') {
             end_time = values.end_time
           } else {
-            end_time = moment(values.end_time).format('THH:mm:ss');
+            end_time = moment(values.end_time).format('HH:mm:ss');
           }
 
           let startDateTime = moment(date_start + ' ' + start_time, 'YYYY-MM-DDTHH:mm:ss');
@@ -245,8 +245,8 @@ class EditManagement extends Component {
                 image: userInfo.image || '',
                 date_start: moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm:ss').format('YYYY-MM-DD') || '',
                 date_end: moment( userInfo.date_end, 'YYYY-MM-DDTHH:mm:ss').format('YYYY-MM-DD') || '',
-                start_time: moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm:ss').format('THH:mm:ss') || '',
-                end_time: moment(userInfo.date_end, 'YYYY-MM-DDTHH:mm:ss' ).format('THH:mm:ss') || '',
+                start_time: moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss') || '',
+                end_time: moment(userInfo.date_end, 'YYYY-MM-DDTHH:mm:ss' ).format('HH:mm:ss') || '',
                 is_toppromotion: userInfo.is_toppromotion || '',
                 is_gps: userInfo.is_gps || '',
                 promo_type: promoTypeDefaultKeyValue || '',

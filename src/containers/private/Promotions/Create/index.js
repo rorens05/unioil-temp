@@ -40,10 +40,10 @@ class CreateManagement extends Component {
           } 
 
           let date_start =  moment(values.date_start).format('YYYY-MM-DD');
-          let start_time = moment(values.start_time).format('THH:mm:ss');
+          let start_time = moment(values.start_time).format('HH:mm:ss');
 
           let date_end =  moment(values.date_end).format('YYYY-MM-DD');
-          let end_time = moment(values.end_time).format('THH:mm:ss');
+          let end_time = moment(values.end_time).format('HH:mm:ss');
 
           let startDateTime = moment(date_start + ' ' + start_time, 'YYYY-MM-DDTHH:mm:ss');
           let endDateTime = moment(date_end + ' ' + end_time, 'YYYY-MM-DDTHH:mm:ss');
@@ -69,7 +69,7 @@ class CreateManagement extends Component {
       notification.error({ 
         message: 'Error', 
         description: <div>
-          Something went wrong creating new user.
+          Something went wrong creating new promotions.
           {error.data && error.data.data  && error.data.data.image 
                 && (<div>- {error.data.data.image[0]} </div>) }
         </div>

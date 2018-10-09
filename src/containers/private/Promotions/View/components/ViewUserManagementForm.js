@@ -2,6 +2,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Icon, Avatar, Row , Col } from 'antd'
+import moment from 'moment'
  
 // COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
@@ -9,61 +10,72 @@ import HeaderForm from "components/Forms/HeaderForm"
 // HELPER FUNCTIONS
 
 
-function ViewUserManagementForm(props) {
+function ViewPromotionsForm(props) {
   const {
     isSubmitting,
+    userInfo
   } = props;
-
+console.log(userInfo,'userInfouserInfo', process.env.REACT_APP_IMG_URL ,userInfo);
+// imageUrl={props.values.image && `${process.env.REACT_APP_IMG_URL}${props.values.image}`}
   return (
     <div>
+        <div style={{ width: '100%', height: '160px' }}>
+          {
+            userInfo && (
+              <img
+              style={{ float:'left', width:'100%', height:'100%', objectFit: 'fill'}}
+              src={`${process.env.REACT_APP_IMG_URL}${userInfo.image}` }
+            />
+            )
+          }
+        </div>
         <div style={{padding: '15px 30px 0px', borderTop: 0}}>
             <div>
-              <h2 style={{margin: '0 0 20px'}}>Promotions Details</h2>
-              {/*Account Details */}
-              <h2 style={{fontWeight: 'bold', fontSize: '20px'}}>User Details</h2>
+              <h2 style={{margin: '0 0 20px'}}>Details</h2>
+              <h2 style={{fontWeight: 'bold', fontSize: '15px'}}>CONTENT DETAILS</h2>
               <Row>
-                <Col span={18} push={3}>{'jdoe'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>UserName:</span></Col>
+                <Col span={18} push={5}>{userInfo && userInfo.title}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Title:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={3}>{'fnarciso'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>First Name:</span></Col>
-              </Row>
-              <Row>
-                <Col span={18} push={3}>{'Doe'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Last Name:</span></Col>
-              </Row>
-              <Row>
-                <Col span={18} push={3}><a style={{color: '#1890FF'}} href={`mailto:${'marketing.officer@unioil.com'}`}>loyalty.officer@unioil.com</a></Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Email:</span></Col>
-              </Row>
-              <Row>
-                <Col span={18} push={3}>{'Marketing Personnel'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>User Role:</span></Col>
+                <Col span={18} push={5}>{userInfo && userInfo.description}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Description:</span></Col>
               </Row>
             </div>
              {/*Account Details */}
             <div style={{margin: '12px 0'}}>
-              <h2 style={{fontWeight: 'bold', fontSize: '20px'}}>Account Details</h2>
+              <h2 style={{fontWeight: 'bold', fontSize: '15px'}}>SCHEDULE DETAILS</h2>
               <Row>
-                <Col span={18} push={3}>{'Active'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Status:</span></Col>
+                <Col span={18} push={5}>{userInfo && moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Start Appeareance Date:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={3}>{'20-Aug-2018'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Date Created:</span></Col>
+                <Col span={18} push={5}>{userInfo && moment(userInfo.date_end, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>End Appeareance Date:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={3}>{'Francine Narciso'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Created By:</span></Col>
+                <Col span={18} push={5}>{userInfo && moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss')}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Start Time:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={3}>{'20-Aug-2018'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Last Update:</span></Col>
+                <Col span={18} push={5}>{userInfo && moment(userInfo.date_end, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss')}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>End Time:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={3}>{'Francine Narciso'}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Updated By:</span></Col>
+                <Col span={18} push={5}>{userInfo && userInfo.created_by}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Created By:</span></Col>
+              </Row>
+              <Row>
+                <Col span={18} push={5}>{userInfo && moment(userInfo.created_at, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Date Created:</span></Col>
+              </Row>
+              <Row>
+                <Col span={18} push={5}>{userInfo && userInfo.updated_by}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Last Updated By:</span></Col>
+              </Row>
+              <Row>
+                <Col span={18} push={5}>{userInfo && moment(userInfo.updated_at, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Last Date Updated:</span></Col>
               </Row>
             </div>
         </div>
@@ -72,12 +84,12 @@ function ViewUserManagementForm(props) {
 };
 
 
-ViewUserManagementForm = connect(
+ViewPromotionsForm = connect(
   state => ({
     
   }),
-)(ViewUserManagementForm);
+)(ViewPromotionsForm);
 
 
-export default ViewUserManagementForm;
+export default ViewPromotionsForm;
 

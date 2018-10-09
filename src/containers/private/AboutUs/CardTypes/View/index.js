@@ -56,6 +56,8 @@ class CardTypeView extends Component {
 
   render() {
 
+    if(!this.state.mounted) return null;
+    
     const { userInfo } = this.state
     const { history, match } = this.props
     
