@@ -32,7 +32,7 @@ function ViewUserManagementForm(props) {
               <Row>
                 <Col span={18} push={4}>
                     <img 
-                      src={userInfo && userInfo.image && `${process.env.REACT_APP_IMG_URL}storage/app/${userInfo.image}`} 
+                      src={userInfo && userInfo.image && `${process.env.REACT_APP_IMG_URL}${userInfo.image}`} 
                       alt="avatar"
                       width="300"
                       style={{maxHeight: '250px'}}
