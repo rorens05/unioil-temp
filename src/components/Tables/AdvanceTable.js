@@ -19,6 +19,7 @@ class AdvanceTable extends Component {
       loading: false,
       selectedRowKeys: [],
       columns: [],
+      search_filter: "",
   
       mounted: false,
       test: true,
@@ -26,6 +27,7 @@ class AdvanceTable extends Component {
     };
 
     this.delayFetchRequest = _.debounce(this.fetch, 500);
+    this.handleSearchChangeDebounce = _.debounce(this.handleSearchStateChange, 1000);
   }
 
   componentDidMount(){
@@ -47,6 +49,11 @@ class AdvanceTable extends Component {
     }
     return true
   }
+
+  componentWillMount(){
+    this.delayFetchRequest.cancel();
+    this.handleSearchChangeDebounce.cancel();
+  }
   
   handleTableChange = (pagination, filters, sorter) => {
     let _sort_order;
@@ -57,6 +64,16 @@ class AdvanceTable extends Component {
       _sort_by    : sorter.field,
       _sort_order
     })
+  }
+
+  handleSearchChange = (e) => {
+    this.setState({ search_filter: e.target.value });
+    this.handleSearchChangeDebounce(e.target.value);
+  }
+
+  handleSearchStateChange = (search_filter) => {
+    this.setState({ search_filter });
+    this.handleFilterChange({ _search: this.state.search_filter });
   }
 
   onPaginationChange = (page, page_size) => {
@@ -90,11 +107,19 @@ class AdvanceTable extends Component {
   }
 
   clearAll = () => {
+    this.setState({ search_filter: '' })
     this.handleFilterChange();
   }
 
   fetch = async (params = {}) => {
-    console.log(params,'defaultdefault', this.props.url.default);
+
+    if(this.props.defaultFilter){
+      params = {
+        ...params,
+        ...this.props.defaultFilter
+      }
+    }
+
     try {
       let response = await API_GET(this.props.url.default, params);
       let data = response.data.data.length > 0 ? response.data.data : null;
@@ -239,12 +264,14 @@ class AdvanceTable extends Component {
         <Row type="flex" justify="space-between" align="bottom" style={{paddingBottom: 25}}>
           <Col>
           <Input
+            onChange={ this.handleSearchChange }
             style={{ width: 300 }}
+            value={ this.state.search_filter }
             prefix={
               <Icon type="search"
                 style={{ color: 'rgba(0,0,0,.25)' }} />}
                 type="text"
-                placeholder="Search"
+                placeholder="Search Parking Area"
               />
           </Col>
           <Col className="table-operations">
