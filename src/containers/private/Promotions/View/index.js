@@ -49,7 +49,7 @@ class PrmotionsView extends Component {
     try {
       await API_UNI_OIL.delete(`promotion/${match.params.id}`);
       message.success('Succesfully delete record.');
-      this.props.history.push("/user-management");
+      this.props.history.push("/promotions");
     } catch (error) {
       message.info('Something went wrong deleting record.');
     }
