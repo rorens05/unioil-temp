@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Menu, Dropdown, notification, Icon, message } from "antd"
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 // COMPONENTS
 import AdvanceTable from "components/Tables/AdvanceTable";
@@ -54,12 +54,16 @@ class TopUpList extends Component {
             columns={
               [
                 {
-                  title: 'Card Code',
-                  dataIndex: 'code',
-                  key: 'code',
+                  title: 'Date',
+                  dataIndex: 'date',
+                  key: 'date',
                   sorter: true,
                   filters: [],
                   width: "14%",
+                  render: date => {
+                    if(moment(date).format("DD-MMM-YYYY") !== "Invalid date")
+                      return moment(date).format("DD-MMM-YYYY")
+                  },
                 },
                 {
                   title: 'Card Type Description',

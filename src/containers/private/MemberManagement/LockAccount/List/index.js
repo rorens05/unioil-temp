@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { message } from 'antd';
 import { connect } from "react-redux";
+import moment from 'moment'
 
 // COMPONENTS
 import AdvanceTable from "components/Tables/AdvanceTable";
@@ -69,6 +70,10 @@ class LockedAccountList extends Component {
                   key: 'birthdate',
                   sorter: true,
                   width: "15%",
+                  render: date => {
+                    if(moment(date).format("DD-MMM-YYYY") !== "Invalid date")
+                      return moment(date).format("DD-MMM-YYYY")
+                  },
                 },
                 {
                   title: 'Card Type',

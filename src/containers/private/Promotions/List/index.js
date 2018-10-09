@@ -69,7 +69,10 @@ class DashboardList extends Component {
                   dataIndex: 'date_start',
                   key: 'date_start',
                   sorter: true,
-                  render: date => moment(date).format("DD-MMM-YYYY"),
+                  render: date => {
+                    if(moment(date).format("DD-MMM-YYYY") !== "Invalid date")
+                      return moment(date).format("DD-MMM-YYYY")
+                  },
                   filters:[],
                   width: 150
                 },
@@ -78,7 +81,10 @@ class DashboardList extends Component {
                   dataIndex: 'date_end',
                   key: 'date_end',
                   sorter: true,
-                  render: date => moment(date).format("DD-MMM-YYYY"),
+                  render: date => {
+                    if(moment(date).format("DD-MMM-YYYY") !== "Invalid date")
+                      return moment(date).format("DD-MMM-YYYY")
+                  },
                   filters:[],
                   width: 150
                 },
