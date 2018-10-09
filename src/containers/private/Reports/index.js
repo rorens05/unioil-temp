@@ -25,7 +25,7 @@ class Reports extends Component {
 
       {
         path: `${this.props.match.url}/station-rating`,
-        name: "Top-Up Usage Report",
+        name: "Station Rating Report",
         component: StationList,        
       }, 
 
