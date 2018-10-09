@@ -40,15 +40,14 @@ class TopUpList extends Component {
       <div style={{border:'1px solid #E6ECF5'}}>
         <HeaderForm 
           title="Card Types"
-          action={()=> history.push({ pathname: `${match.url}/create` })}
-          actionBtnName="Add Card"
         />
         <AdvanceTable 
             updating = { this.state.updating }
-            keyValue="cardtype_uuid"
+            keyValue="payment_uuid"
             url={{ 
               default: 'reportTopUp',
-              filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
+              filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc',
+              csv: { path :'/reportTopUpExport', fileName: 'TopUpUsageReport' }
             }}
             filterValues ={["role", "status"]}
             columns={
@@ -59,46 +58,34 @@ class TopUpList extends Component {
                   key: 'date',
                   sorter: true,
                   filters: [],
-                  width: "14%",
+                  width: "17%",
                   render: date => {
                     if(moment(date).format("DD-MMM-YYYY") !== "Invalid date")
                       return moment(date).format("DD-MMM-YYYY")
                   },
                 },
                 {
-                  title: 'Card Type Description',
-                  dataIndex: 'description',
-                  key: 'description',
+                  title: 'Time',
+                  dataIndex: 'time',
+                  key: 'time',
                   sorter: true,
                   filters:[],
                 },
                 {
-                  title: 'Action',
-                  dataIndex: 'action',
-                  key: 'action',
-                  width: 150,
-                  buttons: [
-                    {
-                      key: 'edit',
-                      title: "Edit",
-                      icon: 'edit',
-                      url: 'about-us/card-types/edit'
-                    },
-                    {
-                      key: 'delete',
-                      title: "Delete",
-                      icon: 'delete',
-                      url: '',
-                      action: this.delete
-                    },
-                    {
-                      key: 'view',
-                      title: "View",
-                      icon: 'right-circle-o',
-                      url: 'about-us/card-types/view'
-                    }
-                  ]
+                  title: 'Card Number',
+                  dataIndex: 'card_number',
+                  key: 'card_number',
+                  sorter: true,
+                  filters:[],
                 },
+                {
+                  title: 'Top-up Amount',
+                  dataIndex: 'amount',
+                  key: 'amount',
+                  sorter: true,
+                  filters:[],
+                },
+                
               ]
             }
           />

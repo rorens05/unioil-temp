@@ -97,11 +97,11 @@ class AdvanceTable extends Component {
     let { history, location } = this.props;
     let { search, pathname } = location;
     let urlParamsObject = queryString.parse(search);
-     
+    delete urlParamsObject["_search"];
     Object.keys(urlParamsObject).map((key, index) => {
       if(this.props.filterValues.includes(key)) delete urlParamsObject[key];  
     });
-  
+    
     history.push({ pathname, search:fnQueryParams(urlParamsObject) });
     this.handleFilterChange(urlParamsObject, true);
   }
@@ -271,13 +271,18 @@ class AdvanceTable extends Component {
               <Icon type="search"
                 style={{ color: 'rgba(0,0,0,.25)' }} />}
                 type="text"
-                placeholder="Search Parking Area"
+                placeholder="Search"
               />
           </Col>
           <Col className="table-operations">
-            {/* <Button onClick = {this.clearFilters}>Clear filters</Button>
-            <Button onClick = {this.clearAll}>Clear filters and sorters</Button> */}
-            {/* <DropdownExport /> */}
+            {/* <Button onClick = {this.clearFilters}><b>Clear filters</b></Button>*/}
+            <Button onClick = {this.clearAll}>Clear filters and sorters</Button> 
+            {
+              this.props.url.csv
+              && <DropdownExport
+                defaultFilter = {this.props.defaultFilter}
+                url={this.props.url.csv} />
+            }
           </Col>
         </Row>
 
