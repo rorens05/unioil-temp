@@ -28,44 +28,10 @@ class CreateUserManagement extends Component {
 
   handleSubmit = async (values, actions) => {
 
-    const { setErrors, setSubmitting } = actions;
-    let { history } = this.props;
-    let _self = this; 
-    this.setState({loading: true, isGenerated: false})
-    values.role = parseInt(values.role);
-
-    this.props.customAction({
-      type: "USERMANAGEMENT_CREATE_REQUEST",
-      payload: {
-        values,
-        setSubmitting,
-        setErrors,
-        history,
-        _self
-      }
-    });
   }
   
   handleAddUser =()=> {
     this.form.submitForm()
-  }
-
-  generatePassword = async (props) => {
-
-    this.setState({loading: true})
-
-    try {
-      let adminProfile = await API_POST('adminProfile'); 
-      let userInfo = { ...adminProfile.data.data[0]}
-      let response = await API_POST('generatePassword', userInfo.admin_uuid)
-      if(response) {
-        props.setValues({...props.values, password: response.data.data.password})
-        this.setState({loading: false, isGenerated: true})
-      }
-    } catch ({response:error}) {
-      notification.error({ message: 'Error', description: "Something went wrong generating password."})
-      this.setState({loading: false})
-    }
   }
 
   render() {
@@ -101,7 +67,6 @@ class CreateUserManagement extends Component {
                 <AddUserManagementForm 
                   {...props}
                   loading={userManagement.createRequestPending || loading}
-                  generatePassword={this.generatePassword}
                   isGenerated={isGenerated}
                 />
               }

@@ -37,7 +37,6 @@ function AddUserManagementForm(props) {
         name="fee_code"
         type="text"
         //icon="user"
-        disabled
         layout={formItemLayout}
         label="Fee Code"
         placeholder="Fee Code"
