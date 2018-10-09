@@ -39,7 +39,7 @@ class MobileList extends Component {
     return (
       <div style={{border:'1px solid #E6ECF5'}}>
         <HeaderForm 
-          title="Card Types"
+          title="Mobile Usage Reports"
         />
         <AdvanceTable 
             updating = { this.state.updating }

@@ -39,7 +39,7 @@ class TopUpList extends Component {
     return (
       <div style={{border:'1px solid #E6ECF5'}}>
         <HeaderForm 
-          title="Card Types"
+          title="Top-Up Usage Report"
         />
         <AdvanceTable 
             updating = { this.state.updating }
