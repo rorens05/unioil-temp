@@ -50,7 +50,7 @@ class TopUpEdit extends Component {
     const params = {
       ...values,
     }
-    
+
     this.setState({loading: true})
     try {
       const response = await API_PUT(`topUp/${userInfo.topup_uuid}`, params);    
@@ -75,7 +75,7 @@ class TopUpEdit extends Component {
     if(!this.state.mounted) return null;
 
     const { loading, userInfo, timerCount, isGenerated } = this.state
-console.log(userInfo,'userInfosss', userInfo.amount);
+
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
