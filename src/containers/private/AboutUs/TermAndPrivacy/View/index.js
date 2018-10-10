@@ -22,7 +22,7 @@ class TermAndPrivacyView extends Component {
     const { match } = this.props;
 
     try {
-      let response = await API_UNI_OIL.get(`admin/${match.params.id}`) 
+      let response = await API_UNI_OIL.get(`TermsAndPrivacy/${match.params.id}`) 
       this.setState({
         userInfo: {...response.data.data},
         mounted: true
@@ -46,9 +46,9 @@ class TermAndPrivacyView extends Component {
     const { match } = this.props;
 
     try {
-      await API_UNI_OIL.delete(`admin/${match.params.id}`);
+      await API_UNI_OIL.delete(`TermsAndPrivacyBatchDelete/${match.params.id}`);
       message.success('Succesfully delete record.');
-      this.props.history.push("/user-management");
+      this.props.history.push("/about-us/term-privacy");
     } catch (error) {
       message.info('Something went wrong deleting record.');
     }
@@ -62,7 +62,7 @@ class TermAndPrivacyView extends Component {
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
-          title="User Accounts"
+          title={"Terms & Privacy Details"}
           action={()=> {this.props.history.push(`/user-management/edit/${match.params.id}`)}}
           actionBtnName="Update"
           styleBtn={{background: 'white', borderColor: 'rgb(184, 187, 201)',color: 'rgb(101, 105, 127)'}}

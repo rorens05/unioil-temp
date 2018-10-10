@@ -19,14 +19,15 @@ class HeaderForm extends Component {
 
   render() {
     const { action, cancel, deleteAction , title , actionBtnName, cancelBtnName,
-            deleteBtnName, loading, withConfirm, styleBtn, isDropDown } = this.props;
+            deleteBtnName, loading, withConfirm, styleBtn, isDropDown , actionPrivacy, 
+            actionTerms } = this.props;
 
     const menu = (
       <Menu className="terms-management" 
         //onClick={handleMenuClick}
       >
-        <Menu.Item key="1">{`Terms & Condition`}</Menu.Item>
-        <Menu.Item key="2">Privacy Policy</Menu.Item>
+        <Menu.Item key="1" onClick={actionPrivacy}>{`Terms & Condition`}</Menu.Item>
+        <Menu.Item key="2" onClick={actionTerms}>Privacy Policy</Menu.Item>
       </Menu>
     );
 

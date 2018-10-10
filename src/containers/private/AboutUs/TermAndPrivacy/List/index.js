@@ -33,7 +33,8 @@ class TermAndPrivacyList extends Component {
         <HeaderForm 
           isDropDown
           title={`Terms & Privacy`}
-          action={()=> history.push({ pathname: `${match.url}/create` })}
+          actionPrivacy={()=> history.push({ pathname: `${match.url}/create/1` }) }
+          actionTerms={()=> history.push({ pathname: `${match.url}/create/2` })}
           actionBtnName="Add User"
         />
         <AdvanceTable 
@@ -54,7 +55,7 @@ class TermAndPrivacyList extends Component {
                   key: 'title',
                   sorter: true,
                   filters: [],
-                  width: "12%",
+                  width: "16%",
                 },
                 {
                   title: 'Details',

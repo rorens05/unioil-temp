@@ -55,19 +55,20 @@ class AboutUs extends Component {
       }, 
       {
         path: `${this.props.match.url}/term-privacy/create`,
+        params: ':id',
         name: "Terms",
         component: TermAndPrivacyCreate,
       },
       {
         path: `${this.props.match.url}/term-privacy/edit`,
         params: ':id',
-        name: "Privacy Policy",
+        name: "Terms & Privacy",
         component:TermAndPrivacyEdit,
       },
       {
         path: `${this.props.match.url}/term-privacy/view`,
         params: ':id',
-        name: "Privacy Policy Details",
+        name: "Terms & Privacy Details",
         component: TermAndPrivacyView,
       } 
 
@@ -105,7 +106,7 @@ class AboutUs extends Component {
             <Route exact path = "/about-us/card-types/edit/:id" component = { CardTypeEdit } />
 
             <Route exact path = "/about-us/term-privacy" component = { TermAndPrivacyList } />
-            <Route exact path = "/about-us/term-privacy/create" component = { TermAndPrivacyCreate } />
+            <Route exact path = "/about-us/term-privacy/create/:id" component = { TermAndPrivacyCreate } />
             <Route exact path = "/about-us/term-privacy/view/:id" component = { TermAndPrivacyView } />
             <Route exact path = "/about-us/term-privacy/edit/:id" component = { TermAndPrivacyEdit } />
 

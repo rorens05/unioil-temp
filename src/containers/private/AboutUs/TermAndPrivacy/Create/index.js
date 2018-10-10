@@ -28,19 +28,19 @@ class TermAndPrivacyCreate extends Component {
 
   handleSubmit = async (values, actions) => {
   
-    let { history } = this.props;
-    let params  = { ...values }
+    let { history, match } = this.props;
+    let params  = { ...values, type: match.params.id }
     this.setState({ loading: true });
-
+  
     try {
       const response = await API_UNI_OIL.post('TermsAndPrivacy', params);
       if(response) {
         message.success("Successfuly create new record" );
         this.setState({ loading: false });
-        history.push({ pathname: '/top-up' });
+        history.push({ pathname: '/about-us/term-privacy' });
       }
      
-    } catch (error) {
+    } catch ({response:error}) {
       message.error("Something went creating new record.")
       this.setState({ loading: true });
     }
@@ -52,29 +52,25 @@ handleCreateTermPrivacy =()=> {
 }
 
   render() {
-    const { userManagement } = this.props
+    const { userManagement, match } = this.props
     const { loading, isGenerated } = this.state;
     
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '30px'}}>
         <HeaderForm 
           loading={loading}
-          title="Terms"
+          title={match.params.id == "1" ? "Terms" : "Privacy Policy"}
           action={this.handleCreateTermPrivacy}
           actionBtnName="Save"
           cancel={()=> { this.props.history.push("/about-us/term-privacy")}}
           cancelBtnName="Cancel"
         />
         <div>
-          <h2 style={{margin: '25px 35px'}}>User Details</h2>
+          <h2 style={{margin: '25px 35px'}}>{match.params.id == "1" ? "Terms" : "Privacy Policy"} Details</h2>
           <Formik
               initialValues={{
-                username: '',
-                password: '',
-                firstname: '',
-                lastname: '',
-                email: '',
-                role: ''
+                title: '',
+                details: '',
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}

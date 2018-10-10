@@ -27,7 +27,7 @@ class TermAndPrivacyEdit extends Component {
     const { match } = this.props;
     
     try {
-      let response = await API_UNI_OIL.get(`admin/${match.params.id}`);
+      let response = await API_UNI_OIL.get(`TermsAndPrivacy/${match.params.id}`);
       this.setState({
         userInfo: {...response.data.data},
         mounted: true
@@ -51,11 +51,12 @@ class TermAndPrivacyEdit extends Component {
 
     const params = {
       ...values,
+      type : userInfo.type
     }
 
     this.setState({loading: true})
     try {
-      const response = await API_PUT(`admin/${userInfo.admin_uuid}`, params);    
+      const response = await API_PUT(`TermsAndPrivacy/${userInfo.tp_uuid}`, params);    
       if(response.status === 422){
         notification.error({ message: "Success", description: "Something went wrong updating record" });
         setSubmitting(false)
@@ -63,7 +64,7 @@ class TermAndPrivacyEdit extends Component {
       }else {
         notification.success({ message: "Success", description: "User Successfuly updated" });
         this.setState({loading: false})
-        this.props.history.push("/user-management");
+        this.props.history.push("/about-us/term-privacy");
       }
     } catch (error) {
       setSubmitting(false)
@@ -72,35 +73,18 @@ class TermAndPrivacyEdit extends Component {
 
   }
 
-  generatePassword = async (props) => {
-
-    const { userInfo } = this.state;
-    let params = {}; params.admin_uuid = userInfo.admin_uuid
-
-    this.setState({loading: true})
-    try {
-      let response = await API_POST('generatePassword', params)
-      if(response) {
-        props.setValues({...props.values, password: response.data.data.password})
-        this.setState({loading: false, isGenerated: true})
-      }
-    } catch (error) {
-      notification.error({ message: 'Error', description: "Something went wrong generating password."})
-      this.setState({loading: false})
-    }
-  }
 
   render() {
 
     if(!this.state.mounted) return null;
 
-    const { loading, userInfo, timerCount, isGenerated } = this.state
+    const { loading, userInfo  } = this.state
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '30px'}}>
         <HeaderForm 
           loading={loading}
-          title="Update User"
+          title="Update Terms"
           action={this.handleEditUserManagement}
           actionBtnName="Update"
           withConfirm={{message: "Save changes to this record?"}}
@@ -108,16 +92,11 @@ class TermAndPrivacyEdit extends Component {
           cancelBtnName="Cancel"
         />
         <div>
-          <h2 style={{margin: '25px 35px'}}>User Details</h2>
+          <h2 style={{margin: '25px 35px'}}>Details</h2>
           <Formik
               initialValues={{
-                username: userInfo.username  || '',
-                password: userInfo.password || '',
-                firstname: userInfo.firstname || '',
-                lastname: userInfo.lastname || '',
-                email: userInfo.email || '',
-                role: userInfo.role || '',
-                password: userInfo.generated_password || ''
+                title: userInfo.title  || '',
+                details: userInfo.details || '',
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
@@ -127,8 +106,6 @@ class TermAndPrivacyEdit extends Component {
                 <EditUserManagementForm 
                   {...props}
                   loading={loading}
-                  generatePassword={this.generatePassword}
-                  isGenerated={(isGenerated || userInfo.generated_password) && true}
                 />
               }
           />
