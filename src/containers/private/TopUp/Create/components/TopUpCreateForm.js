@@ -5,7 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
-import { Input, Radio } from 'components/Forms';
+import { Input, InputNumberAntD } from 'components/Forms';
 
 // HELPER FUNCTIONS
 
@@ -21,7 +21,7 @@ const formItemLayout = {
   },
 };
 
-function AddUserManagementForm(props) {
+function TopUpCreateForm(props) {
   const {
     isSubmitting,
     handleSubmit,
@@ -37,6 +37,7 @@ function AddUserManagementForm(props) {
         name="fee_code"
         type="text"
         //icon="user"
+        disabled
         layout={formItemLayout}
         label="Fee Code"
         placeholder="Fee Code"
@@ -55,12 +56,11 @@ function AddUserManagementForm(props) {
 
       <Field
         name="amount"
-        type="text"
         //icon="user"
         layout={formItemLayout}
         label="Amount"
         placeholder="Amount"
-        component={Input}
+        component={InputNumberAntD}
       />
       
     </Form>
@@ -68,12 +68,12 @@ function AddUserManagementForm(props) {
 };
 
 
-AddUserManagementForm = connect(
+TopUpCreateForm = connect(
   state => ({
     
   }),
-)(AddUserManagementForm);
+)(TopUpCreateForm);
 
 
-export default AddUserManagementForm;
+export default TopUpCreateForm;
 

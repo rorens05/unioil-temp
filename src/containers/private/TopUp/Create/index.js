@@ -6,42 +6,78 @@ import { message,notification } from 'antd';
 
 // COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
-import AddUserManagementForm from './components/AddUserManagementForm'
+import TopUpCreateForm from './components/TopUpCreateForm'
 
 // HELPER FUNCTIONS
-import { API_GET, API_POST } from "utils/Api";
+import { API_GET, API_POST, API_UNI_OIL } from "utils/Api";
 import { customAction } from "actions";
 import { userDetailsSchema } from './validationSchema'
 
 
 class TopUpCreate extends Component {
   state = {
-    userInfo: null,
+    generatedCode: null,
+    mounted: false,
     loading: false,
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+
+    const { match } = this.props;
+
+    if(match.path == "/top-up/create") {
+      try {
+        let response = await API_UNI_OIL.get(`generateFeeCode`);
+        this.setState({
+          generatedCode: {...response.data.data},
+          mounted: true
+        })
+      } catch ({response: error}) {
+        notification.error({ message: "Error", description: 'Something went wrong generating fee code' , duration: 20, });
+        this.setState({ mounted: false })
+      }
+    }
 
   }
 
   handleSubmit = async (values, actions) => {
+  
+      let { history } = this.props;
+      let params  = { ...values }
+      this.setState({ loading: true });
 
+      try {
+        const response = await API_UNI_OIL.post('topUp',params);
+        if(response) {
+          message.success("Successfuly create new record" );
+          this.setState({ loading: false });
+          history.push({ pathname: '/top-up' });
+        }
+       
+      } catch (error) {
+        message.error("Something went creating new record.")
+        this.setState({ loading: true });
+      }
+    
   }
   
-  handleAddUser =()=> {
+  handleCreateTopUp =()=> {
     this.form.submitForm()
   }
 
+
   render() {
 
-    const { loading } = this.state;
-    
+    if(!this.state.mounted) return null;
+
+    const { loading, generatedCode } = this.state;
+
     return (
-      <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
+      <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '40px'}}>
         <HeaderForm 
           loading={loading}
           title="Top-Up"
-          action={this.handleAddUser}
+          action={this.handleCreateTopUp}
           actionBtnName="Save"
           cancel={()=> { this.props.history.push("/top-up")}}
           cancelBtnName="Cancel"
@@ -50,7 +86,7 @@ class TopUpCreate extends Component {
           <h2 style={{margin: '25px 35px'}}>Top-Up Details</h2>
           <Formik
               initialValues={{
-                fee_code: '',
+                fee_code: generatedCode.fee_code || '',
                 name: '',
                 amount: '',
               }}
@@ -59,7 +95,7 @@ class TopUpCreate extends Component {
               validationSchema={userDetailsSchema}
               onSubmit={this.handleSubmit }
               render = {(props)=> 
-                <AddUserManagementForm 
+                <TopUpCreateForm 
                   {...props}
                   loading={loading}
                 />

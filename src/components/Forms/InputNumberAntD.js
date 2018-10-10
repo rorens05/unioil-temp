@@ -48,9 +48,9 @@ class InputNumberAntD extends Component {
 				style={{width: '100%'}}
 				min={0}
 				max={999}
-				//step={0.01}
-				formatter={value => value && `${value}.00`}
-				parser={value => value && value.replace('.00', '')}
+				step={0.01}
+			//	formatter={value => value && `${value}`}
+			//	parser={value => value && value.replace('', '')}
 				// formatter={value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
       	// parser={value => value.replace(/\$\s?|(,*)/g, '')}
 				onChange={this.handleChange}
