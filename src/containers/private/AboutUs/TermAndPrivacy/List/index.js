@@ -63,6 +63,7 @@ class TermAndPrivacyList extends Component {
                   key: 'details',
                   sorter: true,
                   filters:[],
+                  width: "45%",
                 },
                 {
                   title: 'Type',

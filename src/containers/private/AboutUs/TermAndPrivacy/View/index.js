@@ -63,7 +63,7 @@ class TermAndPrivacyView extends Component {
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
           title={"Terms & Privacy Details"}
-          action={()=> {this.props.history.push(`/user-management/edit/${match.params.id}`)}}
+          action={()=> {this.props.history.push(`/about-us/term-privacy/edit/${match.params.id}`)}}
           actionBtnName="Update"
           styleBtn={{background: 'white', borderColor: 'rgb(184, 187, 201)',color: 'rgb(101, 105, 127)'}}
           deleteAction={this.delete}
