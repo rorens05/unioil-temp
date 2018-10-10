@@ -50,7 +50,7 @@ class AboutUs extends Component {
 
       {
         path: `${this.props.match.url}/term-privacy`,
-        name: "Term & Privacy",
+        name: "Terms & Privacy",
         component: TermAndPrivacyList,        
       }, 
       {

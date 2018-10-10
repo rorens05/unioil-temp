@@ -5,7 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
-import { Input, Radio } from 'components/Forms';
+import { Input, InputTextArea } from 'components/Forms';
 
 // HELPER FUNCTIONS
 
@@ -50,7 +50,8 @@ function AddUserManagementForm(props) {
         layout={formItemLayout}
         label="Details"
         placeholder="Details"
-        component={Input}
+        rows={10}
+        component={InputTextArea}
       />
       
     </Form>

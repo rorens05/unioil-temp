@@ -56,13 +56,13 @@ handleCreateTermPrivacy =()=> {
     const { loading, isGenerated } = this.state;
     
     return (
-      <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
+      <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '30px'}}>
         <HeaderForm 
           loading={loading}
-          title="Add User"
+          title="Terms"
           action={this.handleCreateTermPrivacy}
           actionBtnName="Save"
-          cancel={()=> { this.props.history.push("/user-management")}}
+          cancel={()=> { this.props.history.push("/about-us/term-privacy")}}
           cancelBtnName="Cancel"
         />
         <div>

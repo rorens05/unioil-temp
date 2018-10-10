@@ -12,7 +12,7 @@ services:
       args:
         - REACT_APP_DOMAIN=http://192.168.0.68
         - REACT_APP_PATH=unioilQA/public/index.php/api/cms
-        - REACT_APP_IMG_PATH=unioilQA/storage/app
+        - REACT_APP_IMG_PATH=unioilQA/
     restart: always
     ports:
       - 8089:80

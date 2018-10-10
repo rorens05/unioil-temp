@@ -58,7 +58,7 @@ class RegistrationList extends Component {
                 },
                 {
                   title: 'No. of Activated Cards',
-                  dataIndex: 'activated ',
+                  dataIndex: 'activated',
                   key: 'activated',
                   sorter: true,
                   filters:[],

@@ -31,7 +31,8 @@ class TermAndPrivacyList extends Component {
     return (
       <div style={{border:'1px solid #E6ECF5'}}>
         <HeaderForm 
-          title="User Management"
+          isDropDown
+          title={`Terms & Privacy`}
           action={()=> history.push({ pathname: `${match.url}/create` })}
           actionBtnName="Add User"
         />

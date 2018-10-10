@@ -96,7 +96,7 @@ function MainSidebar(props) {
         },
         {
           key: 0.5 ,
-          label:"Term & Privacy",
+          label:"Terms & Privacy",
           path:"/about-us/term-privacy",
           access:true
         },

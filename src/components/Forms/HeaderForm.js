@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Button,Popconfirm, Icon } from 'antd';
+import { Button,Popconfirm, Icon, Dropdown, Menu } from 'antd';
 
 
 class HeaderForm extends Component {
@@ -15,10 +15,20 @@ class HeaderForm extends Component {
     // console.log(e);
     // message.error('Click on No');
   }
+  
 
   render() {
     const { action, cancel, deleteAction , title , actionBtnName, cancelBtnName,
-            deleteBtnName, loading, withConfirm, styleBtn } = this.props;
+            deleteBtnName, loading, withConfirm, styleBtn, isDropDown } = this.props;
+
+    const menu = (
+      <Menu className="terms-management" 
+        //onClick={handleMenuClick}
+      >
+        <Menu.Item key="1">{`Terms & Condition`}</Menu.Item>
+        <Menu.Item key="2">Privacy Policy</Menu.Item>
+      </Menu>
+    );
 
     return (
       <div style={{display: 'flex', 
@@ -53,16 +63,16 @@ class HeaderForm extends Component {
                       </Button>
                     </Popconfirm>
                   ) :  
-                  (
-                    <Button  
-                      loading={loading} 
-                      onClick={action}
-                      style={{ 
-                        margin: '0 4px', width: '135px', display: 'block', 
-                        background: styleBtn ? styleBtn.background : '#E74610', borderColor: styleBtn ? styleBtn.borderColor : '#E74610', color: styleBtn ? styleBtn.color : '#fff' }}
-                      >
-                        {actionBtnName}
-                    </Button>
+                  !isDropDown && (
+                      <Button  
+                        loading={loading} 
+                        onClick={action}
+                        style={{ 
+                          margin: '0 4px', width: '135px', display: 'block', 
+                          background: styleBtn ? styleBtn.background : '#E74610', borderColor: styleBtn ? styleBtn.borderColor : '#E74610', color: styleBtn ? styleBtn.color : '#fff' }}
+                        >
+                          {actionBtnName}
+                      </Button>
                   )
                   }
               </div>
@@ -95,6 +105,17 @@ class HeaderForm extends Component {
                     </Button>
                   </Popconfirm>
                 )
+            }
+            {
+              isDropDown && (
+                <div style={{position: 'relative'}} className="terms-management-parent">
+                  <Dropdown overlay={menu} className="terms-management">
+                    <Button>
+                      Add <Icon type="down" />
+                    </Button>
+                  </Dropdown>
+                </div>
+              )
             }
           </div>
       </div>

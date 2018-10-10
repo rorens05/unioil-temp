@@ -123,3 +123,30 @@
 .ant-calendar-date:hover {
     background: #e7461026 !important
 }
+
+.terms-management {
+    
+    position: absolute;
+    left: -42px;
+}
+
+.terms-management-parent {
+  
+    left: -30px;
+}
+
+.terms-management-parent .terms-management {
+    position: relative;
+    left: 37px;
+    border-color: #e74610 !important;
+    background: #E74610;
+    width: 100px;
+    color: #fff;
+    text-align: right;
+}
+
+.terms-management-parent .ant-btn:hover,
+.terms-management-parent .ant-btn:focus {
+    background: #e74610;
+    color: #fff;
+}
