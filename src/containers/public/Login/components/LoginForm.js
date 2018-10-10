@@ -12,7 +12,7 @@ function Login(props) {
     showModalChangePassword,
     backToLogin
   } = props;
-
+console.log(props.values,'props.valuesprops.values')
   return (
     <Form noValidate>
 
@@ -71,15 +71,33 @@ function Login(props) {
           }
         </Col>
         <Col span={12}>
-          <Button  
-            loading={isSubmitting} 
-            style={{ width: '100%', display: 'block', background: props.values.username.length > 0 ? '#E74610' : '#FCFCFC', borderColor: props.values.username.length > 0 ? '#E74610' : '#D9D9D9' }}
-            type="primary" 
-            htmlType="submit"
-            disabled={props.values.username.length > 0 ? false : true}
-          >
-            Next
-          </Button>
+          {
+            !userVerified && (
+              <Button  
+                loading={isSubmitting} 
+                style={{ width: '100%', display: 'block', background: props.values.username.length > 0 ? '#E74610' : '#FCFCFC', borderColor: props.values.username.length > 0 ? '#E74610' : '#D9D9D9' }}
+                type="primary" 
+                htmlType="submit"
+                disabled={props.values.username.length > 0 ? false : true}
+              >
+                Next
+              </Button>
+            )
+          }
+
+          {
+            userVerified && (
+              <Button  
+                loading={isSubmitting} 
+                style={{ width: '100%', display: 'block', background: props.values.username.length > 0 ? '#E74610' : '#FCFCFC', borderColor: props.values.username.length > 0 ? '#E74610' : '#D9D9D9' }}
+                type="primary" 
+                htmlType="submit"
+                disabled={props.values.password.length > 0 ? false : true}
+              >
+                Next
+              </Button>
+            )
+          }
         </Col>
       </Row>
     </Form>
