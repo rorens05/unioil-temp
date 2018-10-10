@@ -84,7 +84,7 @@ class TopUpEdit extends Component {
           action={this.handleEditUserManagement}
           actionBtnName="Update"
           withConfirm={{message: "Save changes to this record?"}}
-          cancel={()=> { this.props.history.push("/user-management")}}
+          cancel={()=> { this.props.history.push("/top-up")}}
           cancelBtnName="Cancel"
         />
         <div>
