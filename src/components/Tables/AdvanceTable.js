@@ -273,7 +273,7 @@ class AdvanceTable extends Component {
         <Row type="flex" justify="space-between" align="bottom" style={{paddingBottom: 25}}>
           <Col>
             {
-              this.props.filterDateRange ? 
+              this.props.url.csv ? 
               (
                 <RangePicker onChange={this.handleDateRangePicker} />
               ) :
