@@ -31,7 +31,7 @@ class TopUpList extends Component {
             updating = { this.state.updating }
             keyValue="topup_uuid"
             url={{ 
-              apiDelete: 'adminBatchDelete',
+              apiDelete: 'topUpBatchDelete',
               default: 'topUp',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}
@@ -44,7 +44,6 @@ class TopUpList extends Component {
                   key: 'fee_code',
                   sorter: true,
                   filters: [],
-                  //width: "13%",
                 },
                 {
                   title: 'Name',
