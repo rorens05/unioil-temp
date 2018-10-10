@@ -14,7 +14,7 @@ import { customAction } from "actions";
 import { API_GET, API_POST } from "utils/Api";
 
 
-class CreateUserManagement extends Component {
+class TermAndPrivacyCreate extends Component {
   state = {
     generated_password: null,
     userInfo: null,
@@ -78,12 +78,12 @@ class CreateUserManagement extends Component {
 }
 
 
-CreateUserManagement = connect(
+TermAndPrivacyCreate = connect(
   state => ({
     //userInfo: state
     userManagement: state.userManagement,
   }),
   { customAction }
-)(CreateUserManagement);
+)(TermAndPrivacyCreate);
 
-export default CreateUserManagement;
+export default TermAndPrivacyCreate;

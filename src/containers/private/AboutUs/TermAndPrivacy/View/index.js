@@ -11,7 +11,7 @@ import ViewUserManagementForm from './components/ViewUserManagementForm'
 import { API_UNI_OIL } from "utils/Api";
 
 
-class UserManagementView extends Component {
+class TermAndPrivacyView extends Component {
   state = {
     mounted: false,
     userInfo: null
@@ -78,4 +78,4 @@ class UserManagementView extends Component {
 }
 
 
-export default withRouter(UserManagementView);
+export default withRouter(TermAndPrivacyView);

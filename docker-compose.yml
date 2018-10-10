@@ -11,7 +11,7 @@ services:
       dockerfile: Dockerfile
       args:
         - REACT_APP_DOMAIN=http://192.168.0.68
-        - REACT_APP_PATH=unioilQA/UniOilLoyaltyApp-BackEnd/public/index.php/api/cms
+        - REACT_APP_PATH=unioilQA/public/index.php/api/cms
     restart: always
     ports:
       - 8089:80

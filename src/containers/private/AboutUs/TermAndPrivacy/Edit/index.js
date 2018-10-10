@@ -13,7 +13,7 @@ import { userDetailsSchema } from './validationSchema'
 import { API_GET, API_PUT, API_POST } from "utils/Api";
 import { API_UNI_OIL } from "utils/Api";
 
-class EditUserManagement extends Component {
+class TermAndPrivacyEdit extends Component {
   state = {
     loading: false,
     userInfo: null,
@@ -138,4 +138,4 @@ class EditUserManagement extends Component {
   }
 }
 
-export default withRouter(EditUserManagement);
+export default withRouter(TermAndPrivacyEdit);
