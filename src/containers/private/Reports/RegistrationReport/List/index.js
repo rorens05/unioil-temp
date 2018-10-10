@@ -37,9 +37,9 @@ class RegistrationList extends Component {
             updating = { this.state.updating }
             keyValue="payment_uuid"
             url={{ 
-              default: 'reportTopUp',
+              default: 'reportRegistration',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc',
-              csv: { path :'/reportTopUpExport', fileName: 'RegistrationReport' }
+              csv: { path :'/reportRegistrationExport', fileName: 'RegistrationReport' }
             }}
             filterValues ={["role", "status"]}
             columns={
@@ -58,15 +58,15 @@ class RegistrationList extends Component {
                 },
                 {
                   title: 'No. of Activated Cards',
-                  dataIndex: 'time',
-                  key: 'time',
+                  dataIndex: 'activated ',
+                  key: 'activated',
                   sorter: true,
                   filters:[],
                 },
                 {
                   title: 'No. of Registered Members',
-                  dataIndex: 'amount',
-                  key: 'amount',
+                  dataIndex: 'registered',
+                  key: 'registered',
                   sorter: true,
                   filters:[],
                 },
