@@ -53,11 +53,23 @@ class EditUserManagement extends Component {
       ...values,
     }
 
+    if(params.password == "*******************" ) {
+      params.password = null
+    }
+
     this.setState({loading: true})
     try {
       const response = await API_PUT(`admin/${userInfo.admin_uuid}`, params);    
       if(response.status === 422){
-        notification.error({ message: "Success", description: "Something went wrong updating record" });
+     
+        notification.error({ 
+          message: "Error", 
+          description: 
+          <div>
+              <div>Something went wrong updating record</div>
+              - {response.data && (response.data.data.username[0])}
+          </div>
+        });
         setSubmitting(false)
         this.setState({loading: false})
       }else {
@@ -65,7 +77,7 @@ class EditUserManagement extends Component {
         this.setState({loading: false})
         this.props.history.push("/user-management");
       }
-    } catch (error) {
+    } catch ({response:error}) {
       setSubmitting(false)
       this.setState({loading: false})
     }
@@ -84,8 +96,14 @@ class EditUserManagement extends Component {
         props.setValues({...props.values, password: response.data.data.password})
         this.setState({loading: false, isGenerated: true})
       }
-    } catch (error) {
-      notification.error({ message: 'Error', description: "Something went wrong generating password."})
+    } catch ({response: error}) {
+      notification.error({ 
+          message: 'Error', 
+          description: <div>
+            <div>Something went wrong generating password.</div>
+            {/* - {error && (error)} */}
+          </div>
+      })
       this.setState({loading: false})
     }
   }
@@ -117,7 +135,8 @@ class EditUserManagement extends Component {
                 lastname: userInfo.lastname || '',
                 email: userInfo.email || '',
                 role: userInfo.role || '',
-                password: userInfo.generated_password || ''
+                password: 
+                  userInfo.generated_password ? userInfo.generated_password : "*******************"
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
