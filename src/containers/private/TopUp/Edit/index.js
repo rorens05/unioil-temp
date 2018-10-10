@@ -25,7 +25,7 @@ class TopUpEdit extends Component {
     const { match } = this.props;
     
     try {
-      let response = await API_UNI_OIL.get(`admin/${match.params.id}`);
+      let response = await API_UNI_OIL.get(`topUp/${match.params.id}`);
       this.setState({
         userInfo: {...response.data.data},
         mounted: true
@@ -50,10 +50,10 @@ class TopUpEdit extends Component {
     const params = {
       ...values,
     }
-
+    
     this.setState({loading: true})
     try {
-      const response = await API_PUT(`admin/${userInfo.admin_uuid}`, params);    
+      const response = await API_PUT(`topUp/${userInfo.topup_uuid}`, params);    
       if(response.status === 422){
         notification.error({ message: "Success", description: "Something went wrong updating record" });
         setSubmitting(false)
@@ -61,7 +61,7 @@ class TopUpEdit extends Component {
       }else {
         notification.success({ message: "Success", description: "User Successfuly updated" });
         this.setState({loading: false})
-        this.props.history.push("/user-management");
+        this.props.history.push("/top-up");
       }
     } catch (error) {
       setSubmitting(false)
@@ -75,7 +75,7 @@ class TopUpEdit extends Component {
     if(!this.state.mounted) return null;
 
     const { loading, userInfo, timerCount, isGenerated } = this.state
-
+console.log(userInfo,'userInfosss', userInfo.amount);
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 

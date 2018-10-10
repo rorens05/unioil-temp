@@ -25,9 +25,7 @@ function TopUpCreateForm(props) {
   const {
     isSubmitting,
     handleSubmit,
-    generatePassword,
     loading,
-    isGenerated
   } = props;
 
   return (

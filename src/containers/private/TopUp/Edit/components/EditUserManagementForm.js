@@ -5,7 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
-import { Input, Radio } from 'components/Forms';
+import { Input, InputNumberAntD } from 'components/Forms';
 
 // HELPER FUNCTIONS
 
@@ -33,77 +33,34 @@ function EditUserManagementForm(props) {
     <Form noValidate>
 
       <Field
-        name="username"
+        name="fee_code"
         type="text"
-        icon="user"
+        //icon="user"
+        disabled
         layout={formItemLayout}
-        label="Username"
-        placeholder="User name"
+        label="Fee Code"
+        placeholder="Fee Code"
         component={Input}
       />
 
       <Field
-        name="firstname"
+        name="name"
         type="text"
-        icon="user"
+        //icon="user"
         layout={formItemLayout}
-        label="First Name"
-        placeholder="First Name"
+        label="Name"
+        placeholder="Name"
         component={Input}
       />
 
       <Field
-        name="lastname"
-        type="text"
-        icon="user"
+        name="amount"
+        //icon="user"
+        defaultValue={props.values.amount}
         layout={formItemLayout}
-        label="Last Name"
-        placeholder="Last Name"
-        component={Input}
-      />
-
-      <Field
-        name="email"
-        type="text"
-        icon="mail"
-        layout={formItemLayout}
-        label="Email Address"
-        placeholder="Email Address"
-        component={Input}
-      />
-
-      <Field
-        name="role"
-        icon="user"
-        layout={formItemLayout}
-        optionsList={[
-          {
-            label: "System Admin",
-            value: 1
-          },
-          {
-            label: "Marketing Personnel",
-            value: 2,
-          }
-        ]}
-        label="User Role"
-        component={Radio}
-      />
-
-      <Field
-        name="password"
-        type="text"
-        icon="lock"
-        loading={loading}
-        withActionBtn={{
-          action: ()=>generatePassword(props),
-          name: "Generate",
-          disabled: isGenerated
-        }}
-        readOnly
-        layout={formItemLayout}
-        label="Default Password"
-        component={Input}
+        label="Amount"
+        placeholder="Amount"
+        component={InputNumberAntD}
       />
 
     </Form>
