@@ -10,6 +10,7 @@ import UploadImage from './UploadImage';
 import MultiSelectOptions from './MultiSelectOptions';
 import InputMaskNumber from './InputMaskNumber';
 import TimePickerForm from './TimePicker'
+import InputNumberAntD from './InputNumberAntD'
 
 
 export {
@@ -24,5 +25,6 @@ export {
   UploadImage,
   MultiSelectOptions,
   InputMaskNumber,
-  TimePickerForm
+  TimePickerForm,
+  InputNumberAntD
 }
