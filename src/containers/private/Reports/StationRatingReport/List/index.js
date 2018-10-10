@@ -34,7 +34,6 @@ class StationList extends Component {
           title="Station Rating Report"
         />
         <AdvanceTable 
-            filterDateRange
             updating = { this.state.updating }
             keyValue="payment_uuid"
             url={{ 

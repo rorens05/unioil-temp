@@ -37,9 +37,9 @@ class MobileList extends Component {
             updating = { this.state.updating }
             keyValue="payment_uuid"
             url={{ 
-              default: 'reportTopUp',
+              default: 'reportMobileUsage',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc',
-              csv: { path :'/reportTopUpExport', fileName: 'TopUpUsageReport' }
+              csv: { path :'/reportMobileUsageExport', fileName: 'MobileUsageReport' }
             }}
             filterValues ={["role", "status"]}
             columns={
@@ -58,22 +58,22 @@ class MobileList extends Component {
                 },
                 {
                   title: 'Active Registered Users',
-                  dataIndex: 'time',
-                  key: 'time',
+                  dataIndex: 'active',
+                  key: 'active',
                   sorter: true,
                   filters:[],
                 },
                 {
                   title: 'Inactive Registered Users',
-                  dataIndex: 'card_number',
-                  key: 'card_number',
+                  dataIndex: 'inactive',
+                  key: 'inactive',
                   sorter: true,
                   filters:[],
                 },
                 {
                   title: 'Locked Registered Users',
-                  dataIndex: 'amount',
-                  key: 'amount',
+                  dataIndex: 'locked',
+                  key: 'locked',
                   sorter: true,
                   filters:[],
                 },

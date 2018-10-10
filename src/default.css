@@ -112,3 +112,14 @@
 .ant-message-notice-content {
     background: #fdfdfd;
 }
+
+.ant-calendar-selected-date .ant-calendar-date ,
+.ant-calendar-selected-end-date .ant-calendar-date,
+.ant-calendar-selected-start-date .ant-calendar-date {
+    background: #E74610 !important;
+}
+
+.ant-calendar-range .ant-calendar-in-range-cell:before,
+.ant-calendar-date:hover {
+    background: #e7461026 !important
+}

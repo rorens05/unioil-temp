@@ -39,7 +39,7 @@ class RegistrationList extends Component {
             url={{ 
               default: 'reportTopUp',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc',
-              csv: { path :'/reportTopUpExport', fileName: 'TopUpUsageReport' }
+              csv: { path :'/reportTopUpExport', fileName: 'RegistrationReport' }
             }}
             filterValues ={["role", "status"]}
             columns={
