@@ -11,7 +11,7 @@ import AddUserManagementForm from './components/AddUserManagementForm'
 // HELPER FUNCTIONS
 import { userDetailsSchema } from './validationSchema'
 import { customAction } from "actions";
-import { API_GET, API_POST } from "utils/Api";
+import { API_GET, API_POST, API_UNI_OIL } from "utils/Api";
 
 
 class TermAndPrivacyCreate extends Component {
@@ -27,12 +27,29 @@ class TermAndPrivacyCreate extends Component {
   }
 
   handleSubmit = async (values, actions) => {
-
-  }
   
-  handleAddUser =()=> {
-    this.form.submitForm()
-  }
+    let { history } = this.props;
+    let params  = { ...values }
+    this.setState({ loading: true });
+
+    try {
+      const response = await API_UNI_OIL.post('TermsAndPrivacy', params);
+      if(response) {
+        message.success("Successfuly create new record" );
+        this.setState({ loading: false });
+        history.push({ pathname: '/top-up' });
+      }
+     
+    } catch (error) {
+      message.error("Something went creating new record.")
+      this.setState({ loading: true });
+    }
+  
+}
+
+handleCreateTermPrivacy =()=> {
+  this.form.submitForm()
+}
 
   render() {
     const { userManagement } = this.props
@@ -43,7 +60,7 @@ class TermAndPrivacyCreate extends Component {
         <HeaderForm 
           loading={loading}
           title="Add User"
-          action={this.handleAddUser}
+          action={this.handleCreateTermPrivacy}
           actionBtnName="Save"
           cancel={()=> { this.props.history.push("/user-management")}}
           cancelBtnName="Cancel"

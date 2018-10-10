@@ -34,76 +34,22 @@ function AddUserManagementForm(props) {
     <Form noValidate>
 
       <Field
-        name="username"
+        name="title"
         type="text"
-        icon="user"
+        icon=""
         layout={formItemLayout}
-        label="Username"
-        placeholder="User name"
+        label="Title"
+        placeholder="Title"
         component={Input}
       />
 
       <Field
-        name="firstname"
+        name="details"
         type="text"
         icon="user"
         layout={formItemLayout}
-        label="First Name"
-        placeholder="First Name"
-        component={Input}
-      />
-
-      <Field
-        name="lastname"
-        type="text"
-        icon="user"
-        layout={formItemLayout}
-        label="Last Name"
-        placeholder="Last Name"
-        component={Input}
-      />
-
-      <Field
-        name="email"
-        type="email"
-        icon="mail"
-        layout={formItemLayout}
-        label="Email Address"
-        placeholder="Email Address"
-        component={Input}
-      />
-
-      <Field
-        name="role"
-        icon="user"
-        layout={formItemLayout}
-        optionsList={[
-          {
-            label: "System Admin",
-            value: "1"
-          },
-          {
-            label: "Marketing Personnel",
-            value: "2",
-          }
-        ]}
-        label="User Role"
-        component={Radio}
-      />
-
-      <Field
-        name="password"
-        type="text"
-        icon="lock"
-        loading={loading}
-        withActionBtn={{
-          action: ()=>generatePassword(props),
-          name: "Generate",
-          disabled: isGenerated
-        }}
-        readOnly
-        layout={formItemLayout}
-        label="Default Password"
+        label="Details"
+        placeholder="Details"
         component={Input}
       />
       
