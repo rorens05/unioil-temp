@@ -77,7 +77,7 @@ class CreateSystemPreferences extends Component {
           let response = await API_UNI_OIL.post('systemPreference', formData , headers)
 
           if(response) {
-            message.success('Successfully update record.');  
+            message.success('Successful update record.');  
             this.setState({loading: false})
           }
           

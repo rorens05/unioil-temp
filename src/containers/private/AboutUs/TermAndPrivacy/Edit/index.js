@@ -62,7 +62,7 @@ class TermAndPrivacyEdit extends Component {
         setSubmitting(false)
         this.setState({loading: false})
       }else {
-        message.success('Successfully update record.');
+        message.success('Successful update record.');
         this.setState({loading: false})
         this.props.history.push("/about-us/term-privacy");
       }

@@ -188,7 +188,7 @@ class EditManagement extends Component {
           let response = await API_UNI_OIL.post(`updatePromotion/${userInfo.promotion_uuid}`, formData , headers)
 
           if(response) {
-            message.success('Successfully update record.');  
+            message.success('Successful update record.');  
             this.setState({loading: false})
             history.push({ pathname: "/promotions" })
           }
