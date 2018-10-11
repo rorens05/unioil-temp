@@ -116,7 +116,7 @@ class CardTypeEdit extends Component {
           cancelBtnName="Cancel"
         />
         <div>
-          <h2 style={{margin: '25px 35px'}}>User Details</h2>
+          <h2 style={{margin: '25px 35px'}}>Card Types Details</h2>
           <Formik
               initialValues={{
                 code: userInfo.code  || '',
