@@ -89,12 +89,12 @@ class CardMemberList extends Component {
                   sorter: true,
                   width: "10%",
                   filters: [
-                    { text: 'Locked', value: 1 },
-                    { text: 'Active', value: 0 }
+                    { text: 'Active', value: 1},
+                    { text: 'Inactive', value: 0 }
                   ],
                   render: (text, record) => (
                     <span>
-                      {record && record.status ==  "inactive" ? "Locked": "Active"}
+                      {record && record.status ==  "inactive" ? "Inactive": "Active"}
                     </span>
                   )
                 },
