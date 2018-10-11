@@ -84,10 +84,19 @@ class CardMemberList extends Component {
                 },
                 {
                   title: 'Status',
-                  dataIndex: 'civil_status',
-                  key: 'civil_status',
+                  dataIndex: 'status',
+                  key: 'status',
                   sorter: true,
                   width: "10%",
+                  filters: [
+                    { text: 'Locked', value: 1 },
+                    { text: 'Active', value: 0 }
+                  ],
+                  render: (text, record) => (
+                    <span>
+                      {record && record.status ==  "inactive" ? "Locked": "Active"}
+                    </span>
+                  )
                 },
                 {
                   title: 'Action',

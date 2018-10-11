@@ -84,8 +84,8 @@ class LockedAccountList extends Component {
                 },
                 {
                   title: 'Status',
-                  dataIndex: 'is_locked',
-                  key: 'is_locked',
+                  dataIndex: 'status',
+                  key: 'status',
                   sorter: true,
                   width: "10%",
                   filters: [
@@ -94,7 +94,7 @@ class LockedAccountList extends Component {
                   ],
                   render: (text, record) => (
                     <span>
-                      {record && record.is_locked ==  1 ? "Locked": "Active"}
+                      {record && record.status ==  "inactive" ? "Locked": "Active"}
                     </span>
                   )
                 },

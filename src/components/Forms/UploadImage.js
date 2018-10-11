@@ -132,7 +132,7 @@ class UploadImage extends Component {
                   onChange={this.normFile}
                   className="upload-image"
                 >
-                  {imageUrl ? <img src={imageUrl} alt="avatar" width="250"/> : uploadButton}
+                  {imageUrl ? <img src={imageUrl} alt="avatar" width="100%" height="80"/> : uploadButton}
                   <div style={{width: imgWidth ? imgWidth : 'initial'}}>
                     <p className="ant-upload-text">Click or drag file to this area to upload.</p>
                     <p className="ant-upload-hint">Support for a single upload only.</p>
