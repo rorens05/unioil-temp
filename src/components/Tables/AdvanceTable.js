@@ -177,7 +177,7 @@ class AdvanceTable extends Component {
     try {
       await API_UNI_OIL.delete(this.props.url.apiDelete, {data});
       this.handleFilterChange({});
-      message.success('Records succesfully deleted.');
+      message.success('Succesfully delete record.');
     } catch ({response:error}) {
       this.handleFilterChange({});
       notification.error({ 
