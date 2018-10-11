@@ -46,15 +46,15 @@ class TopUpList extends Component {
               [
                 {
                   title: 'Date',
-                  dataIndex: 'paid_at',
-                  key: 'paid_at',
+                  dataIndex: 'date',
+                  key: 'date',
                   sorter: true,
                   filters: [],
                   width: "17%",
-                  render: date => {
-                    if(moment(date).format("DD-MMM-YYYY") !== "Invalid date")
-                      return moment(date).format("DD-MMM-YYYY")
-                  },
+                  // render: date => {
+                  //   if(moment(date).format("DD-MMM-YYYY") !== "Invalid date")
+                  //     return moment(date).format("DD-MMM-YYYY")
+                  // },
                 },
                 {
                   title: 'Time',
