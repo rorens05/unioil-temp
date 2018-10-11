@@ -86,7 +86,7 @@ class CreateSystemPreferences extends Component {
       notification.error({ 
         message: 'Error', 
         description: <div>
-          Something went wrong creating new user.
+          Something went wrong creating new record.
           { error && error.data && error.data.data  && error.data.data.contact_email_address_mobile 
                 && (<div>- {error.data.data.contact_email_address_mobile[0]} </div>) }
           { error && error.data && error.data.data && error.data.data.contact_number_mobile

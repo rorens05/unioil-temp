@@ -28,7 +28,7 @@ function* userManagementSagaFlow({ payload }) {
     notification.error({ 
       message: 'Error', 
       description: <div>
-        Something went wrong creating new user.
+        Something went wrong creating new record.
         { error && error.data && error.data.data && error.data.data.username 
             && (<div>- {error.data.data.username[0]} </div>) }
         { error && error.data && error.data.data && error.data.data.email 
