@@ -8,7 +8,6 @@ import HeaderForm from 'components/Forms/HeaderForm'
 import ViewUserManagementForm from './components/ViewUserManagementForm'
  
 // HELPER FUNCTIONS
-// HELPER FUNCTIONS
 import { API_UNI_OIL } from "utils/Api";
 
 
@@ -56,6 +55,8 @@ class PrmotionsView extends Component {
   }
 
   render() {
+
+    if(!this.state.mounted) return null;
 
     const { userInfo } = this.state
     const { history, match } = this.props

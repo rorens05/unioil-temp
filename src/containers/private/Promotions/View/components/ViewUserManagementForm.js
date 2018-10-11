@@ -15,7 +15,6 @@ function ViewPromotionsForm(props) {
     isSubmitting,
     userInfo
   } = props;
-console.log(userInfo,'userInfouserInfo', process.env.REACT_APP_IMG_URL ,userInfo);
 // imageUrl={props.values.image && `${process.env.REACT_APP_IMG_URL}${props.values.image}`}
   return (
     <div>
