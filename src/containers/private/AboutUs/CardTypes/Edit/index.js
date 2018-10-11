@@ -78,10 +78,8 @@ class CardTypeEdit extends Component {
         message: 'Error', 
         description: <div>
           Something went wrong creating new user.
-          {
-            error.data && error.data.data  && error.data.data.image 
-                && (<div>- {error.data.data.image[0]} </div>) 
-          }
+          { error && error.data && error.data.data  && error.data.data.image 
+                && (<div>- {error.data.data.image[0]} </div>)  }
         </div>
       }); 
       this.setState({loading: false})

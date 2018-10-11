@@ -45,7 +45,7 @@ const registrationReducer = (state = initialState, { type, payload, field_error 
       return {
         ...state,
         status: "error",
-        messages: [{ body: "Ooops something went wrong", time: new Date() }],
+        messages: [{ body: "Something went wrong", time: new Date() }],
         error: payload.data.error,
         data: {},
         isRegistered: false,

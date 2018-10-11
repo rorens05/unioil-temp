@@ -40,7 +40,7 @@ const loginReducer = (state = initialState, { type, payload, field_error }) => {
         ...state,
         status: "error",
         isAuthenticated: false, 
-        messages: [{ body: "Ooops something went wrong", time: new Date() }],
+        messages: [{ body: "Something went wrong", time: new Date() }],
         error: field_error,
         data: {},
         code: payload.status
@@ -50,7 +50,7 @@ const loginReducer = (state = initialState, { type, payload, field_error }) => {
         ...state,
         status: "error",
         isAuthenticated: false, 
-        messages: [{ body: "Ooops something went wrong", time: new Date() }],
+        messages: [{ body: "Something went wrong", time: new Date() }],
         error: payload.data.error,
         data: {},
         code: payload.status

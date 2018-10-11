@@ -165,7 +165,7 @@ class EditPhotoSlider extends Component {
         message: 'Error', 
         description: <div>
           Something went wrong updating record.
-          {error && error.data && error.data.data  && error.data.data.image 
+          { error && error.data && error.data.data  && error.data.data.image 
                 && (<div>- {error.data.data.image[0]} </div>) }
         </div>
       }); 

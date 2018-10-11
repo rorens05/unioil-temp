@@ -87,9 +87,9 @@ class CreateSystemPreferences extends Component {
         message: 'Error', 
         description: <div>
           Something went wrong creating new user.
-          {error.data && error.data.data  && error.data.data.contact_email_address_mobile 
+          { error && error.data && error.data.data  && error.data.data.contact_email_address_mobile 
                 && (<div>- {error.data.data.contact_email_address_mobile[0]} </div>) }
-          {error.data && error.data.data && error.data.data.contact_number_mobile
+          { error && error.data && error.data.data && error.data.data.contact_number_mobile
                && (<div>- {error.data.data.contact_number_mobile[0]} </div>) }
         </div>
       }); 

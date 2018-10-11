@@ -91,15 +91,15 @@ class CreatePhotoSlider extends Component {
       notification.error({ 
         message: 'Error', 
         description: <div>
-          Something went wrong creating new photo slider.
-          {error.data && error.data.data  && error.data.data.image 
+          Something went wrong creating new record.
+          { error && error.data && error.data.data  && error.data.data.image 
                 && (<div>- {error.data.data.image[0]} </div>) }
         </div>
       }); 
       this.setState({loading: false})
     }
   }
-  
+
   handleAddPhotoSlider =()=> {
     this.form.submitForm()
   }
