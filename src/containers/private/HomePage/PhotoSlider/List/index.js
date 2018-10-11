@@ -39,54 +39,44 @@ class PhotoSliderList extends Component {
           actionBtnName="Add Content"
         />
         <AdvanceTable 
-            keyValue="user_uuid"
+            keyValue="photoslider_uuid"
             url={{ 
-              default: 'users'
+              //default: 'admin?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
+              apiDelete: 'photoSliderBatchDelete',
+              default: 'photoSlider',
+              filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}
             filterValues ={["role", "status"]}
             columns={
               [
                 {
-                  title: 'Name',
-                  dataIndex: 'name',
-                  key: 'name',
+                  title: 'Title',
+                  dataIndex: 'title',
+                  key: 'title',
                   sorter: true,
                   filters: []
                 },
                 {
-                  title: 'Username',
-                  dataIndex: 'email',
+                  title: 'Type',
+                  dataIndex: 'type',
                   key: 'email',
                   sorter: true,
                   filters:[]
                 },
                 {
-                  title: 'Date Registered',
-                  dataIndex: 'created_at',
-                  key: 'created_at',
+                  title: 'Start Date',
+                  dataIndex: 'date_start',
+                  key: 'date_start',
                   sorter: true,
                   filters:[],
                   width: 150
                 },
                 {
-                  title: 'Role',
-                  dataIndex: 'role_name',
-                  key: 'role',
+                  title: 'End Date',
+                  dataIndex: 'end_start',
+                  key: 'end_start',
                   sorter: true,
-                  filters: [
-                    { text: 'Administrator', value: 'Administrator' }
-                  ]
-                },
-                {
-                  title: 'Status',
-                  dataIndex: 'status',
-                  key: 'status',
-                  sorter: true,
-                  width: 110,
-                  filters: [
-                    { text: 'Active', value: 'Active' },
-                    { text: 'Inactive', value: 'Inactive' },
-                  ]
+                  filters:[],
                 },
                 {
                   title: 'Action',

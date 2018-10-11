@@ -2,15 +2,18 @@
 import * as Yup from 'yup'
 
 export const userDetailsSchema = Yup.object().shape({
-  username: Yup.string()
-    .required('Username is required!')
-    .matches(
-      /^[a-zA-Z0-9_@.]+$/,
-      {
-        message: 'Invalid username.',
-        excludeEmptyString: true,
-      },
-    ),
+  promotion_uuid: Yup.string()
+    .required('Branches is required!'),
+  title: Yup.string()
+    .required('Title is required!'),
+  description: Yup.string()
+    .required('Description is required!'),
+  // image: Yup.string()
+  //   .required('Image is required!'),
+  date_start: Yup.string()
+    .required('Start Appearance Date is required!'),
+  date_end: Yup.string()
+    .required('End Appearance Date is required!'),
 })
 
 

@@ -25,25 +25,23 @@ const formItemLayout = {
 function AddPhotoSliderForm(props) {
   const {
     isSubmitting,
-    handleSubmit
+    handleSubmit,
+    branchesOptions,
+    handleFileUpload
   } = props;
 
   return (
     <Form noValidate>
 
       <Field
-        name="promotion"
+        name="promotion_uuid"
         type="select"
         icon=""
         layout={formItemLayout}
         label="Branches"
         placeholder="Promotion Name"
         mode="single"
-        optionsList={[
-          { label: "Gas Up Now in the Nearest Unioil Station", value: 0 },
-          { label: "Up Now Gas in the Nearest Unioil Station", value: 1, },
-          { label: "In the Nearest Gas Unioil Station", value: 2 }
-        ]}
+        optionsList={branchesOptions}
         component={Select}
       />
 
@@ -69,19 +67,24 @@ function AddPhotoSliderForm(props) {
       />
 
       <Field
-        name="upload_image"
+        name="image"
         type="file"
+        accept=".jpg , .png, .gif"
+        multiple={false}
+        imageUrl={props.values.image && `${process.env.REACT_APP_IMG_URL}/${props.values.image}`}
+        className="upload-list-inline"
         icon="user"
         layout={formItemLayout}
         label="Upload Image"
         placeholder="Upload Image"
         component={UploadImage}
-        multipleFileUpload
+        imgWidth="294px"
+        handleFileUpload={handleFileUpload}
       />
 
 
       <Field
-        name="start_appeareance_date"
+        name="date_start"
         type="date"
         icon=""
         layout={formItemLayout}
@@ -91,7 +94,7 @@ function AddPhotoSliderForm(props) {
       />
 
       <Field
-        name="end_appeareance_date"
+        name="date_end"
         type="date"
         icon=""
         layout={formItemLayout}

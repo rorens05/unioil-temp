@@ -4,9 +4,10 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 // COMPONENTS
 import PhotoSliderList from './List';
-import PhotoSliderView from './View';
 import PhotoSliderEdit from './Edit';
 import PhotoSliderCreate from './Create';
+import PhotoSliderView from './View';
+
 import { PAGE404 } from "components/PageError/index"
 import MainContent from 'components/Dashboard/Layout/components/MainContent';
 
@@ -17,6 +18,29 @@ import MainContent from 'components/Dashboard/Layout/components/MainContent';
 class PhotoSlider extends Component {
   state = {
     pageRoutes: [
+      {
+        path: `${this.props.match.url}/photo-slider`,
+        name: "Photo Slider",
+        component: PhotoSliderList,        
+      }, 
+      {
+        path: `${this.props.match.url}/photo-slider/create`,
+        name: "Create Photo Slider",
+        component: PhotoSliderCreate,
+      },
+      {
+        path: `${this.props.match.url}/photo-slider/edit`,
+        params: ':id',
+        name: "Update Photo Slider",
+        component: PhotoSliderEdit,
+      },
+      {
+        path: `${this.props.match.url}/photo-slider/view`,
+        params: ':id',
+        name: "View Photo Slider",
+        component: PhotoSliderView,
+      },
+
     ]
   }
 
