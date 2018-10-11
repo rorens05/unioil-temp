@@ -88,7 +88,7 @@ class EditUserManagement extends Component {
         setSubmitting(false)
         this.setState({loading: false})
       }else {
-        message.success('Successful update record.');
+        message.success('Successfully update record.');
         this.setState({loading: false})
         this.props.history.push("/user-management");
       }
