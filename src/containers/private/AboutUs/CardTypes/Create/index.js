@@ -54,7 +54,7 @@ class CardTypeCreate extends Component {
           let response = await API_UNI_OIL.post('cardType', formData , headers)
 
           if(response) {
-            message.success('Successful create new record.');  
+            message.success('New record added.');  
             this.setState({loading: false})
             history.push({ pathname: "/about-us/card-types" })
           }

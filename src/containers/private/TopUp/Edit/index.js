@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { Formik } from 'formik'
 import { withRouter } from "react-router-dom"
-import { notification, Icon } from "antd"
+import { notification, message } from "antd"
 
 // COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
@@ -58,8 +58,8 @@ class TopUpEdit extends Component {
         notification.error({ message: "Success", description: "Something went wrong updating record" });
         setSubmitting(false)
         this.setState({loading: false})
-      }else {
-        notification.success({ message: "Success", description: "Record Successfully updated" });
+      }else {   
+        message.success('Successful update record.'); 
         this.setState({loading: false})
         this.props.history.push("/top-up");
       }

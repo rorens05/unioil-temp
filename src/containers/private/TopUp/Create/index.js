@@ -56,7 +56,7 @@ class TopUpCreate extends Component {
       try {
         const response = await API_UNI_OIL.post('topUp',params);
         if(response) {
-          message.success("Successfuly create new record" );
+          message.success('New record added.');
           this.setState({ loading: false });
           history.push({ pathname: '/top-up' });
         }

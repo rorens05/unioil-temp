@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { Formik } from 'formik'
 import { withRouter } from "react-router-dom"
-import { notification, Icon } from "antd"
+import { notification, message } from "antd"
 
 // COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
@@ -62,7 +62,7 @@ class TermAndPrivacyEdit extends Component {
         setSubmitting(false)
         this.setState({loading: false})
       }else {
-        notification.success({ message: "Success", description: "Successful update record" });
+        message.success('Successful update record.');
         this.setState({loading: false})
         this.props.history.push("/about-us/term-privacy");
       }
