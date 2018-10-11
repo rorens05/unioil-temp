@@ -48,6 +48,7 @@ class TopUpList extends Component {
                   title: 'Date',
                   dataIndex: 'date',
                   key: 'date',
+                  sortByValue: 'paid_at',
                   sorter: true,
                   filters: [],
                   width: "17%",

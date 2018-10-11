@@ -61,6 +61,11 @@ class AdvanceTable extends Component {
     let _sort_order;
     if(sorter.order) _sort_order = sorter.order === 'ascend' ? 'asc' : 'desc';
 
+    if(sorter.column) {
+      if(sorter.column.sortByValue)
+        sorter.field = sorter.column.sortByValue;
+    }
+
     this.handleFilterChange({
       ...filters,
       _sort_by    : sorter.field,

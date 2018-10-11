@@ -48,6 +48,7 @@ class StationList extends Component {
                   title: 'Transaction Date & Time',
                   dataIndex: 'date',
                   key: 'date',
+                  sortByValue: 'created_at',
                   sorter: true,
                   filters: [],
                   width: "20%",
