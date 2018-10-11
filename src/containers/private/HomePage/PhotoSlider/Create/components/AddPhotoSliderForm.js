@@ -5,7 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
-import { Input, Select, DatePicker , InputTextArea, UploadImage } from 'components/Forms';
+import { Input, Select, DatePicker , InputTextArea, UploadImage, TimePickerForm } from 'components/Forms';
 
 // HELPER FUNCTIONS
 
@@ -101,6 +101,26 @@ function AddPhotoSliderForm(props) {
         label="End Appearance Date"
         placeholder="End Appearance Date"
         component={DatePicker}
+      />
+
+      <Field
+        name="start_time"
+        type="date"
+        icon=""
+        layout={formItemLayout}
+        label="Start Time"
+        placeholder="Start Time"
+        component={TimePickerForm}
+      />
+
+      <Field
+        name="end_time"
+        type="date"
+        icon=""
+        layout={formItemLayout}
+        label="End Time"
+        placeholder="End Time"
+        component={TimePickerForm}
       />
 
        

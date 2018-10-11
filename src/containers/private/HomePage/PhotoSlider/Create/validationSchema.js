@@ -14,6 +14,10 @@ export const userDetailsSchema = Yup.object().shape({
     .required('Start Appearance Date is required!'),
   date_end: Yup.string()
     .required('End Appearance Date is required!'),
+  start_time: Yup.string()
+      .required('Start Time is required!'),
+  end_time: Yup.string()
+      .required('End Time is required!'),
 })
 
 

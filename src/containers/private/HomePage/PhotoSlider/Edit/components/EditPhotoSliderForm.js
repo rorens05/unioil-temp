@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 
 // COMPONENTS
-import { Input, Select, DatePicker , InputTextArea, UploadImage } from 'components/Forms'
+import { Input, Select, DatePicker , InputTextArea, UploadImage ,TimePickerForm } from 'components/Forms'
 
 // HELPER FUNCTIONS
 
@@ -103,6 +103,29 @@ function EditUserManagementForm(props) {
         label="End Appearance Date"
         placeholder="End Appearance Date"
         component={DatePicker}
+      />
+
+      <Field
+        name="start_time"
+        type="date"
+        icon=""
+        //defaultValue={ moment(props.values.date_start, 'HH:mm:ss') }
+        defaultValue={moment(props.values.start_time, 'HH:mm:ss')}
+        layout={formItemLayout}
+        label="Start Time"
+        placeholder="Start Time"
+        component={TimePickerForm}
+      />
+
+      <Field
+        name="end_time"
+        type="date"
+        icon=""
+        defaultValue={moment(props.values.end_time, 'HH:mm:ss')}
+        layout={formItemLayout}
+        label="End Time"
+        placeholder="End Time"
+        component={TimePickerForm}
       />
 
     </Form>

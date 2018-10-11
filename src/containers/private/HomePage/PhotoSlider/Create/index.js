@@ -134,7 +134,9 @@ class CreatePhotoSlider extends Component {
                 description: '',
                 image: '',
                 date_start: '',
-                date_end: ''
+                date_end: '',
+                start_time: '',
+                end_time: '',
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
