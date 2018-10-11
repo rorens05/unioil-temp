@@ -197,8 +197,8 @@ class EditManagement extends Component {
       notification.error({ 
         message: 'Error', 
         description: <div>
-          Something went wrong creating new user.
-          {error.data && error.data.data  && error.data.data.image 
+          Something went wrong updating record.
+          { error && error.data && error.data.data  && error.data.data.image 
                 && (<div>- {error.data.data.image[0]} </div>) }
         </div>
       }); 

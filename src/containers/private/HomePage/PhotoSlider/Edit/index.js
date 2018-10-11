@@ -164,8 +164,8 @@ class EditPhotoSlider extends Component {
       notification.error({ 
         message: 'Error', 
         description: <div>
-          Something went wrong creating new photo slider.
-          {error.data && error.data.data  && error.data.data.image 
+          Something went wrong updating record.
+          {error && error.data && error.data.data  && error.data.data.image 
                 && (<div>- {error.data.data.image[0]} </div>) }
         </div>
       }); 
@@ -213,6 +213,7 @@ class EditPhotoSlider extends Component {
                 start_time: moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss') || '',
                 end_time: moment(userInfo.date_end, 'YYYY-MM-DDTHH:mm:ss' ).format('HH:mm:ss') || '',
               }}
+              ref={node => (this.form = node)}
               enableReinitialize={true}
               validationSchema={userDetailsSchema}
               onSubmit={this.handleSubmit }
