@@ -41,7 +41,7 @@ class TermAndPrivacyCreate extends Component {
       }
      
     } catch ({response:error}) {
-      message.error("Something went creating new record.")
+      message.error("Something went wrong creating new record.")
       this.setState({ loading: true });
     }
   

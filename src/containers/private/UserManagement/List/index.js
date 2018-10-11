@@ -23,13 +23,13 @@ class UserManagementList extends Component {
 
   updateDropDown = async(e) => {
     let params = e.item.props.record;
-    params = { admin_uuid : params.admin_uuid , status: params.status}
+    params = { admin_uuid : params.admin_uuid , status: e.item.props.eventKey}
     try {
       const response = await API_UNI_OIL.post(`adminChangeStatus`,params);
-      message.success("User Successfuly update status" );
+      message.success("Record Successfully update" );
       this.setState({ updating: !this.state.updating });
     } catch (error) {
-      message.error("Something went wrong updating status.")
+      message.error("Something went wrong updating record.")
     }
   }
 

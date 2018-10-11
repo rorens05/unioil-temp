@@ -141,7 +141,7 @@ class AdvanceTable extends Component {
   update = async (params = {}) => {
     notification.success({
       message: 'Success',
-      description: `Delete Successfull.`,
+      description: `Delete Successful.`,
     })
   }
 
