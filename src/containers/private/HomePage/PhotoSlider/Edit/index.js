@@ -87,6 +87,92 @@ class EditPhotoSlider extends Component {
     
   }
 
+  handleSubmit = async (values, actions) => {
+ 
+    const { fileUpload, branchesOptions, userInfo } = this.state;
+    const { history } = this.props;
+
+    console.log(values, 'valuesvaluesvalues')
+
+    this.setState({loading: true})
+    try {
+          const headers = {
+            'ContentType': 'multipart/form-data',
+          }; 
+          
+          const formData = new FormData();
+      
+          if(fileUpload) {
+            fileUpload.forEach((t, i) => {
+              formData.append( `image`, t.originFileObj);
+            }); 
+          } 
+
+          let date_start =  moment(values.date_start).format('YYYY-MM-DD');
+          let start_time = moment(values.start_time).format('HH:mm:ss');
+
+          if(start_time == 'Invalid date') {
+            start_time = values.start_time
+          } else {
+            start_time = moment(values.start_time).format('HH:mm:ss');
+          }
+
+          let date_end =  moment(values.date_end).format('YYYY-MM-DD');
+          let end_time = moment(values.end_time).format('HH:mm:ss');
+
+          if(end_time == 'Invalid date') {
+            end_time = values.end_time
+          } else {
+            end_time = moment(values.end_time).format('HH:mm:ss');
+          }
+
+          let startDateTime = moment(date_start + ' ' + start_time, 'YYYY-MM-DDTHH:mm:ss');
+          let endDateTime = moment(date_end + ' ' + end_time, 'YYYY-MM-DDTHH:mm:ss');
+
+          // let branchesList = []
+          
+          // values.promotion.map(item => {
+          //   branchesOptions.map(userInfo => {
+          //     if(userInfo.label == item || userInfo.value  == item) {
+          //       branchesList.push(userInfo.value);
+          //     }
+          //   })
+          // })
+
+          values.promotion_uuid && (formData.append('promotion_uuid', values.promotion_uuid ));
+          values.title && (formData.append('title', values.title));
+          values.description && (formData.append('description', values.description));
+          values.date_start && (formData.append('date_start', startDateTime.format('YYYY-MM-DDTHH:mm:ss') ) );
+          values.date_end && (formData.append('date_end', endDateTime.format('YYYY-MM-DDTHH:mm:ss') ) );
+          
+          console.log(start_time , 'start_time', values.start_time)
+          console.log(end_time , 'end_time' , values.end_time)
+
+          // log formdata
+          // for (var pair of formData.entries()) {
+          //   console.log(pair[0]+ ', ' + pair[1]); 
+          // }
+          let response = await API_UNI_OIL.post('updatePhotoSlider', formData , headers)
+
+          if(response) {
+            message.success('Successful create new record.');  
+            this.setState({loading: false})
+            history.push({ pathname: "/home-page/photo-slider" })
+          }
+          
+    } catch ({response: error}) {
+      notification.error({ 
+        message: 'Error', 
+        description: <div>
+          Something went wrong creating new photo slider.
+          {error.data && error.data.data  && error.data.data.image 
+                && (<div>- {error.data.data.image[0]} </div>) }
+        </div>
+      }); 
+      this.setState({loading: false})
+    }
+  }
+
   handleEditPhotoSlider =()=> {
     this.form.submitForm()
   }

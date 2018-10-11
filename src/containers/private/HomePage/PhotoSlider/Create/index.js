@@ -99,6 +99,7 @@ class CreatePhotoSlider extends Component {
       this.setState({loading: false})
     }
   }
+  
   handleAddPhotoSlider =()=> {
     this.form.submitForm()
   }
