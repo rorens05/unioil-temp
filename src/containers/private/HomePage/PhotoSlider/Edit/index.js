@@ -62,7 +62,14 @@ class EditPhotoSlider extends Component {
       
     } catch ({response: error}) {
       //notification.error({ message: "Error", description: error.data.message , duration: 20, });
-      notification.error({ message: "Error", description: "Something went wrong loading data", duration: 20, });
+      notification.error({ 
+        message: "Error", 
+        description: <div>
+          <div>Something went wrong loading data.</div>
+        - { error && error.data && error.data.message }
+        </div> , 
+        duration: 20, 
+      });
       this.setState({ mounted: false })
     }
 
