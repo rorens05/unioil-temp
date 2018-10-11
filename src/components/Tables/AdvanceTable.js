@@ -284,7 +284,7 @@ class AdvanceTable extends Component {
                   value={ this.state.search_filter }
                   prefix={ <Icon type="search" style={{ color: 'rgba(0,0,0,.25)' }} />}
                   type="text"
-                  placeholder="Search Parking Area"
+                  placeholder="Search"
                 />
               )
             }
