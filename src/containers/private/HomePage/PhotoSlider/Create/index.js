@@ -15,27 +15,27 @@ import { API_GET, API_POST, API_UNI_OIL } from "utils/Api"
 
 class CreatePhotoSlider extends Component {
   state = {
-    branchesOptions: null,
+    promotionsOptions: null,
     mounted: false
   }
 
   async componentDidMount () {
     try {
-      let stationList = await API_GET('getStations');
+      let promotionsList = await API_GET('getPromotions');
 
-      if(stationList) {
+      if(promotionsList) {
 
-        let branchesOptions = []
+        let promotionsOptions = []
 
-        await stationList.data.data.map(item => {
-          branchesOptions.push({
-            label: item.description,
-            value: item.station_uuid
+        await promotionsList.data.data.map(item => {
+          promotionsOptions.push({
+            label: item.title,
+            value: item.promotion_uuid
           })
         })
 
         this.setState({
-          branchesOptions: branchesOptions,
+          promotionsOptions: promotionsOptions,
           mounted: true
         })
       }
@@ -115,7 +115,7 @@ class CreatePhotoSlider extends Component {
     
     if(!this.state.mounted) return null;
 
-    const { branchesOptions } = this.state
+    const { promotionsOptions } = this.state
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
@@ -146,7 +146,7 @@ class CreatePhotoSlider extends Component {
               render = {(props)=> 
                 <AddPhotoSliderForm 
                   {...props}
-                  branchesOptions={branchesOptions}
+                  promotionsOptions={promotionsOptions}
                   handleFileUpload={this.handleFileUpload}
                 />
               }

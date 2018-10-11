@@ -26,7 +26,7 @@ function AddPhotoSliderForm(props) {
   const {
     isSubmitting,
     handleSubmit,
-    branchesOptions,
+    promotionsOptions,
     handleFileUpload
   } = props;
 
@@ -41,7 +41,7 @@ function AddPhotoSliderForm(props) {
         label="Promotion Name"
         placeholder="Promotion Name"
         mode="single"
-        optionsList={branchesOptions}
+        optionsList={promotionsOptions}
         component={Select}
       />
 

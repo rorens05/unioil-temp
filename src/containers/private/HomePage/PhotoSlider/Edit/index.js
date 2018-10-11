@@ -20,25 +20,32 @@ class EditPhotoSlider extends Component {
     loading: false,
     userInfo: null,
     mounted: false,
-    branchDefaultValue: null,
-    branchesOptions: null
+    promotionsDefaultValue: null,
+    promotionsDefaultKeyValue: null,
+    promotionsOptions: null
   }
 
   async componentDidMount() {
 
     const { match } = this.props;
-    let branchDefaultValue = []
-    let branchDefaultKeyValue = []
+    let promotionsDefaultValue = []
+    let promotionsDefaultKeyValue = []
     
     try {
       let response = await API_UNI_OIL.get(`photoSlider/${match.params.id}`);
       // default options branch
-      if(response.data.data.promotions) {
-        response.data.data.promotions.map(item => {
-          branchDefaultValue.push(
+
+      let promotions = []
+      
+      if(response.data.data.promotion) {
+        
+        promotions.push({...response.data.data.promotion})
+
+       await promotions.map(item => {
+        promotionsDefaultValue.push(
             item.title
           )
-          branchDefaultKeyValue.push(
+        promotionsDefaultKeyValue.push(
             item.promotion_uuid
           )
         })
@@ -48,8 +55,8 @@ class EditPhotoSlider extends Component {
       this.setState({
         userInfo: {...response.data.data},
         mounted: true,
-        branchDefaultValue,
-        branchDefaultKeyValue,
+        promotionsDefaultValue,
+        promotionsDefaultKeyValue,
       })
 
       
@@ -62,20 +69,20 @@ class EditPhotoSlider extends Component {
     // options
     try {
 
-      let branchesOptions = []; let promoTypeOptions = []
-      let stationList = await API_GET('getStations');
+      let promotionsOptions = []; let promoTypeOptions = []
+      let promotionsList = await API_GET('getPromotions');
 
-      if(stationList) {
-        await stationList.data.data.map(item => {
-          branchesOptions.push({
-            label: item.description,
-            value: item.station_uuid,
+      if(promotionsList) {
+        await promotionsList.data.data.map(item => {
+          promotionsOptions.push({
+            label: item.title,
+            value: item.promotion_uuid,
           })
         })
       }
 
       this.setState({
-        branchesOptions: branchesOptions,
+        promotionsOptions: promotionsOptions,
         mounted: true
       })
 
@@ -145,14 +152,11 @@ class EditPhotoSlider extends Component {
           values.date_start && (formData.append('date_start', startDateTime.format('YYYY-MM-DDTHH:mm:ss') ) );
           values.date_end && (formData.append('date_end', endDateTime.format('YYYY-MM-DDTHH:mm:ss') ) );
           
-          console.log(start_time , 'start_time', values.start_time)
-          console.log(end_time , 'end_time' , values.end_time)
-
           // log formdata
           // for (var pair of formData.entries()) {
           //   console.log(pair[0]+ ', ' + pair[1]); 
           // }
-          let response = await API_UNI_OIL.post('updatePhotoSlider', formData , headers)
+          let response = await API_UNI_OIL.post(`updatePhotoSlider/${userInfo.photoslider_uuid}`, formData , headers)
 
           if(response) {
             message.success('Successful create new record.');  
@@ -188,7 +192,7 @@ class EditPhotoSlider extends Component {
 
     if(!this.state.mounted) return null;
 
-    const { loading, userInfo, branchesOptions, branchDefaultValue , branchDefaultKeyValue  } = this.state
+    const { loading, userInfo, promotionsOptions, promotionsDefaultValue , promotionsDefaultKeyValue  } = this.state
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
@@ -204,7 +208,7 @@ class EditPhotoSlider extends Component {
           <h2 style={{margin: '25px 35px'}}>Photo Slider Content Details</h2>
           <Formik
               initialValues={{
-                promotion_uuid: branchDefaultKeyValue  || '',
+                promotion_uuid: promotionsDefaultKeyValue[0]  || '',
                 title: userInfo.title || '',
                 description: userInfo.description || '',
                 image: userInfo.image || '',
@@ -220,8 +224,8 @@ class EditPhotoSlider extends Component {
               render = {(props)=> 
                 <EditPhotoSliderForm 
                   {...props}
-                  branchesOptions={branchesOptions}
-                  branchDefaultValue={branchDefaultValue}
+                  promotionsOptions={promotionsOptions}
+                  promotionsDefaultValue={promotionsDefaultValue}
                   handleFileUpload={this.handleFileUpload}
                 />
               }

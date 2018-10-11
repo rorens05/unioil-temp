@@ -25,8 +25,8 @@ const formItemLayout = {
 function EditUserManagementForm(props) {
   const {
     isSubmitting,
-    branchDefaultValue,
-    branchesOptions,
+    promotionsDefaultValue,
+    promotionsOptions,
     handleFileUpload
   } = props;
 
@@ -38,11 +38,11 @@ function EditUserManagementForm(props) {
         type="select"
         icon=""
         layout={formItemLayout}
-        label="Branches"
+        label="Promotion Name"
         placeholder="Promotion Name"
         mode="single"
-        defaultValue={branchDefaultValue && (branchDefaultValue)}
-        optionsList={branchesOptions}
+        defaultValue={promotionsDefaultValue && (promotionsDefaultValue)}
+        optionsList={promotionsOptions}
         component={Select}
       />
 

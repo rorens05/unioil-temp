@@ -2,8 +2,8 @@
 import * as Yup from 'yup'
 
 export const userDetailsSchema = Yup.object().shape({
-  promotion_uuid: Yup.string()
-    .required('Branches is required!'),
+  promotion_uuid: Yup.string(),
+    //.required('Branches is required!'),
   title: Yup.string()
     .required('Title is required!'),
   description: Yup.string()
