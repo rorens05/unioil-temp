@@ -92,7 +92,7 @@ class DashboardList extends Component {
                   title: 'Status',
                   dataIndex: 'status',
                   key: 'status',
-                  sorter: true,
+                  sorter: false,
                   width: 110,
                 },
                 {

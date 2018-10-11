@@ -100,7 +100,8 @@ class Login extends Component {
   
   render() {
     const { isAuthenticated, location } = this.props
-    const { from } = this.props.location.state || { from: { pathname: "/user-management" } };    
+    const { from } = this.props.location.state || { from: { pathname: "/user-management" } }; 
+    //const { from } =  { from: { pathname: "/user-management" } };    
     
     const { userVerified, isModalVisible, forgotUsername } = this.state;
 

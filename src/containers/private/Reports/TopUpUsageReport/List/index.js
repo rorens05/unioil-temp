@@ -46,8 +46,8 @@ class TopUpList extends Component {
               [
                 {
                   title: 'Date',
-                  dataIndex: 'date',
-                  key: 'date',
+                  dataIndex: 'paid_at',
+                  key: 'paid_at',
                   sorter: true,
                   filters: [],
                   width: "17%",
@@ -60,7 +60,7 @@ class TopUpList extends Component {
                   title: 'Time',
                   dataIndex: 'time',
                   key: 'time',
-                  sorter: true,
+                  //sorter: true,
                   filters:[],
                 },
                 {
