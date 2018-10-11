@@ -37,7 +37,7 @@ class CreateSystemPreferences extends Component {
       notification.error({ 
         message: "Error", 
         description: <div>
-          <div>Something went wrong.</div>
+          <div>Something went wrong loading data.</div>
         - { error && error.data && error.data.message }
         </div> , 
         duration: 20, 

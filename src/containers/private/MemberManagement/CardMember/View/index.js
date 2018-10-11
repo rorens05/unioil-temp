@@ -30,9 +30,9 @@ class CardMemberView extends Component {
       notification.error({ 
         message: "Error", 
         description: <div>
-              <div>Something went wrong viewing data.</div>
-              {error && error.data && (- error.data.message)}
-            </div> , 
+          <div>Something went wrong loading data.</div>
+            {error && error.data && (- error.data.message)}
+          </div> , 
         duration: 20, 
       });
       this.setState({ mounted: false })

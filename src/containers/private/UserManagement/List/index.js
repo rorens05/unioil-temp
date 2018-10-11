@@ -28,8 +28,15 @@ class UserManagementList extends Component {
       const response = await API_UNI_OIL.post(`adminChangeStatus`,params);
       message.success("Record Successfully update" );
       this.setState({ updating: !this.state.updating });
-    } catch (error) {
-      message.error("Something went wrong updating record.")
+    } catch ({response:error}) {
+      notification.error({ 
+        message: "Error", 
+        description: <div>
+          <div>Something went wrong updating record.</div>
+        - { error && error.data && error.data.message }
+        </div> , 
+        duration: 20, 
+      });
     }
   }
 

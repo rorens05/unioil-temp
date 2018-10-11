@@ -63,7 +63,14 @@ class CreateUserManagement extends Component {
         this.setState({loading: false, isGenerated: true})
       }
     } catch ({response:error}) {
-      notification.error({ message: 'Error', description: "Something went wrong generating password."})
+      notification.error({ 
+        message: "Error", 
+        description: <div>
+          <div>Something went wrong generating password.</div>
+        - { error && error.data && error.data.message }
+        </div> , 
+        duration: 20, 
+      });
       this.setState({loading: false})
     }
   }

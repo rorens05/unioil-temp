@@ -31,9 +31,9 @@ class LockAccountView extends Component {
       notification.error({ 
         message: "Error", 
         description: <div>
-              <div>Something went wrong viewing data.</div>
-               {error && error.data && (- error.data.message)}
-            </div> , 
+          <div>Something went wrong loading data.</div>
+            {error && error.data && (- error.data.message)}
+          </div> , 
         duration: 20, 
       });
       this.setState({ mounted: false })
@@ -49,8 +49,15 @@ class LockAccountView extends Component {
       message.success('Succesfully update lock account records');
       history.replace({ pathname: '/member-management/lock-account' });
     } catch ({response: error}) {
+      notification.error({ 
+        message: "Error", 
+        description: <div>
+          <div>Something went wrong updating record.</div>
+        - { error && error.data && error.data.message }
+        </div> , 
+        duration: 20, 
+      });
       this.setState({loading: false})
-      notification.error({ message: 'Error', description: "Something went wrong updating record."})
     }
   }
 

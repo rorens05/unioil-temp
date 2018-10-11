@@ -33,7 +33,14 @@ class TopUpCreate extends Component {
           mounted: true
         })
       } catch ({response: error}) {
-        notification.error({ message: "Error", description: 'Something went wrong generating fee code' , duration: 20, });
+        notification.error({ 
+          message: "Error", 
+          description: <div>
+            <div>Something went wrong generating fee code.</div>
+          - { error && error.data && error.data.message }
+          </div> , 
+          duration: 20, 
+        });
         this.setState({ mounted: false })
       }
     }
