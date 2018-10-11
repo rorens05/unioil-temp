@@ -31,8 +31,8 @@ class TermAndPrivacyView extends Component {
       notification.error({ 
         message: "Error", 
         description: <div>
-          <div>Something went wrong.</div>
-        - {error.data.message}
+          <div>Something went wrong loading data.</div>
+        - { error && error.data && error.data.message }
         </div> , 
         duration: 20, 
       });

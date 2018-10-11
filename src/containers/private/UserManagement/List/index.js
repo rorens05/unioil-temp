@@ -109,8 +109,8 @@ class UserManagementList extends Component {
                   key: 'status',
                   sorter: true,
                   filters: [
-                    { text: 'Active', value: 0},
-                    { text: 'Inactive', value: 1 },
+                    { text: 'Active', value: 'active'},
+                    { text: 'Inactive', value: 'inactive' },
                   ],
                   width: "10%",
                   render: (text, record) => {

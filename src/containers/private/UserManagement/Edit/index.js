@@ -61,13 +61,28 @@ class EditUserManagement extends Component {
     try {
       const response = await API_PUT(`admin/${userInfo.admin_uuid}`, params);    
       if(response.status === 422){
-     
+
+        let errors  = []
+        if(response.data) {
+          if(response.data.data)
+            for(const key of Object.keys(response.data.data)) {
+              errors.push(response.data.data[key][0])
+            }
+        }
+        
         notification.error({ 
           message: "Error", 
           description: 
           <div>
               <div>Something went wrong updating record</div>
-              - {response.data && (response.data.data.username[0])}
+              { response && response.data && response.data.data &&
+                errors.map(item =><div>- {item}</div>) 
+              }
+              {/* {
+                Object.keys(response.data.data).forEach(function(key) {
+                  <div>{response.data.data[key][0]}</div>
+                })
+              } */}
           </div>
         });
         setSubmitting(false)
