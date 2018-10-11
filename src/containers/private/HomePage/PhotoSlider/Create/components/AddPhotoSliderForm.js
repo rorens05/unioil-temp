@@ -38,7 +38,7 @@ function AddPhotoSliderForm(props) {
         type="select"
         icon=""
         layout={formItemLayout}
-        label="Branches"
+        label="Promotion Name"
         placeholder="Promotion Name"
         mode="single"
         optionsList={branchesOptions}

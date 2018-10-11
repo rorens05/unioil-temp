@@ -1,11 +1,12 @@
 // LIBRARIES
-import React from 'react';
-import { Row, Button, Col } from 'antd';
-import { Form, Field } from 'formik';
-import { connect } from 'react-redux';
+import React from 'react'
+import { Row, Button, Col } from 'antd'
+import { Form, Field } from 'formik'
+import { connect } from 'react-redux'
+import moment from 'moment'
 
 // COMPONENTS
-import { Input, Select, DatePicker , InputTextArea, UploadImage } from 'components/Forms';
+import { Input, Select, DatePicker , InputTextArea, UploadImage } from 'components/Forms'
 
 // HELPER FUNCTIONS
 
@@ -24,24 +25,24 @@ const formItemLayout = {
 function EditUserManagementForm(props) {
   const {
     isSubmitting,
+    branchDefaultValue,
+    branchesOptions,
+    handleFileUpload
   } = props;
 
   return (
     <Form noValidate>
 
       <Field
-        name="promotion"
+        name="promotion_uuid"
         type="select"
         icon=""
         layout={formItemLayout}
         label="Branches"
         placeholder="Promotion Name"
         mode="single"
-        optionsList={[
-          { label: "Gas Up Now in the Nearest Unioil Station", value: 0 },
-          { label: "Up Now Gas in the Nearest Unioil Station", value: 1, },
-          { label: "In the Nearest Gas Unioil Station", value: 2 }
-        ]}
+        defaultValue={branchDefaultValue && (branchDefaultValue)}
+        optionsList={branchesOptions}
         component={Select}
       />
 
@@ -67,20 +68,26 @@ function EditUserManagementForm(props) {
       />
 
       <Field
-        name="upload_image"
+        name="image"
         type="file"
+        accept=".jpg , .png, .gif"
+        multiple={false}
+        imageUrl={props.values.image && `${process.env.REACT_APP_IMG_URL}${props.values.image}`}
+        className="upload-list-inline"
         icon="user"
         layout={formItemLayout}
         label="Upload Image"
         placeholder="Upload Image"
         component={UploadImage}
+        imgWidth="294px"
+        handleFileUpload={handleFileUpload}
       />
 
-
       <Field
-        name="start_appeareance_date"
+        name="date_start"
         type="date"
         icon=""
+        defaultValue={ moment(props.values.date_start, 'YYYY-MM-DD') }
         layout={formItemLayout}
         label="Start Appearance Date"
         placeholder="Start Appearance Date"
@@ -88,9 +95,10 @@ function EditUserManagementForm(props) {
       />
 
       <Field
-        name="end_appeareance_date"
+        name="date_end"
         type="date"
         icon=""
+        defaultValue={ moment(props.values.date_end, 'YYYY-MM-DD') }
         layout={formItemLayout}
         label="End Appearance Date"
         placeholder="End Appearance Date"

@@ -259,8 +259,8 @@ class EditManagement extends Component {
                 <EditUserManagementForm 
                   {...props}
                   branchesOptions={branchesOptions}
-                  promoTypeOptions={promoTypeOptions}
                   branchDefaultValue={branchDefaultValue}
+                  promoTypeOptions={promoTypeOptions}
                   promoTypeDefaultValue={promoTypeDefaultValue}
                   handleFileUpload={this.handleFileUpload}
                 />
