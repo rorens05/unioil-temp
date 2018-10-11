@@ -21,6 +21,55 @@ class CreateManagement extends Component {
     mounted: false
   }
 
+  async componentDidMount () {
+
+    try {
+      let stationList = await API_GET('getStations');
+
+      let promoTypesList = await API_GET('promoTypes');
+
+      if(stationList) {
+
+        let branchesOptions = []
+
+        await stationList.data.data.map(item => {
+          branchesOptions.push({
+            label: item.description,
+            value: item.station_uuid
+          })
+        })
+
+        this.setState({
+          branchesOptions: branchesOptions,
+          mounted: true
+        })
+      }
+
+      if(promoTypesList) {
+
+        let promoTypeOptions = []
+        
+        for (var property in promoTypesList.data.data) {
+          if (promoTypesList.data.data.hasOwnProperty(property)) {
+            promoTypeOptions.push({
+              label: promoTypesList.data.data[property],
+              value: property
+            })
+          }
+        }
+
+        this.setState({
+          promoTypeOptions: promoTypeOptions,
+          mounted: true
+        })
+        
+      }
+    } catch ({response: error}) {
+      notification.error({ message: "Error", description: "Something went wrong loading data", duration: 20, });
+      this.setState({ mounted: false })
+    }
+  }
+
   handleSubmit = async (values, actions) => {
     
     const { fileUpload } = this.state;
@@ -83,56 +132,7 @@ class CreateManagement extends Component {
     this.form.submitForm()
   }
 
-  async componentDidMount () {
-
-    try {
-      let stationList = await API_GET('getStations');
-
-      let promoTypesList = await API_GET('promoTypes');
-
-      if(stationList) {
-
-        let branchesOptions = []
-
-        await stationList.data.data.map(item => {
-          branchesOptions.push({
-            label: item.description,
-            value: item.station_uuid
-          })
-        })
-
-        this.setState({
-          branchesOptions: branchesOptions,
-          mounted: true
-        })
-      }
-
-      if(promoTypesList) {
-
-        let promoTypeOptions = []
-        
-        for (var property in promoTypesList.data.data) {
-          if (promoTypesList.data.data.hasOwnProperty(property)) {
-            promoTypeOptions.push({
-              label: promoTypesList.data.data[property],
-              value: property
-            })
-          }
-        }
-
-        this.setState({
-          promoTypeOptions: promoTypeOptions,
-          mounted: true
-        })
-        
-      }
-    } catch ({response: error}) {
-      notification.error({ message: "Error", description: "Something went wrong loading data", duration: 20, });
-      this.setState({ mounted: false })
-    }
-
-
-  }
+  
 
   handleFileUpload =(e)=> {
     if (Array.isArray(e)) {
@@ -153,7 +153,7 @@ class CreateManagement extends Component {
           title="Promotions"
           action={this.handleAddPromotions}
           actionBtnName="Save"
-          cancel={()=> {console.log('cancel button')}}
+          cancel={()=> { this.props.history.push("/promotions")}}
           cancelBtnName="Cancel"
         />
         <div>
