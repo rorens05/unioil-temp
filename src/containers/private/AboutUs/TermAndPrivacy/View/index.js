@@ -36,6 +36,10 @@ class TermAndPrivacyView extends Component {
         </div> , 
         duration: 20, 
       });
+      if(error.status == 404) {
+        if(this.props.location.pathname)
+          this.props.history.push(`${this.props.location.pathname}/404`);
+      }
       this.setState({ mounted: false })
     }
     
