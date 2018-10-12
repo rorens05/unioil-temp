@@ -211,7 +211,7 @@ class AdvanceTable extends Component {
       selectedRowKeys, 
       onChange: this.onSelectChange ,
       getCheckboxProps: record => ({
-        disabled: record.editable != true, // Column configuration not to be checked
+        disabled: record.editable == false, // Column configuration not to be checked
         //name: record.name,
       }),
     };
