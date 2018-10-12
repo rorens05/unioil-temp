@@ -33,6 +33,7 @@ const loginReducer = (state = initialState, { type, payload, field_error }) => {
         status: "success",
         isAuthenticated: true,  
         messages: [{ body: "Receiving data successful", time: new Date() }],
+        data: payload,
         code: 200
       };
     case LOGIN_FIELD_ERROR:
@@ -42,7 +43,6 @@ const loginReducer = (state = initialState, { type, payload, field_error }) => {
         isAuthenticated: false, 
         messages: [{ body: "Something went wrong", time: new Date() }],
         error: field_error,
-        data: {},
         code: payload.status
       };
     case LOGIN_ERROR:

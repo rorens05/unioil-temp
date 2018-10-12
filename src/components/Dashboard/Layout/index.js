@@ -2,13 +2,14 @@
 import React from 'react'
 import { Layout } from 'antd';
 import { notification } from "antd";
+import { connect } from 'react-redux';
 
 import MainFooter from './components/MainFooter'
 import MainHeader from './components/MainHeader'
 import MainSidebar from './components/MainSidebar'
 
 import { API_UNI_OIL , API_POST } from 'utils/Api'
- 
+
 class DashboardLayout extends React.Component {
   state = {
     collapsed: false,
@@ -16,16 +17,16 @@ class DashboardLayout extends React.Component {
   };
 
   async componentDidMount() {
-    try {
-      let response = await API_POST(`adminProfile`);
-      this.setState({
-        userInfo: {...response.data.data},
-        mounted: true
-      })
-    } catch ({response: error}) {
-      //notification.error({ message: "Error", description: "Something went wrong your not Authenticated." , duration: 20, });
-      this.setState({ mounted: false })
-    }
+    // try {
+    //   let response = await API_POST(`adminProfile`);
+    //   this.setState({
+    //     userInfo: {...response.data.data},
+    //     mounted: true
+    //   })
+    // } catch ({response: error}) {
+    //   //notification.error({ message: "Error", description: "Something went wrong your not Authenticated." , duration: 20, });
+    //   this.setState({ mounted: false })
+    // }
   }
 
   toggle = () => {
@@ -35,17 +36,17 @@ class DashboardLayout extends React.Component {
   }
   render() {
 
-    const { userInfo } = this.state
-    const { children } = this.props
-    
+    //const { userInfo } = this.state
+    const { children, userInfo } = this.props
+
     return (
       <Layout style={{ height: '100%' }}>
-        <MainSidebar collapsed={this.state.collapsed}  userInfo={userInfo}/>
+        <MainSidebar collapsed={this.state.collapsed}  userInfo={userInfo.data.userInfo}/>
         <Layout style={{background: '#fcfcfc', paddingBottom: '10px'}}>
-          <MainHeader 
-            collapsed={this.state.collapsed}  
+          <MainHeader
+            collapsed={this.state.collapsed}
             toggle={this.toggle}
-            userInfo={userInfo}
+            userInfo={userInfo.data.userInfo}
           />
           <div style={{ overflow: 'auto', marginTop: '94px', paddingTop: '16px', position: 'relative' }}>
             {children}
@@ -59,11 +60,12 @@ class DashboardLayout extends React.Component {
 
 
 
-// DashboardLayout = connect(
-//   state => ({ 
-//     // pull initial values from account reducer
-//   }),
-//   { customAction }
-// )(DashboardLayout);
+DashboardLayout = connect(
+  state => ({
+    // pull initial values from account reducer
+    userInfo: state.login
+  }),
+  // { customAction }
+)(DashboardLayout);
 
 export default DashboardLayout
