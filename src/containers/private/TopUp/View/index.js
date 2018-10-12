@@ -43,10 +43,11 @@ class TopUpView extends Component {
 
   delete = async (uuid) => {
 
+    const { userInfo }  = this.state
     const { match } = this.props;
-
+    
     try {
-      await API_UNI_OIL.delete(`topUp/${match.params.id}`);
+      await API_UNI_OIL.delete(`topUp/${userInfo.topup_uuid}`);
       message.success('Record was successfully deleted.');
       this.props.history.push("/top-up");
     } catch ({response:error}) {

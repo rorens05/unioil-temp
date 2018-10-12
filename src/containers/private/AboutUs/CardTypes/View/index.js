@@ -43,12 +43,13 @@ class CardTypeView extends Component {
 
   delete = async (uuid) => {
 
+    const { userInfo } = this.state;
     const { match } = this.props;
 
     try {
-      await API_UNI_OIL.delete(`admin/${match.params.id}`);
+      await API_UNI_OIL.delete(`cardType/${userInfo.cardtype_uuid}`);
       message.success('Record was successfully deleted.');
-      this.props.history.push("/user-management");
+      this.props.history.push("/about-us/card-types");
     } catch ({response:error}) {
       notification.error({ 
         message: "Error", 

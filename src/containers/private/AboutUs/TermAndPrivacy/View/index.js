@@ -43,18 +43,20 @@ class TermAndPrivacyView extends Component {
 
   delete = async (uuid) => {
 
+    const { userInfo } = this.state
     const { match } = this.props;
 
     try {
-      await API_UNI_OIL.delete(`TermsAndPrivacyBatchDelete/${match.params.id}`);
+      await API_UNI_OIL.delete(`TermsAndPrivacy/${userInfo.tp_uuid}`);
       message.success('Record was successfully deleted.');
       this.props.history.push("/about-us/term-privacy");
     } catch ({response:error}) {
+      // this.props.history.push("/404");
       notification.error({ 
         message: "Error", 
         description: <div>
           <div>Something went wrong deleting record.</div>
-        - { error && error.data && error.data.message }
+        {/* - { error && error.data && error.data.message } */}
         </div> , 
         duration: 20, 
       });

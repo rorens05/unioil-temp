@@ -43,10 +43,11 @@ class PrmotionsView extends Component {
 
   delete = async (uuid) => {
 
+    const { userInfo }  = this.state
     const { match } = this.props;
-
+    
     try {
-      await API_UNI_OIL.delete(`promotion/${match.params.id}`);
+      await API_UNI_OIL.delete(`promotion/${userInfo.promotion_uuid}`);
       message.success('Record was successfully deleted.');
       this.props.history.push("/promotions");
     } catch ({response:error}) {

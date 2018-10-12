@@ -42,10 +42,11 @@ class PhotoSliderView extends Component {
 
   delete = async (uuid) => {
 
+    const { userInfo } = this.state
     const { match } = this.props;
-
+    
     try {
-      await API_UNI_OIL.delete(`photoSlider/${match.params.id}`);
+      await API_UNI_OIL.delete(`photoSlider/${userInfo.photoslider_uuid}`);
       message.success('Record was successfully deleted.');
       this.props.history.push("/home-page/photo-slider");
     } catch ({response:error}) {

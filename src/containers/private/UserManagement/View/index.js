@@ -43,10 +43,11 @@ class UserManagementView extends Component {
 
   delete = async (uuid) => {
 
+    const { userInfo }  = this.state
     const { match } = this.props;
 
     try {
-      await API_UNI_OIL.delete(`admin/${match.params.id}`);
+      await API_UNI_OIL.delete(`admin/${userInfo.admin_uuid}`);
       message.success('Record was successfully deleted.');
       this.props.history.push("/user-management");
     } catch ({response:error}) {
