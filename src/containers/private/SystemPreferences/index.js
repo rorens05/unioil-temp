@@ -1,6 +1,7 @@
 // LIBRARIES
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // COMPONENTS
 import CreateSystemPreferences from './Create';
@@ -21,14 +22,21 @@ class SystemPreferences extends Component {
 
   render() {  
     
+    const { userInfo } = this.props
     const { pageRoutes } = this.state        
 
     return (
 
     <div style={{position: 'relative'}}>
-        <MainContent pageRoutes={pageRoutes}>
+        <MainContent pageRoutes={userInfo.data.userInfo.role == 1 ? pageRoutes : []}>
           <Switch>
-            <Route exact path = "/system-parameters" component = { CreateSystemPreferences } />
+            {
+              userInfo.data.userInfo.role == 1 ? (
+                <Fragment>
+                  <Route exact path = "/system-parameters" component = { CreateSystemPreferences } />
+                </Fragment>
+              ) : null
+            }
             <PAGE404 />
           </Switch>
         </MainContent>
@@ -36,5 +44,13 @@ class SystemPreferences extends Component {
     );
   }
 }
+
+
+SystemPreferences = connect(
+  state => ({
+    userInfo: state.login
+  }),
+)(SystemPreferences);
+
 
 export default SystemPreferences;
