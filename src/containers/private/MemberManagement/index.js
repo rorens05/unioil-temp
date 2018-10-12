@@ -1,6 +1,7 @@
 // LIBRARIES
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // COMPONENTS
 import CardMemberList from './CardMember/List';
@@ -47,22 +48,26 @@ class MemberManagement extends Component {
   render() {
     
     const { pageRoutes } = this.state;
+    const { userInfo } = this.props
     
     return (
 
       <div style={{position: 'relative'}}>
-        <MainContent pageRoutes={pageRoutes}>
+        <MainContent pageRoutes={userInfo.data.userInfo.role == 1 ? pageRoutes : []}>
           <Switch>
+            {
+              userInfo.data.userInfo.role == 1 ? (
+                <Fragment>
+                  <Redirect exact from="/member-management" to="/member-management/card-member"/>
+                  <Route exact path = "/member-management/card-member" component = { CardMemberList } />
+                  <Route exact path = "/member-management/card-member/view/:id" component = { CardMemberView } />
 
-            <Redirect exact from="/member-management" to="/member-management/card-member"/>
-            <Route exact path = "/member-management/card-member" component = { CardMemberList } />
-            <Route exact path = "/member-management/card-member/view/:id" component = { CardMemberView } />
-
-          
-            <Route exact path = "/member-management/lock-account" component = { LockAccountList } />
-            <Route exact path = "/member-management/lock-account/view/:id" component = { LockAccountView } />
-      
-
+                
+                  <Route exact path = "/member-management/lock-account" component = { LockAccountList } />
+                  <Route exact path = "/member-management/lock-account/view/:id" component = { LockAccountView } />
+                </Fragment>
+              ) : null
+            }
             <PAGE404 />
           </Switch>
         </MainContent>
@@ -70,5 +75,12 @@ class MemberManagement extends Component {
     );
   }
 }
+
+MemberManagement = connect(
+  state => ({
+    userInfo: state.login
+  }),
+)(MemberManagement);
+
 
 export default MemberManagement;
