@@ -24,7 +24,6 @@ class Login extends Component {
 
   handleCheckUserApi = async (values, actions) => {
    
-    console.log('handleCheckUserApi',values , 'values', actions);
     const { username } = values;
     const { setErrors, setSubmitting } = actions;
 
