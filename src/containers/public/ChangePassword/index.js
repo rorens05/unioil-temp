@@ -42,7 +42,7 @@ class ChangePassword extends Component {
     let response = await API_POST("login_changePassword", params);
 
     if(response.data.code == 200) {
-      notification.success({ message: 'Password Succesfully Updated', description: `You may now login using your new password.` });
+      notification.success({ message: 'Password Successfully Updated', description: `You may now login using your new password.` });
       history.replace({ pathname: '/login' });
     } else {
       notification.error({ message: 'Error Changing Password', description: response.data.data.password ? `${response.data.data.password}.` : response.data.message });
