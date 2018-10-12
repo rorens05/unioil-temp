@@ -40,7 +40,7 @@ class UserManagementView extends Component {
         if(this.props.location.pathname)
           this.props.history.push(`${this.props.location.pathname}/404`);
       }
-      this.setState({ mounted: false })
+      this.setState({ mounted: true })
     }
     
   }
@@ -68,9 +68,11 @@ class UserManagementView extends Component {
 
   render() {
 
+    if(!this.state.mounted) return null;
+
     const { userInfo } = this.state
     const { history, match } = this.props
-    
+  
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
@@ -78,8 +80,8 @@ class UserManagementView extends Component {
           action={()=> {this.props.history.push(`/user-management/edit/${match.params.id}`)}}
           actionBtnName="Update"
           styleBtn={{background: 'white', borderColor: 'rgb(184, 187, 201)',color: 'rgb(101, 105, 127)'}}
-          deleteAction={this.delete}
-          deleteBtnName="Delete"
+          deleteAction={userInfo.editable == true ? this.delete : null}
+          deleteBtnName={userInfo.editable == true ? "Delete" : null}
         />
         <div>
           <ViewUserManagementForm userInfo={userInfo} />
