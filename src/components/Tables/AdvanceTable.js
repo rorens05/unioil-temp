@@ -207,7 +207,14 @@ class AdvanceTable extends Component {
     
     if(!this.state.mounted) return null;
     const { loading,selectedRowKeys } = this.state;
-    const rowSelection = { selectedRowKeys, onChange: this.onSelectChange };
+    const rowSelection = { 
+      selectedRowKeys, 
+      onChange: this.onSelectChange ,
+      getCheckboxProps: record => ({
+        disabled: record.editable != true, // Column configuration not to be checked
+        //name: record.name,
+      }),
+    };
     const hasSelected = selectedRowKeys.length > 0;
 
     let { history, keyValue, location, url: {apiDelete} } = this.props;
