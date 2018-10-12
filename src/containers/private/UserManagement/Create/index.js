@@ -85,7 +85,7 @@ class CreateUserManagement extends Component {
           loading={loading}
           title="Add User"
           action={this.handleAddUser}
-          actionBtnName="Save"
+          actionBtnName="Submit"
           cancel={()=> { this.props.history.push("/user-management")}}
           cancelBtnName="Cancel"
         />

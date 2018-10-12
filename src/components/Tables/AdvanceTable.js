@@ -237,7 +237,7 @@ class AdvanceTable extends Component {
                     return (<Popconfirm 
                               placement="bottomRight" 
                               key={action.key}
-                              title={'Delete this record?'}  
+                              title={'Are you sure you want to delete this record?'}  
                               onConfirm={()=> this.delete(record[keyValue]) }
                               okText="Yes" cancelText="No"
                               icon={ <Icon type="close-circle" /> }
@@ -337,7 +337,7 @@ class AdvanceTable extends Component {
               apiDelete && (
               <div>
                 <Popconfirm 
-                  placement="top" title={'Delete this record?'} 
+                  placement="top" title={'Are you sure you want to delete this record?'} 
                   onConfirm={this.handleBatchDelete} okText="Yes" cancelText="No"
                   icon={ <Icon type="close-circle" /> }
                 >

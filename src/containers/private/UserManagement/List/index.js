@@ -26,7 +26,7 @@ class UserManagementList extends Component {
     params = { admin_uuid : params.admin_uuid , status: e.item.props.eventKey}
     try {
       const response = await API_UNI_OIL.post(`adminChangeStatus`,params);
-      message.success('New record added.');
+      message.success('User account created successfully.');
       this.setState({ updating: !this.state.updating });
     } catch ({response:error}) {
       notification.error({ 

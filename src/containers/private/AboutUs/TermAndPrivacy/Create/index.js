@@ -68,7 +68,7 @@ handleCreateTermPrivacy =()=> {
           loading={loading}
           title={match.params.id == "1" ? "Terms" : "Privacy Policy"}
           action={this.handleCreateTermPrivacy}
-          actionBtnName="Save"
+          actionBtnName="Submit"
           cancel={()=> { this.props.history.push("/about-us/term-privacy")}}
           cancelBtnName="Cancel"
         />

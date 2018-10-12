@@ -93,7 +93,7 @@ class HeaderForm extends Component {
               deleteAction && 
                 (
                   <Popconfirm 
-                    placement="bottom" title={'Delete this record?'} 
+                    placement="bottom" title={'Are you sure you want to delete this record?'} 
                     onConfirm={deleteAction} okText="Yes" cancelText="No"
                     icon={ <Icon type="close-circle" /> }
                   >

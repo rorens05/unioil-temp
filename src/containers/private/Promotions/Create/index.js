@@ -159,7 +159,7 @@ class CreateManagement extends Component {
         <HeaderForm 
           title="Promotions"
           action={this.handleAddPromotions}
-          actionBtnName="Save"
+          actionBtnName="Submit"
           cancel={()=> { this.props.history.push("/promotions")}}
           cancelBtnName="Cancel"
         />

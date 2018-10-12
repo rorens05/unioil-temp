@@ -95,7 +95,7 @@ class CardTypeCreate extends Component {
           loading={loading}
           title="Card Types"
           action={this.handleAddCardTypes}
-          actionBtnName="Save"
+          actionBtnName="Submit"
           cancel={()=> { this.props.history.push("/about-us")}}
           cancelBtnName="Cancel"
         />

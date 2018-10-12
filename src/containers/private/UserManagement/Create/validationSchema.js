@@ -12,10 +12,14 @@ export const userDetailsSchema = Yup.object().shape({
       },
     ),
   firstname: Yup.string()
+    .trim()
+    .matches(/^[A-Za-z -]+$/, { excludeEmptyString: false, message: "Invalid characters" })
     .required('First Name is required!'),
   lastname: Yup.string()
+    .trim()
     .required('Last Name is required!'),
   email: Yup.string()
+    .trim()
     .required('Email is required!')
     .matches(/^[A-Za-z0-9@_. ]+$/, { excludeEmptyString: false, message: "Invalid characters" })
     .email("Invalid Email"),

@@ -123,7 +123,7 @@ class CreateSystemPreferences extends Component {
           title="System Parameters"
           action={this.handleAddUser}
           loading={loading}
-          actionBtnName="Save"
+          actionBtnName="Submit"
           // cancel={()=> {console.log('cancel button')}}
           // cancelBtnName="Cancel"
         />

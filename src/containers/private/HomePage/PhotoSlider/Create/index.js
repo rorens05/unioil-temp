@@ -129,7 +129,7 @@ class CreatePhotoSlider extends Component {
         <HeaderForm 
           title="Photo Slider"
           action={this.handleAddPhotoSlider}
-          actionBtnName="Save"
+          actionBtnName="Submit"
           cancel={()=> { this.props.history.push("/home-page/photo-slider")}}
           cancelBtnName="Cancel"
         />

@@ -150,7 +150,7 @@ class TableLayout extends Component {
                                             (itemAction.action || itemAction.action_name == "delete")
                                             ?
                                              <Popconfirm 
-                                                title="Are you sure delete this record?" 
+                                                title="Are you sure you want to delete this record?" 
                                                 content={itemAction.message}
                                                 onConfirm={
                                                     ()=> this.confirm(itemAction, record[keyValue]) 

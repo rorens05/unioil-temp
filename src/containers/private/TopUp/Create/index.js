@@ -92,7 +92,7 @@ class TopUpCreate extends Component {
           loading={loading}
           title="Top-Up"
           action={this.handleCreateTopUp}
-          actionBtnName="Save"
+          actionBtnName="Submit"
           cancel={()=> { this.props.history.push("/top-up")}}
           cancelBtnName="Cancel"
         />
