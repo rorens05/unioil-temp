@@ -12,7 +12,7 @@ function Login(props) {
     showModalChangePassword,
     backToLogin
   } = props;
-console.log(props.values,'props.valuesprops.values')
+
   return (
     <Form noValidate>
 
