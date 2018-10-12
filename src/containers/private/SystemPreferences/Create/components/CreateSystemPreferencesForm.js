@@ -55,6 +55,7 @@ function CreateSystemPreferencesForm(props) {
         placeholder="Upload Image"
         component={UploadImage}
         handleFileUpload={handleFileUpload}
+        imgWidth="294px"
         beforeUpload={()=> { return false}}
       />
       <div style={styles.borderDivision}></div>
