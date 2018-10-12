@@ -19,7 +19,27 @@ class Login extends Component {
     username: null,
     userVerified: false,
     isModalVisible: false,
-    forgotUsername: false
+    forgotUsername: false,
+    userEmail: null,
+    userLogo: null,
+    mounted: false,
+  }
+
+  componentDidMount = async ()=> {
+    try {
+      let response = await API_UNI_OIL.get('systemPreference/contact_email_address_mobile')
+      let response_logo = await API_UNI_OIL.get('systemPreference/logo')
+      
+      if(response) {
+        this.setState({
+          userEmail: response.data.data.value,
+          userLogo: response_logo.data.data.value,
+          mounted: true,
+        })
+      }
+    } catch ({response:error}) {
+      
+    }
   }
 
   handleCheckUserApi = async (values, actions) => {
@@ -98,7 +118,10 @@ class Login extends Component {
 
   
   render() {
-    const { userVerified, isModalVisible, forgotUsername, role } = this.state;
+
+    if(!this.state.mounted) return null;
+
+    const { userVerified, isModalVisible, forgotUsername, role, userEmail, userLogo } = this.state;
 
     const { isAuthenticated, location, userInfo } = this.props
     //const { from } = this.props.location.state || { from: { pathname: "/my-profile" } }; 
@@ -115,7 +138,7 @@ class Login extends Component {
           <Col span={12} offset={6}>
             <Helmet title = "Login Page" />
             <div>
-              <img src={ require("assets/img/logo_unioil.png") } style={{margin: '60px auto 50px'}}/>
+              {userLogo && (<img src={ `${process.env.REACT_APP_IMG_URL}${userLogo}` } style={{margin: '60px auto 50px'}}/>) }
             </div>
             <div style={{marginBottom: '20px'}}>
               <h1 style={{marginBottom: 0}}>Welcome</h1>
@@ -152,7 +175,7 @@ class Login extends Component {
             <h4>Forgot {forgotUsername ? 'Username' : 'Password'}</h4>
             <p>
               To have your {forgotUsername ? 'username' : 'password reset'}, please contact <br/>
-              UniOil's admin at <a href="mailto:loyalty.officer3@unioil.com" style={{color: '#005598'}}>loyalty.officer3@unioil.com</a>
+              UniOil's admin at <a href={`mailto:${userEmail && userEmail}`} style={{color: '#005598'}}>{userEmail && userEmail}</a>
             </p>
             <div style={{display: 'flex', justifyContent: 'flex-end'}}>
               <Button 
