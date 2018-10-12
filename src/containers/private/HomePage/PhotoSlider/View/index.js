@@ -35,6 +35,10 @@ class PhotoSliderView extends Component {
         </div> , 
         duration: 20, 
       });
+      if(error.status == 404) {
+        if(this.props.location.pathname)
+          this.props.history.push(`${this.props.location.pathname}/404`);
+      }
       this.setState({ mounted: false })
     }
     
@@ -44,7 +48,7 @@ class PhotoSliderView extends Component {
 
     const { userInfo } = this.state
     const { match } = this.props;
-    
+
     try {
       await API_UNI_OIL.delete(`photoSlider/${userInfo.photoslider_uuid}`);
       message.success('Record was successfully deleted.');
