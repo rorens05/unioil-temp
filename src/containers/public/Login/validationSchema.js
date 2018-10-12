@@ -5,7 +5,7 @@ export const loginSchema = Yup.object().shape({
   username: Yup.string()
     .required('Username is required!')
     .matches(
-      /^[a-zA-Z0-9_@.]+$/,
+      /^[A-Za-z0-9_@. ]+$/,
       {
         message: 'Invalid username.',
         excludeEmptyString: true,

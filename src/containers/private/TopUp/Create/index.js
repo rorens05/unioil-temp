@@ -61,9 +61,16 @@ class TopUpCreate extends Component {
           history.push({ pathname: '/top-up' });
         }
        
-      } catch (error) {
-        message.error("Something went creating new record.")
-        this.setState({ loading: true });
+      } catch ({response:error}) {
+        notification.error({ 
+          message: 'Error', 
+          description: <div>
+            Something went creating new record..
+            { error && error.data && error.data.data && error.data.data.name 
+                && (<div>- {error.data.data.name[0]} </div>) }
+          </div>
+        });
+        this.setState({ loading: false });
       }
     
   }
