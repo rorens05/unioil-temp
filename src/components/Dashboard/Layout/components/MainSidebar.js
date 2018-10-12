@@ -140,7 +140,7 @@ function MainSidebar(props) {
       label: "System Parameters",
       path: "/system-parameters",
       icon: "setting",
-      access: true,
+      access: userInfo && userInfo.role == 1 ? true : false,
     },
   ]
 
