@@ -33,7 +33,18 @@ class EditUserManagement extends Component {
         mounted: true
       })
     } catch ({response: error}) {
-      notification.error({ message: "Error", description: error.data.message , duration: 20, });
+      notification.error({ 
+        message: "Error", 
+        description: <div>
+          <div>Something went wrong loading data.</div>
+        - {error.data.message}
+        </div> , 
+        duration: 20, 
+      });
+      if(error.status == 404) {
+        if(this.props.location.pathname)
+          this.props.history.push(`${this.props.location.pathname}/404`);
+      }
       this.setState({ mounted: false })
     }
     
