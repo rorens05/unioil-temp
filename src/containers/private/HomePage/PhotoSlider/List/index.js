@@ -60,6 +60,7 @@ class PhotoSliderList extends Component {
                   title: 'Type',
                   dataIndex: 'type',
                   key: 'email',
+                  sortByValue: 'promotion_id',
                   sorter: true,
                   filters:[]
                 },
@@ -75,6 +76,7 @@ class PhotoSliderList extends Component {
                   title: 'End Date',
                   dataIndex: 'end_start',
                   key: 'end_start',
+                  sortByValue: 'date_end',
                   sorter: true,
                   filters:[],
                 },
