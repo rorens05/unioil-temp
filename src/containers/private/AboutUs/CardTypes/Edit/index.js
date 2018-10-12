@@ -67,7 +67,7 @@ class CardTypeEdit extends Component {
           let response = await API_UNI_OIL.post(`cardTypeUpdate/${userInfo.cardtype_uuid}`, formData , headers)
 
           if(response) {
-            message.success('Successful update record.');  
+            message.success('Record was successfully update.');  
             this.setState({loading: false})
             history.push({ pathname: "/about-us/card-types" })
           }

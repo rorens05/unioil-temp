@@ -46,7 +46,7 @@ class LockAccountView extends Component {
     this.setState({loading: true})
     try {
       let response = await API_POST(`memberActivate/${match.params.id}`);
-      message.success('Successful update record.');
+      message.success('Record was successfully update.');
       history.replace({ pathname: '/member-management/lock-account' });
     } catch ({response: error}) {
       notification.error({ 

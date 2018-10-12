@@ -47,7 +47,7 @@ class TopUpView extends Component {
 
     try {
       await API_UNI_OIL.delete(`topUp/${match.params.id}`);
-      message.success('Succesful delete record.');
+      message.success('Record was successfully deleted.');
       this.props.history.push("/top-up");
     } catch ({response:error}) {
       notification.error({ 

@@ -166,7 +166,7 @@ class EditPhotoSlider extends Component {
           let response = await API_UNI_OIL.post(`updatePhotoSlider/${userInfo.photoslider_uuid}`, formData , headers)
 
           if(response) {
-            message.success('Successful update record.'); 
+            message.success('Record was successfully update.'); 
             this.setState({loading: false})
             history.push({ pathname: "/home-page/photo-slider" })
           }

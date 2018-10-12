@@ -47,7 +47,7 @@ class TermAndPrivacyView extends Component {
 
     try {
       await API_UNI_OIL.delete(`TermsAndPrivacyBatchDelete/${match.params.id}`);
-      message.success('Successful delete record.');
+      message.success('Record was successfully deleted.');
       this.props.history.push("/about-us/term-privacy");
     } catch ({response:error}) {
       notification.error({ 
