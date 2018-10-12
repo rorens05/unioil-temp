@@ -25,7 +25,8 @@ function EditUserManagementForm(props) {
     isSubmitting,
     generatePassword,
     loading,
-    isGenerated
+    isGenerated,
+    userInfo
   } = props;
 
   return (
@@ -71,23 +72,26 @@ function EditUserManagementForm(props) {
         component={Input}
       />
 
-      <Field
-        name="role"
-        icon="user"
-        layout={formItemLayout}
-        optionsList={[
-          {
-            label: "System Admin",
-            value: 1
-          },
-          {
-            label: "Marketing Personnel",
-            value: 2,
-          }
-        ]}
-        label="User Role"
-        component={Radio}
-      />
+      {
+        userInfo.role != 1 && (
+          <Field
+            name="role"
+            icon="user"
+            layout={formItemLayout}
+            optionsList={[
+              {
+                label: "System Admin",
+                value: 1
+              },
+              {
+                label: "Marketing Personnel",
+                value: 2,
+              }
+            ]}
+            label="User Role"
+            component={Radio}
+          />
+      )}
 
       <Field
         name="password"

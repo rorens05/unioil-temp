@@ -1,6 +1,7 @@
 // LIBRARIES
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 // COMPONENTS
 import CardTypeList from './CardTypes/List';
@@ -91,25 +92,30 @@ class AboutUs extends Component {
 
   render() {
     
+    const { userInfo } = this.props
     const { pageRoutes } = this.state;
     
     return (
 
       <div style={{position: 'relative'}}>
-        <MainContent pageRoutes={pageRoutes}>
+        <MainContent pageRoutes={userInfo.data.userInfo.role == 1 ? pageRoutes : []}>
           <Switch>
+            {
+              userInfo.data.userInfo.role == 1 ? (
+                <Fragment>
+                  <Redirect exact from="/about-us" to="/about-us/card-types"/>
+                  <Route exact path = "/about-us/card-types" component = { CardTypeList } />
+                  <Route exact path = "/about-us/card-types/create" component = { CardTypeCreate } />
+                  <Route exact path = "/about-us/card-types/view/:id" component = { CardTypeView } />
+                  <Route exact path = "/about-us/card-types/edit/:id" component = { CardTypeEdit } />
 
-            <Redirect exact from="/about-us" to="/about-us/card-types"/>
-            <Route exact path = "/about-us/card-types" component = { CardTypeList } />
-            <Route exact path = "/about-us/card-types/create" component = { CardTypeCreate } />
-            <Route exact path = "/about-us/card-types/view/:id" component = { CardTypeView } />
-            <Route exact path = "/about-us/card-types/edit/:id" component = { CardTypeEdit } />
-
-            <Route exact path = "/about-us/term-privacy" component = { TermAndPrivacyList } />
-            <Route exact path = "/about-us/term-privacy/create/:id" component = { TermAndPrivacyCreate } />
-            <Route exact path = "/about-us/term-privacy/view/:id" component = { TermAndPrivacyView } />
-            <Route exact path = "/about-us/term-privacy/edit/:id" component = { TermAndPrivacyEdit } />
-
+                  <Route exact path = "/about-us/term-privacy" component = { TermAndPrivacyList } />
+                  <Route exact path = "/about-us/term-privacy/create/:id" component = { TermAndPrivacyCreate } />
+                  <Route exact path = "/about-us/term-privacy/view/:id" component = { TermAndPrivacyView } />
+                  <Route exact path = "/about-us/term-privacy/edit/:id" component = { TermAndPrivacyEdit } />
+                </Fragment>
+              ) : null
+            }
            {/*
             <Route exact path = "/about-us/terms-privacy" component = { LockAccountList } />
             <Route exact path = "/about-us/terms-privacy/create" component = { UserManagementCreate } />
@@ -125,5 +131,13 @@ class AboutUs extends Component {
     );
   }
 }
+
+
+AboutUs = connect(
+  state => ({
+    userInfo: state.login
+  }),
+)(AboutUs);
+
 
 export default AboutUs;

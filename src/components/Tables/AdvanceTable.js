@@ -207,7 +207,14 @@ class AdvanceTable extends Component {
     
     if(!this.state.mounted) return null;
     const { loading,selectedRowKeys } = this.state;
-    const rowSelection = { selectedRowKeys, onChange: this.onSelectChange };
+    const rowSelection = { 
+      selectedRowKeys, 
+      onChange: this.onSelectChange ,
+      getCheckboxProps: record => ({
+        disabled: record.editable == false, // Column configuration not to be checked
+        //name: record.name,
+      }),
+    };
     const hasSelected = selectedRowKeys.length > 0;
 
     let { history, keyValue, location, url: {apiDelete} } = this.props;
@@ -224,7 +231,7 @@ class AdvanceTable extends Component {
             ...data,
             render: (text,record) =>(
               data.buttons.map( action => {
-
+                
                   let actionBtn;
 
                   if(action.key == "edit") 
@@ -234,26 +241,28 @@ class AdvanceTable extends Component {
                   if(action.key == "delete") { 
                     actionBtn = action.action 
                     
-                    return (<Popconfirm 
-                              placement="bottomRight" 
-                              key={action.key}
-                              title={'Are you sure you want to delete this record?'}  
-                              onConfirm={()=> this.delete(record[keyValue]) }
-                              okText="Yes" cancelText="No"
-                              icon={ <Icon type="close-circle" /> }
-                            >
-                                <Icon
-                                  type={action.icon} 
-                                  style={{
-                                    padding: '5px 14px 5px 0',
-                                    color: 'rgb(231, 70, 16)',
-                                    cursor: 'pointer'
-                                  }}
-                                />
-                      </Popconfirm>
-                    )
+                    if(record.editable) {
+                      return (<Popconfirm 
+                                placement="bottomRight" 
+                                key={action.key}
+                                title={'Are you sure you want to delete this record?'}  
+                                onConfirm={()=> this.delete(record[keyValue]) }
+                                okText="Yes" cancelText="No"
+                                icon={ <Icon type="close-circle" /> }
+                              >
+                                  <Icon
+                                    type={action.icon} 
+                                    style={{
+                                      padding: '5px 14px 5px 0',
+                                      color: 'rgb(231, 70, 16)',
+                                      cursor: 'pointer'
+                                    }}
+                                  />
+                        </Popconfirm>
+                      )
+                    } else { return }
                   }
-
+ 
                   return (<Tooltip key={action.key} placement="top" title={action.title}>
                       <Icon
                         type={action.icon} 

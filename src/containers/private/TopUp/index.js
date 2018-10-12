@@ -1,6 +1,7 @@
 // LIBRARIES
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // COMPONENTS
 import TopUpList from './List';
@@ -45,17 +46,25 @@ class TopUp extends Component {
   }
 
   render() {  
+
+    const { userInfo } = this.props
     const { pageRoutes } = this.state        
 
     return (
 
     <div style={{position: 'relative'}}>
-        <MainContent pageRoutes={pageRoutes}>
+        <MainContent pageRoutes={userInfo.data.userInfo.role == 1 ? pageRoutes : []}>
           <Switch>
-            <Route exact path = "/top-up" component = { TopUpList } />
-            <Route exact path = "/top-up/create" component = { TopUpCreate } />
-            <Route exact path = "/top-up/edit/:id" component = { TopUpEdit } />
-            <Route exact path = "/top-up/view/:id" component = { TopUpView } />
+            {
+              userInfo.data.userInfo.role == 1 ? (
+                <Fragment>
+                  <Route exact path = "/top-up" component = { TopUpList } />
+                  <Route exact path = "/top-up/create" component = { TopUpCreate } />
+                  <Route exact path = "/top-up/edit/:id" component = { TopUpEdit } />
+                  <Route exact path = "/top-up/view/:id" component = { TopUpView } />
+                </Fragment>
+              ) : null
+            }
             <PAGE404 />
           </Switch>
         </MainContent>
@@ -63,5 +72,12 @@ class TopUp extends Component {
     );
   }
 }
+
+
+TopUp = connect(
+  state => ({
+    userInfo: state.login
+  }),
+)(TopUp);
 
 export default TopUp;

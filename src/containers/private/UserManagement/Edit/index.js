@@ -172,6 +172,7 @@ class EditUserManagement extends Component {
                 <EditUserManagementForm 
                   {...props}
                   loading={loading}
+                  userInfo={userInfo}
                   generatePassword={this.generatePassword}
                   isGenerated={(isGenerated || userInfo.generated_password) && true}
                 />

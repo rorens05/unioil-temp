@@ -31,8 +31,8 @@ class Login extends Component {
       const { data } = await API_UNI_OIL.post('/login_username', {
         username
       });
-      const { is_verified } = data.data;
-      this.setState({ username, userVerified: is_verified });
+      const { is_verified, role } = data.data;
+      this.setState({ username, userVerified: is_verified, role });
       setSubmitting(false);
     } catch ({response: error}) {
       setErrors({ username: error.data.message });
@@ -44,7 +44,7 @@ class Login extends Component {
   
     const { password, username } = values;
     const { setErrors, setSubmitting } = actions;
-    //const { username } = this.state;
+    const { role } = this.state;
     let { history, location } = this.props;
 
     //let usernameInitialValue = location.state && location.state.username;
@@ -53,12 +53,12 @@ class Login extends Component {
     this.props.customAction({
       type: "LOGIN" ,
       payload: {
-        //username : userName,
         username,
         password,
         setSubmitting,
         setErrors,
-        history
+        history,
+        role
       }
     });
   }
@@ -98,12 +98,12 @@ class Login extends Component {
 
   
   render() {
-    const { isAuthenticated, location } = this.props
-    const { from } = this.props.location.state || { from: { pathname: "/user-management" } }; 
-    //const { from } =  { from: { pathname: "/user-management" } };    
-    
-    const { userVerified, isModalVisible, forgotUsername } = this.state;
+    const { userVerified, isModalVisible, forgotUsername, role } = this.state;
 
+    const { isAuthenticated, location, userInfo } = this.props
+    //const { from } = this.props.location.state || { from: { pathname: "/my-profile" } }; 
+    const { from } =  { from: { pathname: role == 1 ? "/user-management" : "/my-profile" } };    
+ 
     if (isAuthenticated) {
       return <Redirect to={from} />;
     }
@@ -172,7 +172,8 @@ class Login extends Component {
 Login = connect(
   state => ({
     isAuthenticated: state.auth.isAuthenticated,
-    register: state.register
+    register: state.register,
+    userInfo: state.login
   }),
   { customAction }
 )(Login);

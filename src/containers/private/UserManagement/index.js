@@ -1,6 +1,7 @@
 // LIBRARIES
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // COMPONENTS
 import DashboardList from './List';
@@ -45,17 +46,24 @@ class Dashboard extends Component {
   }
 
   render() {  
-    const { pageRoutes } = this.state        
+    const { pageRoutes } = this.state   
+    const { userInfo } = this.props     
 
     return (
 
     <div style={{position: 'relative'}}>
-        <MainContent pageRoutes={pageRoutes}>
+        <MainContent pageRoutes={userInfo.data.userInfo.role == 1 ? pageRoutes : []}>
           <Switch>
-            <Route exact path = "/user-management" component = { DashboardList } />
-            <Route exact path = "/user-management/create" component = { UserManagementCreate } />
-            <Route exact path = "/user-management/edit/:id" component = { UserManagementEdit } />
-            <Route exact path = "/user-management/view/:id" component = { UserManagementView } />
+            {
+              userInfo.data.userInfo.role == 1 ? (
+                <Fragment>
+                  <Route exact path = "/user-management" component = { DashboardList } />
+                  <Route exact path = "/user-management/create" component = { UserManagementCreate } />
+                  <Route exact path = "/user-management/edit/:id" component = { UserManagementEdit } />
+                  <Route exact path = "/user-management/view/:id" component = { UserManagementView } />
+                </Fragment>
+              ) : null
+            }
             <PAGE404 />
           </Switch>
         </MainContent>
@@ -63,5 +71,12 @@ class Dashboard extends Component {
     );
   }
 }
+
+Dashboard = connect(
+  state => ({
+    userInfo: state.login
+  }),
+)(Dashboard);
+
 
 export default Dashboard;

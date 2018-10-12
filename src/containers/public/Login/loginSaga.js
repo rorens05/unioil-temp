@@ -1,5 +1,5 @@
 import { call, takeLatest, put } from "redux-saga/effects";
-import { API_UNI_OIL } from "utils/Api";
+import { API_UNI_OIL, API_POST } from "utils/Api";
 import { setCookie } from "utils/cookie";
 import { notification } from "antd";
 
@@ -10,7 +10,7 @@ function* loginFlow({ payload }) {
     setSubmitting,
     setErrors,
     history,
-    admin_uuid
+    role
   } = payload;
 
   try {
@@ -22,8 +22,11 @@ function* loginFlow({ payload }) {
     if(data.data.token) {
       API_UNI_OIL.defaults.headers.common['Authorization'] = `Bearer ${data.data.token}`;
       setCookie({ token: data.data.token }, "TOKEN");
-  
-      yield put({ type: "LOGIN_SUCCESS", payload: data.data });
+
+      const response  = yield call(() => API_POST(`adminProfile`));
+      data.data['userInfo'] = {...response.data.data}
+   
+      yield put({ type: "LOGIN_SUCCESS", payload: {...data.data} });
     }
     
   } catch ({response: error}) {

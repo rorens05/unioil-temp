@@ -9,7 +9,7 @@ import Loading from './components/Loading';
 
 import { getCookie } from './utils/cookie';
 import { customAction } from './actions';
-import { API_UNI_OIL } from "utils/Api";
+import { API_UNI_OIL,API_POST } from "utils/Api";
 
 const AsyncLogin = Loadable({
   loader: () => import("./containers/public/Login"),
@@ -99,7 +99,18 @@ class App extends Component {
       let { replace, location } = history;
 
       API_UNI_OIL.defaults.headers.common['Authorization'] = `Bearer ${getCookie("TOKEN").token}`;
-      customAction({type: 'LOGIN_SUCCESS' });
+      //customAction({type: 'LOGIN_SUCCESS' });
+      
+      try {
+        let response = await API_POST(`adminProfile`);
+        response.data.data['userInfo'] = {...response.data.data}
+   
+        customAction({type: 'LOGIN_SUCCESS', payload: {...response.data.data} });
+      } catch ({response: error}) {
+        //notification.error({ message: "Error", description: "Something went wrong loading user data." , duration: 20, });
+      }
+      
+     
 
       if(publicRoutes.includes(location.pathname)) replace("/user-management");
     }
