@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { message } from 'antd';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 // COMPONENTS
 import AdvanceTable from "components/Tables/AdvanceTable";
@@ -70,15 +71,23 @@ class PhotoSliderList extends Component {
                   key: 'date_start',
                   sorter: true,
                   filters:[],
-                  width: 150
+                  width: 150,
+                  render: date_start => {
+                    if(moment(date_start).format("DD-MMM-YYYY") !== "Invalid date")
+                      return moment(date_start).format("DD-MMM-YYYY")
+                  },
                 },
                 {
                   title: 'End Date',
-                  dataIndex: 'end_start',
-                  key: 'end_start',
+                  dataIndex: 'date_end',
+                  key: 'date_end',
                   sortByValue: 'date_end',
                   sorter: true,
                   filters:[],
+                  render: date_end => {
+                    if(moment(date_end).format("DD-MMM-YYYY") !== "Invalid date")
+                      return moment(date_end).format("DD-MMM-YYYY")
+                  },
                 },
                 {
                   title: 'Action',
