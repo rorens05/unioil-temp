@@ -121,7 +121,7 @@ class CardTypeEdit extends Component {
           loading={loading}
           title="Update Card Type"
           action={this.handleEditCardTypes}
-          actionBtnName="Update"
+          actionBtnName="Submit"
           withConfirm={{message: "Save changes to this record?"}}
           cancel={()=> { this.props.history.push("/about-us/card-types")}}
           cancelBtnName="Cancel"

@@ -97,7 +97,7 @@ class TermAndPrivacyEdit extends Component {
           loading={loading}
           title="Update Terms"
           action={this.handleEditUserManagement}
-          actionBtnName="Update"
+          actionBtnName="Submit"
           withConfirm={{message: "Save changes to this record?"}}
           cancel={()=> { this.props.history.push("/about-us/term-privacy")}}
           cancelBtnName="Cancel"

@@ -241,7 +241,7 @@ class EditManagement extends Component {
         <HeaderForm 
           title="Update Promotions"
           action={this.handleEditPromotions}
-          actionBtnName="Update"
+          actionBtnName="Submit"
           withConfirm={{message: "Save changes to this record?"}}
           cancel={()=> this.props.history.push("/promotions")}
           cancelBtnName="Cancel"
