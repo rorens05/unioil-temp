@@ -34,7 +34,7 @@ class LockedAccountList extends Component {
             keyValue="lcard_uuid"
             url={{ 
               apiDelete: 'memberBatchDelete',
-              default: 'member?_locked=1',
+              default: 'member?_locked=1&_sort_by=card_number&_sort_order=asc',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}
             filterValues ={["role", "status"]}
