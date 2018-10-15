@@ -5,7 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
-import { Input, InputNumberAntD } from 'components/Forms';
+import { Input, InputNumberAntD, Radio } from 'components/Forms';
 
 // HELPER FUNCTIONS
 
@@ -59,6 +59,20 @@ function TopUpCreateForm(props) {
         label="Amount"
         placeholder="Amount"
         component={InputNumberAntD}
+      />
+
+      <Field
+        name="type"
+        icon="user"
+        layout={formItemLayout}
+        defaultValue={1}
+        isRadioButton
+        optionsList={[
+          { label: "PH Peso", value: 1, },
+          { label: "Percentage ", value: 2 }
+        ]}
+        label="Type"
+        component={Radio}
       />
       
     </Form>

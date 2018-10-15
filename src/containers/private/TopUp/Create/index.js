@@ -53,6 +53,12 @@ class TopUpCreate extends Component {
       let params  = { ...values }
       this.setState({ loading: true });
 
+      if(params.type) {
+        params.type = String(params.type)
+      } else {
+        params.type = "1"
+      }
+      
       try {
         const response = await API_UNI_OIL.post('topUp',params);
         if(response) {
@@ -66,8 +72,8 @@ class TopUpCreate extends Component {
           message: 'Error', 
           description: <div>
             Something went creating new record..
-            { error && error.data && error.data.data && error.data.data.name 
-                && (<div>- {error.data.data.name[0]} </div>) }
+            { error && error.data && error.data.data && error.data.data.fee_code 
+                && (<div>- {error.data.data.fee_code[0]} </div>) }
           </div>
         });
         this.setState({ loading: false });
@@ -103,6 +109,7 @@ class TopUpCreate extends Component {
                 fee_code: generatedCode.fee_code || '',
                 name: '',
                 amount: '',
+                type: ''
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
