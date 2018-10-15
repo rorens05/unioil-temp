@@ -161,6 +161,7 @@ class EditUserManagement extends Component {
                 lastname: userInfo.lastname || '',
                 email: userInfo.email || '',
                 role: userInfo.role || '',
+                status: userInfo.status || '',
                 password: 
                   userInfo.generated_password ? userInfo.generated_password : "*******************"
               }}

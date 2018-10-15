@@ -74,6 +74,24 @@ function AddUserManagementForm(props) {
       />
 
       <Field
+        name="status"
+        icon=""
+        layout={formItemLayout}
+        optionsList={[
+          {
+            label: "Active",
+            value: "active"
+          },
+          {
+            label: "Inactive",
+            value: "inactive",
+          }
+        ]}
+        label="Status"
+        component={Radio}
+      />
+
+      <Field
         name="role"
         icon="user"
         layout={formItemLayout}

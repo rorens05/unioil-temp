@@ -98,7 +98,8 @@ class CreateUserManagement extends Component {
                 firstname: '',
                 lastname: '',
                 email: '',
-                role: ''
+                role: '',
+                status: ''
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}

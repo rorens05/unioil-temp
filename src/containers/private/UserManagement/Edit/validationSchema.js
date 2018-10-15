@@ -21,6 +21,8 @@ export const userDetailsSchema = Yup.object().shape({
     .email("Invalid Email"),
   role: Yup.string()
     .required('Role is required!'),
+  status: Yup.string()
+    .required('Status is required!'),
   password: Yup.string()
     .required('Default Password is required!')
 })

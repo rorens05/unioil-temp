@@ -72,6 +72,25 @@ function EditUserManagementForm(props) {
         component={Input}
       />
 
+      <Field
+        name="status"
+        icon=""
+        //defaultValue={}
+        layout={formItemLayout}
+        optionsList={[
+          {
+            label: "Active",
+            value: "active"
+          },
+          {
+            label: "Inactive",
+            value: "inactive",
+          }
+        ]}
+        label="Status"
+        component={Radio}
+      />
+
       {
         userInfo.role != 1 && (
           <Field
@@ -101,7 +120,7 @@ function EditUserManagementForm(props) {
         withActionBtn={{
           action: ()=>generatePassword(props),
           name: "Generate",
-          disabled: isGenerated
+          disabled: userInfo.disable_generate || isGenerated
         }}
         readOnly
         layout={formItemLayout}
