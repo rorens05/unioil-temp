@@ -252,6 +252,7 @@ class AdvanceTable extends Component {
                           okText="Yes" cancelText="No"
                           icon={ <Icon type="close-circle" /> }
                         >
+                        <Tooltip key={action.key} placement="top" title={action.title}>
                             <Icon
                               type={action.icon} 
                               style={{
@@ -259,7 +260,8 @@ class AdvanceTable extends Component {
                                 color: 'rgb(231, 70, 16)',
                                 cursor: 'pointer'
                               }}
-                        />
+                            />
+                        </Tooltip>
                       </Popconfirm> )
                     }
                   }
