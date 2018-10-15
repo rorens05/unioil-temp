@@ -53,7 +53,7 @@ function MainSidebar(props) {
     },
     {
       key: 8 ,
-      label: "Home Page",
+      label: "Home Page ( Mobile ) ",
       path: "/home-page",
       icon: "home",
       access: true,

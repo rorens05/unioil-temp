@@ -241,26 +241,27 @@ class AdvanceTable extends Component {
                   if(action.key == "delete") { 
                     actionBtn = action.action 
                     
-                    if(record.editable) {
-                      return (<Popconfirm 
-                                placement="bottomRight" 
-                                key={action.key}
-                                title={'Are you sure you want to delete this record?'}  
-                                onConfirm={()=> this.delete(record[keyValue]) }
-                                okText="Yes" cancelText="No"
-                                icon={ <Icon type="close-circle" /> }
-                              >
-                                  <Icon
-                                    type={action.icon} 
-                                    style={{
-                                      padding: '5px 14px 5px 0',
-                                      color: 'rgb(231, 70, 16)',
-                                      cursor: 'pointer'
-                                    }}
-                                  />
-                        </Popconfirm>
-                      )
-                    } else { return }
+                    if(record.editable == false) {
+                      return 
+                    } else {
+                      (<Popconfirm 
+                          placement="bottomRight" 
+                          key={action.key}
+                          title={'Are you sure you want to delete this record?'}  
+                          onConfirm={()=> this.delete(record[keyValue]) }
+                          okText="Yes" cancelText="No"
+                          icon={ <Icon type="close-circle" /> }
+                        >
+                            <Icon
+                              type={action.icon} 
+                              style={{
+                                padding: '5px 14px 5px 0',
+                                color: 'rgb(231, 70, 16)',
+                                cursor: 'pointer'
+                              }}
+                        />
+                      </Popconfirm> )
+                    }
                   }
  
                   return (<Tooltip key={action.key} placement="top" title={action.title}>

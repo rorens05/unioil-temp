@@ -48,7 +48,7 @@ function MainBreadcrumbs(props) {
         routeComparestyle={{ padding: '11px 24px 9px', fontSize: '12px' }}
       >
         <Breadcrumb.Item>
-          <Link to='/user-management'>
+          <Link to='/my-profile'>
             <Icon type="home" /> {` Home`}
           </Link>
         </Breadcrumb.Item>
@@ -61,7 +61,7 @@ function MainBreadcrumbs(props) {
         style={{ padding: '11px 24px 9px', fontSize: '12px' }}
       >
         <Breadcrumb.Item>
-          <Link to='/user-management'>
+          <Link to='/my-profile'>
             <Icon type="home" /> {` Home`}
           </Link>
         </Breadcrumb.Item>

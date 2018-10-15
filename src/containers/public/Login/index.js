@@ -125,7 +125,8 @@ class Login extends Component {
 
     const { isAuthenticated, location, userInfo } = this.props
     //const { from } = this.props.location.state || { from: { pathname: "/my-profile" } }; 
-    const { from } =  { from: { pathname: role == 1 ? "/user-management" : "/my-profile" } };    
+    //const { from } =  { from: { pathname: role == 1 ? "/user-management" : "/my-profile" } };  
+    const { from } =  { from: { pathname: "/my-profile" } };    
  
     if (isAuthenticated) {
       return <Redirect to={from} />;
