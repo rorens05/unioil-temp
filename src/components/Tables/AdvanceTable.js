@@ -244,7 +244,7 @@ class AdvanceTable extends Component {
                     if(record.editable == false) {
                       return 
                     } else {
-                      (<Popconfirm 
+                      return (<Popconfirm 
                           placement="bottomRight" 
                           key={action.key}
                           title={'Are you sure you want to delete this record?'}  
