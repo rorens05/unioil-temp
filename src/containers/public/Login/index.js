@@ -139,7 +139,7 @@ class Login extends Component {
           <Col span={12} offset={6}>
             <Helmet title = "Login Page" />
             <div>
-              {userLogo && (<img src={ `${process.env.REACT_APP_IMG_URL}${userLogo}` } style={{margin: '60px auto 50px'}}/>) }
+              <img src={ require("assets/img/logo_unioil.png") } style={{margin: '60px auto 50px'}}/>
             </div>
             <div style={{marginBottom: '20px'}}>
               <h1 style={{marginBottom: 0}}>Welcome</h1>
