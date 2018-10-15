@@ -24,8 +24,8 @@ class DashboardList extends Component {
 
   delete =()=> {
     let success = true;
-    if(success)
-      message.info('Clicked on Yes.');
+    // if(success)
+    //   message.info('Clicked on Yes.');
   }
 
   render() {
