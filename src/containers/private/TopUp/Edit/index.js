@@ -62,6 +62,12 @@ class TopUpEdit extends Component {
       ...values,
     }
 
+    if(params.type) {
+      params.type = String(params.type)
+    } else {
+      params.type = "1"
+    }
+
     this.setState({loading: true})
     try {
       const response = await API_PUT(`topUp/${userInfo.topup_uuid}`, params);    
@@ -104,7 +110,8 @@ class TopUpEdit extends Component {
               initialValues={{
                 fee_code: userInfo.fee_code  || '',
                 name: userInfo.name || '',
-                amount: userInfo.amount || ''
+                amount: userInfo.amount || '',
+                type: userInfo.type == "PH peso" ? 1 : 2
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}

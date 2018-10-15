@@ -5,7 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
-import { Input, InputNumberAntD } from 'components/Forms';
+import { Input, InputNumberAntD, Radio } from 'components/Forms';
 
 // HELPER FUNCTIONS
 
@@ -61,6 +61,20 @@ function EditUserManagementForm(props) {
         label="Amount"
         placeholder="Amount"
         component={InputNumberAntD}
+      />
+
+      <Field
+        name="type"
+        icon="user"
+        layout={formItemLayout}
+        defaultValue={props.values.type}
+        isRadioButton
+        optionsList={[
+          { label: "PH Peso", value: 1, },
+          { label: "Percentage ", value: 2 }
+        ]}
+        label="Type"
+        component={Radio}
       />
 
     </Form>
