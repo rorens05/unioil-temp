@@ -379,7 +379,7 @@ class AdvanceTable extends Component {
                       showSizeChanger 
                       defaultCurrent={parseInt(urlParamsObject.page, 10) || 1} 
                       defaultPageSize={parseInt(urlParamsObject.page_size, 10) || 10}
-                      pageSizeOptions={['5','10','15','20']}
+                      pageSizeOptions={['10','50','100']}
                       total={this.state.total} 
                       showTotal= {(total, range) => `Showing ${ this.state.total > 0 ? range[0] : 0}-${this.state.total > 0 ? range[1] : 0 } of ${this.state.total > 0 ? total : 0}`}
                       onChange= {this.onPaginationChange}
