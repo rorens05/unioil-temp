@@ -65,7 +65,7 @@ class CardMemberList extends Component {
                   width: "12%",
                 },
                 {
-                  title: 'Birtday',
+                  title: 'Birthday',
                   dataIndex: 'birthdate',
                   key: 'birthdate',
                   sorter: true,
