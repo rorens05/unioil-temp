@@ -359,7 +359,7 @@ class AdvanceTable extends Component {
                       icon="delete" 
                       loading={loading}
                   >
-                      Delete All
+                      Delete
                   </Button>
                   <span style={{ marginLeft: 8 }}>
                       {hasSelected ? `Selected ${selectedRowKeys.length} item(s)` : ''}
