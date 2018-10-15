@@ -56,8 +56,8 @@ function TopUpCreateForm(props) {
         name="amount"
         //icon="user"
         layout={formItemLayout}
-        label="Amount"
-        placeholder="Amount"
+        label="Value"
+        placeholder="Value"
         component={InputNumberAntD}
       />
 

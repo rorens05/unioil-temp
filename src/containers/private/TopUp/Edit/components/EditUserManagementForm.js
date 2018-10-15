@@ -58,8 +58,8 @@ function EditUserManagementForm(props) {
         //icon="user"
         defaultValue={props.values.amount}
         layout={formItemLayout}
-        label="Amount"
-        placeholder="Amount"
+        label="Value"
+        placeholder="Value"
         component={InputNumberAntD}
       />
 
