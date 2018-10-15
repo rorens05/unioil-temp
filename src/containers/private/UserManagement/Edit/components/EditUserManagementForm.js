@@ -1,5 +1,5 @@
 // LIBRARIES
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Row, Button, Col } from 'antd';
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
@@ -72,27 +72,31 @@ function EditUserManagementForm(props) {
         component={Input}
       />
 
-      <Field
-        name="status"
-        icon=""
-        //defaultValue={}
-        layout={formItemLayout}
-        optionsList={[
-          {
-            label: "Active",
-            value: "active"
-          },
-          {
-            label: "Inactive",
-            value: "inactive",
-          }
-        ]}
-        label="Status"
-        component={Radio}
-      />
+      
 
       {
-        userInfo.role != 1 && (
+        userInfo.editable && (
+        <Fragment>
+          <Field
+            name="status"
+            icon=""
+            //defaultValue={}
+            layout={formItemLayout}
+            optionsList={[
+              {
+                label: "Active",
+                value: "active"
+              },
+              {
+                label: "Inactive",
+                value: "inactive",
+              }
+            ]}
+            label="Status"
+            component={Radio}
+          />
+
+
           <Field
             name="role"
             icon="user"
@@ -110,6 +114,7 @@ function EditUserManagementForm(props) {
             label="User Role"
             component={Radio}
           />
+        </Fragment>
       )}
 
       <Field
