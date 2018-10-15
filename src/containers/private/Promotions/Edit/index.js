@@ -22,7 +22,8 @@ class EditManagement extends Component {
     mounted: false,
     branchDefaultValue: null,
     branchesOptions: null,
-    promoTypeOptions: null
+    promoTypeOptions: null,
+    responsePromotionTopUp: null
   }
 
   async componentDidMount() {
@@ -35,6 +36,9 @@ class EditManagement extends Component {
     
     try {
       let response = await API_UNI_OIL.get(`promotion/${match.params.id}`);
+
+      let responsePromotionTopUp = await API_UNI_OIL.get(`promotionDisableTopTwo`);
+
       // default options branch
       response.data.data.stations.map(item => {
         branchDefaultValue.push(
@@ -67,7 +71,8 @@ class EditManagement extends Component {
         branchDefaultValue,
         branchDefaultKeyValue,
         promoTypeDefaultValue,
-        promoTypeDefaultKeyValue
+        promoTypeDefaultKeyValue,
+        responsePromotionTopUp : responsePromotionTopUp.data && responsePromotionTopUp.data.data.is_toppromotion
       })
 
       
@@ -233,8 +238,9 @@ class EditManagement extends Component {
 
     if(!this.state.mounted) return null;
 
-    const { loading, userInfo, branchesOptions, promoTypeOptions, branchDefaultValue ,
-      branchDefaultKeyValue , promoTypeDefaultValue, promoTypeDefaultKeyValue } = this.state
+    const { loading, userInfo, branchesOptions, promoTypeOptions, branchDefaultValue,
+            branchDefaultKeyValue , promoTypeDefaultValue, promoTypeDefaultKeyValue, 
+            responsePromotionTopUp } = this.state
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
@@ -273,6 +279,7 @@ class EditManagement extends Component {
                   branchDefaultValue={branchDefaultValue}
                   promoTypeOptions={promoTypeOptions}
                   promoTypeDefaultValue={promoTypeDefaultValue}
+                  responsePromotionTopUp={responsePromotionTopUp}
                   handleFileUpload={this.handleFileUpload}
                 />
               }

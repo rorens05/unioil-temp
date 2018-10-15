@@ -29,7 +29,8 @@ function AddPromotionForm(props) {
     handleSubmit,
     branchesOptions,
     promoTypeOptions,
-    handleFileUpload
+    handleFileUpload,
+    responsePromotionTopUp
   } = props;
 
   return (
@@ -125,6 +126,7 @@ function AddPromotionForm(props) {
       />
 
       <Field
+        disabled={responsePromotionTopUp && responsePromotionTopUp != "disable" ? false : true}
         name="is_toppromotion"
         icon="user"
         layout={formItemLayout}

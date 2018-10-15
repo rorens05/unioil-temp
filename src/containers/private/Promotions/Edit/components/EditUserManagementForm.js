@@ -30,7 +30,8 @@ function EditUserManagementForm(props) {
     branchesOptions,
     promoTypeOptions,
     branchDefaultValue ,
-    promoTypeDefaultValue
+    promoTypeDefaultValue,
+    responsePromotionTopUp
   } = props;
 
   return (
@@ -132,6 +133,7 @@ function EditUserManagementForm(props) {
       />
 
       <Field
+        disabled={responsePromotionTopUp && responsePromotionTopUp != "disable" ? false : true}
         name="is_toppromotion"
         icon="user"
         layout={formItemLayout}
@@ -162,7 +164,7 @@ function EditUserManagementForm(props) {
         name="is_gps"
         icon="user"
         layout={formItemLayout}
-        defaultValue={0}
+       // defaultValue={0}
         isRadioButton
         optionsList={[
           { label: "Yes", value: 1 },

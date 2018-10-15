@@ -18,7 +18,8 @@ class CreateManagement extends Component {
   state = {
     branchesOptions: null,
     promoTypeOptions: null,
-    mounted: false
+    mounted: false,
+    responsePromotionTopUp: null
   }
 
   async componentDidMount () {
@@ -27,6 +28,8 @@ class CreateManagement extends Component {
       let stationList = await API_GET('getStations');
 
       let promoTypesList = await API_GET('promoTypes');
+
+      let responsePromotionTopUp = await API_UNI_OIL.get(`promotionDisableTopTwo`);
 
       if(stationList) {
 
@@ -41,7 +44,8 @@ class CreateManagement extends Component {
 
         this.setState({
           branchesOptions: branchesOptions,
-          mounted: true
+          mounted: true,
+          responsePromotionTopUp : responsePromotionTopUp.data && responsePromotionTopUp.data.data.is_toppromotion
         })
       }
 
@@ -152,7 +156,7 @@ class CreateManagement extends Component {
 
     if(!this.state.mounted) return null;
 
-    const { branchesOptions, promoTypeOptions } = this.state
+    const { branchesOptions, promoTypeOptions,responsePromotionTopUp } = this.state
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
@@ -188,6 +192,7 @@ class CreateManagement extends Component {
                   {...props}
                   branchesOptions={branchesOptions}
                   promoTypeOptions={promoTypeOptions}
+                  responsePromotionTopUp={responsePromotionTopUp}
                   handleFileUpload={this.handleFileUpload}
                 />
               }
