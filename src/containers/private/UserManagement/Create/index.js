@@ -33,6 +33,12 @@ class CreateUserManagement extends Component {
     let _self = this; 
     this.setState({loading: true, isGenerated: false})
     values.role = parseInt(values.role);
+    if(values.status) {
+      values.status = values.status
+    } else { 
+      values.status = "active"
+    }
+    
 
     this.props.customAction({
       type: "USERMANAGEMENT_CREATE_REQUEST",
@@ -99,7 +105,7 @@ class CreateUserManagement extends Component {
                 lastname: '',
                 email: '',
                 role: '',
-                status: ''
+                status: "active"
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
