@@ -12,6 +12,7 @@ import EditUserManagementForm from './components/EditUserManagementForm'
 import { userDetailsSchema } from './validationSchema'
 import { API_GET, API_PUT, API_POST } from "utils/Api";
 import { API_UNI_OIL } from "utils/Api";
+import { apiFormValidation } from "utils/helper";
 
 
 
@@ -138,6 +139,7 @@ class EditManagement extends Component {
     
     const { fileUpload, branchesOptions, userInfo } = this.state;
     const { history } = this.props;
+    const { setErrors } = actions;
  
     this.setState({loading: true})
     try {
@@ -210,6 +212,9 @@ class EditManagement extends Component {
           }
           
     } catch ({response: error}) {
+      if (error.status === 422) {
+        apiFormValidation({ data: error.data.data, setErrors });
+      }
       notification.error({ 
         message: 'Error', 
         description: <div>

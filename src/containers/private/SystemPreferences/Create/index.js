@@ -12,6 +12,7 @@ import CreateSystemPreferencesForm from './components/CreateSystemPreferencesFor
 // HELPER FUNCTIONS
 import { customAction } from "actions";
 import { API_GET, API_PUT, API_POST, API_UNI_OIL } from "utils/Api";
+import { apiFormValidation } from "utils/helper";
 import { userDetailsSchema } from './validationSchema'
 
 
@@ -51,7 +52,7 @@ class CreateSystemPreferences extends Component {
   handleSubmit = async (values, actions) => {
     
     const { fileUpload } = this.state;
-
+    const { setSubmitting, setErrors } = actions;
 
     this.setState({loading: true})
     try {
@@ -83,6 +84,9 @@ class CreateSystemPreferences extends Component {
           
         
     } catch ({response: error}) {
+      if (error.status === 422) {
+        apiFormValidation({ data: error.data.data, setErrors });
+      }
       notification.error({ 
         message: 'Error', 
         description: <div>
@@ -94,6 +98,7 @@ class CreateSystemPreferences extends Component {
         </div>
       }); 
       this.setState({loading: false})
+      setSubmitting(false);
     }
     
   }

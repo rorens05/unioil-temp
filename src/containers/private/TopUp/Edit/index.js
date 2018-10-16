@@ -11,6 +11,7 @@ import EditUserManagementForm from './components/EditUserManagementForm'
 // HELPER FUNCTIONS
 import { userDetailsSchema } from './validationSchema'
 import { API_GET, API_PUT, API_POST } from "utils/Api";
+import { apiFormValidation } from "utils/helper";
 import { API_UNI_OIL } from "utils/Api";
 
 class TopUpEdit extends Component {
@@ -72,6 +73,7 @@ class TopUpEdit extends Component {
     try {
       const response = await API_PUT(`topUp/${userInfo.topup_uuid}`, params);    
       if(response.status === 422){
+        apiFormValidation({ data: response.data.data, setErrors })
         notification.error({ message: "Success", description: "Something went wrong updating record" });
         setSubmitting(false)
         this.setState({loading: false})

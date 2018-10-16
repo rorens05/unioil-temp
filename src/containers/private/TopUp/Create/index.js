@@ -10,6 +10,7 @@ import TopUpCreateForm from './components/TopUpCreateForm'
 
 // HELPER FUNCTIONS
 import { API_GET, API_POST, API_UNI_OIL } from "utils/Api";
+import { apiFormValidation } from "utils/helper";
 import { customAction } from "actions";
 import { userDetailsSchema } from './validationSchema'
 
@@ -48,7 +49,7 @@ class TopUpCreate extends Component {
   }
 
   handleSubmit = async (values, actions) => {
-  
+      const { setErrors } = actions;
       let { history } = this.props;
       let params  = { ...values }
       this.setState({ loading: true });
@@ -68,6 +69,9 @@ class TopUpCreate extends Component {
         }
        
       } catch ({response:error}) {
+        if (error.status === 422) {
+          apiFormValidation({ data: error.data.data, setErrors });
+        }
         notification.error({ 
           message: 'Error', 
           description: <div>

@@ -11,6 +11,7 @@ import AddPromotionForm from './components/AddPromotionForm'
 // HELPER FUNCTIONS
 import { userDetailsSchema } from './validationSchema'
 import { API_GET, API_POST, API_UNI_OIL } from "utils/Api";
+import { apiFormValidation } from "utils/helper";
 
 
 
@@ -86,6 +87,7 @@ class CreateManagement extends Component {
     
     const { fileUpload } = this.state;
     const { history } = this.props;
+    const { setErrors } = actions;
 
     this.setState({loading: true})
     try {
@@ -127,6 +129,9 @@ class CreateManagement extends Component {
           }
           
     } catch ({response: error}) {
+      if (error.status === 422) {
+        apiFormValidation({ data: error.data.data, setErrors });
+      }
       notification.error({ 
         message: 'Error', 
         description: <div>

@@ -12,6 +12,7 @@ import AddUserManagementForm from './components/AddUserManagementForm'
 import { userDetailsSchema } from './validationSchema'
 import { customAction } from "actions";
 import { API_GET, API_POST, API_UNI_OIL } from "utils/Api";
+import { apiFormValidation } from "utils/helper";
 
 
 class TermAndPrivacyCreate extends Component {
@@ -27,7 +28,7 @@ class TermAndPrivacyCreate extends Component {
   }
 
   handleSubmit = async (values, actions) => {
-  
+    const { setSubmitting, setErrors } = actions;
     let { history, match } = this.props;
     let params  = { ...values, type: match.params.id }
     this.setState({ loading: true });
@@ -41,6 +42,9 @@ class TermAndPrivacyCreate extends Component {
       }
      
     } catch ({response:error}) {
+      if (error.status === 422) {
+        apiFormValidation({ data: error.data.data, setErrors });
+      }
       notification.error({ 
         message: "Error", 
         description: <div>
@@ -49,7 +53,8 @@ class TermAndPrivacyCreate extends Component {
         </div> , 
         duration: 20, 
       });
-      this.setState({ loading: true });
+      setSubmitting(false);
+      this.setState({ loading: false });
     }
   
 }

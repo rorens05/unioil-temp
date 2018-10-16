@@ -12,6 +12,7 @@ import AddCardForm from './components/AddCardForm'
 import { userDetailsSchema } from './validationSchema'
 import { customAction } from "actions";
 import { API_GET, API_POST, API_UNI_OIL } from "utils/Api";
+import { apiFormValidation } from "utils/helper";
 
 
 class CardTypeCreate extends Component {
@@ -30,7 +31,7 @@ class CardTypeCreate extends Component {
     
     const { fileUpload } = this.state;
     const { history } = this.props;
-
+    const { setErrors } = actions;
 
     this.setState({loading: true})
     try {
@@ -60,6 +61,9 @@ class CardTypeCreate extends Component {
           }
           
     } catch ({response: error}) {
+      if (error.status === 422) {
+        apiFormValidation({ data: error.data.data, setErrors });
+      }
       notification.error({ 
         message: 'Error', 
         description: <div>

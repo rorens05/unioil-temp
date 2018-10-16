@@ -12,8 +12,7 @@ import EditPhotoSliderForm from './components/EditPhotoSliderForm'
 import { userDetailsSchema } from './validationSchema'
 import { API_GET, API_PUT, API_POST } from "utils/Api";
 import { API_UNI_OIL } from "utils/Api";
-
-
+import { apiFormValidation } from "utils/helper";
 
 class EditPhotoSlider extends Component {
   state = {
@@ -109,6 +108,7 @@ class EditPhotoSlider extends Component {
  
     const { fileUpload, branchesOptions, userInfo } = this.state;
     const { history } = this.props;
+    const { setErrors } = actions;
 
     console.log(values, 'valuesvaluesvalues')
 
@@ -176,6 +176,9 @@ class EditPhotoSlider extends Component {
           }
           
     } catch ({response: error}) {
+      if (error.status === 422) {
+        apiFormValidation({ data: error.data.data, setErrors })
+      }
       notification.error({ 
         message: 'Error', 
         description: <div>

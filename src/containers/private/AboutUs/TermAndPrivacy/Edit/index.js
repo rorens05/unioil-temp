@@ -12,6 +12,7 @@ import EditUserManagementForm from './components/EditUserManagementForm'
 import { userDetailsSchema } from './validationSchema'
 import { API_GET, API_PUT, API_POST } from "utils/Api";
 import { API_UNI_OIL } from "utils/Api";
+import { apiFormValidation } from "utils/helper";
 
 class TermAndPrivacyEdit extends Component {
   state = {
@@ -69,6 +70,9 @@ class TermAndPrivacyEdit extends Component {
     try {
       const response = await API_PUT(`TermsAndPrivacy/${userInfo.tp_uuid}`, params);    
       if(response.status === 422){
+        if (response.status === 422) {
+          apiFormValidation({ data: response.data.data, setErrors });
+        }
         notification.error({ message: "Success", description: "Something went wrong updating record" });
         setSubmitting(false)
         this.setState({loading: false})
