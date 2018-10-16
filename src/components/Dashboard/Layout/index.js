@@ -37,7 +37,7 @@ class DashboardLayout extends React.Component {
     notification.error({ 
       message: "Error", 
       description: <div>You are logout automatically for being idle more than 10 minutes.</div>, 
-      duration: 20, 
+      duration: 0, 
     });
     this.props.customAction({type: 'LOGOUT'});
   }
