@@ -16,6 +16,7 @@ import { API_GET, API_POST, API_UNI_OIL } from "utils/Api";
 
 class CreateManagement extends Component {
   state = {
+    loading: false,
     branchesOptions: null,
     promoTypeOptions: null,
     mounted: false,
@@ -156,11 +157,12 @@ class CreateManagement extends Component {
 
     if(!this.state.mounted) return null;
 
-    const { branchesOptions, promoTypeOptions,responsePromotionTopUp } = this.state
+    const { branchesOptions, promoTypeOptions, responsePromotionTopUp, loading } = this.state
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
+          loading={loading}
           title="Promotions"
           action={this.handleAddPromotions}
           actionBtnName="Submit"

@@ -245,6 +245,7 @@ class EditManagement extends Component {
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
+          loading={loading}
           title="Update Promotions"
           action={this.handleEditPromotions}
           actionBtnName="Submit"
