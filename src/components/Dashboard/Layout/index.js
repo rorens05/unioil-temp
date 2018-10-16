@@ -3,30 +3,43 @@ import React from 'react'
 import { Layout } from 'antd';
 import { notification } from "antd";
 import { connect } from 'react-redux';
+import IdleTimer from 'react-idle-timer'
 
 import MainFooter from './components/MainFooter'
 import MainHeader from './components/MainHeader'
 import MainSidebar from './components/MainSidebar'
 
 import { API_UNI_OIL , API_POST } from 'utils/Api'
+import { customAction } from 'actions'
 
 class DashboardLayout extends React.Component {
-  state = {
-    collapsed: false,
-    userInfo: null
-  };
+  
 
-  async componentDidMount() {
-    // try {
-    //   let response = await API_POST(`adminProfile`);
-    //   this.setState({
-    //     userInfo: {...response.data.data},
-    //     mounted: true
-    //   })
-    // } catch ({response: error}) {
-    //   //notification.error({ message: "Error", description: "Something went wrong your not Authenticated." , duration: 20, });
-    //   this.setState({ mounted: false })
-    // }
+  constructor(props) {
+    super(props)
+    this.idleTimer = null
+    this.onActive = this.handleActive.bind(this)
+    this.onIdle = this.handleIdle.bind(this)
+
+    this.state = {
+      collapsed: false,
+      userInfo: null
+    };
+  }
+
+
+  handleActive(e) {
+    // console.log('user is active', e)
+  }
+ 
+  handleIdle(e) {
+    // console.log('user is idle', e)
+    notification.error({ 
+      message: "Error", 
+      description: <div>You are logout automatically for being idle more than 10 minutes.</div>, 
+      duration: 20, 
+    });
+    this.props.customAction({type: 'LOGOUT'});
   }
 
   toggle = () => {
@@ -48,10 +61,17 @@ class DashboardLayout extends React.Component {
             toggle={this.toggle}
             userInfo={userInfo.data.userInfo}
           />
-          <div style={{ overflow: 'auto', marginTop: '94px', paddingTop: '16px', position: 'relative' }}>
-            {children}
+            <div style={{ overflow: 'auto', marginTop: '94px', paddingTop: '16px', position: 'relative' }}>
+            <IdleTimer
+              ref={ref => { this.idleTimer = ref }}
+              element={document}
+              onActive={this.onActive}
+              onIdle={this.onIdle}
+              timeout={600000}
+            >
+                {children}
+            </IdleTimer>
           </div>
-          {/* <MainFooter style={{background: '#fcfcfc'}}/> */}
         </Layout>
       </Layout>
     );
@@ -65,7 +85,7 @@ DashboardLayout = connect(
     // pull initial values from account reducer
     userInfo: state.login
   }),
-  // { customAction }
+  { customAction }
 )(DashboardLayout);
 
 export default DashboardLayout
