@@ -2,6 +2,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Icon, Avatar, Row , Col } from 'antd'
+import moment from 'moment'
 
 // COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
@@ -54,7 +55,7 @@ function LockAccountViewForm(props) {
                 <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Reason:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={3}>{userInfo && userInfo.lock_dt}</Col>
+                <Col span={18} push={3}>{userInfo && userInfo.lock_dt && moment(userInfo.lock_dt, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
                 <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Locked Date:</span></Col>
               </Row>
               <Row>
