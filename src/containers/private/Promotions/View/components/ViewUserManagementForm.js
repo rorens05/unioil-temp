@@ -40,6 +40,33 @@ function ViewPromotionsForm(props) {
                 <Col span={18} push={5}>{userInfo && userInfo.description}</Col>
                 <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Description:</span></Col>
               </Row>
+
+              <Row>
+                <Col span={18} push={5}>
+                    {
+                      userInfo && userInfo.stations && userInfo.stations.map(item => {
+                        return <span>{`${item.description}. `}</span>
+                      })
+                    }
+                </Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Branch:</span></Col>
+              </Row>
+              <Row>
+                <Col span={18} push={5}>{userInfo && userInfo.is_toppromotion == 1 ? "Yes" : "No" }</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Add in top 2 promos:</span></Col>
+              </Row>
+              <Row>
+                <Col span={18} push={5}>{userInfo && userInfo.is_gps == 1 ? "Yes" : "No"}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Add in GPS:</span></Col>
+              </Row>
+              <Row>
+                <Col span={18} push={5}>{userInfo && userInfo.status}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Status:</span></Col>
+              </Row>
+              <Row>
+                <Col span={18} push={5}>{userInfo && userInfo.promo_type && userInfo.promo_type.name}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Promo Type:</span></Col>
+              </Row>
             </div>
              {/*Account Details */}
             <div style={{margin: '12px 0'}}>
