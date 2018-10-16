@@ -15,7 +15,7 @@ import { API_UNI_OIL } from "utils/Api";
 
 
 
-class EditManagement extends Component {
+class PromotionsEdit extends Component {
   state = {
     loading: false,
     userInfo: null,
@@ -292,4 +292,4 @@ class EditManagement extends Component {
 }
 
 
-export default EditManagement
+export default PromotionsEdit

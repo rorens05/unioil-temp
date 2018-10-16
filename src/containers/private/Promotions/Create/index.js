@@ -14,7 +14,7 @@ import { API_GET, API_POST, API_UNI_OIL } from "utils/Api";
 
 
 
-class CreateManagement extends Component {
+class PromotionsCreate extends Component {
   state = {
     loading: false,
     branchesOptions: null,
@@ -207,4 +207,4 @@ class CreateManagement extends Component {
 
 
 
-export default CreateManagement;
+export default PromotionsCreate;

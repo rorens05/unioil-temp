@@ -13,7 +13,7 @@ import HeaderForm from "components/Forms/HeaderForm";
 import { customAction } from 'actions';
 
 
-class DashboardList extends Component {
+class PromotionsList extends Component {
 
   componentDidMount() {
    
@@ -130,13 +130,13 @@ class DashboardList extends Component {
   }
 }
 
-DashboardList = connect(
+PromotionsList = connect(
   state => ({
     //user: state.viewUser.data,
     //status: state.viewUser.code,
     //responseMsg: state.viewUser.messages
   }),
   { customAction }
-)(DashboardList);
+)(PromotionsList);
 
-export default DashboardList;
+export default PromotionsList;

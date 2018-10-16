@@ -11,7 +11,7 @@ import ViewUserManagementForm from './components/ViewUserManagementForm'
 import { API_UNI_OIL } from "utils/Api";
 
 
-class PrmotionsView extends Component {
+class PromotionsView extends Component {
   state ={
     mounted: false,
     userInfo: null
@@ -92,4 +92,4 @@ class PrmotionsView extends Component {
 }
 
 
-export default withRouter(PrmotionsView)
+export default withRouter(PromotionsView)
