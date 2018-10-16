@@ -120,6 +120,8 @@ class AdvanceTable extends Component {
 
   fetch = async (params = {}) => {
 
+    let defaulUrl;
+    
     if(this.props.defaultFilter){
       params = {
         ...params,
@@ -127,8 +129,15 @@ class AdvanceTable extends Component {
       }
     }
 
+    if(this.props.url.defaultWithFilter) {
+      defaulUrl = this.props.url.defaultWithFilter
+    } else {
+      defaulUrl = this.props.url.default
+    }
+    
+
     try {
-      let response = await API_GET(this.props.url.default, params);
+      let response = await API_GET(defaulUrl, params);
       let data = response.data.data.length > 0 ? response.data.data : null;
       let total = response.data.data.length > 0 ? response.data.meta.total : 0
       
