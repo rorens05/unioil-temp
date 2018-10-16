@@ -43,7 +43,7 @@ const InputForm = ({
       optionsList ? (
         optionsList.map((item,i) => {
           if(isRadioButton) {
-            return <Radio.Button value={item.value} key={i} style={styles}>
+            return <Radio.Button value={item.value} disabled={item.isDisabled} key={i} style={styles}>
                 {item.label}
             </Radio.Button>
           }
