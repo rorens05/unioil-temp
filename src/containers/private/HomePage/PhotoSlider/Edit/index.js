@@ -208,6 +208,7 @@ class EditPhotoSlider extends Component {
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
+          loading={loading}
           title="Update Photo Slider"
           action={this.handleEditPhotoSlider}
           actionBtnName="Submit"

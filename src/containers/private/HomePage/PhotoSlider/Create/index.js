@@ -15,6 +15,7 @@ import { API_GET, API_POST, API_UNI_OIL } from "utils/Api"
 
 class CreatePhotoSlider extends Component {
   state = {
+    loading: false,
     promotionsOptions: null,
     mounted: false
   }
@@ -122,11 +123,12 @@ class CreatePhotoSlider extends Component {
     
     if(!this.state.mounted) return null;
 
-    const { promotionsOptions } = this.state
+    const { loading, promotionsOptions } = this.state
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
+          loading={loading}
           title="Photo Slider"
           action={this.handleAddPhotoSlider}
           actionBtnName="Submit"

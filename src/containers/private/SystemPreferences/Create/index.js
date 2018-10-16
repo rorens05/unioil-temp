@@ -120,9 +120,9 @@ class CreateSystemPreferences extends Component {
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
+          loading={loading}
           title="System Parameters"
           action={this.handleAddUser}
-          loading={loading}
           actionBtnName="Submit"
           // cancel={()=> {console.log('cancel button')}}
           // cancelBtnName="Cancel"
