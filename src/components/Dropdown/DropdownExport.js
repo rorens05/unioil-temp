@@ -34,7 +34,8 @@ class DropdownExport extends PureComponent {
       });
       
       if (response.status === 200 || response.status === 201) {
-        let dateNow = moment(new Date()).format('DD-MMM-YYYY')
+        //let dateNow = moment(new Date()).format('DD-MMM-YYYY')
+        let dateNow = moment(new Date()).format('MMDDYYYY')
         DownloadFile(response.data, `${this.props.url.fileName}_${dateNow}.csv`);
 
         this.setState({ loading: false });
