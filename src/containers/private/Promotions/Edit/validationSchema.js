@@ -6,8 +6,8 @@ export const userDetailsSchema = Yup.object().shape({
     //   .required('Branch is required!'),
     title: Yup.string()
       .required('Title is required!'),
-    // description: Yup.string()
-    //   .required('Description is required!'),
+    description: Yup.string()
+      .required('Description is required!'),
     // image: Yup.image()
     // .required('Image is required!'),
     date_start: Yup.string()
