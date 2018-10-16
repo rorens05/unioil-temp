@@ -15,7 +15,7 @@ import { apiFormValidation } from "utils/helper";
 
 
 
-class CreateManagement extends Component {
+class PromotionsCreate extends Component {
   state = {
     loading: false,
     branchesOptions: null,
@@ -212,4 +212,4 @@ class CreateManagement extends Component {
 
 
 
-export default CreateManagement;
+export default PromotionsCreate;

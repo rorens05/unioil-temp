@@ -58,7 +58,8 @@ class UserManagementList extends Component {
             url={{ 
               //default: 'admin?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
               apiDelete: 'adminBatchDelete',
-              default: 'admin?_sort_by=username&_sort_order=asc',
+              default: 'admin',
+              defaultWithFilter: 'admin?_sort_by=username&_sort_order=asc',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}
             filterValues ={["role", "status"]}

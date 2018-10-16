@@ -16,7 +16,7 @@ import { apiFormValidation } from "utils/helper";
 
 
 
-class EditManagement extends Component {
+class PromotionsEdit extends Component {
   state = {
     loading: false,
     userInfo: null,
@@ -297,4 +297,4 @@ class EditManagement extends Component {
 }
 
 
-export default EditManagement
+export default PromotionsEdit
