@@ -52,8 +52,8 @@ class RegistrationList extends Component {
                   filters: [],
                   width: "20%",
                   render: date => {
-                    if(moment(date).format("MM/DD/YYYY") !== "Invalid date")
-                      return moment(date).format("MM/DD/YYYY")
+                    if(moment(date).format("DD-MMM-YYYY") !== "Invalid date")
+                      return moment(date).format("DD-MMM-YYYY")
                   },
                 },
                 {

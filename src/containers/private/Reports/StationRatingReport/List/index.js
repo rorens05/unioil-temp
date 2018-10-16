@@ -52,10 +52,6 @@ class StationList extends Component {
                   sorter: true,
                   filters: [],
                   width: "20%",
-                  render: date => {
-                    if(moment(date).format("MM/DD/YYYY HH:MM:SS") !== "Invalid date")
-                      return moment(date).format("MM/DD/YYYY HH:MM:SS")
-                  },
                 },
                 {
                   title: 'Card Number',

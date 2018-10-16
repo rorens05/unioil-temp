@@ -52,17 +52,6 @@ class TopUpList extends Component {
                   sorter: true,
                   filters: [],
                   width: "20%",
-                  render: date => {
-                    if(moment(date).format("MM/DD/YYYY") !== "Invalid date")
-                      return moment(date).format("MM/DD/YYYY")
-                  },
-                },
-                {
-                  title: 'Time',
-                  dataIndex: 'time',
-                  key: 'time',
-                  //sorter: true,
-                  filters:[],
                 },
                 {
                   title: 'Card Number',
