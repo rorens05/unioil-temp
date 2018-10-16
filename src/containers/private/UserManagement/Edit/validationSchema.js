@@ -3,6 +3,7 @@ import * as Yup from 'yup'
 
 export const userDetailsSchema = Yup.object().shape({
   username: Yup.string()
+    .trim()
     .required('Username is required!')
     .matches(
       /^[a-zA-Z0-9_@. ]+$/,
@@ -12,8 +13,12 @@ export const userDetailsSchema = Yup.object().shape({
       },
     ),
   firstname: Yup.string()
+    .trim()
+    .matches(/^[A-Za-z -]+$/, { excludeEmptyString: false, message: "Invalid characters" })
     .required('First Name is required!'),
   lastname: Yup.string()
+    .trim()
+    .matches(/^[A-Za-z -]+$/, { excludeEmptyString: false, message: "Invalid characters" })
     .required('Last Name is required!'),
   email: Yup.string()
     .required('Email is required!')
