@@ -45,24 +45,13 @@ class TopUpList extends Component {
             columns={
               [
                 {
-                  title: 'Date',
+                  title: 'Transaction Date & Time',
                   dataIndex: 'date',
                   key: 'date',
                   sortByValue: 'paid_at',
                   sorter: true,
                   filters: [],
-                  width: "17%",
-                  // render: date => {
-                  //   if(moment(date).format("DD-MMM-YYYY") !== "Invalid date")
-                  //     return moment(date).format("DD-MMM-YYYY")
-                  // },
-                },
-                {
-                  title: 'Time',
-                  dataIndex: 'time',
-                  key: 'time',
-                  //sorter: true,
-                  filters:[],
+                  width: "20%",
                 },
                 {
                   title: 'Card Number',
