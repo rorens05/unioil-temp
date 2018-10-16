@@ -163,10 +163,11 @@ function MainSidebar(props) {
     {
       !collapsed 
       ? <div style={{padding: '12px 0', textAlign: 'center', borderBottom: '1px solid #e6ecf5'}}>
-          <img
+          {/* <img
             src={ require("assets/img/logo_unioil.png") }
             style={{ height: 40 }}
-          />
+          /> */}
+          {userInfo && (<img src={ `${process.env.REACT_APP_IMG_URL}${userInfo.logo}` } style={{ height: 40 }} />) }
         </div> 
       : <LogoPlaceholder className="logo" />
     }
