@@ -12,6 +12,7 @@ import EditUserManagementForm from './components/EditUserManagementForm'
 import { userDetailsSchema } from './validationSchema'
 import { API_GET, API_PUT, API_POST } from "utils/Api";
 import { API_UNI_OIL } from "utils/Api";
+import { apiFormValidation } from "utils/helper";
 
 class EditUserManagement extends Component {
   state = {
@@ -72,6 +73,7 @@ class EditUserManagement extends Component {
     try {
       const response = await API_PUT(`admin/${userInfo.admin_uuid}`, params);    
       if(response.status === 422){
+        apiFormValidation({ data: response.data.data, setErrors })
 
         let errors  = []
         if(response.data) {
@@ -80,7 +82,6 @@ class EditUserManagement extends Component {
               errors.push(response.data.data[key][0])
             }
         }
-        
         notification.error({ 
           message: "Error", 
           description: 
