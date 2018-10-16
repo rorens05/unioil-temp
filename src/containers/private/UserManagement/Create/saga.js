@@ -4,10 +4,10 @@ import { API_UNI_OIL } from "utils/Api";
 import { setCookie } from "utils/cookie";
 import { notification, message } from "antd";
 
+import { apiFormValidation } from 'utils/helper';
 const USERMANAGEMENT_CREATE_REQUEST = "USERMANAGEMENT_CREATE_REQUEST";
 const USERMANAGEMENT_CREATE_SUCCESS = "USERMANAGEMENT_CREATE_SUCCESS";
 const USERMANAGEMENT_CREATE_ERROR = "USERMANAGEMENT_CREATE_ERROR";
-
 
 function* userManagementSagaFlow({ payload }) {
   const {
@@ -37,6 +37,10 @@ function* userManagementSagaFlow({ payload }) {
     });
     yield put({ type: USERMANAGEMENT_CREATE_ERROR });
     setSubmitting(false); _self.setState({loading: false})
+
+    if (error.status === 422) {
+      apiFormValidation({ data: error.data.data, setErrors });
+    }
   }
 }
 

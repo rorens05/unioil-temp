@@ -25,4 +25,10 @@ export const  isEmpty = (obj) => {
     }
     return true;
 }
+
+export const apiFormValidation = ({data, setErrors}) => {
+  let errors = {};
+  Object.keys(data).map( (key) => errors = { ...errors, [key] : data[key][0] });
+  setErrors(errors);
+}
   
