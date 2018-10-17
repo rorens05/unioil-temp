@@ -12,6 +12,7 @@ export const userDetailsSchema = Yup.object().shape({
   contact_number_mobile: Yup.string()
     .required('Contact Number is required!'),
   contact_details: Yup.string()
+    .email("Invalid Email")
     .required('Contact Details is required!')
 })
 
