@@ -58,6 +58,9 @@ function TopUpCreateForm(props) {
         layout={formItemLayout}
         label="Value"
         placeholder="Value"
+        min={0}
+				max={999}
+				step={0.01}
         component={InputNumberAntD}
       />
 

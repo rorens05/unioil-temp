@@ -5,7 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
-import { Input, Radio, InputNumber, UploadImage, Select, DatePicker, 
+import { Input, UploadImage, InputNumberAntD, 
         InputMaskNumber } from 'components/Forms';
 
 // HELPER FUNCTIONS
@@ -64,11 +64,12 @@ function CreateSystemPreferencesForm(props) {
         name="gps"
         type="text"
         icon=""
+        defaultValue={props.values.gps}
         layout={formItemLayout}
         label="GPS Radius (in meters)"
         placeholder="0"
         rows={6}
-        component={Input}
+        component={InputNumberAntD}
       />
       <div style={styles.borderDivision}></div>
       <h2 style={{margin: '25px 35px'}}>Customer Service Details</h2>

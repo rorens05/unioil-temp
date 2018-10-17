@@ -28,6 +28,9 @@ class InputNumberAntD extends Component {
 			layout,
 			withActionBtn,
 			action,
+			min,
+			max,
+			step,
 			...props
     } = this.props;
     
@@ -46,11 +49,11 @@ class InputNumberAntD extends Component {
 				{...props}
 				//defaultValue={0}
 				style={{width: '100%'}}
-				min={0}
-				max={999}
-				step={0.01}
-			//	formatter={value => value && `${value}`}
-			//	parser={value => value && value.replace('', '')}
+				min={min && min}
+				max={max && max}
+				step={step && step}
+				//formatter={value => value && `${value}`}
+				//parser={value => value && value.replace('', '')}
 				// formatter={value => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
       	// parser={value => value.replace(/\$\s?|(,*)/g, '')}
 				onChange={this.handleChange}
