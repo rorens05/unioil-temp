@@ -54,19 +54,21 @@ class TopUp extends Component {
 
     <div style={{position: 'relative'}}>
         <MainContent pageRoutes={userInfo.data.userInfo.role == 1 ? pageRoutes : []}>
-          <Switch>
-            {
-              userInfo.data.userInfo.role == 1 ? (
-                <Fragment>
-                  <Route exact path = "/top-up" component = { TopUpList } />
-                  <Route exact path = "/top-up/create" component = { TopUpCreate } />
-                  <Route exact path = "/top-up/edit/:id" component = { TopUpEdit } />
-                  <Route exact path = "/top-up/view/:id" component = { TopUpView } />
-                </Fragment>
-              ) : null
-            }
-            <PAGE404 />
-          </Switch>
+          {
+            userInfo.data.userInfo.role == 1 
+            ? 
+            <Switch>
+              <Route exact path = "/top-up" component = { TopUpList } />
+              <Route exact path = "/top-up/create" component = { TopUpCreate } />
+              <Route exact path = "/top-up/edit/:id" component = { TopUpEdit } />
+              <Route exact path = "/top-up/view/:id" component = { TopUpView } />
+              <PAGE404 />
+            </Switch>
+            : 
+            <Switch>
+              <PAGE404 />
+            </Switch> 
+          }
         </MainContent>
       </div>
     );
