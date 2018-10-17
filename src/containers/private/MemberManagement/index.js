@@ -54,22 +54,22 @@ class MemberManagement extends Component {
 
       <div style={{position: 'relative'}}>
         <MainContent pageRoutes={userInfo.data.userInfo.role == 1 ? pageRoutes : []}>
-          <Switch>
-            {
-              userInfo.data.userInfo.role == 1 ? (
-                <Fragment>
-                  <Redirect exact from="/member-management" to="/member-management/card-member"/>
-                  <Route exact path = "/member-management/card-member" component = { CardMemberList } />
-                  <Route exact path = "/member-management/card-member/view/:id" component = { CardMemberView } />
-
-                
-                  <Route exact path = "/member-management/lock-account" component = { LockAccountList } />
-                  <Route exact path = "/member-management/lock-account/view/:id" component = { LockAccountView } />
-                </Fragment>
-              ) : null
-            }
-            <PAGE404 />
-          </Switch>
+          {
+            userInfo.data.userInfo.role == 1 
+            ? 
+            <Switch>
+              <Redirect exact from="/member-management" to="/member-management/card-member"/>
+              <Route exact path = "/member-management/card-member" component = { CardMemberList } />
+              <Route exact path = "/member-management/card-member/view/:id" component = { CardMemberView } />
+              <Route exact path = "/member-management/lock-account" component = { LockAccountList } />
+              <Route exact path = "/member-management/lock-account/view/:id" component = { LockAccountView } />
+              <PAGE404 />
+            </Switch>
+            : 
+            <Switch>
+              <PAGE404 />
+            </Switch> 
+          }
         </MainContent>
       </div>
     );

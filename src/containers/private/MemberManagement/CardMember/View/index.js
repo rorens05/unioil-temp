@@ -31,15 +31,17 @@ class CardMemberView extends Component {
         message: "Error", 
         description: <div>
           <div>Something went wrong loading data.</div>
-            {error && error.data && (- error.data.message)}
+            - {error && error.data && error.data.message}
           </div> , 
         duration: 20, 
       });
       if(error.status == 404) {
         if(this.props.location.pathname)
           this.props.history.push(`${this.props.location.pathname}/404`);
+      } else {
+        this.setState({ mounted: false })
       }
-      this.setState({ mounted: false })
+      
     }
   }
   
