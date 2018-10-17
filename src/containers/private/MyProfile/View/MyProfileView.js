@@ -36,7 +36,7 @@ export default class MyProfileView extends Component {
                 <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Username:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={3}><a style={{color: '#1890FF'}} href={`mailto:${userInfo && userInfo.email}`}>loyalty.officer@unioil.com</a></Col>
+                <Col span={18} push={3}><a style={{color: '#1890FF'}} href={`mailto:${userInfo && userInfo.email}`}>{userInfo && userInfo.email}</a></Col>
                 <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Email:</span></Col>
               </Row>
             </div>
