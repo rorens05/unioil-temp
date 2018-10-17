@@ -39,8 +39,10 @@ class UserManagementView extends Component {
       if(error.status == 404) {
         if(this.props.location.pathname)
           this.props.history.push(`${this.props.location.pathname}/404`);
+      } else {
+        this.setState({ mounted: true })
       }
-      this.setState({ mounted: true })
+      
     }
     
   }

@@ -53,19 +53,21 @@ class Dashboard extends Component {
 
     <div style={{position: 'relative'}}>
         <MainContent pageRoutes={userInfo.data.userInfo.role == 1 ? pageRoutes : []}>
-          <Switch>
-            {
-              userInfo.data.userInfo.role == 1 ? (
-                <Fragment>
-                  <Route exact path = "/user-management" component = { DashboardList } />
-                  <Route exact path = "/user-management/create" component = { UserManagementCreate } />
-                  <Route exact path = "/user-management/edit/:id" component = { UserManagementEdit } />
-                  <Route exact path = "/user-management/view/:id" component = { UserManagementView } />
-                </Fragment>
-              ) : null
-            }
-            <PAGE404 />
-          </Switch>
+          {
+            userInfo.data.userInfo.role == 1 
+            ? 
+            <Switch>
+                <Route exact path = "/user-management" component = { DashboardList } />
+                <Route exact path = "/user-management/create" component = { UserManagementCreate } />
+                <Route exact path = "/user-management/edit/:id" component = { UserManagementEdit } />
+                <Route exact path = "/user-management/view/:id" component = { UserManagementView } />
+              <PAGE404 />
+            </Switch>
+            : 
+            <Switch>
+              <PAGE404 />
+            </Switch> 
+          }
         </MainContent>
       </div>
     );
