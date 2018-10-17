@@ -28,10 +28,10 @@ function ViewUserManagementForm(props) {
                 <Col span={18} push={3}>{userInfo && userInfo.details}</Col>
                 <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Details:</span></Col>
               </Row>
-              <Row>
+              {/* <Row>
                 <Col span={18} push={3}>{userInfo && userInfo.type == "1" ? "Terms" : "Privacy"}</Col>
                 <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Type:</span></Col>
-              </Row>
+              </Row> */}
             </div>
         </div>
       </div>

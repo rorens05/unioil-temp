@@ -13,6 +13,11 @@ import { PAGE404 } from "components/PageError/index"
 class SystemPreferences extends Component {
   state = {
     pageRoutes: [ 
+      {
+        path: `${this.props.match.url}`,
+        name: "System Parameters",
+        component: CreateSystemPreferences,        
+      },   
     ],    
   }
 
