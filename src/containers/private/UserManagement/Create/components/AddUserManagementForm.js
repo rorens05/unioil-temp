@@ -98,11 +98,11 @@ function AddUserManagementForm(props) {
         optionsList={[
           {
             label: "System Admin",
-            value: "1"
+            value: 1
           },
           {
             label: "Marketing Personnel",
-            value: "2",
+            value: 2,
           }
         ]}
         label="User Role"
