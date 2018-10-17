@@ -60,7 +60,6 @@ class EditPhotoSlider extends Component {
 
       
     } catch ({response: error}) {
-      //notification.error({ message: "Error", description: error.data.message , duration: 20, });
       notification.error({ 
         message: "Error", 
         description: <div>
@@ -70,10 +69,14 @@ class EditPhotoSlider extends Component {
         duration: 20, 
       });
       if(error.status == 404) {
-        if(this.props.location.pathname)
+        if(this.props.location.pathname) {
           this.props.history.push(`${this.props.location.pathname}/404`);
+          return;
+        }
+      } else {
+        this.setState({ mounted: false })
       }
-      this.setState({ mounted: false })
+      
     }
 
     // options
