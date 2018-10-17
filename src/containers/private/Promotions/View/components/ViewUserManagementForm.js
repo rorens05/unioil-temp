@@ -43,11 +43,14 @@ function ViewPromotionsForm(props) {
 
               <Row>
                 <Col span={18} push={5}>
-                    {
-                      userInfo && userInfo.stations && userInfo.stations.map(item => {
-                        return <span>{`${item.description}. `}</span>
-                      })
-                    }
+                  {
+                    userInfo && userInfo.stations && 
+                    userInfo.stations.length > 0 ?
+                    userInfo.stations.map(item => {
+                      return <span key={item.station_uuid}>{`${item.description}. `}</span>
+                    })
+                    : "All"
+                  }
                 </Col>
                 <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Branch:</span></Col>
               </Row>
