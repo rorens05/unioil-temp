@@ -71,6 +71,11 @@ class TermAndPrivacyList extends Component {
                   key: 'type',
                   sorter: true,
                   filters:[],
+                  render: (text, record) => (
+                    <span >
+                      {record && record.type ==  1 ? "Terms": "Privacy"}
+                    </span>
+                  )
                 },
                 {
                   title: 'Action',
