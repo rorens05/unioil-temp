@@ -31,14 +31,14 @@ class CreateUserManagement extends Component {
     const { setErrors, setSubmitting } = actions;
     let { history } = this.props;
     let _self = this; 
-    this.setState({loading: true, isGenerated: false})
+    this.setState({loading: true})
     values.role = parseInt(values.role);
     if(values.status) {
       values.status = values.status
     } else { 
       values.status = "active"
     }
-    
+
 
     this.props.customAction({
       type: "USERMANAGEMENT_CREATE_REQUEST",
