@@ -30,6 +30,10 @@ function ViewUserManagementForm(props) {
                 <Col span={4} pull={18}><span style={{fontWeight: '600'}}>Card Type:</span></Col>
               </Row>
               <Row>
+                <Col span={18} push={4}>{userInfo && userInfo.description}</Col>
+                <Col span={4} pull={18}><span style={{fontWeight: '600'}}>Short Description:</span></Col>
+              </Row>
+              <Row>
                 <Col span={18} push={4}>
                     <img 
                       src={userInfo && userInfo.image && `${process.env.REACT_APP_IMG_URL}${userInfo.image}`} 
