@@ -99,33 +99,27 @@ class AboutUs extends Component {
 
       <div style={{position: 'relative'}}>
         <MainContent pageRoutes={userInfo.data.userInfo.role == 1 ? pageRoutes : []}>
-          <Switch>
-            {
-              userInfo.data.userInfo.role == 1 ? (
-                <Fragment>
-                  <Redirect exact from="/about-us" to="/about-us/card-types"/>
-                  <Route exact path = "/about-us/card-types" component = { CardTypeList } />
-                  <Route exact path = "/about-us/card-types/create" component = { CardTypeCreate } />
-                  <Route exact path = "/about-us/card-types/view/:id" component = { CardTypeView } />
-                  <Route exact path = "/about-us/card-types/edit/:id" component = { CardTypeEdit } />
+          {
+            userInfo.data.userInfo.role == 1 
+            ? 
+            <Switch>
+              <Redirect exact from="/about-us" to="/about-us/card-types"/>
+              <Route exact path = "/about-us/card-types" component = { CardTypeList } />
+              <Route exact path = "/about-us/card-types/create" component = { CardTypeCreate } />
+              <Route exact path = "/about-us/card-types/view/:id" component = { CardTypeView } />
+              <Route exact path = "/about-us/card-types/edit/:id" component = { CardTypeEdit } />
 
-                  <Route exact path = "/about-us/term-privacy" component = { TermAndPrivacyList } />
-                  <Route exact path = "/about-us/term-privacy/create/:id" component = { TermAndPrivacyCreate } />
-                  <Route exact path = "/about-us/term-privacy/view/:id" component = { TermAndPrivacyView } />
-                  <Route exact path = "/about-us/term-privacy/edit/:id" component = { TermAndPrivacyEdit } />
-                </Fragment>
-              ) : null
-            }
-           {/*
-            <Route exact path = "/about-us/terms-privacy" component = { LockAccountList } />
-            <Route exact path = "/about-us/terms-privacy/create" component = { UserManagementCreate } />
-            <Route exact path = "/about-us/terms-privacy/view/:id" component = { LockAccountView } />
-            <Route exact path = "/about-us/terms-privacy/edit/:id" component = { UserManagementEdit } />
-            */}
-      
-
-            <PAGE404 />
-          </Switch>
+              <Route exact path = "/about-us/term-privacy" component = { TermAndPrivacyList } />
+              <Route exact path = "/about-us/term-privacy/create/:id" component = { TermAndPrivacyCreate } />
+              <Route exact path = "/about-us/term-privacy/view/:id" component = { TermAndPrivacyView } />
+              <Route exact path = "/about-us/term-privacy/edit/:id" component = { TermAndPrivacyEdit } />
+              <PAGE404 />
+            </Switch>
+            : 
+            <Switch>
+              <PAGE404 />
+            </Switch> 
+          }
         </MainContent>
       </div>
     );

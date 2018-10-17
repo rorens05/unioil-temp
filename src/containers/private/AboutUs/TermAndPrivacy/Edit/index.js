@@ -44,7 +44,7 @@ class TermAndPrivacyEdit extends Component {
       });
       if(error.status == 404) {
         if(this.props.location.pathname)
-          this.props.history.push(`${this.props.location.pathname}/404`);
+          this.props.history.push(`${this.props.location.pathname}/404`); return
       }
       this.setState({ mounted: false })
     }
