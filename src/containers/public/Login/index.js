@@ -27,7 +27,7 @@ class Login extends Component {
 
   componentDidMount = async ()=> {
     try {
-      let response = await API_UNI_OIL.get('systemPreference/contact_email_address_mobile')
+      let response = await API_UNI_OIL.get('systemPreference/contact_details')
       let response_logo = await API_UNI_OIL.get('systemPreference/logo')
       
       if(response) {
