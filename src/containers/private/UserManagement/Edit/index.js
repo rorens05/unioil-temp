@@ -68,7 +68,7 @@ class EditUserManagement extends Component {
     }
 
     if(params.password == "*******************" ) {
-      params.password = null
+      delete params.password
     }
 
     this.setState({loading: true})
