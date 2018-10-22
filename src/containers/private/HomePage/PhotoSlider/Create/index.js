@@ -18,10 +18,21 @@ class CreatePhotoSlider extends Component {
   state = {
     loading: false,
     promotionsOptions: null,
-    mounted: false
+    mounted: false,
+    photoSliderLimit: false
   }
 
   async componentDidMount() {
+
+    try {
+      let photoSlider = await API_UNI_OIL('photoSliderCount');
+      if(photoSlider)
+        this.setState({photoSliderLimit: false})
+    } catch ({response:error}) {
+      this.setState({photoSliderLimit: true})
+    }
+
+
     try {
       let promotionsList = await API_GET('getPromotions');
 
@@ -128,7 +139,7 @@ class CreatePhotoSlider extends Component {
 
     if (!this.state.mounted) return null;
 
-    const { loading, promotionsOptions } = this.state
+    const { loading, promotionsOptions, photoSliderLimit } = this.state
 
     return (
       <div style={{ border: '1px solid #E6ECF5', paddingBottom: '10px' }}>
@@ -136,6 +147,7 @@ class CreatePhotoSlider extends Component {
           loading={loading}
           title="Photo Slider"
           action={this.handleAddPhotoSlider}
+          disabled={photoSliderLimit}
           actionBtnName="Submit"
           cancel={() => { this.props.history.push("/home-page/photo-slider") }}
           cancelBtnName="Cancel"
@@ -160,6 +172,7 @@ class CreatePhotoSlider extends Component {
             render={(props) =>
               <AddPhotoSliderForm
                 {...props}
+                photoSliderLimit={photoSliderLimit}
                 promotionsOptions={promotionsOptions}
                 handleFileUpload={this.handleFileUpload}
               />

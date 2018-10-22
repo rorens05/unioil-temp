@@ -92,7 +92,6 @@ class HeaderForm extends Component {
               cancel && 
                 <Button  
                   loading={loading} 
-                  disabled={disabled}
                   onClick={cancel}
                   style={{ margin: '0 4px', width: '135px', display: 'block', background: 'white', borderColor:'#b8bbc9', color: '#65697f' }}
                 >

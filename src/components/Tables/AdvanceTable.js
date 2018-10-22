@@ -145,6 +145,9 @@ class AdvanceTable extends Component {
       if(data == null && this.props.isEmptyMessagePopUp) {
         message.info('No records found.');
       }
+      if(this.props.dataResponse) {
+        this.props.dataResponse(data.length)
+      }
     } catch (error) {
       this.setState({ loading : false, total: 0 })
     }

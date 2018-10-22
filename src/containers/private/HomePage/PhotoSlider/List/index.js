@@ -18,20 +18,19 @@ class PhotoSliderList extends Component {
 
   state = {
     mounted: false,
-    photoSlider: 0
+    photoSliderLimit: false
   }
 
   async componentDidMount () {
-   
+
     try {
 
       let response = await API_GET('photoSlider');
-    
+
       if(response.status == 200) {
         if(response.data && response.data.data) {
           console.log(response.data.data.length,'response.data.data.length')
           this.setState({
-            photoSlider: response.data.data.length,
             mounted: true
           })
         }
@@ -46,6 +45,8 @@ class PhotoSliderList extends Component {
         </div> , 
         duration: 20, 
       });
+
+      this.setState({ mounted: false })
     }
 
   }
@@ -56,11 +57,21 @@ class PhotoSliderList extends Component {
     //   message.info('Clicked on Yes.');
   }
 
+  dataResponse =(val)=> {
+    if(val) {
+      if(val < 10) {
+        this.setState({photoSliderLimit: false})
+      } else {
+        this.setState({photoSliderLimit: true})
+      }
+    }
+  }
+
   render() {
 
     if(!this.state.mounted) return null;
     
-    const { photoSlider } = this.state;
+    const { photoSliderLimit } = this.state;
     const { match, history } = this.props;
 
     return (
@@ -68,7 +79,7 @@ class PhotoSliderList extends Component {
         <HeaderForm 
           title="Photo Slider"
           action={()=> history.push({ pathname: `${match.url}/create` })}
-          disabled={photoSlider && photoSlider < 10 ? false : true}
+          disabled={photoSliderLimit}
           actionBtnName="Add Content"
         />
         <AdvanceTable 
@@ -79,6 +90,7 @@ class PhotoSliderList extends Component {
               default: 'photoSlider',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}
+            dataResponse={this.dataResponse}
             filterValues ={["role", "status"]}
             columns={
               [

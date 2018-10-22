@@ -27,7 +27,8 @@ function AddPhotoSliderForm(props) {
     isSubmitting,
     handleSubmit,
     promotionsOptions,
-    handleFileUpload
+    handleFileUpload,
+    photoSliderLimit
   } = props;
 
   return (
@@ -37,6 +38,7 @@ function AddPhotoSliderForm(props) {
         name="promotion_uuid"
         type="select"
         icon=""
+        disabled={photoSliderLimit}
         layout={formItemLayout}
         label="Promotion Name"
         placeholder="Promotion Name"
@@ -49,6 +51,7 @@ function AddPhotoSliderForm(props) {
         name="title"
         type="text"
         icon=""
+        disabled={photoSliderLimit}
         layout={formItemLayout}
         label="Title"
         placeholder="Title"
@@ -59,6 +62,7 @@ function AddPhotoSliderForm(props) {
         name="description"
         type="text"
         icon=""
+        disabled={photoSliderLimit}
         layout={formItemLayout}
         label="Description"
         placeholder="Description"
@@ -69,6 +73,7 @@ function AddPhotoSliderForm(props) {
       <Field
         name="image"
         type="file"
+        disabled={photoSliderLimit}
         accept=".jpg , .png, .gif"
         multiple={false}
         imageUrl={props.values.image && `${process.env.REACT_APP_IMG_URL}/${props.values.image}`}
@@ -87,6 +92,7 @@ function AddPhotoSliderForm(props) {
         name="date_start"
         type="date"
         icon=""
+        disabled={photoSliderLimit}
         layout={formItemLayout}
         label="Start Appearance Date"
         placeholder="Start Appearance Date"
@@ -97,6 +103,7 @@ function AddPhotoSliderForm(props) {
         name="date_end"
         type="date"
         icon=""
+        disabled={photoSliderLimit}
         layout={formItemLayout}
         label="End Appearance Date"
         placeholder="End Appearance Date"
@@ -107,6 +114,7 @@ function AddPhotoSliderForm(props) {
         name="start_time"
         type="date"
         icon=""
+        disabled={photoSliderLimit}
         layout={formItemLayout}
         label="Start Time"
         placeholder="Start Time"
@@ -117,6 +125,7 @@ function AddPhotoSliderForm(props) {
         name="end_time"
         type="date"
         icon=""
+        disabled={photoSliderLimit}
         layout={formItemLayout}
         label="End Time"
         placeholder="End Time"
