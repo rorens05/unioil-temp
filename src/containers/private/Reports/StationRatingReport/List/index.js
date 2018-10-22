@@ -41,6 +41,7 @@ class StationList extends Component {
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc',
               csv: { path :'/reportStationRatingsExport', fileName: 'StationRatingReport' }
             }}
+            isEmptyMessagePopUp
             filterValues ={["role", "status"]}
             columns={
               [

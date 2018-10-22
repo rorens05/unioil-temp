@@ -41,6 +41,7 @@ class MobileList extends Component {
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc',
               csv: { path :'/reportMobileUsageExport', fileName: 'MobileUsageReport' }
             }}
+            isEmptyMessagePopUp
             filterValues ={["role", "status"]}
             columns={
               [

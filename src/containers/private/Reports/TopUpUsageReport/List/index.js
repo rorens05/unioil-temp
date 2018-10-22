@@ -41,6 +41,7 @@ class TopUpList extends Component {
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc',
               csv: { path :'/reportTopUpExport', fileName: 'TopUpUsageReport' }
             }}
+            isEmptyMessagePopUp
             filterValues ={["role", "status"]}
             columns={
               [
