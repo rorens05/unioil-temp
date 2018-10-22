@@ -52,7 +52,7 @@ function LockAccountViewForm(props) {
               </Row>
               <Row>
                 <Col span={18} push={3}>{userInfo && userInfo.reason}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Reason:</span></Col>
+                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Lock Account Description:</span></Col>
               </Row>
               <Row>
                 <Col span={18} push={3}>{userInfo && userInfo.lock_dt && moment(userInfo.lock_dt, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
