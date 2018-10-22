@@ -102,7 +102,7 @@ class EditUserManagement extends Component {
         setSubmitting(false)
         this.setState({loading: false})
       }else {
-        message.success('User account updated successfully.');
+        message.success('User account updated successfully. Please send the new temporary password to the user.');
         this.setState({loading: false})
         this.props.history.push("/user-management");
       }
