@@ -20,6 +20,7 @@ class TopUpCreate extends Component {
     generatedCode: null,
     mounted: false,
     loading: false,
+    //amount: ''
   }
 
   async componentDidMount() {
@@ -89,6 +90,14 @@ class TopUpCreate extends Component {
     this.form.submitForm()
   }
 
+  handleResetValue=(props)=> {
+    console.log(props,'vvalvalvalval')
+    // this.setState({
+    //   amount: 0
+    // })
+    //props.setValues({...props.values, amount: null})
+  }
+
 
   render() {
 
@@ -123,6 +132,7 @@ class TopUpCreate extends Component {
                 <TopUpCreateForm 
                   {...props}
                   loading={loading}
+                  //handleResetValue={this.handleResetValue}
                 />
               }
           />

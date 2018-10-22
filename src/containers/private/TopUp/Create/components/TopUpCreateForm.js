@@ -26,6 +26,8 @@ function TopUpCreateForm(props) {
     isSubmitting,
     handleSubmit,
     loading,
+    handleResetValue,
+    amount
   } = props;
 
   return (
@@ -76,6 +78,7 @@ function TopUpCreateForm(props) {
         ]}
         label="Type"
         component={Radio}
+        //handleResetValue={handleResetValue}
       />
       
     </Form>
