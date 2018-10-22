@@ -39,6 +39,7 @@ class MobileList extends Component {
             url={{ 
               default: 'reportMobileUsage',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc',
+              defaultWithFilter: 'reportMobileUsage?_sort_by=date&_sort_order=desc',
               csv: { path :'/reportMobileUsageExport', fileName: 'MobileUsageReport' }
             }}
             isEmptyMessagePopUp

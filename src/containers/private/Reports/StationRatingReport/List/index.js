@@ -39,6 +39,7 @@ class StationList extends Component {
             url={{ 
               default: 'reportStationRatings',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc',
+              defaultWithFilter: 'reportStationRatings?_sort_by=created_at&_sort_order=desc',
               csv: { path :'/reportStationRatingsExport', fileName: 'StationRatingReport' }
             }}
             isEmptyMessagePopUp

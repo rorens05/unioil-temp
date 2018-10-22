@@ -39,6 +39,7 @@ class RegistrationList extends Component {
             url={{ 
               default: 'reportRegistration',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc',
+              defaultWithFilter: 'reportRegistration?_sort_by=date&_sort_order=desc',
               csv: { path :'/reportRegistrationExport', fileName: 'RegistrationReport' }
             }}
             isEmptyMessagePopUp
