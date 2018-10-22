@@ -47,7 +47,7 @@ function AddCardForm(props) {
         type="text"
         //icon="user"
         layout={formItemLayout}
-        label="Card Type"
+        label="Card Type Description"
         placeholder="Card Type"
         component={Input}
       />
@@ -57,7 +57,7 @@ function AddCardForm(props) {
         type="text"
         icon=""
         layout={formItemLayout}
-        label="Short Description"
+        label="Card Type Short Description"
         placeholder="Short Description"
         rows={4}
         component={InputTextArea}
