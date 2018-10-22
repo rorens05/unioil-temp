@@ -78,7 +78,7 @@ function TopUpCreateForm(props) {
         ]}
         label="Type"
         component={Radio}
-        //handleResetValue={handleResetValue}
+        handleResetValue={handleResetValue}
       />
       
     </Form>

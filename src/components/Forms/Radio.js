@@ -19,10 +19,10 @@ class InputForm extends Component {
   handleChange = (e) => {
     const { setFieldValue } = this.props.form;
     const { name } = this.props.field;
-    // Add custom action `onChange`
-    // if(this.props.handleResetValue) {
-    //   this.props.handleResetValue(this.props.form);
-    // }
+    //Add custom action `onChange`
+    if(this.props.handleResetValue) {
+      this.props.handleResetValue(this.props.form);
+    }
     return setFieldValue(name, e.target.value);
   }
   

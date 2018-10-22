@@ -95,7 +95,7 @@ class TopUpCreate extends Component {
     // this.setState({
     //   amount: 0
     // })
-    //props.setValues({...props.values, amount: null})
+    props.setValues({...props.values, amount: ''})
   }
 
 
@@ -132,7 +132,7 @@ class TopUpCreate extends Component {
                 <TopUpCreateForm 
                   {...props}
                   loading={loading}
-                  //handleResetValue={this.handleResetValue}
+                  handleResetValue={this.handleResetValue}
                 />
               }
           />

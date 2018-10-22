@@ -11,9 +11,9 @@ class InputNumberAntD extends Component {
     const { setFieldValue } = this.props.form;
 		const { name } = this.props.field;
 		
-		let valueNum = parseFloat(value).toFixed(2)
+		//let valueNum = parseFloat(value).toFixed(2)
     // Add custom action `onChange`
-    return setFieldValue(name, valueNum);
+    return setFieldValue(name, value);
   }
   
   render() {
@@ -32,9 +32,13 @@ class InputNumberAntD extends Component {
 			max,
 			step,
 			...props
-    } = this.props;
-    
-    return (
+		} = this.props;
+		
+		const _props = {...props}
+
+		_props.value = field.value
+		
+		return (
       <FormItem
 				{...layout}
 				required={required}
@@ -46,7 +50,7 @@ class InputNumberAntD extends Component {
 			
 
 			<InputNumber
-				{...props}
+				{..._props}
 				//defaultValue={0}
 				style={{width: '100%'}}
 				min={min && min}
