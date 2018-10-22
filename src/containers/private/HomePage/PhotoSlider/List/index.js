@@ -29,7 +29,6 @@ class PhotoSliderList extends Component {
 
       if(response.status == 200) {
         if(response.data && response.data.data) {
-          console.log(response.data.data.length,'response.data.data.length')
           this.setState({
             mounted: true
           })
