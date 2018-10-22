@@ -38,7 +38,7 @@ class EditUserManagement extends Component {
         message: "Error", 
         description: <div>
           <div>Something went wrong loading data.</div>
-        - {error.data.message}
+        - {error && error.data && error.data.message}
         </div> , 
         duration: 20, 
       });
