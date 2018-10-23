@@ -104,7 +104,7 @@ function ViewPromotionsForm(props) {
               </Row>
               <Row>
                 <Col span={18} push={5}>{userInfo && userInfo.updated_at && moment(userInfo.updated_at, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
-                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Last Date Updated:</span></Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Last Updated Date:</span></Col>
               </Row>
             </div>
         </div>
