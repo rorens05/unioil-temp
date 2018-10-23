@@ -27,7 +27,9 @@ function EditUserManagementForm(props) {
     isSubmitting,
     promotionsDefaultValue,
     promotionsOptions,
-    handleFileUpload
+    handleFileUpload,
+    dateStartEnd,
+    handleGetDate
   } = props;
 
   return (
@@ -43,6 +45,7 @@ function EditUserManagementForm(props) {
         mode="single"
         defaultValue={promotionsDefaultValue && (promotionsDefaultValue)}
         optionsList={promotionsOptions}
+        handleGetDate={handleGetDate}
         component={Select}
       />
 
@@ -87,6 +90,8 @@ function EditUserManagementForm(props) {
         name="date_start"
         type="date"
         icon=""
+        disabledDateStartEndPhotoSlider
+        dateStartEnd={dateStartEnd}
         defaultValue={ moment(props.values.date_start, 'YYYY-MM-DD') }
         layout={formItemLayout}
         label="Start Appearance Date"
@@ -98,6 +103,9 @@ function EditUserManagementForm(props) {
         name="date_end"
         type="date"
         icon=""
+        disabledDateStart
+        disabledDateStartEndPhotoSlider
+        dateStartEnd={dateStartEnd}
         defaultValue={ moment(props.values.date_end, 'YYYY-MM-DD') }
         layout={formItemLayout}
         label="End Appearance Date"
