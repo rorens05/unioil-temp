@@ -7,7 +7,7 @@ export const userDetailsSchema = Yup.object().shape({
   name: Yup.string()
     .required('Name is required!')
     .trim()
-    .matches(/^[A-Za-z0-9. ]+$/, { excludeEmptyString: false, message: "Invalid characters" }),
+    .matches(/^[A-Za-z0-9.ñÑ ]+$/, { excludeEmptyString: false, message: "Invalid Name" }),
   amount: Yup.number()
     .required('Amount is required!'),
   type: Yup.string()

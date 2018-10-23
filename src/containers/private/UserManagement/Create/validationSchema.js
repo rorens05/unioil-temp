@@ -18,14 +18,14 @@ export const userDetailsSchema = Yup.object().shape({
     .required('First Name is required!'),
   lastname: Yup.string()
     .trim()
-    .matches(/^[A-Za-z ñÑ-]+$/, { excludeEmptyString: false, message: "Last Name" })
+    .matches(/^[A-Za-z ñÑ-]+$/, { excludeEmptyString: false, message: "Invalid Last Name" })
     .trim()
     .required('Last Name is required!'),
   email: Yup.string()
     .trim()
     .required('Email is required!')
-    .matches(/^[A-Za-z0-9@_.ñÑ ]+$/, { excludeEmptyString: false, message: "Email Address" })
-    .email("Invalid Email"),
+    .matches(/^[A-Za-z0-9@_.ñÑ ]+$/, { excludeEmptyString: false, message: "Invalid Email Address" })
+    .email("Invalid Email Address"),
   role: Yup.string()
     .required('Role is required!'),
   status: Yup.string()
