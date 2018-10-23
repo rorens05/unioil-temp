@@ -96,6 +96,7 @@ function AddPromotionForm(props) {
       />
 
       <Field
+        disabledDateStart
         name="date_end"
         type="date"
         icon=""
