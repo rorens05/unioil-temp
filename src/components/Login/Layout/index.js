@@ -12,7 +12,7 @@ function LoginLayout({children, ...rest}) {
         <Content style={{padding: 16}} >{children}</Content>
         <Footer style={{textAlign: 'center', fontSize: '12px'}}>
           <div style={{margin: '25px auto', padding: '17px 0', width: '325px', borderTop: '1px solid #e0e0e0', textAlign: 'left', color: '#8E8E93' }}>
-            By logging in you agree to UniOil's Terms of Service, <br/>Privacy Policy and Content Policie.
+            By logging in you agree to UniOil's Terms of Service, <br/>Privacy Policy and Content Policies.
           </div>
         </Footer>
       </Layout>
