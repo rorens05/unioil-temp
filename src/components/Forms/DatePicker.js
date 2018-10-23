@@ -15,6 +15,8 @@ const DatePickerForm = ({
   minDateToday,
   required,
   disabledDateStart,
+  dateStartEnd,
+  disabledDateStartEndPhotoSlider,
   ...props
 }) => {
 
@@ -34,11 +36,36 @@ const DatePickerForm = ({
   const disabledDate = (current) => {
     // Can not select days before today and today
 
-    if(form.values.date_start) {
-      return current && current < moment(form.values.date_start);
-    } else {
-      //return current && moment(current).add(2,'days') < moment().endOf('day').add(2,'days');
+    // for promotions
+    if(disabledDateStart && !disabledDateStartEndPhotoSlider) {
+      if(form.values.date_start) {
+        return current && current < moment(form.values.date_start);
+      } else {
+        //return current && moment(current).add(2,'days') < moment().endOf('day').add(2,'days');
+      }
     }
+    // for photo slider
+    if(disabledDateStartEndPhotoSlider) {
+      if(dateStartEnd) {
+        if(current && current.format() < moment(dateStartEnd.date_start).format()) {
+          return current && current.format() < moment(dateStartEnd.date_start).format()
+        } else {
+          return current && current.format() > moment(dateStartEnd.date_end).add(1,'days').format();
+        }
+      }
+    }
+
+    if(disabledDateStart) {
+      if(dateStartEnd) {
+        // return
+      } else {
+        if(form.values.date_start) {
+          return current && current < moment(form.values.date_start);
+        }
+      }
+      
+    }
+    
   }
 
   return (
@@ -55,7 +82,7 @@ const DatePickerForm = ({
           {...props} 
           onChange={(value) => onDateChange(value)}
           format={format}
-          disabledDate={disabledDateStart ? disabledDate : ()=> { return false }  }
+          disabledDate={disabledDateStartEndPhotoSlider || disabledDateStart ? disabledDate : ()=> { return false }  }
           style={{width: '250px'}}
         /> 
       }

@@ -28,7 +28,9 @@ function AddPhotoSliderForm(props) {
     handleSubmit,
     promotionsOptions,
     handleFileUpload,
-    photoSliderLimit
+    handleGetDate,
+    photoSliderLimit,
+    dateStartEnd
   } = props;
 
   return (
@@ -44,6 +46,7 @@ function AddPhotoSliderForm(props) {
         placeholder="Promotion Name"
         mode="single"
         optionsList={promotionsOptions}
+        handleGetDate={handleGetDate}
         component={Select}
       />
 
@@ -92,6 +95,8 @@ function AddPhotoSliderForm(props) {
         name="date_start"
         type="date"
         icon=""
+        disabledDateStartEndPhotoSlider
+        dateStartEnd={dateStartEnd}
         disabled={photoSliderLimit}
         layout={formItemLayout}
         label="Start Appearance Date"
@@ -103,6 +108,9 @@ function AddPhotoSliderForm(props) {
         name="date_end"
         type="date"
         icon=""
+        disabledDateStart
+        disabledDateStartEndPhotoSlider
+        dateStartEnd={dateStartEnd}
         disabled={photoSliderLimit}
         layout={formItemLayout}
         label="End Appearance Date"

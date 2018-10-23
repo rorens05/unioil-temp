@@ -19,7 +19,8 @@ class CreatePhotoSlider extends Component {
     loading: false,
     promotionsOptions: null,
     mounted: false,
-    photoSliderLimit: false
+    photoSliderLimit: false,
+    dateStartEnd: null
   }
 
   async componentDidMount() {
@@ -43,7 +44,8 @@ class CreatePhotoSlider extends Component {
         await promotionsList.data.data.map(item => {
           promotionsOptions.push({
             label: item.title,
-            value: item.promotion_uuid
+            value: item.promotion_uuid,
+            date: { dateStart: item.date_start , dateEnd: item.date_end }
           })
         })
 
@@ -135,11 +137,29 @@ class CreatePhotoSlider extends Component {
     return e && this.setState({ fileUpload: e.fileList });
   }
 
+  handleGetDate = async (id) => {
+    const {promotionsOptions} = this.state;
+
+    if(promotionsOptions) {
+      await promotionsOptions.map(item=> {
+        if(item.value == id) {
+          this.setState({
+            dateStartEnd: {
+              date_start: item.date.dateStart,
+              date_end: item.date.dateEnd
+            }
+          })
+        }
+      })
+    }
+
+  }
+
   render() {
 
     if (!this.state.mounted) return null;
 
-    const { loading, promotionsOptions, photoSliderLimit } = this.state
+    const { loading, promotionsOptions, photoSliderLimit, dateStartEnd } = this.state
 
     return (
       <div style={{ border: '1px solid #E6ECF5', paddingBottom: '10px' }}>
@@ -174,6 +194,8 @@ class CreatePhotoSlider extends Component {
                 {...props}
                 photoSliderLimit={photoSliderLimit}
                 promotionsOptions={promotionsOptions}
+                handleGetDate={this.handleGetDate}
+                dateStartEnd={dateStartEnd}
                 handleFileUpload={this.handleFileUpload}
               />
             }

@@ -18,6 +18,9 @@ class SelectForm extends Component {
     const { setFieldValue } = this.props.form;
     const { name } = this.props.field;
     
+    if(this.props.handleGetDate) {
+      this.props.handleGetDate(value);
+    }
     // Add custom action `onChange`
     return setFieldValue(name, value);
   }
