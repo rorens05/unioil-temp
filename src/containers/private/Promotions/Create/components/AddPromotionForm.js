@@ -127,15 +127,22 @@ function AddPromotionForm(props) {
       />
 
       <Field
-        disabled={responsePromotionTopUp && responsePromotionTopUp != "disable" ? false : true}
+        //disabled={responsePromotionTopUp && responsePromotionTopUp != "disable" ? false : true}
         name="is_toppromotion"
         icon="user"
         layout={formItemLayout}
         defaultValue={0}
         isRadioButton
         optionsList={[
-          { label: "Yes", value: 1 },
-          { label: "No", value: 0, }
+          { 
+            label: "Yes", 
+            value: 1 ,
+            isDisabled: responsePromotionTopUp && responsePromotionTopUp != "disable" ? false : true
+          },
+          { 
+            label: "No", 
+            value: 0, 
+          }
         ]}
         label="Add in Top 2 Promos"
         component={Radio}
