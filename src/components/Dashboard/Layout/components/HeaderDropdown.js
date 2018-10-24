@@ -64,8 +64,11 @@ class HeaderDropdown extends Component {
     return (
       <div>
         <Helmet title = "Dashboard" />
-        <Dropdown overlay={menu}>
-          <HeaderButton role="button" style={{marginRight: 16, color: '#8E8E93'}} > 
+        <Dropdown overlay={menu} placement="bottomRight">
+          <HeaderButton role="button" style={{
+              marginRight: 16, color: '#8E8E93' , outline: '1px solid red', maxWidth: '256px',
+              whiteSpace: 'nowrap',  overflow: 'hidden', textOverflow: 'ellipsis' , position: 'relative'
+          }} > 
             <Avatar size="small"  
               style={{ background: '#B8BBC9', marginRight: 5 }} icon="user" 
             />  { userInfo && (`${userInfo.firstname} ${userInfo.lastname}`) } <Icon type="down" />
