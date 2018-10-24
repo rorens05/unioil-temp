@@ -66,7 +66,7 @@ class HeaderDropdown extends Component {
         <Helmet title = "Dashboard" />
         <Dropdown overlay={menu} placement="bottomRight">
           <HeaderButton role="button" style={{
-              marginRight: 16, color: '#8E8E93' , outline: '1px solid red', maxWidth: '256px',
+              marginRight: 16, color: '#8E8E93', maxWidth: '256px',
               whiteSpace: 'nowrap',  overflow: 'hidden', textOverflow: 'ellipsis' , position: 'relative'
           }} > 
             <Avatar size="small"  
