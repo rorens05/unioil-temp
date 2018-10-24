@@ -22,6 +22,8 @@ class MyProfile extends Component {
   
   async componentDidMount() {
 
+    notification.close('idle-notification-1')
+
     const { match } = this.props;
 
     API_UNI_OIL.post(`adminProfile`)        
