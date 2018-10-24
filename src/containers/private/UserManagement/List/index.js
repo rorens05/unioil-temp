@@ -37,7 +37,7 @@ class UserManagementList extends Component {
           <div>Something went wrong updating record.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
     }
   }

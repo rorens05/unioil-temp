@@ -41,7 +41,7 @@ class TopUpCreate extends Component {
             <div>Something went wrong generating fee code.</div>
           - { error && error.data && error.data.message }
           </div> , 
-          duration: 20, 
+          duration: 3, 
         });
         this.setState({ mounted: false })
       }

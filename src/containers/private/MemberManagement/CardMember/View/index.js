@@ -33,7 +33,7 @@ class CardMemberView extends Component {
           <div>Something went wrong loading data.</div>
             - {error && error.data && error.data.message}
           </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       if(error.status == 404) {
         if(this.props.location.pathname)

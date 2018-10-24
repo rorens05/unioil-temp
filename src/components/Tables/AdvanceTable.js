@@ -180,7 +180,7 @@ class AdvanceTable extends Component {
           <div>Something went wrong deleting record.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
     }
   }
@@ -201,7 +201,7 @@ class AdvanceTable extends Component {
           <div>Something went wrong deleting records.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
     }
 

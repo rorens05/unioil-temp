@@ -84,7 +84,7 @@ class PromotionsEdit extends Component {
           <div>Something went wrong loading data.</div>
         - {error && error.data && error.data.message}
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       if(error.status == 404) {
         if(this.props.location.pathname)
@@ -127,7 +127,6 @@ class PromotionsEdit extends Component {
       })
 
     } catch ({response: error}) {
-     // notification.error({ message: "Error", description: "Something went wrong loading data", duration: 20, });
       this.setState({ mounted: false })
     }
 

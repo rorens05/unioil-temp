@@ -33,7 +33,8 @@ function* userManagementSagaFlow({ payload }) {
             && (<div>- {error.data.data.username[0]} </div>) }
         { error && error.data && error.data.data && error.data.data.email 
             && (<div>- {error.data.data.email[0]} </div>) }
-      </div>
+      </div>,
+       duration: 3, 
     });
     yield put({ type: USERMANAGEMENT_CREATE_ERROR });
     setSubmitting(false); _self.setState({loading: false})

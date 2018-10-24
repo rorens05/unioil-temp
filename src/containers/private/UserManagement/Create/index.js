@@ -75,7 +75,7 @@ class CreateUserManagement extends Component {
           <div>Something went wrong generating password.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       this.setState({loading: false})
     }

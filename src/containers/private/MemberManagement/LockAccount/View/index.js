@@ -34,7 +34,7 @@ class LockAccountView extends Component {
           <div>Something went wrong loading data.</div>
             - {error && error.data && error.data.message}
           </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       if(error.status == 404) {
         if(this.props.location.pathname)
@@ -60,7 +60,7 @@ class LockAccountView extends Component {
           <div>Something went wrong updating record.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       this.setState({loading: false})
     }

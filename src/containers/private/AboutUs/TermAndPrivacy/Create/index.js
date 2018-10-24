@@ -51,7 +51,7 @@ class TermAndPrivacyCreate extends Component {
           <div>Something went wrong creating new record.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       setSubmitting(false);
       this.setState({ loading: false });
