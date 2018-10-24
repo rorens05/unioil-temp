@@ -92,6 +92,7 @@ class CreateUserManagement extends Component {
           title="Add User"
           action={this.handleAddUser}
           actionBtnName="Submit"
+          withCancelConfirm={{ message: 'Are you sure you want to discard this record?'}}
           cancel={()=> { this.props.history.push("/user-management")}}
           cancelBtnName="Cancel"
         />

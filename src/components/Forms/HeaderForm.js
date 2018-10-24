@@ -20,7 +20,7 @@ class HeaderForm extends Component {
   render() {
     const { action, cancel, deleteAction , title , actionBtnName, cancelBtnName,
             deleteBtnName, loading, withConfirm, styleBtn, isDropDown , actionPrivacy, 
-            actionTerms, disabled } = this.props;
+            actionTerms, disabled, withCancelConfirm } = this.props;
 
     const menu = (
       <Menu className="terms-management" 
@@ -90,13 +90,20 @@ class HeaderForm extends Component {
             }
             {
               cancel && 
-                <Button  
-                  loading={loading} 
-                  onClick={cancel}
-                  style={{ margin: '0 4px', width: '135px', display: 'block', background: 'white', borderColor:'#b8bbc9', color: '#65697f' }}
-                >
-                  {cancelBtnName}
-                </Button>
+                <Popconfirm 
+                    placement="bottomRight"
+                    onConfirm={cancel} 
+                    onCancel={null} okText="Yes" cancelText="No"
+                    title={withCancelConfirm && withCancelConfirm.message} 
+                  >
+                    <Button  
+                      loading={loading} 
+                      onClick={withCancelConfirm ? null : cancel}
+                      style={{ margin: '0 4px', width: '135px', display: 'block', background: 'white', borderColor:'#b8bbc9', color: '#65697f' }}
+                    >
+                      {cancelBtnName}
+                    </Button>
+                </Popconfirm>
             }
             {
               deleteAction && 

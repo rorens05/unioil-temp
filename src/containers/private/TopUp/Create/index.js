@@ -112,6 +112,7 @@ class TopUpCreate extends Component {
           title="Top-Up"
           action={this.handleCreateTopUp}
           actionBtnName="Submit"
+          withCancelConfirm={{ message: 'Are you sure you want to discard this record?'}}
           cancel={()=> { this.props.history.push("/top-up")}}
           cancelBtnName="Cancel"
         />
