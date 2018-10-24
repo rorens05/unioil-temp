@@ -5,8 +5,12 @@ export const userDetailsSchema = Yup.object().shape({
   promotion_uuid: Yup.string(),
     //.required('Promotion Name is required!'),
   title: Yup.string()
+    .trim()
+    .max(128, "Maximum character is 128.")
     .required('Title is required!'),
   description: Yup.string()
+    .trim()
+    .max(32000, "Maximum character is 32,000.")
     .required('Description is required!'),
   // image: Yup.string()
   //   .required('Image is required!'),
