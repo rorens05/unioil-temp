@@ -42,7 +42,7 @@ class HeaderDropdown extends Component {
     const { history, userInfo } = this.props;
 
     const menu = (
-      <Menu style={{width: 150}} >
+      <Menu style={{width: 150 , margin: '0 0 0 auto'}} >
            <Menu.Item key="0">
               <a  
                 onClick={()=> history.push("/my-profile")}
@@ -64,17 +64,17 @@ class HeaderDropdown extends Component {
     return (
       <div>
         <Helmet title = "Dashboard" />
-        <Dropdown overlay={menu} placement="bottomRight">
-          <HeaderButton role="button" style={{
-              marginRight: 16, color: '#8E8E93', maxWidth: '256px',
-              whiteSpace: 'nowrap',  overflow: 'hidden', textOverflow: 'ellipsis' , position: 'relative'
-          }} > 
-            <Avatar size="small"  
-              style={{ background: '#B8BBC9', marginRight: 5 }} icon="user" 
-            />  { userInfo && (`${userInfo.firstname} ${userInfo.lastname}`) } <Icon type="down" />
-          </HeaderButton>
-        </Dropdown>
-      </div>
+          <Dropdown overlay={menu} placement="bottomRight">
+            <HeaderButton role="button" style={{
+                marginRight: 16, color: '#8E8E93', maxWidth: '256px',
+                whiteSpace: 'nowrap',  overflow: 'hidden', textOverflow: 'ellipsis' , position: 'relative'
+            }} > 
+              <Avatar size="small"  
+                style={{ background: '#B8BBC9', marginRight: 5 }} icon="user" 
+              />  { userInfo && (`${userInfo.firstname} ${userInfo.lastname}`) } <Icon type="down" />
+            </HeaderButton>
+          </Dropdown>
+        </div>
     );
   }
 }
