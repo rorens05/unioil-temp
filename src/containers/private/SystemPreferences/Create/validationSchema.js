@@ -2,8 +2,8 @@
 import * as Yup from 'yup'
 
 export const userDetailsSchema = Yup.object().shape({
-  logo: Yup.string(),
-    //.required('logo is required!'),
+  logo: Yup.string()
+     .required('Upload Image is required!'),
   gps: Yup.string()
     .trim()
 		.max(128, "Maximum character is 128.")
