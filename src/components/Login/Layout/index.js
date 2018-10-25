@@ -7,7 +7,7 @@ const { Header, Footer, Content, Sider } = Layout;
 function LoginLayout({children, ...rest}) {
   return (
     <Layout style={{height: "100%"}}>
-      <Sider width='50%' style={{ background: `url(${require("assets/img/img_bg.png")}) center`, backgroundSize: 'cover' } }></Sider>
+      <Sider width='50%' style={{ background: `url(${require("assets/img/bg_cms.png")}) center`, backgroundSize: 'cover' } }></Sider>
       <Layout>
         <Content style={{padding: 16}} >{children}</Content>
         <Footer style={{textAlign: 'center', fontSize: '12px'}}>
