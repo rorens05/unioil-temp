@@ -72,7 +72,7 @@ function TopUpCreateForm(props) {
             //icon="user"
             layout={formItemLayout}
             label="Value"
-            placeholder="Value Percent"
+            placeholder="Value"
             min={0}
             max={100} 
             component={InputNumberAntD}
