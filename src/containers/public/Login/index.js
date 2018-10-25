@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Helmet from 'react-helmet';
 import LoginForm from './components/LoginForm'
-import { Row, Col , Modal, Button} from 'antd';
+import { Row, Col , Modal, Button , notification} from 'antd';
 import { Formik } from 'formik';
 import { Redirect } from 'react-router-dom'
 
@@ -116,6 +116,9 @@ class Login extends Component {
     history.push({ pathname: '/login' });
   }
 
+  onCloseIdleNotification() {
+    notification.close('idle-notification-1')
+  }
   
   render() {
 
@@ -163,6 +166,7 @@ class Login extends Component {
                   showModalForgotUsername={this.showModalForgotUsername}
                   showModalChangePassword={this.showModalChangePassword}
                   backToLogin={this.backToLogin}
+                  onCloseIdleNotification={this.onCloseIdleNotification}
                 />
               }
             />

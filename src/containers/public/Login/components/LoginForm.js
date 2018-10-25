@@ -10,7 +10,8 @@ function Login(props) {
     userVerified,
     showModalForgotUsername,
     showModalChangePassword,
-    backToLogin
+    backToLogin,
+    onCloseIdleNotification
   } = props;
 
   return (
@@ -23,13 +24,14 @@ function Login(props) {
             <div>
              <label style={{fontWeight: '500', color: '#005598'}}>Enter Username</label>
               <Field
-              name="username"
-              type="text"
-              icon="user"
-              placeholder="User name"
-              component={Input}
-              readOnly={userVerified}
-            />
+                name="username"
+                type="text"
+                icon="user"
+                placeholder="User name"
+                component={Input}
+                readOnly={userVerified}
+                onClick={onCloseIdleNotification}
+              />
             </div>
           )
         }
