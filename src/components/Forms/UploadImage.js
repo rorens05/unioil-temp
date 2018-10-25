@@ -26,8 +26,9 @@ class UploadImage extends Component {
         imageUrl,
         loading: false,
       }));
-
-      handleFileUpload(info)
+      this.props.form.setFieldValue("image", 'imageValue');
+      
+      handleFileUpload(info,this.props.form.setFieldValue)
     }
     
     // if (Array.isArray(e)) {
