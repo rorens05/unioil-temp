@@ -158,7 +158,7 @@ function MainSidebar(props) {
       collapsible
       width={295} 
       collapsed={collapsed}
-      style={{ background: '#fff', border: "solid 1px #e6ecf5" }}
+      style={{ background: '#fff', border: "solid 1px #e6ecf5", zIndex: '999' }}
     >
     {
       !collapsed 

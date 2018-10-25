@@ -39,7 +39,7 @@ class HeaderForm extends Component {
         background: '#fff', 
         position: 'fixed', width: '100%', 
         padding: '0px 24px 5px', zIndex: 99,
-        marginTop: '-71px', marginLeft: '-17px' }}
+        marginTop: '-73px', marginLeft: '-17px' }}
       >
           <h1 style={{fontSize: '24px'}}>{title}</h1>
           <div style={{display: 'flex', position: 'fixed', right: '24px'}}>
