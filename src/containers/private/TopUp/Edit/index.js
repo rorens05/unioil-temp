@@ -89,6 +89,14 @@ class TopUpEdit extends Component {
 
   }
 
+  handleResetValue=(props)=> {
+    console.log(props,'vvalvalvalval')
+    // this.setState({
+    //   amount: 0
+    // })
+    props.setValues({...props.values, amount: ''})
+  }
+
   render() {
 
     if(!this.state.mounted) return null;
@@ -124,6 +132,7 @@ class TopUpEdit extends Component {
                 <EditUserManagementForm 
                   {...props}
                   loading={loading}
+                  handleResetValue={this.handleResetValue}
                 />
               }
           />

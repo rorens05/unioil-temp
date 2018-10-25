@@ -54,17 +54,30 @@ function TopUpCreateForm(props) {
         component={Input}
       />
 
-      <Field
-        name="amount"
-        //icon="user"
-        layout={formItemLayout}
-        label="Value"
-        placeholder="Value"
-        min={0}
-				//max={999}
-				step={0.01}
-        component={InputNumberAntD}
-      />
+      {
+        props.values.type == "" || props.values.type == 1 ? 
+          <Field
+            name="amount"
+            //icon="user"
+            layout={formItemLayout}
+            label="Value"
+            placeholder="Value"
+            min={0}
+            max={99999.99}
+            //step={0.01}
+            component={InputNumberAntD}
+          /> :
+          <Field
+            name="amount"
+            //icon="user"
+            layout={formItemLayout}
+            label="Value"
+            placeholder="Value Percent"
+            min={0}
+            max={100} 
+            component={InputNumberAntD}
+          />
+      } 
 
       <Field
         name="type"
