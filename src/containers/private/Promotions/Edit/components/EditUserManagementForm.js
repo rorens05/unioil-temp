@@ -59,6 +59,7 @@ function EditUserManagementForm(props) {
       />
 
       <Field
+        limit100kb
         name="image"
         type="file"
         accept=".jpg , .png, .gif"

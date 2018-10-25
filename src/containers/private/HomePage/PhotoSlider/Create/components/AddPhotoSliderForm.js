@@ -74,6 +74,7 @@ function AddPhotoSliderForm(props) {
       />
 
       <Field
+        limit100kb
         name="image"
         type="file"
         disabled={photoSliderLimit}

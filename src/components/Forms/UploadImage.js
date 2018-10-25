@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Upload, message } from 'antd';
+import filesize from 'filesize';
 
 const FormItem = Form.Item;
 
@@ -20,8 +21,8 @@ class UploadImage extends Component {
     const { handleFileUpload } = this.props;
     const isJPG = info.file.type === 'image/jpeg' || info.file.type === 'image/png' || info.file.type === 'image/gif' ;
 
-    if(isJPG) {
-   
+    if(isJPG && info.file.originFileObj) {
+
       this.getBase64(info.file.originFileObj, imageUrl => this.setState({
         imageUrl,
         loading: false,
@@ -53,9 +54,20 @@ class UploadImage extends Component {
     if (!isJPG) {
       message.error('You can only upload JPG or PNG file!');
     }
-    const isLt2M = file.size / 1024 / 1024 < 2;
+
+    let fileSize;
+    let isLt2M;
+    if(this.props.limit100kb) {
+      fileSize = filesize(file.size, {output: "array"} ) // 100kb
+      isLt2M = fileSize[0] < 104
+    } else {
+      isLt2M = file.size / 1024 / 1024 < 2;
+    }
+    //const isLt2M = fileSize[0] < 104;
+    //const isLt2M = file.size / 1024 / 1024 < 2;
+   
     if (!isLt2M) {
-      message.error('Image must smaller than 2MB!');
+      message.error('Image must smaller than 100KB!');
     }
     return isJPG && isLt2M;
     
