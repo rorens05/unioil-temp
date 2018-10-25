@@ -90,7 +90,6 @@ class TopUpEdit extends Component {
   }
 
   handleResetValue=(props)=> {
-    console.log(props,'vvalvalvalval')
     // this.setState({
     //   amount: 0
     // })

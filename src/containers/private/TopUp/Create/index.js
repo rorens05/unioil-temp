@@ -91,7 +91,6 @@ class TopUpCreate extends Component {
   }
 
   handleResetValue=(props)=> {
-    console.log(props,'vvalvalvalval')
     // this.setState({
     //   amount: 0
     // })
