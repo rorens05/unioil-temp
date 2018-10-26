@@ -33,8 +33,8 @@ function AddPhotoSliderForm(props) {
     photoSliderLimit,
     dateStartEnd
   } = props;
-
-  return (
+  
+   return (
     <Form noValidate>
 
       <Field
@@ -123,6 +123,18 @@ function AddPhotoSliderForm(props) {
       <Field
         name="start_time"
         type="date"
+        disabledHours={()=> {
+          let time =  dateStartEnd && dateStartEnd.date_start && moment(dateStartEnd.date_start, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss').replace(/[^0-9]/g,'').substring(0, 2)
+          let disabledTime = [];
+          let timeLimit = time;
+          if(time) {
+            while(timeLimit > 0) {
+              timeLimit--;
+              disabledTime.push(timeLimit)
+            }
+          }
+          return disabledTime 
+        }}
         defaultOpenValue={moment('00:00:00', 'HH:mm:ss')}
         icon=""
         disabled={photoSliderLimit}
@@ -135,6 +147,18 @@ function AddPhotoSliderForm(props) {
       <Field
         name="end_time"
         type="date"
+        disabledHours={() => {
+          let time =  dateStartEnd && dateStartEnd.date_end && moment(dateStartEnd.date_end, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss').replace(/[^0-9]/g,'').substring(0, 2)
+          let disabledEndTime = [];
+          let timeLimit = time;
+          if(time) {
+            while(timeLimit < 23) {
+              timeLimit++;
+              disabledEndTime.push(timeLimit)
+            }
+          }
+          return disabledEndTime
+        }}
         defaultOpenValue={moment('00:00:00', 'HH:mm:ss')}
         icon=""
         disabled={photoSliderLimit}
