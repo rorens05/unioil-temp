@@ -59,7 +59,7 @@ class UploadImage extends Component {
 
     if(this.props.limit100kb) {
       fileSize = filesize(file.size, {output: "array"} ) // 100kb
-      isLt2M = fileSize[0] < 104
+      isLt2M = fileSize[0] < 104 && fileSize[1] == "KB"
     } else {
       isLt2M = file.size / 1024 / 1024 < 2; // 2MB
     }
