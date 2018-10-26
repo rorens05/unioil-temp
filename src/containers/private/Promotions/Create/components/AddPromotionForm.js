@@ -3,7 +3,8 @@ import React from 'react';
 import { Row, Button, Col } from 'antd';
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
- 
+import moment from 'moment' 
+
 // COMPONENTS
 import { Input, Radio, InputTextArea, UploadImage, Select, 
   DatePicker, TimePickerForm } from 'components/Forms';
@@ -111,6 +112,7 @@ function AddPromotionForm(props) {
         name="start_time"
         type="date"
         icon=""
+        defaultOpenValue={moment('00:00:00', 'HH:mm:ss')}
         layout={formItemLayout}
         label="Start Time"
         placeholder="Start Time"
@@ -121,6 +123,7 @@ function AddPromotionForm(props) {
         name="end_time"
         type="date"
         icon=""
+        defaultOpenValue={moment('00:00:00', 'HH:mm:ss')}
         layout={formItemLayout}
         label="End Time"
         placeholder="End Time"

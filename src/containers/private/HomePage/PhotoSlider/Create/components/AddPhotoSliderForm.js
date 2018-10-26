@@ -3,6 +3,7 @@ import React from 'react';
 import { Row, Button, Col } from 'antd';
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
+import moment from 'moment'
 
 // COMPONENTS
 import { Input, Select, DatePicker , InputTextArea, UploadImage, TimePickerForm } from 'components/Forms';
@@ -122,6 +123,7 @@ function AddPhotoSliderForm(props) {
       <Field
         name="start_time"
         type="date"
+        defaultOpenValue={moment('00:00:00', 'HH:mm:ss')}
         icon=""
         disabled={photoSliderLimit}
         layout={formItemLayout}
@@ -133,6 +135,7 @@ function AddPhotoSliderForm(props) {
       <Field
         name="end_time"
         type="date"
+        defaultOpenValue={moment('00:00:00', 'HH:mm:ss')}
         icon=""
         disabled={photoSliderLimit}
         layout={formItemLayout}
