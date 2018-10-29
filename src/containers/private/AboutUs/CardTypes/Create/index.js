@@ -100,7 +100,7 @@ class CardTypeCreate extends Component {
           title="Card Types"
           action={this.handleAddCardTypes}
           actionBtnName="Submit"
-          withCancelConfirm={{ message: 'Are you sure you want to discard this record?'}}
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> {this.props.history.push("/about-us/card-types")}}
           cancelBtnName="Cancel"
         />

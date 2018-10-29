@@ -244,7 +244,7 @@ class EditPhotoSlider extends Component {
           action={this.handleEditPhotoSlider}
           actionBtnName="Submit"
           withConfirm={{message: "Save changes to this record?"}}
-          withCancelConfirm={{ message: 'Are you sure you want to discard this record?'}}
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> this.props.history.push("/home-page/photo-slider")}
           cancelBtnName="Cancel"
         />

@@ -169,7 +169,7 @@ class CreatePhotoSlider extends Component {
           action={this.handleAddPhotoSlider}
           disabled={photoSliderLimit}
           actionBtnName="Submit"
-          withCancelConfirm={{ message: 'Are you sure you want to discard this record?'}}
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={() => { this.props.history.push("/home-page/photo-slider") }}
           cancelBtnName="Cancel"
         />

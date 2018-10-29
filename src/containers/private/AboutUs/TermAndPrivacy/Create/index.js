@@ -74,7 +74,7 @@ handleCreateTermPrivacy =()=> {
           title={match.params.id == "1" ? "Terms" : "Privacy Policy"}
           action={this.handleCreateTermPrivacy}
           actionBtnName="Submit"
-          withCancelConfirm={{ message: 'Are you sure you want to discard this record?'}}
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> { this.props.history.push("/about-us/term-privacy")}}
           cancelBtnName="Cancel"
         />

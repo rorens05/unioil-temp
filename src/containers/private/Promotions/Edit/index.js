@@ -254,7 +254,7 @@ class PromotionsEdit extends Component {
           action={this.handleEditPromotions}
           actionBtnName="Submit"
           withConfirm={{message: "Save changes to this record?"}}
-          withCancelConfirm={{ message: 'Are you sure you want to discard this record?'}}
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> this.props.history.push("/promotions")}
           cancelBtnName="Cancel"
         />

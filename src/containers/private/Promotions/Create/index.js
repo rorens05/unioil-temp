@@ -171,7 +171,7 @@ class PromotionsCreate extends Component {
           title="Promotions"
           action={this.handleAddPromotions}
           actionBtnName="Submit"
-          withCancelConfirm={{ message: 'Are you sure you want to discard this record?'}}
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> { this.props.history.push("/promotions")}}
           cancelBtnName="Cancel"
         />
