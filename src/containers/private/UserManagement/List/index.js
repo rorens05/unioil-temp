@@ -133,7 +133,7 @@ class UserManagementList extends Component {
                     return(
                       <Dropdown overlay={menu} trigger={['click']}>
                         <a className="ant-dropdown-link" href="#">
-                          {text} <Icon type="caret-down" theme="outlined"
+                          {text && text == 'active' ? 'Active' : 'Inactive'} <Icon type="caret-down" theme="outlined"
                           style={{ position: "relative", top: -4, fontSize: 7 }} />
                         </a>
                       </Dropdown>
