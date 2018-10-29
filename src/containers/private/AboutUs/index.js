@@ -28,7 +28,7 @@ class AboutUs extends Component {
     pageRoutes: [
       {
         path: `${this.props.match.url}/card-types`,
-        name: "Card Member",
+        name: "Card Types",
         component: CardTypeList,        
       }, 
       {
