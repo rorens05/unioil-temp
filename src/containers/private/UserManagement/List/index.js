@@ -96,10 +96,10 @@ class UserManagementList extends Component {
                   key: 'role',
                   sorter: true,
                   width: "13%",
-                  filters: [
-                    { text: 'System Admin', value: 1 },
-                    { text: 'Marketing Personnel', value: 2 }
-                  ],
+                  // filters: [
+                  //   { text: 'System Admin', value: 1 },
+                  //   { text: 'Marketing Personnel', value: 2 }
+                  // ],
                   render: (text, record) => (
                     <span className={record.status === "Active" ? "dark-gray" : "inactive-label"}>
                       {record && record.role ==  1 ? "Admin": "Marketing Personnel"}
