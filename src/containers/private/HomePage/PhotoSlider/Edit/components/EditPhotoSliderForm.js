@@ -106,6 +106,7 @@ function EditUserManagementForm(props) {
         icon=""
         disabledDateStart
         disabledDateStartEndPhotoSlider
+        disabledDateStartEndPhotoSliderEndDate
         dateStartEnd={dateStartEnd}
         defaultValue={ moment(props.values.date_end, 'YYYY-MM-DD') }
         layout={formItemLayout}

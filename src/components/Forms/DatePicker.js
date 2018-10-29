@@ -17,6 +17,7 @@ const DatePickerForm = ({
   disabledDateStart,
   dateStartEnd,
   disabledDateStartEndPhotoSlider,
+  disabledDateStartEndPhotoSliderEndDate,
   ...props
 }) => {
 
@@ -44,12 +45,25 @@ const DatePickerForm = ({
         //return current && moment(current).add(2,'days') < moment().endOf('day').add(2,'days');
       }
     }
-    // for photo slider
-    if(disabledDateStartEndPhotoSlider) {
+    // for photo slider Date Start
+    if(disabledDateStartEndPhotoSlider && !disabledDateStartEndPhotoSliderEndDate) {
       if(dateStartEnd) {
         if(current && current.format() < moment(dateStartEnd.date_start).format()) {
           return current && current.format() < moment(dateStartEnd.date_start).format()
         } else {
+          return current && current.format() > moment(dateStartEnd.date_end).add(1,'days').format();
+        }
+      }
+    }
+
+    // for photo slider date End
+    if(disabledDateStartEndPhotoSliderEndDate) {
+      if(dateStartEnd) {
+        if(current && current.format() < form.values.date_start) {
+          // disabled previous date
+          return current && current < moment(form.values.date_start);
+        } else {
+          // diabled past date
           return current && current.format() > moment(dateStartEnd.date_end).add(1,'days').format();
         }
       }

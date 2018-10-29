@@ -112,6 +112,7 @@ function AddPhotoSliderForm(props) {
         icon=""
         disabledDateStart
         disabledDateStartEndPhotoSlider
+        disabledDateStartEndPhotoSliderEndDate
         dateStartEnd={dateStartEnd}
         disabled={photoSliderLimit}
         layout={formItemLayout}
