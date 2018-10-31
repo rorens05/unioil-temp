@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 
 // COMPONENTS
+import HeaderForm from "components/Forms/HeaderForm"
 import { Input, Select, DatePicker , InputTextArea, UploadImage ,TimePickerForm } from 'components/Forms'
 
 // HELPER FUNCTIONS
@@ -25,16 +26,30 @@ const formItemLayout = {
 function EditUserManagementForm(props) {
   const {
     isSubmitting,
+    loading,
+    handleSubmit,
     promotionsDefaultValue,
     promotionsOptions,
     handleFileUpload,
     dateStartEnd,
-    handleGetDate
+    handleGetDate,
+    history
   } = props;
 
   return (
     <Form noValidate>
-
+      <HeaderForm 
+        isInsideForm
+        loading={loading}
+        disabled={props.isValid == false ? true : false}
+        title="Update Photo Slider"
+        action={handleSubmit}
+        actionBtnName="Submit"
+        withConfirm={{message: "Save changes to this record?"}}
+        withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
+        cancel={()=> history.push("/home-page/photo-slider")}
+        cancelBtnName="Cancel"
+      />
       <Field
         name="promotion_uuid"
         type="select"

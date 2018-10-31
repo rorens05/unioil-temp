@@ -61,7 +61,8 @@ class HeaderForm extends Component {
                         loading={loading} 
                         style={{ margin: '0 4px', width: '135px', 
                                 display: 'block', background: '#E74610', borderColor:'#E74610', 
-                                color: '#fff' 
+                                color: '#fff' ,
+                                opacity: disabled ? 0.5 : 'initial'
                         }}
                       >
                         {actionBtnName}

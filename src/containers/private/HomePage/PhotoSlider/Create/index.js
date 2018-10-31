@@ -163,7 +163,7 @@ class CreatePhotoSlider extends Component {
 
     return (
       <div style={{ border: '1px solid #E6ECF5', paddingBottom: '10px' }}>
-        <HeaderForm
+        {/* <HeaderForm
           loading={loading}
           title="Photo Slider"
           action={this.handleAddPhotoSlider}
@@ -172,7 +172,7 @@ class CreatePhotoSlider extends Component {
           withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={() => { this.props.history.push("/home-page/photo-slider") }}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{ margin: '25px 35px' }}>Photo Slider Content Details</h2>
           <Formik
@@ -193,6 +193,8 @@ class CreatePhotoSlider extends Component {
             render={(props) =>
               <AddPhotoSliderForm
                 {...props}
+                loading={loading}
+                history={this.props.history}
                 photoSliderLimit={photoSliderLimit}
                 promotionsOptions={promotionsOptions}
                 handleGetDate={this.handleGetDate}
