@@ -24,7 +24,7 @@ class EditUserManagement extends Component {
   }
 
   async componentDidMount() {
-
+  
     const { match } = this.props;
     
     try {
@@ -149,7 +149,7 @@ class EditUserManagement extends Component {
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="Update User"
           action={this.handleEditUserManagement}
@@ -158,7 +158,7 @@ class EditUserManagement extends Component {
           withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> { this.props.history.push("/user-management")}}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>User Details</h2>
           <Formik
@@ -182,6 +182,7 @@ class EditUserManagement extends Component {
                   {...props}
                   loading={loading}
                   userInfo={userInfo}
+                  history={this.props.history}
                   generatePassword={this.generatePassword}
                   isGenerated={(isGenerated || userInfo.generated_password) && true}
                 />
