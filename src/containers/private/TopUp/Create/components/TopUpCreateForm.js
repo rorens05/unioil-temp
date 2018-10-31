@@ -5,6 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
+import HeaderForm from "components/Forms/HeaderForm"
 import { Input, InputNumberAntD, Radio } from 'components/Forms';
 
 // HELPER FUNCTIONS
@@ -27,12 +28,23 @@ function TopUpCreateForm(props) {
     handleSubmit,
     loading,
     handleResetValue,
-    amount
+    amount,
+    history
   } = props;
 
   return (
     <Form noValidate>
-
+      <HeaderForm 
+        isInsideForm
+        loading={loading}
+        disabled={props.isValid == false ? true : false}
+        title="Top-Up"
+        action={handleSubmit}
+        actionBtnName="Submit"
+        withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
+        cancel={()=> { history.push("/top-up")}}
+        cancelBtnName="Cancel"
+      />
       <Field
         name="fee_code"
         type="text"

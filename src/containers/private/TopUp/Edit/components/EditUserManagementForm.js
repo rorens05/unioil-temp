@@ -5,6 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
+import HeaderForm from "components/Forms/HeaderForm"
 import { Input, InputNumberAntD, Radio } from 'components/Forms';
 
 // HELPER FUNCTIONS
@@ -26,13 +27,26 @@ function EditUserManagementForm(props) {
     isSubmitting,
     generatePassword,
     loading,
+    handleSubmit,
     isGenerated,
-    handleResetValue
+    handleResetValue,
+    history
   } = props;
 
   return (
     <Form noValidate>
-
+      <HeaderForm 
+        isInsideForm
+        loading={loading}
+        disabled={props.isValid == false ? true : false}
+        title="Update User"
+        action={handleSubmit}
+        actionBtnName="Submit"
+        withConfirm={{message: "Save changes to this record?"}}
+        withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
+        cancel={()=> { history.push("/top-up")}}
+        cancelBtnName="Cancel"
+      />
       <Field
         name="fee_code"
         type="text"

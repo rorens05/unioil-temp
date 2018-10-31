@@ -106,7 +106,7 @@ class TopUpCreate extends Component {
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '40px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="Top-Up"
           action={this.handleCreateTopUp}
@@ -114,7 +114,7 @@ class TopUpCreate extends Component {
           withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> { this.props.history.push("/top-up")}}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>Top-Up Details</h2>
           <Formik
@@ -132,6 +132,7 @@ class TopUpCreate extends Component {
                 <TopUpCreateForm 
                   {...props}
                   loading={loading}
+                  history={this.props.history}
                   handleResetValue={this.handleResetValue}
                 />
               }

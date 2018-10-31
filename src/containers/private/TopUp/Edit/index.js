@@ -104,7 +104,7 @@ class TopUpEdit extends Component {
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="Update User"
           action={this.handleEditUserManagement}
@@ -113,7 +113,7 @@ class TopUpEdit extends Component {
           withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> { this.props.history.push("/top-up")}}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>User Details</h2>
           <Formik
@@ -131,6 +131,7 @@ class TopUpEdit extends Component {
                 <EditUserManagementForm 
                   {...props}
                   loading={loading}
+                  history={this.props.history}
                   handleResetValue={this.handleResetValue}
                 />
               }
