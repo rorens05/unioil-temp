@@ -95,7 +95,7 @@ class CardTypeCreate extends Component {
     
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="Card Types"
           action={this.handleAddCardTypes}
@@ -103,7 +103,7 @@ class CardTypeCreate extends Component {
           withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> {this.props.history.push("/about-us/card-types")}}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>Card Type Details</h2>
           <Formik
@@ -123,6 +123,7 @@ class CardTypeCreate extends Component {
                 <AddCardForm 
                   {...props}
                   loading={loading}
+                  history={this.props.history}
                   handleFileUpload={this.handleFileUpload}
                 />
               }

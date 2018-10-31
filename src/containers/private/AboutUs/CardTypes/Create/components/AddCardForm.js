@@ -5,6 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
+import HeaderForm from "components/Forms/HeaderForm"
 import { Input, Radio, UploadImage, InputTextArea } from 'components/Forms';
 
 // HELPER FUNCTIONS
@@ -26,12 +27,23 @@ function AddCardForm(props) {
     isSubmitting,
     handleSubmit,
     loading,
-    handleFileUpload
+    handleFileUpload,
+    history
   } = props;
 
   return (
     <Form noValidate>
-
+      <HeaderForm 
+        isInsideForm
+        loading={loading}
+        disabled={props.isValid == false ? true : false}
+        title="Card Types"
+        action={handleSubmit}
+        actionBtnName="Submit"
+        withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
+        cancel={()=> {history.push("/about-us/card-types")}}
+        cancelBtnName="Cancel"
+      />
       <Field
         name="code"
         type="text"

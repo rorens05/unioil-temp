@@ -121,7 +121,7 @@ class CardTypeEdit extends Component {
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="Update Card Type"
           action={this.handleEditCardTypes}
@@ -130,7 +130,7 @@ class CardTypeEdit extends Component {
           withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> { this.props.history.push("/about-us/card-types")}}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>Card Types Details</h2>
           <Formik
@@ -150,6 +150,7 @@ class CardTypeEdit extends Component {
                 <EditUserManagementForm 
                   {...props}
                   loading={loading}
+                  history={this.props.history}
                   handleFileUpload={this.handleFileUpload}
                 />
               }
