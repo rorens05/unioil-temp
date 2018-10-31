@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import moment from 'moment' 
 
 // COMPONENTS
+import HeaderForm from "components/Forms/HeaderForm"
 import { Input, Radio, InputTextArea, UploadImage, Select, 
   DatePicker, TimePickerForm } from 'components/Forms';
  
@@ -27,16 +28,28 @@ const formItemLayout = {
 function AddPromotionForm(props) {
   const {
     isSubmitting,
+    loading,
     handleSubmit,
     branchesOptions,
     promoTypeOptions,
     handleFileUpload,
-    responsePromotionTopUp
+    responsePromotionTopUp,
+    history
   } = props;
 
   return (
     <Form noValidate>
-
+      <HeaderForm 
+        isInsideForm
+        loading={loading}
+        disabled={props.isValid == false ? true : false}
+        title="Promotions"
+        action={handleSubmit}
+        actionBtnName="Submit"
+        withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
+        cancel={()=> { history.push("/promotions")}}
+        cancelBtnName="Cancel"
+      />
       <Field
         name="title"
         type="text"

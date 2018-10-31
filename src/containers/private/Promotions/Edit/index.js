@@ -248,7 +248,7 @@ class PromotionsEdit extends Component {
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="Update Promotions"
           action={this.handleEditPromotions}
@@ -257,7 +257,7 @@ class PromotionsEdit extends Component {
           withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> this.props.history.push("/promotions")}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>Promotions Content Details</h2>
           <Formik
@@ -281,6 +281,8 @@ class PromotionsEdit extends Component {
               render = {(props)=> 
                 <EditUserManagementForm 
                   {...props}
+                  loading={loading}
+                  history={this.props.history}
                   branchesOptions={branchesOptions}
                   branchDefaultValue={branchDefaultValue}
                   promoTypeOptions={promoTypeOptions}
