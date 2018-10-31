@@ -5,6 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
+import HeaderForm from "components/Forms/HeaderForm"
 import { Input, UploadImage, InputNumberAntD, 
         InputMaskNumber } from 'components/Forms';
 
@@ -24,6 +25,7 @@ const formItemLayout = {
 function CreateSystemPreferencesForm(props) {
   const {
     isSubmitting,
+    loading,
     handleSubmit,
     handleFileUpload,
     onRemoveImage
@@ -31,8 +33,18 @@ function CreateSystemPreferencesForm(props) {
 
   return (
     <Form noValidate>
-
+      
       <h2 style={{margin: '25px 35px'}}>Company Logo</h2>
+      <HeaderForm 
+        isInsideForm
+        loading={loading}
+        disabled={props.isValid == false ? true : false}
+        title="System Parameters"
+        action={handleSubmit}
+        actionBtnName="Submit"
+        // cancel={()=> {console.log('cancel button')}}
+        // cancelBtnName="Cancel"
+      />
       <Field
         name="logo"
         type="file"
