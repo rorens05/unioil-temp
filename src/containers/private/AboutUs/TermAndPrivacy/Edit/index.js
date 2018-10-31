@@ -97,7 +97,7 @@ class TermAndPrivacyEdit extends Component {
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '30px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="Update Terms"
           action={this.handleEditUserManagement}
@@ -106,7 +106,7 @@ class TermAndPrivacyEdit extends Component {
           withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> { this.props.history.push("/about-us/term-privacy")}}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>Details</h2>
           <Formik
@@ -122,6 +122,7 @@ class TermAndPrivacyEdit extends Component {
                 <EditUserManagementForm 
                   {...props}
                   loading={loading}
+                  history={this.props.history}
                 />
               }
           />

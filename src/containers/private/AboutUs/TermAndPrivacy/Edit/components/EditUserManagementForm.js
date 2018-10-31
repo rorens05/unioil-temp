@@ -5,6 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
+import HeaderForm from "components/Forms/HeaderForm"
 import { Input, InputTextArea } from 'components/Forms';
 
 // HELPER FUNCTIONS
@@ -25,12 +26,25 @@ function EditUserManagementForm(props) {
     isSubmitting,
     generatePassword,
     loading,
-    isGenerated
+    handleSubmit,
+    isGenerated,
+    history
   } = props;
 
   return (
     <Form noValidate>
-
+      <HeaderForm 
+        isInsideForm
+        loading={loading}
+        disabled={props.isValid == false ? true : false}
+        title="Update Terms"
+        action={handleSubmit}
+        actionBtnName="Submit"
+        withConfirm={{message: "Save changes to this record?"}}
+        withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
+        cancel={()=> { history.push("/about-us/term-privacy")}}
+        cancelBtnName="Cancel"
+      />
       <Field
         name="title"
         type="text"
