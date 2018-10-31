@@ -33,7 +33,8 @@ function AddPhotoSliderForm(props) {
     handleFileUpload,
     handleGetDate,
     photoSliderLimit,
-    dateStartEnd
+    dateStartEnd,
+    history
   } = props;
   
    return (
@@ -46,7 +47,7 @@ function AddPhotoSliderForm(props) {
         action={handleSubmit}
         actionBtnName="Submit"
         withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
-        cancel={() => { this.props.history.push("/home-page/photo-slider") }}
+        cancel={() => { history.push("/home-page/photo-slider") }}
         cancelBtnName="Cancel"
       />
       <Field
