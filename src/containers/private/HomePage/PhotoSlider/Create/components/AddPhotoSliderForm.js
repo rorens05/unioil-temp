@@ -102,6 +102,7 @@ function AddPhotoSliderForm(props) {
         placeholder="Upload Image"
         component={UploadImage}
         imgWidth="294px"
+        imgStyle={{width:"405", height:"150"}}
         handleFileUpload={handleFileUpload}
       />
 
