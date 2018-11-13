@@ -17,11 +17,21 @@ import { API_GET, API_POST, API_UNI_OIL } from "utils/Api"
 class PhotoSliderList extends Component {
 
   state = {
+    loading: false,
     mounted: false,
     photoSliderLimit: false
   }
 
   async componentDidMount () {
+
+    try {
+      let photoSlider = await API_UNI_OIL('photoSliderCount');
+      if(photoSlider)
+        this.setState({photoSliderLimit: false})
+    } catch ({response:error}) {
+      this.setState({photoSliderLimit: true})
+    }
+
 
     try {
 

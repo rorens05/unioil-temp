@@ -14,11 +14,11 @@ import { Input, InputTextArea } from 'components/Forms';
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
-    sm: { span: 5 },
+    sm: { span: 4 },
   },
   wrapperCol: {
     xs: { span: 24 },
-    sm: { span: 10 },
+    sm: { span: 16 },
   },
 };
 

@@ -20,12 +20,17 @@ function ViewUserManagementForm(props) {
             <div>
               <h2 style={{margin: '0 0 20px'}}>Details</h2>
               {/*Account Details */}
-              <Row>
+              <Row style={{marginBottom: '5px'}}>
                 <Col span={18} push={3}>{userInfo && userInfo.title}</Col>
                 <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Title:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={3}>{userInfo && userInfo.details}</Col>
+                <Col span={18} push={3}>{userInfo && <pre style={{
+                    overflow: 'auto' ,
+                    overflowWrap: 'break-word', 
+                    whiteSpace: 'pre-wrap',
+                    wordWrap: 'break-word',}}>{userInfo.details}</pre>}
+                </Col>
                 <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Details:</span></Col>
               </Row>
               {/* <Row>
