@@ -74,7 +74,7 @@ class TermAndPrivacyList extends Component {
                   title: 'Type',
                   dataIndex: 'type',
                   key: 'type',
-                  width: "10%",
+                  width: "8%",
                   sorter: true,
                   filters:[],
                   render: (text, record) => (
