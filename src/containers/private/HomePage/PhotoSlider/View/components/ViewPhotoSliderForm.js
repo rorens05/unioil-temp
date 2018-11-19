@@ -23,7 +23,7 @@ function ViewPhotoSliderForm(props) {
             userInfo && (
               <img
               style={{ float:'left', width:'100%', height:'100%', objectFit: 'fill'}}
-              src={`${process.env.REACT_APP_IMG_URL}${userInfo.image}` }
+              src={`${userInfo.image}` }
             />
             )
           }
