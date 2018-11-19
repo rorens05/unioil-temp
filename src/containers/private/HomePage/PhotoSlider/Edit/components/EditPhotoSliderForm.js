@@ -91,7 +91,7 @@ function EditUserManagementForm(props) {
         type="file"
         accept=".jpg , .png, .gif"
         multiple={false}
-        imageUrl={props.values.image && `${process.env.REACT_APP_IMG_URL}${props.values.image}`}
+        imageUrl={props.values.image && `${props.values.image}`}
         className="upload-list-inline"
         icon="user"
         layout={formItemLayout}
