@@ -5,7 +5,7 @@ import { notification, message } from "antd"
  
 // COMPONENTS
 import HeaderForm from 'components/Forms/HeaderForm'
-import ViewUserManagementForm from './components/ViewUserManagementForm'
+import ViewPromotionsForm from './components/ViewPromotionsForm'
  
 // HELPER FUNCTIONS
 import { API_UNI_OIL } from "utils/Api";
@@ -84,7 +84,7 @@ class PromotionsView extends Component {
           deleteBtnName="Delete"
         />
         <div>
-          <ViewUserManagementForm userInfo={userInfo}/>
+          <ViewPromotionsForm userInfo={userInfo}/>
         </div>
       </div>
     )
