@@ -21,7 +21,7 @@ const formItemLayout = {
   },
 };
 
-function EditUserManagementForm(props) {
+function EditCardForm(props) {
   const {
     isSubmitting,
     loading,
@@ -80,7 +80,7 @@ function EditUserManagementForm(props) {
         type="file"
         accept=".jpg , .png, .gif"
         multiple={false}
-        imageUrl={props.values.image && `${process.env.REACT_APP_IMG_URL}${props.values.image}`}
+        imageUrl={props.values.image && `${props.values.image}`}
         className="upload-list-inline"
         icon="user"
         layout={formItemLayout}
@@ -118,12 +118,12 @@ function EditUserManagementForm(props) {
 };
 
 
-EditUserManagementForm = connect(
+EditCardForm = connect(
   state => ({
     
   }),
-)(EditUserManagementForm);
+)(EditCardForm);
 
 
-export default EditUserManagementForm;
+export default EditCardForm;
 

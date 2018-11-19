@@ -6,7 +6,7 @@ import { notification, message } from "antd"
 
 // COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
-import EditUserManagementForm from './components/EditUserManagementForm'
+import EditCardForm from './components/EditCardForm'
 
 // HELPER FUNCTIONS
 import { userDetailsSchema } from './validationSchema'
@@ -147,7 +147,7 @@ class CardTypeEdit extends Component {
               validationSchema={userDetailsSchema}
               onSubmit={this.handleSubmit }
               render = {(props)=> 
-                <EditUserManagementForm 
+                <EditCardForm 
                   {...props}
                   loading={loading}
                   history={this.props.history}
