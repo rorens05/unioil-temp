@@ -41,7 +41,7 @@ class PublicTopSuccessPage extends Component {
   }
 
   backHandler = () => {
-    
+    alert('web call alert')
     if (window.AndroidBridge) {
       alert('alert in web')
         window.AndroidBridge.testEvent();
