@@ -26,6 +26,16 @@ const AsyncChangePassword = Loadable({
   loading: Loading
 });
 
+const AsyncPublicTopSuccessPage = Loadable({
+  loader: () => import("./containers/public/PublicTopSuccessPage"),
+  loading: ()=> { return null }
+});
+
+const AsyncPublicTopErrorPage = Loadable({
+  loader: () => import("./containers/public/PublicTopErrorPage"),
+  loading: ()=> { return null }
+});
+
 const AsyncMyProfile = Loadable({
   loader: () => import("./containers/private/MyProfile"),
   loading: Loading
@@ -85,7 +95,7 @@ const CaptureRouteNotFound = withRouter(({ children, location }) => {
   );
 });
 
-const publicRoutes = ["/","/login","/registration","/forgot-password","/change-password"];
+const publicRoutes = ["/","/login","/registration","/forgot-password","/change-password","/topup-success-page","/topup-error-page"];
 
 class App extends Component {
   state = {
@@ -183,6 +193,16 @@ console.log('====================================');
               <DashboardRoute 
                 path="/my-profile" 
                 component={AsyncMyProfile} 
+              />
+              <Route
+                exact
+                path="/topup-success-page"
+                component={AsyncPublicTopSuccessPage}
+              />
+              <Route
+                exact
+                path="/topup-error-page"
+                component={AsyncPublicTopErrorPage}
               />
               <Route exact path = "/404" component = { AsyncPage404 } />
               <DashboardRoute path = "*" component = { AsyncPage404 } />
