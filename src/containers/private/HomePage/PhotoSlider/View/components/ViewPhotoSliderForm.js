@@ -22,7 +22,7 @@ function ViewPhotoSliderForm(props) {
           {
             userInfo && (
               <img
-              style={{ float:'left', width:'100%', height:'100%', objectFit: 'fill'}}
+              style={{ float:'left', width:'313px', height:'174px', objectFit: 'fill'}}
               src={`${userInfo.image}` }
             />
             )
