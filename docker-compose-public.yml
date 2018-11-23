@@ -1,7 +1,7 @@
 version: '3.5'
 services:
-  prod-build:
-    container_name: prod-build
+  public-build:
+    container_name: public-build
     env_file:
       - .env
     environment:
@@ -10,12 +10,13 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
+        - REACT_APP_PUBLIC=true
         - REACT_APP_DOMAIN=/
-        - REACT_APP_PATH=unioilQA/public/index.php/api/cms
+        - REACT_APP_PATH=UniOilLoyaltyApp-BackEnd/public/index.php/api/cms
         - REACT_APP_IMG_PATH=unioilQA/
     restart: always
     ports:
-      - 8089:80
+      - 8090:80
     volumes:
       - '.:/usr/src/app'
       - '/usr/src/app/node_modules'
