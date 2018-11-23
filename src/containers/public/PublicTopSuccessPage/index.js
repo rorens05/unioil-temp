@@ -61,10 +61,10 @@ class PublicTopSuccessPage extends Component {
                       <p style={{ lineHeight: '7vmin', fontSize: '6vmin', fontWeight: 'bold', marginTop: '5vmin', color:'#4D4D4D' }}>
                         Your purchase for top-up points <br/> is successful.
                       </p>
-                      <Button type="primary" id="1" size="large" style={{backgroundColor: '#e74610', borderColor: '#e74610', margin: '4px'}}>
+                      <Button type="primary" id="homepage" size="large" style={{backgroundColor: '#e74610', borderColor: '#e74610', margin: '4px'}}>
                         Return to Home Page
                       </Button>
-                      <Button type="primary" id="2" size="large" style={{backgroundColor: '#e74610', borderColor: '#e74610',margin: '4px'}}>
+                      <Button type="primary" id="transaction" size="large" style={{backgroundColor: '#e74610', borderColor: '#e74610',margin: '4px'}}>
                         View Transaction Details
                       </Button>
                     </div>
@@ -74,7 +74,7 @@ class PublicTopSuccessPage extends Component {
                       <p style={{ lineHeight: '7vmin', fontSize: '6vmin', fontWeight: 'bold', marginTop: '5vmin', color:'#4D4D4D' }}>
                         Uh-oh! Your purchase for top-up <br/> is not successful. Please try again.
                       </p>
-                      <Button type="primary" id="3" size="large" style={{backgroundColor: '#e74610', borderColor: '#e74610'}}>
+                      <Button type="primary" id="back" size="large" style={{backgroundColor: '#e74610', borderColor: '#e74610'}}>
                         Return to Top-Up Page
                       </Button>
                     </div>
