@@ -40,6 +40,14 @@ class PublicTopSuccessPage extends Component {
     
   }
 
+  backHandler = () => {
+    
+    if (window.AndroidBridge) {
+      alert('alert in web')
+        window.AndroidBridge.testEvent();
+    }
+  } 
+
   render() {
 
     const { loading, status } = this.state;
@@ -74,7 +82,7 @@ class PublicTopSuccessPage extends Component {
                       <p style={{ lineHeight: '7vmin', fontSize: '6vmin', fontWeight: 'bold', marginTop: '5vmin', color:'#4D4D4D' }}>
                         Uh-oh! Your purchase for top-up <br/> is not successful. Please try again.
                       </p>
-                      <Button type="primary" id="back" size="large" style={{backgroundColor: '#e74610', borderColor: '#e74610'}}>
+                      <Button onClick={this.backHandler} type="primary" id="back" size="large" style={{backgroundColor: '#e74610', borderColor: '#e74610'}}>
                         Return to Top-Up Page
                       </Button>
                     </div>
