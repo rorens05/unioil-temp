@@ -33,7 +33,7 @@ class CardMemberList extends Component {
         <AdvanceTable 
             keyValue="lcard_uuid"
             url={{ 
-              apiDelete: 'memberBatchDelete',
+              // apiDelete: 'memberBatchDelete',
               default: 'member',
               defaultWithFilter: 'member?_sort_by=card_number&_sort_order=asc',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
@@ -47,7 +47,7 @@ class CardMemberList extends Component {
                   key: 'card_number',
                   sorter: true,
                   filters: [],
-                  width: "15%",
+                  width: "18%",
                 },
                 {
                   title: 'First Name',
@@ -55,7 +55,7 @@ class CardMemberList extends Component {
                   key: 'firstname',
                   sorter: true,
                   filters:[],
-                  width: "12%",
+                  width: "15%",
                 },
                 {
                   title: 'Last Name',
@@ -63,14 +63,14 @@ class CardMemberList extends Component {
                   key: 'lastname',
                   sorter: true,
                   filters:[],
-                  width: "12%",
+                  width: "15%",
                 },
                 {
                   title: 'Birthday',
                   dataIndex: 'birthdate',
                   key: 'birthdate',
                   sorter: true,
-                  width: "15%",
+                  width: "18%",
                   render: date => {
                     if(moment(date).format("DD-MMM-YYYY") !== "Invalid date")
                       return moment(date).format("DD-MMM-YYYY")
@@ -81,7 +81,7 @@ class CardMemberList extends Component {
                   dataIndex: 'card_type',
                   key: 'card_type',
                   sorter: true,
-                  width: "15%",
+                  width: "18%",
                 },
                 {
                   title: 'Status',
@@ -103,7 +103,7 @@ class CardMemberList extends Component {
                   title: 'Action',
                   dataIndex: 'action',
                   key: 'action',
-                  width: 150,
+                  width: 100,
                   buttons: [
                     {
                       key: 'view',
