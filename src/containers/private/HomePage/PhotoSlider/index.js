@@ -37,7 +37,7 @@ class PhotoSlider extends Component {
       {
         path: `${this.props.match.url}/photo-slider/view`,
         params: ':id',
-        name: "View Photo Slider",
+        name: "Photo Slider Details",
         component: PhotoSliderView,
       },
 
