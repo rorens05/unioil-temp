@@ -36,7 +36,7 @@ function AddPhotoSliderForm(props) {
     dateStartEnd,
     history
   } = props;
-  
+
    return (
     <Form noValidate>
       <HeaderForm
@@ -113,7 +113,7 @@ function AddPhotoSliderForm(props) {
         type="date"
         icon=""
         disabledDateStartEndPhotoSlider
-        dateStartEnd={dateStartEnd}
+        dateStartEnd={props.values.promotion_uuid ? dateStartEnd : null}
         disabled={photoSliderLimit}
         layout={formItemLayout}
         label="Start Appearance Date"
@@ -140,16 +140,20 @@ function AddPhotoSliderForm(props) {
         name="start_time"
         type="date"
         disabledHours={()=> {
-          let time =  dateStartEnd && dateStartEnd.date_start && moment(dateStartEnd.date_start, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss').replace(/[^0-9]/g,'').substring(0, 2)
-          let disabledTime = [];
-          let timeLimit = time;
-          if(time) {
-            while(timeLimit > 0) {
-              timeLimit--;
-              disabledTime.push(timeLimit)
+          if(props.values.promotion_uuid) {
+            let time =  dateStartEnd && dateStartEnd.date_start && moment(dateStartEnd.date_start, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss').replace(/[^0-9]/g,'').substring(0, 2)
+            let disabledTime = [];
+            let timeLimit = time;
+            if(time) {
+              while(timeLimit > 0) {
+                timeLimit--;
+                disabledTime.push(timeLimit)
+              }
             }
+            return disabledTime
+          } else {
+            return []
           }
-          return disabledTime 
         }}
         defaultOpenValue={moment('00:00:00', 'HH:mm:ss')}
         icon=""
@@ -164,16 +168,20 @@ function AddPhotoSliderForm(props) {
         name="end_time"
         type="date"
         disabledHours={() => {
-          let time =  dateStartEnd && dateStartEnd.date_end && moment(dateStartEnd.date_end, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss').replace(/[^0-9]/g,'').substring(0, 2)
-          let disabledEndTime = [];
-          let timeLimit = time;
-          if(time) {
-            while(timeLimit < 23) {
-              timeLimit++;
-              disabledEndTime.push(timeLimit)
+          if(props.values.promotion_uuid) {
+            let time =  dateStartEnd && dateStartEnd.date_end && moment(dateStartEnd.date_end, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss').replace(/[^0-9]/g,'').substring(0, 2)
+            let disabledEndTime = [];
+            let timeLimit = time;
+            if(time) {
+              while(timeLimit < 23) {
+                timeLimit++;
+                disabledEndTime.push(timeLimit)
+              }
             }
+            return disabledEndTime
+          } else {
+            return []
           }
-          return disabledEndTime
         }}
         defaultOpenValue={moment('00:00:00', 'HH:mm:ss')}
         icon=""
