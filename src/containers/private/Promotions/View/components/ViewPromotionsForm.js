@@ -22,7 +22,7 @@ function ViewPromotionsForm(props) {
           {
             userInfo && (
               <img
-              style={{ float:'left', width:'313px', height:'174px', objectFit: 'fill'}}
+              style={{ float:'left', width:'313px', height:'164px', objectFit: 'fill'}}
               src={`${userInfo.image}` }
             />
             )
