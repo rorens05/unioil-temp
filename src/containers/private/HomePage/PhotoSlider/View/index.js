@@ -77,7 +77,7 @@ class PhotoSliderView extends Component {
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
-          title="Photo Slider Accounts"
+          title="Photo Slider"
           action={()=> {this.props.history.push(`/home-page/photo-slider/edit/${match.params.id}`)}}
           styleBtn={{background: 'white', borderColor: 'rgb(184, 187, 201)',color: 'rgb(101, 105, 127)'}}
           actionBtnName="Update"
