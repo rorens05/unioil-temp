@@ -51,6 +51,7 @@ function EditUserManagementForm(props) {
         cancelBtnName="Cancel"
       />
       <Field
+        allowClear
         name="promotion_uuid"
         type="select"
         icon=""
