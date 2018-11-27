@@ -144,13 +144,29 @@ function AddPhotoSliderForm(props) {
             let time =  dateStartEnd && dateStartEnd.date_start && moment(dateStartEnd.date_start, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss').replace(/[^0-9]/g,'').substring(0, 2)
             let disabledTime = [];
             let timeLimit = time;
-            if(time) {
-              while(timeLimit > 0) {
-                timeLimit--;
-                disabledTime.push(timeLimit)
+            // if(time) {
+            //   while(timeLimit > 0) {
+            //     timeLimit--;
+            //     disabledTime.push(timeLimit)
+            //   }
+            // }
+            // return disabledTime
+
+            let date_start = moment(props.values.date_start).format('YYYY-MM-DD');
+            let promotion_date_start = moment(dateStartEnd.date_start).format('YYYY-MM-DD');
+
+            if(date_start != promotion_date_start) {
+              return []
+            } else {
+              if(time) {
+                while(timeLimit > 0) {
+                  timeLimit--;
+                  disabledTime.push(timeLimit)
+                }
               }
+              return disabledTime 
             }
-            return disabledTime
+            
           } else {
             return []
           }
@@ -172,13 +188,29 @@ function AddPhotoSliderForm(props) {
             let time =  dateStartEnd && dateStartEnd.date_end && moment(dateStartEnd.date_end, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss').replace(/[^0-9]/g,'').substring(0, 2)
             let disabledEndTime = [];
             let timeLimit = time;
-            if(time) {
-              while(timeLimit < 23) {
-                timeLimit++;
-                disabledEndTime.push(timeLimit)
+            // if(time) {
+            //   while(timeLimit < 23) {
+            //     timeLimit++;
+            //     disabledEndTime.push(timeLimit)
+            //   }
+            // }
+            // return disabledEndTime
+
+            let date_end = moment(props.values.date_end).format('YYYY-MM-DD');
+            let promotion_date_end = moment(dateStartEnd.date_end).format('YYYY-MM-DD');
+
+            if(date_end != promotion_date_end) {
+              return []
+            } else {
+              if(time) {
+                while(timeLimit < 23) {
+                  timeLimit++;
+                  disabledEndTime.push(timeLimit)
+                }
               }
+              return disabledEndTime
             }
-            return disabledEndTime
+
           } else {
             return []
           }

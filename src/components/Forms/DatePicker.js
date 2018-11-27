@@ -18,6 +18,7 @@ const DatePickerForm = ({
   dateStartEnd,
   disabledDateStartEndPhotoSlider,
   disabledDateStartEndPhotoSliderEndDate,
+  isEdit,
   ...props
 }) => {
 
@@ -49,8 +50,14 @@ const DatePickerForm = ({
     if(disabledDateStartEndPhotoSlider && !disabledDateStartEndPhotoSliderEndDate) {
       if(dateStartEnd) {
         if(current && current.format() < moment(dateStartEnd.date_start).format()) {
+          if(isEdit) {
+            return current && current.format() < moment(dateStartEnd.date_start).subtract(1,'days').format()
+          }
           return current && current.format() < moment(dateStartEnd.date_start).format()
         } else {
+          if(isEdit) {
+            return current && current.format() > moment(dateStartEnd.date_end).format();
+          }
           return current && current.format() > moment(dateStartEnd.date_end).add(1,'days').format();
         }
       }
@@ -64,6 +71,9 @@ const DatePickerForm = ({
           return current && current < moment(form.values.date_start);
         } else {
           // diabled past date
+          if(isEdit) {
+            return current && current.format() > moment(dateStartEnd.date_end).format();
+          }
           return current && current.format() > moment(dateStartEnd.date_end).add(1,'days').format();
         }
       }
