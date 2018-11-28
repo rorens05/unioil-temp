@@ -15,10 +15,10 @@ class PublicTopErrorPage extends Component {
         //window.AndroidBridge.testEvent();
     }
 
-    let str = dsBridge.call("returnTopUpPage");
-    // dsBridge.call("returnTopUpPage",(v) => {
-    //   //alert('inside dsBridge');
-    // })
+    //let str = dsBridge.call("returnTopUpPage");
+    dsBridge.call("returnTopUpPage",(v) => {
+      //alert('inside dsBridge');
+    })
 
     //alert('im outside dsBridge');
   } 
