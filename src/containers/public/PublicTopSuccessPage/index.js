@@ -48,7 +48,7 @@ class PublicTopSuccessPage extends Component {
         //window.AndroidBridge.returnTopUpPage();
     }
 
-    //let str = dsBridge.call("returnTopUpPage");
+    let str = dsBridge.call("returnTopUpPage");
     dsBridge.call("returnTopUpPage",(v) => {
       //alert('inside dsBridge');
     })
