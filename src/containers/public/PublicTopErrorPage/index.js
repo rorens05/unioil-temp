@@ -16,7 +16,11 @@ class PublicTopErrorPage extends Component {
     }
 
     let str = dsBridge.call("testEvent");
+    dsBridge.call("testEvent",(v) => {
+      alert('inside dsBridge');
+    })
 
+    alert('im outside dsBridge');
   } 
 
   render() {
