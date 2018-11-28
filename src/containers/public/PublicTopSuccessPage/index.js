@@ -52,7 +52,7 @@ class PublicTopSuccessPage extends Component {
     dsBridge.call("returnTopUpPage",(v) => {
       //alert('inside dsBridge');
     })
-    //alert('im outside dsBridge');
+    alert('im outside dsBridge');
   } 
 
   render() {
