@@ -20,7 +20,8 @@ class PublicTopErrorPage extends Component {
     //   //alert('inside dsBridge');
     // })
 
-   // alert('im outside dsBridge');
+   window.AndroidInterface.returnTopUpPage();
+   alert('im outside dsBridge');
   } 
 
   render() {
