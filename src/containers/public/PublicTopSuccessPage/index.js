@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import queryString from "query-string";
 import { API_UNI_OIL } from "utils/Api";
 import { Row, Button, Col, Icon, Avatar } from 'antd';
+import dsBridge from 'dsbridge';
 
 
 class PublicTopSuccessPage extends Component {
@@ -43,9 +44,12 @@ class PublicTopSuccessPage extends Component {
   backHandler = () => {
     alert('web call alert')
     if (window.AndroidBridge) {
-      alert('alert in web')
+      alert('in window.AndroidBridge')
         window.AndroidBridge.testEvent();
     }
+
+    let str = dsBridge.call("testEvent");
+
   } 
 
   render() {

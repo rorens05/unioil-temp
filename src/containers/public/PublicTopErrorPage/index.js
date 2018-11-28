@@ -1,18 +1,22 @@
 //@flow
 import React, { Component } from 'react';
 import { Button } from 'antd';
+import dsBridge from 'dsbridge';
 
 
 class PublicTopErrorPage extends Component {
   state = {
   }
-
+  
   backHandler = () => {
     alert('web call alert')
     if (window.AndroidBridge) {
-      alert('alert in web')
+      alert('in window.AndroidBridge')
         window.AndroidBridge.testEvent();
     }
+
+    let str = dsBridge.call("testEvent");
+
   } 
 
   render() {
