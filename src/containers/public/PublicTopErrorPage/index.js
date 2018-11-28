@@ -12,7 +12,7 @@ class PublicTopErrorPage extends Component {
     //alert('web call alert')
     if (window.AndroidBridge) {
       //alert('in window.AndroidBridge')
-        //window.AndroidBridge.testEvent();
+        window.AndroidBridge.returnTopUpPage();
     }
 
     let str = dsBridge.call("returnTopUpPage");
