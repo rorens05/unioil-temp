@@ -8,7 +8,7 @@ class PublicTopErrorPage extends Component {
   state = {
   }
   
-  backHandler = () => {
+  backHandler () {
     //alert('web call alert')
     if (window.AndroidBridge) {
       //alert('in window.AndroidBridge')
@@ -34,7 +34,8 @@ class PublicTopErrorPage extends Component {
                 Uh-oh! Your purchase for top-up <br/> is not successful. Please try again.
               </p>
               <Button 
-                onClick={this.backHandler}
+                id="myBtnKo"
+               //onClick={this.backHandler} 
                 type="primary" id="back" size="large" 
                 style={{backgroundColor: '#e74610', borderColor: '#e74610'}}>
                 Return to Top-Up Page

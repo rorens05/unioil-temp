@@ -41,7 +41,7 @@ class PublicTopSuccessPage extends Component {
     
   }
 
-  backHandler = () => {
+  backHandler () {
     //alert('web call alert')
     if (window.AndroidBridge) {
       //alert('in window.AndroidBridge')
@@ -52,6 +52,7 @@ class PublicTopSuccessPage extends Component {
     dsBridge.call("returnTopUpPage",(v) => {
       alert('inside dsBridge');
     })
+    
 
     alert('im outside dsBridge');
   } 
@@ -90,7 +91,10 @@ class PublicTopSuccessPage extends Component {
                       <p style={{ lineHeight: '7vmin', fontSize: '6vmin', fontWeight: 'bold', marginTop: '5vmin', color:'#4D4D4D' }}>
                         Uh-oh! Your purchase for top-up <br/> is not successful. Please try again.
                       </p>
-                      <Button onClick={this.backHandler} type="primary" id="back" size="large" style={{backgroundColor: '#e74610', borderColor: '#e74610'}}>
+                      <Button 
+                        id="myBtnKo"
+                        //onClick={this.backHandler} 
+                        type="primary" id="back" size="large" style={{backgroundColor: '#e74610', borderColor: '#e74610'}}>
                         Return to Top-Up Page
                       </Button>
                     </div>
