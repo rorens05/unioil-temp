@@ -37,7 +37,7 @@ function EditUserManagementForm(props) {
         isInsideForm
         loading={loading}
         disabled={props.isValid == false ? true : false}
-        title="Add User"
+        title="Update User"
         action={handleSubmit}
         actionBtnName="Submit"
         withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
