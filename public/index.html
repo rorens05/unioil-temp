@@ -39,21 +39,21 @@
     <script type="text/javascript">
 
       // for android method
-      window.onload=  function() {
-        var backError = document.getElementById('backError');
-        var backSuccess = document.getElementById('backSuccess');
-       
-        if(backError){
-          backError.addEventListener('click', myFunction, false);
-        }
-        if(backSuccess){
-          backSuccess.addEventListener('click', myFunction, false);
-        }
+      window.onload = function() {
+
+        setTimeout(function(){  
+          document.getElementById("backSuccess").addEventListener("click", myFunction, true); 
+        },200);
+
+        setTimeout(function(){  
+         document.getElementById("backError").addEventListener("click", myFunction, true);
+        },100);
+
       }
-      
+        
       function myFunction () {
-          alert('new method call');
-          AndroidInterface.showToast();
+        alert('new method errror call');
+        AndroidInterface.showToast();
       }
     </script>
   </body>

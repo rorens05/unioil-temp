@@ -74,7 +74,7 @@ class PublicTopSuccessPage extends Component {
                   status == 200 
                     ? 
                     <div>
-                      <img src={ require("assets/img/ic_success.svg") } style={{ width: '84vmin'}} />
+                      <img src={ require("assets/img/ic_success.svg") } style={{ width: '24vmin'}} />
                       <p style={{ lineHeight: '7vmin', fontSize: '6vmin', fontWeight: 'bold', marginTop: '5vmin', color:'#4D4D4D' }}>
                         Your purchase for top-up points <br/> is successful.
                       </p>
@@ -84,7 +84,7 @@ class PublicTopSuccessPage extends Component {
                     </div>
                     : 
                     <div>
-                      <img src={ require("assets/img/ic_error.svg") } style={{ width: '84vmin'}} />
+                      <img src={ require("assets/img/ic_error.svg") } style={{ width: '24vmin'}} />
                       <p style={{ lineHeight: '7vmin', fontSize: '6vmin', fontWeight: 'bold', marginTop: '5vmin', color:'#4D4D4D' }}>
                         Uh-oh! Your purchase for top-up <br/> is not successful. Please try again.
                       </p>
