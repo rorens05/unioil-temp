@@ -41,12 +41,19 @@
       // for android method
       window.onload = function() {
 
+        alert('helow test')
         setTimeout(function(){  
-          document.getElementById("backSuccess").addEventListener("click", myFunction, true); 
+           var backSuccess = document.getElementById('backSuccess');
+           if(backSuccess){
+              backSuccess.addEventListener('click', myFunction, false);
+           }
         },200);
 
         setTimeout(function(){  
-         document.getElementById("backError").addEventListener("click", myFunction, true);
+          var backError = document.getElementById('backError');
+          if(backError){
+            backError.addEventListener('click', myFunction, false);
+          }
         },100);
 
       }
