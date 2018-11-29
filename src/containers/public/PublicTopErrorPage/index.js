@@ -38,9 +38,8 @@ class PublicTopErrorPage extends Component {
                 Uh-oh! Your purchase for top-up <br/> is not successful. Please try again.
               </p>
               <Button 
-                id="myBtnKo"
                 //onClick={this.myFunction} 
-                type="primary" id="back" size="large" 
+                type="primary" id="backError" size="large" 
                 style={{backgroundColor: '#e74610', borderColor: '#e74610'}}>
                 Return to Top-Up Page
               </Button>

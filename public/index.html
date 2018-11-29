@@ -38,10 +38,16 @@
     -->
     <script type="text/javascript">
 
+      // for android method
       window.onload=  function() {
-        var el = document.getElementById('back');
-        if(el){
-          el.addEventListener('click', myFunction, false);
+        var backError = document.getElementById('backError');
+        var backSuccess = document.getElementById('backSuccess');
+       
+        if(backError){
+          backError.addEventListener('click', myFunction, false);
+        }
+        if(backSuccess){
+          backSuccess.addEventListener('click', myFunction, false);
         }
       }
       

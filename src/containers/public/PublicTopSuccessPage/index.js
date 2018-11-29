@@ -89,9 +89,8 @@ class PublicTopSuccessPage extends Component {
                         Uh-oh! Your purchase for top-up <br/> is not successful. Please try again.
                       </p>
                       <Button 
-                        id="myBtnKo"
                         //onClick={this.backHandler} 
-                        type="primary" id="back" size="large" style={{backgroundColor: '#e74610', borderColor: '#e74610'}}>
+                        type="primary" id="backSuccess" size="large" style={{backgroundColor: '#e74610', borderColor: '#e74610'}}>
                         Return to Top-Up Page
                       </Button>
                     </div>
