@@ -38,27 +38,17 @@
     -->
     <script type="text/javascript">
 
-    window.onload=  function() {
-    // document.getElementById("myBtnKo").addEventListener("click", myFunction);
-
-     // document.getElementById("myBtnKo").addEventListener("click", myFunction, false);
-      // On mouse-click, execute myFunction
-
-     var el = document.getElementById('myBtnKo');
-      if(el){
-        el.addEventListener('click', myFunction, false);
+      window.onload=  function() {
+        var el = document.getElementById('back');
+        if(el){
+          el.addEventListener('click', myFunction, false);
+        }
       }
       
-    }
-    
-      
-    function myFunction () {
-        alert('new method call');
-        AndroidInterface.showToast();
-    }
-
-    
-
+      function myFunction () {
+          alert('new method call');
+          AndroidInterface.showToast();
+      }
     </script>
   </body>
 </html>

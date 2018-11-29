@@ -7,26 +7,30 @@ import dsBridge from 'dsbridge';
 class PublicTopErrorPage extends Component {
   state = {
   }
-  
+
   backHandler () {
     //alert('web call alert')
-    if (window.AndroidBridge) {
-      //alert('in window.AndroidBridge')
-        window.AndroidBridge.returnTopUpPage();
-    }
+    // if (window.AndroidBridge) {
+    //   //alert('in window.AndroidBridge')
+    //     window.AndroidBridge.returnTopUpPage();
+    // }
 
-    let str = dsBridge.call("returnTopUpPage");
-    dsBridge.call("returnTopUpPage",(v) => {
-      alert('inside dsBridge');
-    })
+    // let str = dsBridge.call("returnTopUpPage");
+    // dsBridge.call("returnTopUpPage",(v) => {
+    //   alert('inside dsBridge');
+    // })
 
-   alert('im outside dsBridge');
+    //AndroidInterface.showToast();
+
   } 
 
   render() {
 
     return (
       <div align="center" id="1" style={{position: 'absolute', top: '50%', left: 0, right: 0, transform: 'translateY(-50%)'}}>
+
+           
+
           <div style={{marginTop: '-40px'}}>
             <div>
               <img src={ require("assets/img/ic_error.svg") } style={{ width: '84vmin'}} />
@@ -35,7 +39,7 @@ class PublicTopErrorPage extends Component {
               </p>
               <Button 
                 id="myBtnKo"
-               //onClick={this.backHandler} 
+                //onClick={this.myFunction} 
                 type="primary" id="back" size="large" 
                 style={{backgroundColor: '#e74610', borderColor: '#e74610'}}>
                 Return to Top-Up Page

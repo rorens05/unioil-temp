@@ -81,9 +81,6 @@ class PublicTopSuccessPage extends Component {
                       <Button type="primary" id="homepage" size="large" style={{backgroundColor: '#e74610', borderColor: '#e74610', margin: '4px'}}>
                         Return to Home Page
                       </Button>
-                      <Button type="primary" id="transaction" size="large" style={{backgroundColor: '#e74610', borderColor: '#e74610',margin: '4px'}}>
-                        View Transaction Details
-                      </Button>
                     </div>
                     : 
                     <div>
