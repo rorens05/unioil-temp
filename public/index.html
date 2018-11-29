@@ -37,13 +37,28 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <script type="text/javascript">
-      document.getElementById("myBtnKo").addEventListener("click", myFunction);
 
+    window.onload=  function() {
+    // document.getElementById("myBtnKo").addEventListener("click", myFunction);
+
+     // document.getElementById("myBtnKo").addEventListener("click", myFunction, false);
       // On mouse-click, execute myFunction
-      function myFunction() {
+
+     var el = document.getElementById('myBtnKo');
+      if(el){
+        el.addEventListener('click', myFunction, false);
+      }
+      
+    }
+    
+      
+    function myFunction () {
         alert('new method call');
         AndroidInterface.showToast();
-      }
+    }
+
+    
+
     </script>
   </body>
 </html>
