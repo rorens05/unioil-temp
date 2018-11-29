@@ -81,6 +81,7 @@ function CreateSystemPreferencesForm(props) {
         label="GPS Radius (in meters)"
         placeholder="0"
         rows={6}
+        min={0}
         component={InputNumberAntD}
       />
       <div style={styles.borderDivision}></div>
