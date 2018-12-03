@@ -9,18 +9,14 @@ class PublicTopErrorPage extends Component {
   }
 
   backHandler () {
-    //alert('web call alert')
-    // if (window.AndroidBridge) {
-    //   //alert('in window.AndroidBridge')
-    //     window.AndroidBridge.returnTopUpPage();
-    // }
+    
+    let str = dsBridge.call("returnTopUpPage","showToast");
+    
+    dsBridge.call("showToast",(v) => {
+      alert('inside dsBridge');
+    })
 
-    // let str = dsBridge.call("returnTopUpPage");
-    // dsBridge.call("returnTopUpPage",(v) => {
-    //   alert('inside dsBridge');
-    // })
-
-    //AndroidInterface.showToast();
+    alert('im outside dsBridge');
 
   } 
 

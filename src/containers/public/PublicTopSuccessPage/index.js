@@ -43,13 +43,11 @@ class PublicTopSuccessPage extends Component {
 
   backHandler () {
     //alert('web call alert')
-    if (window.AndroidBridge) {
-      //alert('in window.AndroidBridge')
-        window.AndroidBridge.returnTopUpPage();
-    }
+ 
 
-    let str = dsBridge.call("returnTopUpPage");
-    dsBridge.call("returnTopUpPage",(v) => {
+    let str = dsBridge.call("returnTopUpPage","showToast");
+    
+    dsBridge.call("showToast",(v) => {
       alert('inside dsBridge');
     })
     
@@ -120,7 +118,7 @@ class PublicTopSuccessPage extends Component {
                       </p>
                       <div style={{position: 'fixed', bottom: 0,width: '100%'}}>
                         <Button 
-                          //onClick={this.backHandler} 
+                          onClick={this.backHandler} 
                           type="primary" id="backSuccess" size="large" 
                           style={{backgroundColor: '#e74610', 
                             borderColor: '#e74610', margin: '4px', width: '90%'
