@@ -93,7 +93,7 @@ class AdvanceTable extends Component {
     let { history, location } = this.props;
     let { search, pathname } = location;
     let urlParamsObject = isClearFilter ? props : queryString.parse(search);
-    urlParamsObject = props ? { ...urlParamsObject, ...props } : {};
+    urlParamsObject = props ? { ...urlParamsObject, page: 1, ...props } : {};
     urlParamsObject = fnQueryParams(urlParamsObject);
     urlParamsObject = queryString.parse(urlParamsObject);
     history.push({ pathname, search:fnQueryParams(urlParamsObject) });
@@ -313,7 +313,7 @@ class AdvanceTable extends Component {
                       : null
         }
       });
-
+      
     return(
       <div style={{ margin: '0 24px', padding: '24px 0'}}>
         <Row type="flex" justify="space-between" align="bottom" style={{paddingBottom: 25}}>
