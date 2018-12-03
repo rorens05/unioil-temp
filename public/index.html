@@ -39,26 +39,47 @@
     <script type="text/javascript">
 
       // for android method
-      window.onload = function() {
+     window.onload = ()=> {
 
-        alert('helow test')
-        setTimeout(function(){  
-           var backSuccess = document.getElementById('backSuccess');
+        // setTimeout( ()=>{  
+        //    let backSuccess = document.getElementById('backSuccess');
+        //    if(backSuccess){
+        //       backSuccess.addEventListener('click', myFunction, false);
+        //    }
+        // },200);
+
+        // setTimeout( ()=> {  
+        //   let backError = document.getElementById('backError');
+        //   if(backError){
+        //     backError.addEventListener('click', myFunction, false);
+        //   }
+        // },100);
+        
+        
+      }
+        
+      
+
+      document.onreadystatechange = () => {
+        if (document.readyState === 'complete') {
+          // document ready
+          setTimeout( ()=>{  
+           let backSuccess = document.getElementById('backSuccess');
            if(backSuccess){
               backSuccess.addEventListener('click', myFunction, false);
            }
-        },200);
-
-        setTimeout(function(){  
-          var backError = document.getElementById('backError');
+          },200);
+              
+          let backError = document.getElementById('backError');
           if(backError){
             backError.addEventListener('click', myFunction, false);
           }
-        },100);
 
-      }
-        
-      function myFunction () {
+          
+        }
+      };
+
+      myFunction =()=> {
         alert('new method errror call');
         AndroidInterface.showToast();
       }
