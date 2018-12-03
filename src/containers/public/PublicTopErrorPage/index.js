@@ -27,23 +27,27 @@ class PublicTopErrorPage extends Component {
   render() {
 
     return (
-      <div align="center" id="1" style={{position: 'absolute', top: '50%', left: 0, right: 0, transform: 'translateY(-50%)'}}>
-
+      <div align="center" id="1" style={{position: 'absolute', top: '50%', 
+          left: 0, right: 0, transform: 'translateY(-50%)', height: '100%'}}>
            
 
-          <div style={{marginTop: '-40px'}}>
-            <div>
-              <img src={ require("assets/img/ic_error.svg") } style={{ width: '24vmin'}} />
-              <p style={{ lineHeight: '7vmin', fontSize: '6vmin', fontWeight: 'bold', marginTop: '5vmin', color:'#4D4D4D' }}>
-                Uh-oh! Your purchase for top-up <br/> is not successful. Please try again.
-              </p>
+          <div style={{marginTop: '16vmin'}}>
+          <div>
+            <img src={ require("assets/img/ic_error.svg") } style={{ width: '24vmin'}} />
+            <p style={{ lineHeight: '7vmin', fontSize: '6vmin', fontWeight: 'bold', marginTop: '5vmin', color:'#4D4D4D' }}>
+              Your purchase for top-up is not <br/>successful. Please try again.
+            </p>
+            <div style={{position: 'fixed', bottom: 0,width: '100%'}}>
               <Button 
-                //onClick={this.myFunction} 
+                //onClick={this.backHandler} 
                 type="primary" id="backError" size="large" 
-                style={{backgroundColor: '#e74610', borderColor: '#e74610'}}>
+                style={{backgroundColor: '#e74610', 
+                  borderColor: '#e74610', margin: '4px', width: '90%'
+                }}>
                 Return to Top-Up Page
               </Button>
             </div>
+          </div>
           </div>
       </div>
     )
