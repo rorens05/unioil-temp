@@ -50,8 +50,8 @@ services:
       args:
         - REACT_APP_PUBLIC=true 
         - REACT_APP_DOMAIN=http://192.168.0.68
-        - REACT_APP_PATH=unioilQA/public/index.php/api/cms
-        - REACT_APP_IMG_PATH=unioilQA/
+        - REACT_APP_PATH=UniOilLoyaltyApp-BackEnd/public/index.php/api/cms
+        - REACT_APP_IMG_PATH=UniOilLoyaltyApp-BackEnd/
     restart: always
     ports:
       - 8091:80
