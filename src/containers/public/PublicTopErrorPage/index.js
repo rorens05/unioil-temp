@@ -31,6 +31,7 @@ class PublicTopErrorPage extends Component {
           <div>
             <img src={ require("assets/img/ic_error.svg") } style={{ width: '24vmin'}} />
             <p style={{ lineHeight: '7vmin', fontSize: '6vmin', fontWeight: 'bold', marginTop: '5vmin', color:'#4D4D4D' }}>
+              Transaction Failed.<br/>
               Your purchase for top-up is not <br/>successful. Please try again.
             </p>
             <div style={{position: 'fixed', bottom: 0,width: '100%'}}>

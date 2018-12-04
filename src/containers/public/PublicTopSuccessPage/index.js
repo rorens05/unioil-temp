@@ -36,7 +36,8 @@ class PublicTopSuccessPage extends Component {
     } catch ({response: error}) {
       this.setState({
         status: error.status,
-        loading: false
+        loading: false,
+        message: error && error.data && error.data.message
       })
     }
     
@@ -57,7 +58,7 @@ class PublicTopSuccessPage extends Component {
 
   render() {
 
-    const { loading, status, userInfo } = this.state;
+    const { loading, status, userInfo, message } = this.state;
 
     return (
       <div align="center" id="1" style={{position: 'absolute', top: '50%', 
@@ -119,7 +120,9 @@ class PublicTopSuccessPage extends Component {
                     <div>
                       <img src={ require("assets/img/ic_error.svg") } style={{ width: '24vmin'}} />
                       <p style={{ lineHeight: '7vmin', fontSize: '6vmin', fontWeight: 'bold', marginTop: '5vmin', color:'#4D4D4D' }}>
-                        Your purchase for top-up is not <br/>successful. Please try again.
+                        {/* Your purchase for top-up is not <br/>successful. Please try again. */}
+                        Transaction Failed.<br/>
+                        {message && `${message}.`}
                       </p>
                       <div style={{position: 'fixed', bottom: 0,width: '100%'}}>
                         <Button 
