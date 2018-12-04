@@ -30,6 +30,7 @@ class PublicTopSuccessPage extends Component {
       let response = await API_UNI_OIL.post(`paypalExecute`,payload);
       this.setState({
         status: response.status,
+        userInfo: {...response.data.data},
         loading: false
       })
     } catch ({response: error}) {
@@ -56,7 +57,7 @@ class PublicTopSuccessPage extends Component {
 
   render() {
 
-    const { loading, status } = this.state;
+    const { loading, status, userInfo } = this.state;
 
     return (
       <div align="center" id="1" style={{position: 'absolute', top: '50%', 
@@ -80,22 +81,26 @@ class PublicTopSuccessPage extends Component {
                       </p>
                       <div style={{fontSize: '15px', fontWeight: 400}}>
                         <Row>
-                          <Col span={24}><span style={{fontSize: '6vmin', fontWeight: 'bold', marginTop: '5vmin'}}>20 Oct 2018 10:00 AM</span></Col>
-                          <Col span={24}>Card Number 1111000000001234</Col>
-                          <Col span={24}>Sales Invoice Number 0-1234567-69</Col>
+                          <Col span={24}>
+                            <span style={{fontSize: '6vmin', fontWeight: 'bold', marginTop: '5vmin'}}>
+                              {userInfo && userInfo.date}
+                            </span>
+                          </Col>
+                          <Col span={24}>{userInfo && `Card Number ${userInfo.card_number}`}</Col>
+                          <Col span={24}>{userInfo && `Sales Invoice Number ${userInfo.invoice}`}</Col>
                         </Row>
                         <div style={{marginTop: '5vmin'}}>
                           <Row type="flex" justify="space-around">
                             <Col span={8} style={{textAlign: 'left'}}>Top-up Points Value</Col>
-                            <Col span={8} style={{textAlign: 'right'}}>500</Col>
+                            <Col span={8} style={{textAlign: 'right'}}>{userInfo && ` ${userInfo.points}`}</Col>
                           </Row>
                           <Row type="flex" justify="space-around">
                             <Col span={8} style={{textAlign: 'left'}}>Payment Value</Col>
-                            <Col span={8} style={{textAlign: 'right'}}>Php 500</Col>
+                            <Col span={8} style={{textAlign: 'right'}}>{userInfo && `Php ${userInfo.payment_val}`}</Col>
                           </Row>
                           <Row type="flex" justify="space-around">
                             <Col span={8} style={{textAlign: 'left'}}>Paypal Fee</Col>
-                            <Col span={8} style={{textAlign: 'right'}}>Php 500</Col>
+                            <Col span={8} style={{textAlign: 'right'}}>{userInfo && `Php ${userInfo.payment_fee}`}</Col>
                           </Row>
                         </div>
                       </div>
