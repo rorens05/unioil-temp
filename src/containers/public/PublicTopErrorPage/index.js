@@ -10,13 +10,14 @@ class PublicTopErrorPage extends Component {
 
   backHandler () {
     
-    let str = dsBridge.call("returnTopUpPage","showToast");
+    // let str = dsBridge.call("returnTopUpPage","showToast");
     
-    dsBridge.call("showToast",(v) => {
-      alert('inside dsBridge');
-    })
+    // dsBridge.call("showToast",(v) => {
+    //   alert('inside dsBridge');
+    // })
 
     alert('im outside dsBridge');
+    window.myAdroidMethod()
 
   } 
 
@@ -35,7 +36,7 @@ class PublicTopErrorPage extends Component {
             </p>
             <div style={{position: 'fixed', bottom: 0,width: '100%'}}>
               <Button 
-                //onClick={this.backHandler} 
+                onClick={this.backHandler} 
                 type="primary" id="backError" size="large" 
                 style={{backgroundColor: '#e74610', 
                   borderColor: '#e74610', margin: '4px', width: '90%'

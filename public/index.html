@@ -39,50 +39,39 @@
     <script type="text/javascript">
 
       // for android method
-     window.onload = ()=> {
-
-        // setTimeout( ()=>{  
-        //    let backSuccess = document.getElementById('backSuccess');
-        //    if(backSuccess){
-        //       backSuccess.addEventListener('click', myFunction, false);
-        //    }
-        // },200);
-
-        // setTimeout( ()=> {  
-        //   let backError = document.getElementById('backError');
-        //   if(backError){
-        //     backError.addEventListener('click', myFunction, false);
-        //   }
-        // },100);
-        
-        
-      }
-        
       
 
-      document.onreadystatechange = () => {
-        if (document.readyState === 'complete') {
-          // document ready
-          setTimeout( ()=>{  
-           let backSuccess = document.getElementById('backSuccess');
-           if(backSuccess){
-              backSuccess.addEventListener('click', myFunction, false);
-           }
-          },200);
+      // document.onreadystatechange = () => {
+      //   if (document.readyState === 'complete') {
+      //     // document ready
+      //     setTimeout( ()=>{  
+      //      let backSuccess = document.getElementById('backSuccess');
+      //      if(backSuccess){
+      //         backSuccess.addEventListener('click', myFunction, false);
+      //      }
+      //     },200);
               
-          let backError = document.getElementById('backError');
-          if(backError){
-            backError.addEventListener('click', myFunction, false);
-          }
+      //     let backError = document.getElementById('backError');
+      //     if(backError){
+      //       backError.addEventListener('click', myFunction, false);
+      //     }
+      //   }
+      // };
 
-          
-        }
-      };
-
-      myFunction =()=> {
-        alert('new method errror call');
+      // myFunction =()=> {
+      //   alert('new method errror call');
+      //   AndroidInterface.showToast();
+      // }
+    </script>
+    <script type="text/javascript">
+     
+     window.myAdroidMethod = showAndroidToast
+    
+     function showAndroidToast() {
+        alert('outside build')
         AndroidInterface.showToast();
-      }
+     }
+
     </script>
   </body>
 </html>

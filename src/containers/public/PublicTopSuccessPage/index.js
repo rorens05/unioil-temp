@@ -8,8 +8,8 @@ import dsBridge from 'dsbridge';
 
 class PublicTopSuccessPage extends Component {
   state = {
-    loading: false,
-    userInfo: null
+      loading: false,
+      userInfo: null
   }
 
   async componentDidMount() {
@@ -45,14 +45,14 @@ class PublicTopSuccessPage extends Component {
     //alert('web call alert')
  
 
-    let str = dsBridge.call("returnTopUpPage","showToast");
+    //let str = dsBridge.call("showToast","returnTopUpPage");
     
-    dsBridge.call("showToast",(v) => {
-      alert('inside dsBridge');
-    })
-    
+    // dsBridge.call("showToast","returnTopUpPage",(v) => {
+    //   alert('inside dsBridge');
+    // })
 
     alert('im outside dsBridge');
+    window.myAdroidMethod()
   } 
 
   render() {
@@ -61,7 +61,7 @@ class PublicTopSuccessPage extends Component {
 
     return (
       <div align="center" id="1" style={{position: 'absolute', top: '50%', 
-          left: 0, right: 0, transform: 'translateY(-50%)', height: '100%'}}>
+          left: 0, right: 0, transform: loading ? 'initial' :'translateY(-50%)' , height: '100%'}}>
           {
             loading 
               ? <div style={{fontSize: '6vmin'}}>
@@ -102,6 +102,7 @@ class PublicTopSuccessPage extends Component {
                       </div>
                       <div style={{position: 'fixed', bottom: 0,width: '100%'}}>
                         <Button 
+                          onClick={this.backHandler}
                           type="primary" id="backSuccess" size="large" 
                           style={{backgroundColor: '#e74610', 
                             borderColor: '#e74610', margin: '4px', width: '90%'
