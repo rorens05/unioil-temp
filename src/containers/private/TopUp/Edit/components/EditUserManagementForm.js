@@ -39,7 +39,7 @@ function EditUserManagementForm(props) {
         isInsideForm
         loading={loading}
         disabled={props.isValid == false ? true : false}
-        title="Update User"
+        title="Top-Up Details"
         action={handleSubmit}
         actionBtnName="Submit"
         withConfirm={{message: "Save changes to this record?"}}
