@@ -115,7 +115,7 @@ class TopUpEdit extends Component {
           cancelBtnName="Cancel"
         /> */}
         <div>
-          <h2 style={{margin: '25px 35px'}}>User Details</h2>
+          <h2 style={{margin: '25px 35px'}}>Details</h2>
           <Formik
               initialValues={{
                 fee_code: userInfo.fee_code  || '',
