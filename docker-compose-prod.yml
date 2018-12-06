@@ -10,8 +10,8 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - REACT_APP_DOMAIN=/
-        - REACT_APP_PATH=api/cms
+        - REACT_APP_DOMAIN=/api
+        - REACT_APP_PATH=cms
         - REACT_APP_IMG_PATH=unioilQA/
     restart: always
     ports:
@@ -19,3 +19,5 @@ services:
     volumes:
       - '.:/usr/src/app'
       - '/usr/src/app/node_modules'
+
+      
