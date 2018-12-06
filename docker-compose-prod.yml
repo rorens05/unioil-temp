@@ -11,7 +11,7 @@ services:
       dockerfile: Dockerfile
       args:
         - REACT_APP_DOMAIN=/
-        - REACT_APP_PATH=unioilQA/public/index.php/api/cms
+        - REACT_APP_PATH=api/cms
         - REACT_APP_IMG_PATH=unioilQA/
     restart: always
     ports:
