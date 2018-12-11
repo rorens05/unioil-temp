@@ -1,7 +1,8 @@
-https://docs.docker.com/install/linux/docker-ce/ubuntu/
+ 
 ## Server Dependences
-[Docker/Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-[Docker Compose/Linux](https://docs.docker.com/compose/install/#install-compose)
+
+* [Docker/Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+* [Docker Compose/Linux](https://docs.docker.com/compose/install/#install-compose)
 
 ### `sudo apt-get update`
 ### `sudo apt-get install build-essential`
