@@ -23,18 +23,26 @@ prod-server-stop:
 .PHONY: prod-server-stop
 
 dev-public-callback-server:
-	docker-compose up -d --build public-test-build
+	docker-compose up -d --build public-dev-build
 .PHONY: dev-public-callback-server
 
 dev-public-callback-server-stop:
-	docker-compose stop -t 1 public-test-build
+	docker-compose stop -t 1 public-dev-build
 .PHONY: dev-public-callback-server-stop
 
 test-public-callback-server:
-	docker-compose -f docker-compose-public.yml up -d --build
+	docker-compose up -d --build public-test-build 
 .PHONY: test-public-callback-server
 
 test-public-callback-server-stop:
+	docker-compose stop -t 1 public-test-build 
+.PHONY: test-public-callback-server-stop
+
+prod-public-callback-server:
+	docker-compose -f docker-compose-public.yml up -d --build
+.PHONY: test-public-callback-server
+
+prod-public-callback-server-stop:
 	docker-compose -f docker-compose-public.yml down
 .PHONY: test-public-callback-server-stop
 
