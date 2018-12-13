@@ -158,17 +158,17 @@ function MainSidebar(props) {
       collapsible
       width={295} 
       collapsed={collapsed}
-      style={{ background: '#fff', border: "solid 1px #e6ecf5" }}
+      style={{ background: '#fff', border: "solid 1px #e6ecf5", zIndex: '999' }}
     >
     {
       !collapsed 
       ? <div style={{height: '65px', padding: '12px 0', textAlign: 'center', borderBottom: '1px solid #e6ecf5'}}>
           {/* <img src={ require("assets/img/logo_unioil.png") } style={{ height: 40 }} /> */}
-          {userInfo && (<img src={ `${process.env.REACT_APP_IMG_URL}${userInfo.logo}` } style={{ height: '100%' }} />) }
+          {userInfo && (<img src={ `${userInfo.logo}` } style={{ height: '100%' }} />) }
         </div> 
       : <LogoPlaceholder 
             className="logo" 
-            style={{ backgroundImage: `url(${process.env.REACT_APP_IMG_URL}${userInfo.logo})` }}
+            style={{ backgroundImage: `url(${userInfo.logo})` }}
         />
     }
     

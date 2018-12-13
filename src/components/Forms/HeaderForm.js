@@ -20,7 +20,7 @@ class HeaderForm extends Component {
   render() {
     const { action, cancel, deleteAction , title , actionBtnName, cancelBtnName,
             deleteBtnName, loading, withConfirm, styleBtn, isDropDown , actionPrivacy, 
-            actionTerms } = this.props;
+            actionTerms, disabled, withCancelConfirm, isInsideForm } = this.props;
 
     const menu = (
       <Menu className="terms-management" 
@@ -39,7 +39,7 @@ class HeaderForm extends Component {
         background: '#fff', 
         position: 'fixed', width: '100%', 
         padding: '0px 24px 5px', zIndex: 99,
-        marginTop: '-71px', marginLeft: '-17px' }}
+        marginTop: isInsideForm == true ? '-154px' : '-73px' , marginLeft: '-17px' }}
       >
           <h1 style={{fontSize: '24px'}}>{title}</h1>
           <div style={{display: 'flex', position: 'fixed', right: '24px'}}>
@@ -57,10 +57,15 @@ class HeaderForm extends Component {
                         title={withConfirm && withConfirm.message} 
                     >
                       <Button  
+                        disabled={disabled}
                         loading={loading} 
-                        style={{ margin: '0 4px', width: '135px', display: 'block', background: '#E74610', borderColor:'#E74610', color: '#fff' }}
-                        >
-                          {actionBtnName}
+                        style={{ margin: '0 4px', width: '135px', 
+                                display: 'block', background: '#E74610', borderColor:'#E74610', 
+                                color: '#fff' ,
+                                opacity: disabled ? 0.5 : 'initial'
+                        }}
+                      >
+                        {actionBtnName}
                       </Button>
                     </Popconfirm>
                   ) :  
@@ -68,10 +73,15 @@ class HeaderForm extends Component {
                       <Button  
                         loading={loading} 
                         onClick={action}
+                        disabled={disabled}
                         style={{ 
                           margin: '0 4px', width: '135px', display: 'block', 
-                          background: styleBtn ? styleBtn.background : '#E74610', borderColor: styleBtn ? styleBtn.borderColor : '#E74610', color: styleBtn ? styleBtn.color : '#fff' }}
-                        >
+                          background: styleBtn ? styleBtn.background : '#E74610', 
+                          borderColor: styleBtn ? styleBtn.borderColor : '#E74610', 
+                          color: styleBtn ? styleBtn.color : '#fff',
+                          opacity: disabled ? 0.5 : 'initial'
+                        }}
+                      >
                           {actionBtnName}
                       </Button>
                   )
@@ -81,13 +91,20 @@ class HeaderForm extends Component {
             }
             {
               cancel && 
-                <Button  
-                  loading={loading} 
-                  onClick={cancel}
-                  style={{ margin: '0 4px', width: '135px', display: 'block', background: 'white', borderColor:'#b8bbc9', color: '#65697f' }}
-                >
-                  {cancelBtnName}
-                </Button>
+                <Popconfirm 
+                    placement="bottomRight"
+                    onConfirm={cancel} 
+                    onCancel={null} okText="Yes" cancelText="No"
+                    title={withCancelConfirm && withCancelConfirm.message} 
+                  >
+                    <Button  
+                      loading={loading} 
+                      onClick={withCancelConfirm ? null : cancel}
+                      style={{ margin: '0 4px', width: '135px', display: 'block', background: 'white', borderColor:'#b8bbc9', color: '#65697f' }}
+                    >
+                      {cancelBtnName}
+                    </Button>
+                </Popconfirm>
             }
             {
               deleteAction && 
@@ -98,6 +115,7 @@ class HeaderForm extends Component {
                     icon={ <Icon type="close-circle" /> }
                   >
                     <Button  
+                        disabled={disabled}
                         type="danger"
                         loading={loading} 
                         style={{ margin: '0 4px', width: '135px', display: 'block', background: 'white', borderColor:'#b8bbc9', color: '#65697f' }}
@@ -111,7 +129,7 @@ class HeaderForm extends Component {
               isDropDown && (
                 <div style={{position: 'relative'}} className="terms-management-parent">
                   <Dropdown overlay={menu} className="terms-management">
-                    <Button>
+                    <Button disabled={disabled}>
                       Add <Icon type="down" />
                     </Button>
                   </Dropdown>

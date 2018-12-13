@@ -36,9 +36,9 @@ class TopUpEdit extends Component {
         message: "Error", 
         description: <div>
           <div>Something went wrong loading data.</div>
-        - {error.data.message}
+        - {error && error.data && error.data.message}
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       if(error.status == 404) {
         if(this.props.location.pathname)
@@ -89,6 +89,13 @@ class TopUpEdit extends Component {
 
   }
 
+  handleResetValue=(props)=> {
+    // this.setState({
+    //   amount: 0
+    // })
+    props.setValues({...props.values, amount: ''})
+  }
+
   render() {
 
     if(!this.state.mounted) return null;
@@ -97,17 +104,18 @@ class TopUpEdit extends Component {
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="Update User"
           action={this.handleEditUserManagement}
           actionBtnName="Submit"
           withConfirm={{message: "Save changes to this record?"}}
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> { this.props.history.push("/top-up")}}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
-          <h2 style={{margin: '25px 35px'}}>User Details</h2>
+          <h2 style={{margin: '25px 35px'}}>Details</h2>
           <Formik
               initialValues={{
                 fee_code: userInfo.fee_code  || '',
@@ -123,6 +131,8 @@ class TopUpEdit extends Component {
                 <EditUserManagementForm 
                   {...props}
                   loading={loading}
+                  history={this.props.history}
+                  handleResetValue={this.handleResetValue}
                 />
               }
           />

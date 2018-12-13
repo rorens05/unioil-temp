@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 
 // COMPONENTS
+import HeaderForm from "components/Forms/HeaderForm"
 import { Input, Select, DatePicker , InputTextArea, UploadImage ,TimePickerForm } from 'components/Forms'
 
 // HELPER FUNCTIONS
@@ -25,15 +26,32 @@ const formItemLayout = {
 function EditUserManagementForm(props) {
   const {
     isSubmitting,
+    loading,
+    handleSubmit,
     promotionsDefaultValue,
     promotionsOptions,
-    handleFileUpload
+    handleFileUpload,
+    dateStartEnd,
+    handleGetDate,
+    history
   } = props;
 
   return (
     <Form noValidate>
-
+      <HeaderForm 
+        isInsideForm
+        loading={loading}
+        disabled={props.isValid == false ? true : false}
+        title="Update Photo Slider"
+        action={handleSubmit}
+        actionBtnName="Submit"
+        withConfirm={{message: "Save changes to this record?"}}
+        withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
+        cancel={()=> history.push("/home-page/photo-slider")}
+        cancelBtnName="Cancel"
+      />
       <Field
+        allowClear
         name="promotion_uuid"
         type="select"
         icon=""
@@ -43,6 +61,7 @@ function EditUserManagementForm(props) {
         mode="single"
         defaultValue={promotionsDefaultValue && (promotionsDefaultValue)}
         optionsList={promotionsOptions}
+        handleGetDate={handleGetDate}
         component={Select}
       />
 
@@ -68,11 +87,12 @@ function EditUserManagementForm(props) {
       />
 
       <Field
+        limit100kb
         name="image"
         type="file"
         accept=".jpg , .png, .gif"
         multiple={false}
-        imageUrl={props.values.image && `${process.env.REACT_APP_IMG_URL}${props.values.image}`}
+        imageUrl={props.values.image && `${props.values.image}`}
         className="upload-list-inline"
         icon="user"
         layout={formItemLayout}
@@ -80,6 +100,7 @@ function EditUserManagementForm(props) {
         placeholder="Upload Image"
         component={UploadImage}
         imgWidth="294px"
+        imgStyle={{width:"405", height:"150"}}
         handleFileUpload={handleFileUpload}
       />
 
@@ -87,6 +108,9 @@ function EditUserManagementForm(props) {
         name="date_start"
         type="date"
         icon=""
+        isEdit
+        disabledDateStartEndPhotoSlider
+        dateStartEnd={props.values.promotion_uuid ? dateStartEnd : null }
         defaultValue={ moment(props.values.date_start, 'YYYY-MM-DD') }
         layout={formItemLayout}
         label="Start Appearance Date"
@@ -98,6 +122,11 @@ function EditUserManagementForm(props) {
         name="date_end"
         type="date"
         icon=""
+        isEdit
+        disabledDateStart
+        disabledDateStartEndPhotoSlider
+        disabledDateStartEndPhotoSliderEndDate
+        dateStartEnd={dateStartEnd}
         defaultValue={ moment(props.values.date_end, 'YYYY-MM-DD') }
         layout={formItemLayout}
         label="End Appearance Date"
@@ -109,7 +138,31 @@ function EditUserManagementForm(props) {
         name="start_time"
         type="date"
         icon=""
-        //defaultValue={ moment(props.values.date_start, 'HH:mm:ss') }
+        disabledHours={()=> {
+          if(props.values.promotion_uuid) {
+            let time =  dateStartEnd && dateStartEnd.date_start && moment(dateStartEnd.date_start, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss').replace(/[^0-9]/g,'').substring(0, 2)
+            let disabledTime = [];
+            let timeLimit = time;
+
+            let date_start = moment(props.values.date_start).format('YYYY-MM-DD');
+            let promotion_date_start = moment(dateStartEnd.date_start).format('YYYY-MM-DD');
+
+            if(date_start != promotion_date_start) {
+              return []
+            } else {
+              if(time) {
+                while(timeLimit > 0) {
+                  timeLimit--;
+                  disabledTime.push(timeLimit)
+                }
+              }
+              return disabledTime 
+            }
+
+          } else {
+            return [] 
+          }
+        }}
         defaultValue={moment(props.values.start_time, 'HH:mm:ss')}
         layout={formItemLayout}
         label="Start Time"
@@ -121,6 +174,32 @@ function EditUserManagementForm(props) {
         name="end_time"
         type="date"
         icon=""
+        disabledHours={() => {
+          if(props.values.promotion_uuid) {
+            let time =  dateStartEnd && dateStartEnd.date_end && moment(dateStartEnd.date_end, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss').replace(/[^0-9]/g,'').substring(0, 2)
+            let disabledEndTime = [];
+            let timeLimit = time;
+
+            let date_end = moment(props.values.date_end).format('YYYY-MM-DD');
+            let promotion_date_end = moment(dateStartEnd.date_end).format('YYYY-MM-DD');
+
+            if(date_end != promotion_date_end) {
+              return []
+            } else {
+              if(time) {
+                while(timeLimit < 23) {
+                  timeLimit++;
+                  disabledEndTime.push(timeLimit)
+                }
+              }
+              return disabledEndTime
+            }
+            
+          } else {
+            return []
+          }
+          
+        }}
         defaultValue={moment(props.values.end_time, 'HH:mm:ss')}
         layout={formItemLayout}
         label="End Time"

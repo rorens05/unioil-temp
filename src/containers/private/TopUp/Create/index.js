@@ -20,6 +20,7 @@ class TopUpCreate extends Component {
     generatedCode: null,
     mounted: false,
     loading: false,
+    //amount: ''
   }
 
   async componentDidMount() {
@@ -40,7 +41,7 @@ class TopUpCreate extends Component {
             <div>Something went wrong generating fee code.</div>
           - { error && error.data && error.data.message }
           </div> , 
-          duration: 20, 
+          duration: 3, 
         });
         this.setState({ mounted: false })
       }
@@ -89,6 +90,13 @@ class TopUpCreate extends Component {
     this.form.submitForm()
   }
 
+  handleResetValue=(props)=> {
+    // this.setState({
+    //   amount: 0
+    // })
+    props.setValues({...props.values, amount: ''})
+  }
+
 
   render() {
 
@@ -98,14 +106,15 @@ class TopUpCreate extends Component {
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '40px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="Top-Up"
           action={this.handleCreateTopUp}
           actionBtnName="Submit"
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> { this.props.history.push("/top-up")}}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>Top-Up Details</h2>
           <Formik
@@ -123,6 +132,8 @@ class TopUpCreate extends Component {
                 <TopUpCreateForm 
                   {...props}
                   loading={loading}
+                  history={this.props.history}
+                  handleResetValue={this.handleResetValue}
                 />
               }
           />

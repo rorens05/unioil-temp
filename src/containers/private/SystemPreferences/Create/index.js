@@ -41,7 +41,7 @@ class CreateSystemPreferences extends Component {
           <div>Something went wrong loading data.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       this.setState({ mounted: false })
     }
@@ -124,14 +124,14 @@ class CreateSystemPreferences extends Component {
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="System Parameters"
           action={this.handleAddUser}
           actionBtnName="Submit"
           // cancel={()=> {console.log('cancel button')}}
           // cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <Formik
               initialValues={{
@@ -148,6 +148,7 @@ class CreateSystemPreferences extends Component {
               render = {(props)=> 
                 <CreateSystemPreferencesForm 
                   {...props}
+                  loading={loading}
                   handleFileUpload={this.handleFileUpload}
                 />
               }

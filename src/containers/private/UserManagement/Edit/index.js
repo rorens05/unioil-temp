@@ -24,7 +24,7 @@ class EditUserManagement extends Component {
   }
 
   async componentDidMount() {
-
+  
     const { match } = this.props;
     
     try {
@@ -38,9 +38,9 @@ class EditUserManagement extends Component {
         message: "Error", 
         description: <div>
           <div>Something went wrong loading data.</div>
-        - {error.data.message}
+        - {error && error.data && error.data.message}
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       if(error.status == 404) {
         if(this.props.location.pathname)
@@ -60,7 +60,7 @@ class EditUserManagement extends Component {
   handleSubmit = async (values, actions) => {
 
     const { setErrors, setSubmitting } = actions;
-    const { userInfo } = this.state;
+    const { userInfo, isGenerated } = this.state;
     let { history } = this.props;
 
     const params = {
@@ -68,7 +68,7 @@ class EditUserManagement extends Component {
     }
 
     if(params.password == "*******************" ) {
-      params.password = null
+      delete params.password
     }
 
     this.setState({loading: true})
@@ -101,8 +101,12 @@ class EditUserManagement extends Component {
         });
         setSubmitting(false)
         this.setState({loading: false})
-      }else {
-        message.success('User account updated successfully.');
+      } else {
+        let messageSuccess = isGenerated 
+          ? 'User account updated successfully. Please send the new temporary password to the user.'
+          : 'User account updated successfully.'
+        
+        message.success(messageSuccess);
         this.setState({loading: false})
         this.props.history.push("/user-management");
       }
@@ -145,15 +149,16 @@ class EditUserManagement extends Component {
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="Update User"
           action={this.handleEditUserManagement}
           actionBtnName="Submit"
           withConfirm={{message: "Save changes to this record?"}}
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> { this.props.history.push("/user-management")}}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>User Details</h2>
           <Formik
@@ -177,6 +182,7 @@ class EditUserManagement extends Component {
                   {...props}
                   loading={loading}
                   userInfo={userInfo}
+                  history={this.props.history}
                   generatePassword={this.generatePassword}
                   isGenerated={(isGenerated || userInfo.generated_password) && true}
                 />

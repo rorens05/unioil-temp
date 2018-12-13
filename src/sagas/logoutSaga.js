@@ -12,13 +12,13 @@ function* logoutFlow({payload}) {
         API_UNI_OIL.defaults.headers.common['Authorization'] = undefined;
         removeCookie('TOKEN');
         yield put({ type: "LOGOUT_SUCCESS" });
-        notification.success({ message: 'Success', description: `Logout successfully.` });
+        notification.success({ message: 'Success', description: `Logout successfully.`, duration: 3 });
     } catch ({ response: error }) {
       API_UNI_OIL.defaults.headers.common['Authorization'] = undefined;
       removeCookie('TOKEN');
       yield put({ type: "LOGOUT_SUCCESS" });
   
-      notification.error({ message: 'Error', description: error.data.message });
+      notification.error({ message: 'Error', description: error.data.message, duration: 3 });
     }
   }
 

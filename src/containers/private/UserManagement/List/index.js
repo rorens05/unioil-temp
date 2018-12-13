@@ -37,7 +37,7 @@ class UserManagementList extends Component {
           <div>Something went wrong updating record.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
     }
   }
@@ -96,10 +96,10 @@ class UserManagementList extends Component {
                   key: 'role',
                   sorter: true,
                   width: "13%",
-                  filters: [
-                    { text: 'System Admin', value: 1 },
-                    { text: 'Marketing Personnel', value: 2 }
-                  ],
+                  // filters: [
+                  //   { text: 'System Admin', value: 1 },
+                  //   { text: 'Marketing Personnel', value: 2 }
+                  // ],
                   render: (text, record) => (
                     <span className={record.status === "Active" ? "dark-gray" : "inactive-label"}>
                       {record && record.role ==  1 ? "Admin": "Marketing Personnel"}
@@ -133,7 +133,7 @@ class UserManagementList extends Component {
                     return(
                       <Dropdown overlay={menu} trigger={['click']}>
                         <a className="ant-dropdown-link" href="#">
-                          {text} <Icon type="caret-down" theme="outlined"
+                          {text && text == 'active' ? 'Active' : 'Inactive'} <Icon type="caret-down" theme="outlined"
                           style={{ position: "relative", top: -4, fontSize: 7 }} />
                         </a>
                       </Dropdown>

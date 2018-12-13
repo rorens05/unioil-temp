@@ -5,7 +5,7 @@ import { notification, message } from "antd"
  
 // COMPONENTS
 import HeaderForm from 'components/Forms/HeaderForm'
-import ViewUserManagementForm from './components/ViewUserManagementForm'
+import ViewPromotionsForm from './components/ViewPromotionsForm'
  
 // HELPER FUNCTIONS
 import { API_UNI_OIL } from "utils/Api";
@@ -34,7 +34,7 @@ class PromotionsView extends Component {
           <div>Something went wrong loading data.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       if(error.status == 404) {
         if(this.props.location.pathname)
@@ -61,7 +61,7 @@ class PromotionsView extends Component {
           <div>Something went wrong deleting record.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
     }
   }
@@ -84,7 +84,7 @@ class PromotionsView extends Component {
           deleteBtnName="Delete"
         />
         <div>
-          <ViewUserManagementForm userInfo={userInfo}/>
+          <ViewPromotionsForm userInfo={userInfo}/>
         </div>
       </div>
     )

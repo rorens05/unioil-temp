@@ -77,7 +77,7 @@ class PromotionsCreate extends Component {
           <div>Something went wrong loading data.</div>
             {error && error.data && (- error.data.message)}
           </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       this.setState({ mounted: false })
     }
@@ -166,14 +166,15 @@ class PromotionsCreate extends Component {
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="Promotions"
           action={this.handleAddPromotions}
           actionBtnName="Submit"
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> { this.props.history.push("/promotions")}}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>Promotion Content Details</h2>
           <Formik
@@ -197,6 +198,8 @@ class PromotionsCreate extends Component {
               render = {(props)=> 
                 <AddPromotionForm 
                   {...props}
+                  loading={loading}
+                  history={this.props.history}
                   branchesOptions={branchesOptions}
                   promoTypeOptions={promoTypeOptions}
                   responsePromotionTopUp={responsePromotionTopUp}

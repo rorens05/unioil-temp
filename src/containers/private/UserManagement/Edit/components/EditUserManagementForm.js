@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 import { Row, Button, Col } from 'antd';
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
+import HeaderForm from "components/Forms/HeaderForm"
 
 // COMPONENTS
 import { Input, Radio } from 'components/Forms';
@@ -23,15 +24,26 @@ const formItemLayout = {
 function EditUserManagementForm(props) {
   const {
     isSubmitting,
+    handleSubmit,
     generatePassword,
     loading,
     isGenerated,
-    userInfo
+    userInfo,
+    history
   } = props;
-
   return (
     <Form noValidate>
-
+      <HeaderForm 
+        isInsideForm
+        loading={loading}
+        disabled={props.isValid == false ? true : false}
+        title="Update User"
+        action={handleSubmit}
+        actionBtnName="Submit"
+        withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
+        cancel={()=> { history.push("/user-management")}}
+        cancelBtnName="Cancel"
+      />
       <Field
         name="username"
         type="text"

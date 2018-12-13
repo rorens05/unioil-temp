@@ -5,6 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
+import HeaderForm from "components/Forms/HeaderForm"
 import { Input, Radio, UploadImage, InputTextArea } from 'components/Forms';
 
 // HELPER FUNCTIONS
@@ -26,12 +27,23 @@ function AddCardForm(props) {
     isSubmitting,
     handleSubmit,
     loading,
-    handleFileUpload
+    handleFileUpload,
+    history
   } = props;
 
   return (
     <Form noValidate>
-
+      <HeaderForm 
+        isInsideForm
+        loading={loading}
+        disabled={props.isValid == false ? true : false}
+        title="Card Types"
+        action={handleSubmit}
+        actionBtnName="Submit"
+        withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
+        cancel={()=> {history.push("/about-us/card-types")}}
+        cancelBtnName="Cancel"
+      />
       <Field
         name="code"
         type="text"
@@ -47,7 +59,7 @@ function AddCardForm(props) {
         type="text"
         //icon="user"
         layout={formItemLayout}
-        label="Card Type"
+        label="Card Type Description"
         placeholder="Card Type"
         component={Input}
       />
@@ -57,7 +69,7 @@ function AddCardForm(props) {
         type="text"
         icon=""
         layout={formItemLayout}
-        label="Short Description"
+        label="Card Type Short Description"
         placeholder="Short Description"
         rows={4}
         component={InputTextArea}
@@ -68,7 +80,7 @@ function AddCardForm(props) {
         type="file"
         accept=".jpg , .png, .gif"
         multiple={false}
-        imageUrl={props.values.image && `${process.env.REACT_APP_IMG_URL}/${props.values.image}`}
+        imageUrl={props.values.image && `${props.values.image}`}
         className="upload-list-inline"
         icon="user"
         layout={formItemLayout}

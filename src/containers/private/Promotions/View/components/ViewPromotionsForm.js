@@ -22,8 +22,8 @@ function ViewPromotionsForm(props) {
           {
             userInfo && (
               <img
-              style={{ float:'left', width:'100%', height:'100%', objectFit: 'fill'}}
-              src={`${process.env.REACT_APP_IMG_URL}${userInfo.image}` }
+              style={{ float:'left', width:'313px', height:'164px', objectFit: 'fill'}}
+              src={`${userInfo.image}` }
             />
             )
           }
@@ -43,11 +43,14 @@ function ViewPromotionsForm(props) {
 
               <Row>
                 <Col span={18} push={5}>
-                    {
-                      userInfo && userInfo.stations && userInfo.stations.map(item => {
-                        return <span>{`${item.description}. `}</span>
-                      })
-                    }
+                  {
+                    userInfo && userInfo.stations && 
+                    userInfo.stations.length > 0 ?
+                    userInfo.stations.map(item => {
+                      return <span key={item.station_uuid}>{`${item.description}. `}</span>
+                    })
+                    : "All"
+                  }
                 </Col>
                 <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Branch:</span></Col>
               </Row>
@@ -72,19 +75,19 @@ function ViewPromotionsForm(props) {
             <div style={{margin: '12px 0'}}>
               <h2 style={{fontWeight: 'bold', fontSize: '15px'}}>SCHEDULE DETAILS</h2>
               <Row>
-                <Col span={18} push={5}>{userInfo && moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
+                <Col span={18} push={5}>{userInfo && userInfo.date_start && moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
                 <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Start Appeareance Date:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={5}>{userInfo && moment(userInfo.date_end, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
+                <Col span={18} push={5}>{userInfo && userInfo.date_end && moment(userInfo.date_end, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
                 <Col span={5} pull={18}><span style={{fontWeight: '600'}}>End Appeareance Date:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={5}>{userInfo && moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss')}</Col>
+                <Col span={18} push={5}>{userInfo && userInfo.date_start && moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss')}</Col>
                 <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Start Time:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={5}>{userInfo && moment(userInfo.date_end, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss')}</Col>
+                <Col span={18} push={5}>{userInfo && userInfo.date_end && moment(userInfo.date_end, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss')}</Col>
                 <Col span={5} pull={18}><span style={{fontWeight: '600'}}>End Time:</span></Col>
               </Row>
               <Row>
@@ -92,7 +95,7 @@ function ViewPromotionsForm(props) {
                 <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Created By:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={5}>{userInfo && moment(userInfo.created_at, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
+                <Col span={18} push={5}>{userInfo && userInfo.created_at && moment(userInfo.created_at, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
                 <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Date Created:</span></Col>
               </Row>
               <Row>
@@ -100,8 +103,8 @@ function ViewPromotionsForm(props) {
                 <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Last Updated By:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={5}>{userInfo && moment(userInfo.updated_at, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
-                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Last Date Updated:</span></Col>
+                <Col span={18} push={5}>{userInfo && userInfo.updated_at && moment(userInfo.updated_at, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Last Updated Date:</span></Col>
               </Row>
             </div>
         </div>

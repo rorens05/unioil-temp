@@ -18,10 +18,22 @@ class CreatePhotoSlider extends Component {
   state = {
     loading: false,
     promotionsOptions: null,
-    mounted: false
+    mounted: false,
+    photoSliderLimit: false,
+    dateStartEnd: null
   }
 
   async componentDidMount() {
+
+    try {
+      let photoSlider = await API_UNI_OIL('photoSliderCount');
+      if(photoSlider)
+        this.setState({photoSliderLimit: false})
+    } catch ({response:error}) {
+      this.setState({photoSliderLimit: true})
+    }
+
+
     try {
       let promotionsList = await API_GET('getPromotions');
 
@@ -32,7 +44,8 @@ class CreatePhotoSlider extends Component {
         await promotionsList.data.data.map(item => {
           promotionsOptions.push({
             label: item.title,
-            value: item.promotion_uuid
+            value: item.promotion_uuid,
+            date: { dateStart: item.date_start , dateEnd: item.date_end }
           })
         })
 
@@ -49,7 +62,7 @@ class CreatePhotoSlider extends Component {
           <div>Something went wrong loading data.</div>
           - {error && error.data && error.data.message}
         </div>,
-        duration: 20,
+        duration: 3,
       });
       this.setState({ mounted: false })
     }
@@ -124,22 +137,42 @@ class CreatePhotoSlider extends Component {
     return e && this.setState({ fileUpload: e.fileList });
   }
 
+  handleGetDate = async (id) => {
+    const {promotionsOptions} = this.state;
+
+    if(promotionsOptions) {
+      await promotionsOptions.map(item=> {
+        if(item.value == id) {
+          this.setState({
+            dateStartEnd: {
+              date_start: item.date.dateStart,
+              date_end: item.date.dateEnd
+            }
+          })
+        }
+      })
+    }
+
+  }
+
   render() {
 
     if (!this.state.mounted) return null;
 
-    const { loading, promotionsOptions } = this.state
+    const { loading, promotionsOptions, photoSliderLimit, dateStartEnd } = this.state
 
     return (
       <div style={{ border: '1px solid #E6ECF5', paddingBottom: '10px' }}>
-        <HeaderForm
+        {/* <HeaderForm
           loading={loading}
           title="Photo Slider"
           action={this.handleAddPhotoSlider}
+          disabled={photoSliderLimit}
           actionBtnName="Submit"
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={() => { this.props.history.push("/home-page/photo-slider") }}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{ margin: '25px 35px' }}>Photo Slider Content Details</h2>
           <Formik
@@ -160,7 +193,12 @@ class CreatePhotoSlider extends Component {
             render={(props) =>
               <AddPhotoSliderForm
                 {...props}
+                loading={loading}
+                history={this.props.history}
+                photoSliderLimit={photoSliderLimit}
                 promotionsOptions={promotionsOptions}
+                handleGetDate={this.handleGetDate}
+                dateStartEnd={dateStartEnd}
                 handleFileUpload={this.handleFileUpload}
               />
             }

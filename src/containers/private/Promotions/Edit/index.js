@@ -82,9 +82,9 @@ class PromotionsEdit extends Component {
         message: "Error", 
         description: <div>
           <div>Something went wrong loading data.</div>
-        - {error.data.message}
+        - {error && error.data && error.data.message}
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       if(error.status == 404) {
         if(this.props.location.pathname)
@@ -127,7 +127,6 @@ class PromotionsEdit extends Component {
       })
 
     } catch ({response: error}) {
-     // notification.error({ message: "Error", description: "Something went wrong loading data", duration: 20, });
       this.setState({ mounted: false })
     }
 
@@ -249,15 +248,16 @@ class PromotionsEdit extends Component {
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="Update Promotions"
           action={this.handleEditPromotions}
           actionBtnName="Submit"
           withConfirm={{message: "Save changes to this record?"}}
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> this.props.history.push("/promotions")}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>Promotions Content Details</h2>
           <Formik
@@ -281,6 +281,8 @@ class PromotionsEdit extends Component {
               render = {(props)=> 
                 <EditUserManagementForm 
                   {...props}
+                  loading={loading}
+                  history={this.props.history}
                   branchesOptions={branchesOptions}
                   branchDefaultValue={branchDefaultValue}
                   promoTypeOptions={promoTypeOptions}

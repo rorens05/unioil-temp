@@ -38,3 +38,43 @@ services:
     volumes:
       - '.:/usr/src/app'
       - '/usr/src/app/node_modules'
+  public-dev-build:
+    container_name: public-dev-build
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_PUBLIC=true 
+        - REACT_APP_DOMAIN=http://192.168.0.68
+        - REACT_APP_PATH=UniOilLoyaltyApp-BackEnd/public/index.php/api/cms
+        - REACT_APP_IMG_PATH=UniOilLoyaltyApp-BackEnd/
+    restart: always
+    ports:
+      - 8093:80
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+  public-test-build:
+    container_name: public-test-build
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_PUBLIC=true
+        - REACT_APP_DOMAIN=http://192.168.0.68
+        - REACT_APP_PATH=unioilQA/public/index.php/api/cms
+        - REACT_APP_IMG_PATH=unioilQA
+    restart: always
+    ports:
+      - 8091:80
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'

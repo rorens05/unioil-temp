@@ -1,8 +1,7 @@
 // LIBRARIES
 import React, { Component } from 'react';
-import { message } from 'antd';
+import { notification } from 'antd';
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 // COMPONENTS
@@ -11,16 +10,54 @@ import HeaderForm from "components/Forms/HeaderForm";
 
 // HELPER FUNCTIONS
 import { customAction } from 'actions';
+import { API_GET, API_POST, API_UNI_OIL } from "utils/Api"
 
 
 
 class PhotoSliderList extends Component {
 
-  componentDidMount() {
-   
+  state = {
+    loading: false,
+    mounted: false,
+    photoSliderLimit: false
   }
 
-  componentDidUpdate() {
+  async componentDidMount () {
+
+    try {
+      let photoSlider = await API_UNI_OIL('photoSliderCount');
+      if(photoSlider)
+        this.setState({photoSliderLimit: false})
+    } catch ({response:error}) {
+      this.setState({photoSliderLimit: true})
+    }
+
+
+    try {
+
+      let response = await API_GET('photoSlider');
+
+      if(response.status == 200) {
+        if(response.data && response.data.data) {
+          this.setState({
+            mounted: true
+          })
+        }
+      }
+
+    } catch ({response:error}) {
+      notification.error({ 
+        message: "Error", 
+        description: <div>
+          <div>Something went wrong loading data.</div>
+        - {error && error.data && error.data.message}
+        </div> , 
+        duration: 3, 
+      });
+
+      this.setState({ mounted: false })
+    }
+
   }
 
   delete =()=> {
@@ -29,7 +66,21 @@ class PhotoSliderList extends Component {
     //   message.info('Clicked on Yes.');
   }
 
+  dataResponse =(val)=> {
+    if(val) {
+      if(val < 10) {
+        this.setState({photoSliderLimit: false})
+      } else {
+        this.setState({photoSliderLimit: true})
+      }
+    }
+  }
+
   render() {
+
+    if(!this.state.mounted) return null;
+    
+    const { photoSliderLimit } = this.state;
     const { match, history } = this.props;
 
     return (
@@ -37,6 +88,7 @@ class PhotoSliderList extends Component {
         <HeaderForm 
           title="Photo Slider"
           action={()=> history.push({ pathname: `${match.url}/create` })}
+          disabled={photoSliderLimit}
           actionBtnName="Add Content"
         />
         <AdvanceTable 
@@ -47,6 +99,7 @@ class PhotoSliderList extends Component {
               default: 'photoSlider',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}
+            dataResponse={this.dataResponse}
             filterValues ={["role", "status"]}
             columns={
               [

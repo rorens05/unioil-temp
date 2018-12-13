@@ -93,7 +93,7 @@ class AdvanceTable extends Component {
     let { history, location } = this.props;
     let { search, pathname } = location;
     let urlParamsObject = isClearFilter ? props : queryString.parse(search);
-    urlParamsObject = props ? { ...urlParamsObject, ...props } : {};
+    urlParamsObject = props ? { ...urlParamsObject, page: 1, ...props } : {};
     urlParamsObject = fnQueryParams(urlParamsObject);
     urlParamsObject = queryString.parse(urlParamsObject);
     history.push({ pathname, search:fnQueryParams(urlParamsObject) });
@@ -142,6 +142,12 @@ class AdvanceTable extends Component {
       let total = response.data.data.length > 0 ? response.data.meta.total : 0
       
       this.setState({ data, total, loading : false });
+      if(data == null && this.props.isEmptyMessagePopUp) {
+        message.info('No records found.');
+      }
+      if(this.props.dataResponse) {
+        this.props.dataResponse(data.length)
+      }
     } catch (error) {
       this.setState({ loading : false, total: 0 })
     }
@@ -174,7 +180,7 @@ class AdvanceTable extends Component {
           <div>Something went wrong deleting record.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
     }
   }
@@ -195,7 +201,7 @@ class AdvanceTable extends Component {
           <div>Something went wrong deleting records.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
     }
 
@@ -307,7 +313,7 @@ class AdvanceTable extends Component {
                       : null
         }
       });
-
+      
     return(
       <div style={{ margin: '0 24px', padding: '24px 0'}}>
         <Row type="flex" justify="space-between" align="bottom" style={{paddingBottom: 25}}>

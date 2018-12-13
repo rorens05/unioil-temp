@@ -31,14 +31,14 @@ class CreateUserManagement extends Component {
     const { setErrors, setSubmitting } = actions;
     let { history } = this.props;
     let _self = this; 
-    this.setState({loading: true, isGenerated: false})
+    this.setState({loading: true})
     values.role = parseInt(values.role);
     if(values.status) {
       values.status = values.status
     } else { 
       values.status = "active"
     }
-    
+
 
     this.props.customAction({
       type: "USERMANAGEMENT_CREATE_REQUEST",
@@ -75,7 +75,7 @@ class CreateUserManagement extends Component {
           <div>Something went wrong generating password.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       this.setState({loading: false})
     }
@@ -84,17 +84,19 @@ class CreateUserManagement extends Component {
   render() {
     const { userManagement } = this.props
     const { loading, isGenerated } = this.state;
-    
+ 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
+          disabled={isFormValid == false ? true : false}
           title="Add User"
           action={this.handleAddUser}
           actionBtnName="Submit"
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> { this.props.history.push("/user-management")}}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>User Details</h2>
           <Formik
@@ -114,6 +116,7 @@ class CreateUserManagement extends Component {
               render = {(props)=> 
                 <AddUserManagementForm 
                   {...props}
+                  history={this.props.history}
                   loading={userManagement.createRequestPending || loading}
                   generatePassword={this.generatePassword}
                   isGenerated={isGenerated}

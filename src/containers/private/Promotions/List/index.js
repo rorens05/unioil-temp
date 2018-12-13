@@ -43,6 +43,7 @@ class PromotionsList extends Component {
             url={{ 
               apiDelete: 'promotionBatchDelete',
               default: 'promotion',
+              defaultWithFilter: 'promotion?_sort_by=date_end&_sort_order=desc',
               filter: '?page=1&page_size=10&_sort_by=create_dt&_sort_order=desc'
             }}
             filterValues ={["role", "status"]}

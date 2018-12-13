@@ -21,7 +21,7 @@ function* userManagementSagaFlow({ payload }) {
     const { data } = yield call(() => API_UNI_OIL.post('admin', { ...values })); //username
     
     yield put({ type: USERMANAGEMENT_CREATE_SUCCESS, payload: data.data });
-    message.success('User account created successfully.'); _self.setState({loading: false})
+    message.success('User account created successfully. Please send the login credentials to the user.'); _self.setState({loading: false})
     history.push({ pathname: '/user-management' });
     
   } catch ({response: error}) {
@@ -33,7 +33,8 @@ function* userManagementSagaFlow({ payload }) {
             && (<div>- {error.data.data.username[0]} </div>) }
         { error && error.data && error.data.data && error.data.data.email 
             && (<div>- {error.data.data.email[0]} </div>) }
-      </div>
+      </div>,
+       duration: 3, 
     });
     yield put({ type: USERMANAGEMENT_CREATE_ERROR });
     setSubmitting(false); _self.setState({loading: false})

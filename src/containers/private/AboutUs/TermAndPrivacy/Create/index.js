@@ -51,7 +51,7 @@ class TermAndPrivacyCreate extends Component {
           <div>Something went wrong creating new record.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       setSubmitting(false);
       this.setState({ loading: false });
@@ -69,14 +69,15 @@ handleCreateTermPrivacy =()=> {
     
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '30px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title={match.params.id == "1" ? "Terms" : "Privacy Policy"}
           action={this.handleCreateTermPrivacy}
           actionBtnName="Submit"
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> { this.props.history.push("/about-us/term-privacy")}}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>{match.params.id == "1" ? "Terms" : "Privacy Policy"} Details</h2>
           <Formik
@@ -92,6 +93,8 @@ handleCreateTermPrivacy =()=> {
                 <AddUserManagementForm 
                   {...props}
                   loading={userManagement.createRequestPending || loading}
+                  match={match}
+                  history={this.props.history}
                   isGenerated={isGenerated}
                 />
               }

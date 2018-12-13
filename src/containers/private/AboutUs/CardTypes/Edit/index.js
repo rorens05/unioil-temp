@@ -6,7 +6,7 @@ import { notification, message } from "antd"
 
 // COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
-import EditUserManagementForm from './components/EditUserManagementForm'
+import EditCardForm from './components/EditCardForm'
 
 // HELPER FUNCTIONS
 import { userDetailsSchema } from './validationSchema'
@@ -36,9 +36,9 @@ class CardTypeEdit extends Component {
         message: "Error", 
         description: <div>
           <div>Something went wrong loading data.</div>
-        - {error.data.message}
+        - {error && error.data && error.data.message}
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       if(error.status == 404) {
         if(this.props.location.pathname)
@@ -121,15 +121,16 @@ class CardTypeEdit extends Component {
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="Update Card Type"
           action={this.handleEditCardTypes}
           actionBtnName="Submit"
           withConfirm={{message: "Save changes to this record?"}}
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> { this.props.history.push("/about-us/card-types")}}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>Card Types Details</h2>
           <Formik
@@ -146,9 +147,10 @@ class CardTypeEdit extends Component {
               validationSchema={userDetailsSchema}
               onSubmit={this.handleSubmit }
               render = {(props)=> 
-                <EditUserManagementForm 
+                <EditCardForm 
                   {...props}
                   loading={loading}
+                  history={this.props.history}
                   handleFileUpload={this.handleFileUpload}
                 />
               }

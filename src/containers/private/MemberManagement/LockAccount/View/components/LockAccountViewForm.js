@@ -24,7 +24,7 @@ function LockAccountViewForm(props) {
               <h2 style={{fontWeight: 'bold', fontSize: '20px'}}>Card Details</h2>
               <Row>
                 <Col span={18} push={3}>{userInfo && userInfo.card_number}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Card Numbber:</span></Col>
+                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Card Number:</span></Col>
               </Row>
               <Row>
                 <Col span={18} push={3}>{userInfo && userInfo.firstname}</Col>
@@ -52,16 +52,16 @@ function LockAccountViewForm(props) {
               </Row>
               <Row>
                 <Col span={18} push={3}>{userInfo && userInfo.reason}</Col>
-                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Reason:</span></Col>
+                <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Lock Account Description:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={3}>{userInfo && userInfo.lock_dt && moment(userInfo.lock_dt, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
+                <Col span={18} push={3}>{userInfo && userInfo.lock_dt && userInfo.lock_dt && moment(userInfo.lock_dt, 'YYYY-MM-DDTHH:mm:ss').format("DD-MMM-YYYY")}</Col>
                 <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Locked Date:</span></Col>
               </Row>
-              <Row>
+              {/* <Row>
                 <Col span={18} push={3}>{userInfo && userInfo.unlocked_by}</Col>
                 <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Unlocked By:</span></Col>
-              </Row>
+              </Row> */}
             </div>
         </div>
       </div>

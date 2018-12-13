@@ -5,6 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
+import HeaderForm from "components/Forms/HeaderForm"
 import { Input, InputNumberAntD, Radio } from 'components/Forms';
 
 // HELPER FUNCTIONS
@@ -26,11 +27,24 @@ function TopUpCreateForm(props) {
     isSubmitting,
     handleSubmit,
     loading,
+    handleResetValue,
+    amount,
+    history
   } = props;
 
   return (
     <Form noValidate>
-
+      <HeaderForm 
+        isInsideForm
+        loading={loading}
+        disabled={props.isValid == false ? true : false}
+        title="Top-Up"
+        action={handleSubmit}
+        actionBtnName="Submit"
+        withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
+        cancel={()=> { history.push("/top-up")}}
+        cancelBtnName="Cancel"
+      />
       <Field
         name="fee_code"
         type="text"
@@ -52,17 +66,30 @@ function TopUpCreateForm(props) {
         component={Input}
       />
 
-      <Field
-        name="amount"
-        //icon="user"
-        layout={formItemLayout}
-        label="Value"
-        placeholder="Value"
-        min={0}
-				max={999}
-				step={0.01}
-        component={InputNumberAntD}
-      />
+      {
+        props.values.type == "" || props.values.type == 1 ? 
+          <Field
+            name="amount"
+            //icon="user"
+            layout={formItemLayout}
+            label="Value"
+            placeholder="Value"
+            min={0}
+            max={99999.99}
+            //step={0.01}
+            component={InputNumberAntD}
+          /> :
+          <Field
+            name="amount"
+            //icon="user"
+            layout={formItemLayout}
+            label="Value"
+            placeholder="Value"
+            min={0}
+            max={100} 
+            component={InputNumberAntD}
+          />
+      } 
 
       <Field
         name="type"
@@ -76,6 +103,7 @@ function TopUpCreateForm(props) {
         ]}
         label="Type"
         component={Radio}
+        handleResetValue={handleResetValue}
       />
       
     </Form>

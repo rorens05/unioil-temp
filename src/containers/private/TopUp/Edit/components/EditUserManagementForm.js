@@ -5,6 +5,7 @@ import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
 // COMPONENTS
+import HeaderForm from "components/Forms/HeaderForm"
 import { Input, InputNumberAntD, Radio } from 'components/Forms';
 
 // HELPER FUNCTIONS
@@ -26,12 +27,26 @@ function EditUserManagementForm(props) {
     isSubmitting,
     generatePassword,
     loading,
-    isGenerated
+    handleSubmit,
+    isGenerated,
+    handleResetValue,
+    history
   } = props;
 
   return (
     <Form noValidate>
-
+      <HeaderForm 
+        isInsideForm
+        loading={loading}
+        disabled={props.isValid == false ? true : false}
+        title="Top-Up Details"
+        action={handleSubmit}
+        actionBtnName="Submit"
+        withConfirm={{message: "Save changes to this record?"}}
+        withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
+        cancel={()=> { history.push("/top-up")}}
+        cancelBtnName="Cancel"
+      />
       <Field
         name="fee_code"
         type="text"
@@ -53,15 +68,30 @@ function EditUserManagementForm(props) {
         component={Input}
       />
 
-      <Field
-        name="amount"
-        //icon="user"
-        defaultValue={props.values.amount}
-        layout={formItemLayout}
-        label="Value"
-        placeholder="Value"
-        component={InputNumberAntD}
-      />
+      {
+        props.values.type == "" || props.values.type == 1 ? 
+          <Field
+            name="amount"
+            //icon="user"
+            layout={formItemLayout}
+            label="Value"
+            placeholder="Value"
+            min={0}
+            max={99999.99}
+            step={0.01}
+            component={InputNumberAntD}
+          /> :
+          <Field
+            name="amount"
+            //icon="user"
+            layout={formItemLayout}
+            label="Value"
+            placeholder="Value"
+            min={0}
+            max={100} 
+            component={InputNumberAntD}
+          />
+      } 
 
       <Field
         name="type"
@@ -75,6 +105,7 @@ function EditUserManagementForm(props) {
         ]}
         label="Type"
         component={Radio}
+        handleResetValue={handleResetValue}
       />
 
     </Form>

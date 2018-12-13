@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { Menu, Dropdown, notification, Icon, message } from "antd"
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom'
 
 // COMPONENTS
 import AdvanceTable from "components/Tables/AdvanceTable";
@@ -55,7 +54,7 @@ class TermAndPrivacyList extends Component {
                   key: 'title',
                   sorter: true,
                   filters: [],
-                  width: "16%",
+                  width: "20%",
                 },
                 {
                   title: 'Details',
@@ -63,12 +62,19 @@ class TermAndPrivacyList extends Component {
                   key: 'details',
                   sorter: true,
                   filters:[],
-                  width: "45%",
+                  render: (text, record) => (
+                    <div style={{ width: '490px', whiteSpace: 'noWrap', 
+                        overflow: 'hidden',  textOverflow: 'ellipsis'
+                    }}>
+                      {record && record.details}
+                    </div>
+                  )
                 },
                 {
                   title: 'Type',
                   dataIndex: 'type',
                   key: 'type',
+                  width: "8%",
                   sorter: true,
                   filters:[],
                   render: (text, record) => (

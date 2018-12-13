@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Upload, message } from 'antd';
+import filesize from 'filesize';
 
 const FormItem = Form.Item;
 
@@ -20,14 +21,16 @@ class UploadImage extends Component {
     const { handleFileUpload } = this.props;
     const isJPG = info.file.type === 'image/jpeg' || info.file.type === 'image/png' || info.file.type === 'image/gif' ;
 
-    if(isJPG) {
-   
+    if(isJPG && info.file.originFileObj) {
+
       this.getBase64(info.file.originFileObj, imageUrl => this.setState({
         imageUrl,
         loading: false,
       }));
-
-      handleFileUpload(info)
+      this.props.form.setFieldValue("image", 'imageValue');
+      this.props.form.setFieldValue("logo", 'imageValue');
+      
+      handleFileUpload(info,this.props.form.setFieldValue)
     }
     
     // if (Array.isArray(e)) {
@@ -51,9 +54,24 @@ class UploadImage extends Component {
     if (!isJPG) {
       message.error('You can only upload JPG or PNG file!');
     }
-    const isLt2M = file.size / 1024 / 1024 < 2;
+
+    let fileSize; let isLt2M;
+
+    if(this.props.limit100kb) {
+      fileSize = filesize(file.size, {output: "array"} ) // 100kb
+      isLt2M = fileSize[0] < 104 && fileSize[1] == "KB"
+    } else {
+      isLt2M = file.size / 1024 / 1024 < 2; // 2MB
+    }
+    //const isLt2M = fileSize[0] < 104;
+    //const isLt2M = file.size / 1024 / 1024 < 2;
+   
     if (!isLt2M) {
-      message.error('Image must smaller than 2MB!');
+      if(this.props.limit100kb) {
+        message.error('Image must smaller than 100KB!');
+      } else {
+        message.error('Image must smaller than 2MB!');
+      }
     }
     return isJPG && isLt2M;
     
@@ -73,6 +91,7 @@ class UploadImage extends Component {
       messageUpload,
       multipleFileUpload,
       imgWidth,
+      imgStyle,
       ...props
     } = this.props;
 
@@ -132,8 +151,8 @@ class UploadImage extends Component {
                   onChange={this.normFile}
                   className="upload-image"
                 >
-                  {imageUrl ? <img src={imageUrl} alt="avatar" width="100%" height="80"/> : uploadButton}
-                  <div style={{width: imgWidth ? imgWidth : 'initial'}}>
+                  {imageUrl ? <img src={imageUrl} alt="avatar" width={imgStyle ? imgStyle.width : "100%" } height={imgStyle ? imgStyle.height : "90"} /> : uploadButton}
+                  <div style={{width: imgWidth ? imgWidth : 'initial', margin: '0 auto'}}>
                     <p className="ant-upload-text">Click or drag file to this area to upload.</p>
                     <p className="ant-upload-hint">Support for a single upload only.</p>
                   </div>

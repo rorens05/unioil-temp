@@ -21,7 +21,8 @@ class EditPhotoSlider extends Component {
     mounted: false,
     promotionsDefaultValue: null,
     promotionsDefaultKeyValue: null,
-    promotionsOptions: null
+    promotionsOptions: null,
+    dateStartEnd: null
   }
 
   async componentDidMount() {
@@ -35,7 +36,7 @@ class EditPhotoSlider extends Component {
       // default options branch
 
       let promotions = []
-      
+     
       if(response.data.data.promotion) {
         
         promotions.push({...response.data.data.promotion})
@@ -50,12 +51,18 @@ class EditPhotoSlider extends Component {
         })
       }
       // default options promotype
+      
+      let dateStartEnd = promotions && promotions[0] && { 
+          date_start: promotions[0].date_start, 
+          date_end: promotions[0].date_end 
+      }
 
       this.setState({
         userInfo: {...response.data.data},
         mounted: true,
         promotionsDefaultValue,
         promotionsDefaultKeyValue,
+        dateStartEnd: dateStartEnd
       })
 
       
@@ -66,7 +73,7 @@ class EditPhotoSlider extends Component {
           <div>Something went wrong loading data.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       if(error.status == 404) {
         if(this.props.location.pathname) {
@@ -90,6 +97,7 @@ class EditPhotoSlider extends Component {
           promotionsOptions.push({
             label: item.title,
             value: item.promotion_uuid,
+            date: { dateStart: item.date_start , dateEnd: item.date_end }
           })
         })
       }
@@ -100,7 +108,6 @@ class EditPhotoSlider extends Component {
       })
 
     } catch ({response: error}) {
-     // notification.error({ message: "Error", description: "Something went wrong loading data", duration: 20, });
       this.setState({ mounted: false })
     }
 
@@ -205,23 +212,42 @@ class EditPhotoSlider extends Component {
     return e && this.setState({fileUpload: e.fileList});
   }
 
+  handleGetDate = async (id) => {
+    const {promotionsOptions} = this.state;
+
+    if(promotionsOptions) {
+      await promotionsOptions.map(item=> {
+        if(item.value == id) {
+          this.setState({
+            dateStartEnd: {
+              date_start: item.date.dateStart,
+              date_end: item.date.dateEnd
+            }
+          })
+        }
+      })
+    }
+
+  }
+
   render() {
 
     if(!this.state.mounted) return null;
 
-    const { loading, userInfo, promotionsOptions, promotionsDefaultValue , promotionsDefaultKeyValue  } = this.state
+    const { loading, userInfo, promotionsOptions, promotionsDefaultValue , promotionsDefaultKeyValue, dateStartEnd  } = this.state
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
-        <HeaderForm 
+        {/* <HeaderForm 
           loading={loading}
           title="Update Photo Slider"
           action={this.handleEditPhotoSlider}
           actionBtnName="Submit"
           withConfirm={{message: "Save changes to this record?"}}
+          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
           cancel={()=> this.props.history.push("/home-page/photo-slider")}
           cancelBtnName="Cancel"
-        />
+        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>Photo Slider Content Details</h2>
           <Formik
@@ -242,9 +268,13 @@ class EditPhotoSlider extends Component {
               render = {(props)=> 
                 <EditPhotoSliderForm 
                   {...props}
+                  loading={loading}
+                  history={this.props.history}
+                  dateStartEnd={dateStartEnd}
                   promotionsOptions={promotionsOptions}
                   promotionsDefaultValue={promotionsDefaultValue}
                   handleFileUpload={this.handleFileUpload}
+                  handleGetDate={this.handleGetDate}
                 />
               }
           />

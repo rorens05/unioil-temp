@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
  
 // COMPONENTS
+import HeaderForm from "components/Forms/HeaderForm"
 import { Input, Radio, InputTextArea, UploadImage, Select, DatePicker ,TimePickerForm } from 'components/Forms';
  
 // HELPER FUNCTIONS
@@ -26,17 +27,31 @@ const formItemLayout = {
 function EditUserManagementForm(props) {
   const {
     isSubmitting,
+    loading,
+    handleSubmit,
     handleFileUpload,
     branchesOptions,
     promoTypeOptions,
     branchDefaultValue ,
     promoTypeDefaultValue,
-    responsePromotionTopUp
+    responsePromotionTopUp,
+    history
   } = props;
 
   return (
     <Form noValidate>
-
+      <HeaderForm 
+        isInsideForm
+        loading={loading}
+        disabled={props.isValid == false ? true : false}
+        title="Update Promotions"
+        action={handleSubmit}
+        actionBtnName="Submit"
+        withConfirm={{message: "Save changes to this record?"}}
+        withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
+        cancel={()=> history.push("/promotions")}
+        cancelBtnName="Cancel"
+      />
       <Field
         name="title"
         type="text"
@@ -59,11 +74,12 @@ function EditUserManagementForm(props) {
       />
 
       <Field
+        limit100kb
         name="image"
         type="file"
         accept=".jpg , .png, .gif"
         multiple={false}
-        imageUrl={props.values.image && `${process.env.REACT_APP_IMG_URL}${props.values.image}`}
+        imageUrl={props.values.image && `${props.values.image}`}
         className="upload-list-inline"
         icon="user"
         layout={formItemLayout}
@@ -71,6 +87,7 @@ function EditUserManagementForm(props) {
         placeholder="Upload Image"
         component={UploadImage}
         imgWidth="294px"
+        imgStyle={{width:"405", height:"150"}}
         handleFileUpload={handleFileUpload}
       />
 
@@ -99,6 +116,7 @@ function EditUserManagementForm(props) {
       />
 
       <Field
+        disabledDateStart
         name="date_end"
         type="date"
         icon=""

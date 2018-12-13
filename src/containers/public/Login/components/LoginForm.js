@@ -10,7 +10,8 @@ function Login(props) {
     userVerified,
     showModalForgotUsername,
     showModalChangePassword,
-    backToLogin
+    backToLogin,
+    onCloseIdleNotification
   } = props;
 
   return (
@@ -23,13 +24,14 @@ function Login(props) {
             <div>
              <label style={{fontWeight: '500', color: '#005598'}}>Enter Username</label>
               <Field
-              name="username"
-              type="text"
-              icon="user"
-              placeholder="User name"
-              component={Input}
-              readOnly={userVerified}
-            />
+                name="username"
+                type="text"
+                icon="user"
+                placeholder="User name"
+                component={Input}
+                readOnly={userVerified}
+                onClick={onCloseIdleNotification}
+              />
             </div>
           )
         }
@@ -72,6 +74,7 @@ function Login(props) {
         </Col>
         <Col span={12}>
           {
+            // Username Next Button
             !userVerified && (
               <Button  
                 loading={isSubmitting} 
@@ -84,12 +87,13 @@ function Login(props) {
               </Button>
             )
           }
-
+          
           {
+            // Password Next Button
             userVerified && (
               <Button  
                 loading={isSubmitting} 
-                style={{ width: '100%', display: 'block', background: props.values.username.length > 0 ? '#E74610' : '#FCFCFC', borderColor: props.values.username.length > 0 ? '#E74610' : '#D9D9D9' }}
+                style={{ width: '100%', display: 'block', background: props.values.password.length > 0 ? '#E74610' : '#FCFCFC', borderColor: props.values.password.length > 0 ? '#E74610' : '#D9D9D9' }}
                 type="primary" 
                 htmlType="submit"
                 disabled={props.values.password.length > 0 ? false : true}

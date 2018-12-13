@@ -34,7 +34,7 @@ class TopUpView extends Component {
           <div>Something went wrong loading data.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
       if(error.status == 404) {
         if(this.props.location.pathname)
@@ -61,7 +61,7 @@ class TopUpView extends Component {
           <div>Something went wrong deleting record.</div>
         - { error && error.data && error.data.message }
         </div> , 
-        duration: 20, 
+        duration: 3, 
       });
     }
   }
@@ -74,7 +74,7 @@ class TopUpView extends Component {
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
         <HeaderForm 
-          title="User Accounts"
+          title="Top-Up Details"
           action={()=> {this.props.history.push(`/top-up/edit/${match.params.id}`)}}
           actionBtnName="Update"
           styleBtn={{background: 'white', borderColor: 'rgb(184, 187, 201)',color: 'rgb(101, 105, 127)'}}

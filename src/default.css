@@ -154,3 +154,8 @@
 .ant-menu-submenu-popup {
     z-index: 999 !important;
 }
+
+.ant-select-selection__clear-icon {
+    font-size: 23px;
+    line-height: 7px;
+}

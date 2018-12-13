@@ -25,7 +25,9 @@ export default class MyProfileView extends Component {
           title="My Profile"
         />
         <div style={{display: 'flex', alignItems: 'center', padding: '30px', background: '#F3F3F6' , border:'1px solid #E6ECF5'}} >
-            <Avatar size={80} icon="user" style={{color: '#5a5e76' , backgroundColor: '#B8BBC9'}} />
+            <div>
+              <Avatar size={80} icon="user" style={{color: '#5a5e76' , backgroundColor: '#B8BBC9'}} />
+            </div>
             <h1 style={{margin: '0 20px', color: '#5a5e76', fontSize: '40px' }}>{userInfo && `${userInfo.firstname} ${userInfo.lastname} `}</h1>
         </div>
         <div style={{padding: '30px',  border:'1px solid #E6ECF5', borderTop: 0}}>
