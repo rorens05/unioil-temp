@@ -10,7 +10,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - REACT_APP_DOMAIN=52.221.242.190
+        - REACT_APP_DOMAIN=http://52.221.242.190
         - REACT_APP_PATH=api/cms
         - REACT_APP_IMG_PATH=unioilQA/
     restart: always
