@@ -11,6 +11,7 @@ services:
       dockerfile: Dockerfile
       args:
         - REACT_APP_PUBLIC=true
+        - PUBLIC_URL=/paypal
         - REACT_APP_DOMAIN=http://mobilecorelb-1807532632.ap-southeast-1.elb.amazonaws.com/
         - REACT_APP_PATH=api/cms
         - REACT_APP_IMG_PATH=unioilQA
