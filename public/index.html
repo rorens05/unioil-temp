@@ -38,10 +38,32 @@
     -->
     <script type="text/javascript">
      
-     window.myAdroidMethod = showAndroidToast
-    
-     function showAndroidToast() {
+     // For Adroid
+     window.AndroidTopUpSuccess = AndroidTopUpFailed;
+     window.AndroidTopUpFailed = AndroidTopUpFailed;
+
+     // For iOS
+     window.iOStopUpSuccess = iOStopUpSuccess;
+     window.iOStopUpFailed = iOStopUpFailed;
+
+     function AndroidTopUpFailed() {
+
+       alert('back to top up ' );
+        // For Adroid
         AndroidInterface.returnTopUpPage();
+        
+     }
+
+     function iOStopUpSuccess() {
+       alert('top up success ' );
+       // For iOS
+       window.webkit.messageHandlers.backToHomePage.postMessage({'ButtonId':'clickMeButton'})
+     }
+
+     function iOStopUpFailed() {
+       alert('back to top up' );
+       // For iOS
+       window.webkit.messageHandlers.backToTopUp.postMessage({'ButtonId':'clickMeButton'})
      }
 
     </script>

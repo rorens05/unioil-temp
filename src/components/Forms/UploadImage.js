@@ -92,6 +92,7 @@ class UploadImage extends Component {
       multipleFileUpload,
       imgWidth,
       imgStyle,
+      isRatioMessage,
       ...props
     } = this.props;
 
@@ -151,10 +152,11 @@ class UploadImage extends Component {
                   onChange={this.normFile}
                   className="upload-image"
                 >
-                  {imageUrl ? <img src={imageUrl} alt="avatar" width={imgStyle ? imgStyle.width : "100%" } height={imgStyle ? imgStyle.height : "90"} /> : uploadButton}
+                  {imageUrl ? <img src={imageUrl} alt="avatar" width={imgStyle ? imgStyle.width : "100%" } height={imgStyle ? imgStyle.height : "100"} /> : uploadButton}
                   <div style={{width: imgWidth ? imgWidth : 'initial', margin: '0 auto'}}>
                     <p className="ant-upload-text">Click or drag file to this area to upload.</p>
                     <p className="ant-upload-hint">Support for a single upload only.</p>
+                    { isRatioMessage && <p className="ant-upload-hint">Aspect Ratio 4:3 (ex. 1024 x 768).</p> }
                   </div>
               </Upload>
           )

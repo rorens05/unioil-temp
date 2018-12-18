@@ -15,6 +15,7 @@
     "libsodium-wrappers": "^0.7.3",
     "query-string": "^5.1.1",
     "react": "^16.5.0",
+    "react-device-detect": "^1.6.1",
     "react-dom": "^16.5.0",
     "react-helmet": "^5.2.0",
     "react-idle-timer": "^4.0.9",

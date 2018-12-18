@@ -1,7 +1,7 @@
 //@flow
 import React, { Component } from 'react';
 import { Button } from 'antd';
-import dsBridge from 'dsbridge';
+import {isAndroid, isIOS} from 'react-device-detect';
 
 
 class PublicTopErrorPage extends Component {
@@ -10,13 +10,15 @@ class PublicTopErrorPage extends Component {
 
   backHandler () {
     
-    // let str = dsBridge.call("returnTopUpPage","showToast");
-    
-    // dsBridge.call("showToast",(v) => {
-    //   alert('inside dsBridge');
-    // })
+    if(isIOS) {
+      // For iOS isIOS
+      window.iOStopUpFailed()
+    }
 
-    window.myAdroidMethod()
+    if (isAndroid) {
+      // For Adoird isAndroid
+      window.AndroidTopUpFailed()
+    }
 
   } 
 

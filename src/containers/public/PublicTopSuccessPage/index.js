@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import queryString from "query-string";
 import { API_UNI_OIL } from "utils/Api";
 import { Row, Button, Col, Icon, Avatar } from 'antd';
-import dsBridge from 'dsbridge';
+import {isAndroid, isIOS} from 'react-device-detect';
 
 
 class PublicTopSuccessPage extends Component {
@@ -44,17 +44,30 @@ class PublicTopSuccessPage extends Component {
   }
 
   backHandler () {
-    //alert('web call alert')
- 
 
-    //let str = dsBridge.call("showToast","returnTopUpPage");
-    
-    // dsBridge.call("showToast","returnTopUpPage",(v) => {
-    //   alert('inside dsBridge');
-    // })
+    if(isIOS) {
+      // For iOS isIOS
+      window.iOStopUpFailed()
+    }
 
-    window.myAdroidMethod()
+    if (isAndroid) {
+      // For Adoird isAndroid
+      window.AndroidTopUpFailed()
+    }
+
   } 
+
+  backHandlerSuccess () {
+    if(isIOS) {
+      // For iOS isIOS
+      window.iOStopUpSuccess()
+    }
+
+    if (isAndroid) {
+      // For Adoird isAndroid
+     // window.AndroidTopUpFailed()
+    }
+  }
 
   render() {
 
@@ -107,7 +120,7 @@ class PublicTopSuccessPage extends Component {
                       </div>
                       <div style={{position: 'fixed', bottom: 0,width: '100%'}}>
                         <Button 
-                          onClick={this.backHandler}
+                          onClick={this.backHandlerSuccess}
                           type="primary" id="backSuccess" size="large" 
                           style={{backgroundColor: '#e74610', 
                             borderColor: '#e74610', margin: '4px', width: '90%'
