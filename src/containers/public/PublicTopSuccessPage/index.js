@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import queryString from "query-string";
 import { API_UNI_OIL } from "utils/Api";
 import { Row, Button, Col, Icon, Avatar } from 'antd';
-import dsBridge from 'dsbridge';
+import {isAndroid, isIOS} from 'react-device-detect';
 
 
 class PublicTopSuccessPage extends Component {
@@ -44,20 +44,29 @@ class PublicTopSuccessPage extends Component {
   }
 
   backHandler () {
-    //alert('web call alert')
- 
 
-    //let str = dsBridge.call("showToast","returnTopUpPage");
-    
-    // dsBridge.call("showToast","returnTopUpPage",(v) => {
-    //   alert('inside dsBridge');
-    // })
+    if(isIOS) {
+      // For iOS isIOS
+      window.iOStopUpFailed()
+    }
 
-    window.topUpFailed()
+    if (isAndroid) {
+      // For Adoird isAndroid
+      window.AndroidTopUpFailed()
+    }
+
   } 
 
   backHandlerSuccess () {
-    window.topUpSuccess()
+    if(isIOS) {
+      // For iOS isIOS
+      window.iOStopUpSuccess()
+    }
+
+    if (isAndroid) {
+      // For Adoird isAndroid
+     // window.AndroidTopUpFailed()
+    }
   }
 
   render() {
