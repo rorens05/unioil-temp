@@ -89,8 +89,11 @@ class EditPhotoSlider extends Component {
     // options
     try {
 
+      let params = {
+        selected_promotion: promotionsDefaultKeyValue[0]
+      }
       let promotionsOptions = []; let promoTypeOptions = []
-      let promotionsList = await API_GET('getPromotions');
+      let promotionsList = await API_GET('getPromotions', params);
 
       if(promotionsList) {
         await promotionsList.data.data.map(item => {
