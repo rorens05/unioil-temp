@@ -16,7 +16,7 @@ class PublicTopErrorPage extends Component {
     //   alert('inside dsBridge');
     // })
 
-    window.myAdroidMethod()
+    window.topUpFailed()
 
   } 
 

@@ -38,18 +38,23 @@
     -->
     <script type="text/javascript">
      
-     window.myAdroidMethod = showAndroidToast
-    
-     function showAndroidToast(src) {
-       
-        //window.location = 'ios:webToNativeCall';
-        //AndroidInterface.returnTopUpPage();
+     window.topUpFailed = topUpFailedHandler;
+     window.topUpSuccess = iOStopUpSuccess;
 
-        alert('window.webkit test call method i frame' );
-     
-        window.webkit.messageHandlers.buttonClicked.postMessage({'ButtonId':'clickMeButton'})
+     function topUpFailedHandler(src) {
 
+       alert('back to top up ' );
+        // For Adroid
+        AndroidInterface.returnTopUpPage();
 
+        // For iOS
+        window.webkit.messageHandlers.backToTopUp.postMessage({'ButtonId':'clickMeButton'})
+     }
+
+     function iOStopUpSuccess(src) {
+       alert('top up success ' );
+       // For iOS
+       window.webkit.messageHandlers.backToHomePage.postMessage({'ButtonId':'clickMeButton'})
      }
 
     </script>

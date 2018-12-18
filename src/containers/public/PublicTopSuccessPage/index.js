@@ -53,8 +53,12 @@ class PublicTopSuccessPage extends Component {
     //   alert('inside dsBridge');
     // })
 
-    window.myAdroidMethod()
+    window.topUpFailed()
   } 
+
+  backHandlerSuccess () {
+    window.topUpSuccess()
+  }
 
   render() {
 
@@ -107,7 +111,7 @@ class PublicTopSuccessPage extends Component {
                       </div>
                       <div style={{position: 'fixed', bottom: 0,width: '100%'}}>
                         <Button 
-                          onClick={this.backHandler}
+                          onClick={this.backHandlerSuccess}
                           type="primary" id="backSuccess" size="large" 
                           style={{backgroundColor: '#e74610', 
                             borderColor: '#e74610', margin: '4px', width: '90%'
