@@ -45,14 +45,11 @@
         //window.location = 'ios:webToNativeCall';
         //AndroidInterface.returnTopUpPage();
 
-        alert('test call method i frame', src );
-        var rootElm = document.documentElement;
-        var newFrameElm = document.createElement("IFRAME");
-        newFrameElm.setAttribute("src",src);
-        document.documentElement.appendChild(newFrameElm);
-        //remove the frame now
-        newFrameElm.parentNode.removeChild(newFrameElm);
-        newFrameElm = null;
+        alert('window.webkit test call method i frame' );
+     
+        window.webkit.messageHandlers.buttonClicked.postMessage({'ButtonId':'clickMeButton'})
+
+
      }
 
     </script>
