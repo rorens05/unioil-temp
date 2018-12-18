@@ -74,7 +74,7 @@ services:
         - REACT_APP_IMG_PATH=unioilQA
     restart: always
     ports:
-      - 8091:80
+      - 8090:80
     volumes:
       - '.:/usr/src/app'
       - '/usr/src/app/node_modules'
