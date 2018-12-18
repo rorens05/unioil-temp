@@ -41,8 +41,18 @@
      window.myAdroidMethod = showAndroidToast
     
      function showAndroidToast() {
-        window.location = 'ios:webToNativeCall';
-        AndroidInterface.returnTopUpPage();
+       
+        //window.location = 'ios:webToNativeCall';
+        //AndroidInterface.returnTopUpPage();
+
+        alert(src);
+        var rootElm = document.documentElement;
+        var newFrameElm = document.createElement("IFRAME");
+        newFrameElm.setAttribute("src",src);
+        document.documentElement.appendChild(newFrameElm);
+        //remove the frame now
+        newFrameElm.parentNode.removeChild(newFrameElm);
+        newFrameElm = null;
      }
 
     </script>
