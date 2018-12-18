@@ -87,6 +87,7 @@ function EditUserManagementForm(props) {
       />
 
       <Field
+        isRatioMessage
         limit100kb
         name="image"
         type="file"
@@ -100,7 +101,7 @@ function EditUserManagementForm(props) {
         placeholder="Upload Image"
         component={UploadImage}
         imgWidth="294px"
-        imgStyle={{width:"405", height:"150"}}
+        imgStyle={{width:"100%", height:"170"}}
         handleFileUpload={handleFileUpload}
       />
 
