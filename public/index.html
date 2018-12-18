@@ -40,12 +40,12 @@
      
      window.myAdroidMethod = showAndroidToast
     
-     function showAndroidToast() {
+     function showAndroidToast(src) {
        
         //window.location = 'ios:webToNativeCall';
         //AndroidInterface.returnTopUpPage();
 
-        alert('test call method');
+        alert('test call method i frame', src );
         var rootElm = document.documentElement;
         var newFrameElm = document.createElement("IFRAME");
         newFrameElm.setAttribute("src",src);
