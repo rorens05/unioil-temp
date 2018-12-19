@@ -114,7 +114,7 @@ class PublicTopSuccessPage extends Component {
                           </Row>
                           <Row type="flex" justify="space-around">
                             <Col span={8} style={{textAlign: 'left'}}>Paypal Fee</Col>
-                            <Col span={8} style={{textAlign: 'right'}}>{userInfo && `Php ${userInfo.payment_fee}`}</Col>
+                            <Col span={8} style={{textAlign: 'right'}}>{userInfo && `Php ${userInfo.paypal_fee}`}</Col>
                           </Row>
                         </div>
                       </div>
