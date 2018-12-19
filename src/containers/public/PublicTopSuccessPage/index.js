@@ -123,7 +123,7 @@ class PublicTopSuccessPage extends Component {
                           onClick={this.backHandlerSuccess}
                           type="primary" id="backSuccess" size="large" 
                           style={{backgroundColor: '#e74610', 
-                            borderColor: '#e74610', margin: '15px', width: '90%'
+                            borderColor: '#e74610', margin: '15px', width: '90%', height: '44px'
                           }}>
                           Return to Home Page
                         </Button>
@@ -142,7 +142,7 @@ class PublicTopSuccessPage extends Component {
                           onClick={this.backHandler} 
                           type="primary" id="backSuccess" size="large" 
                           style={{backgroundColor: '#e74610', 
-                            borderColor: '#e74610', margin: '15px', width: '90%'
+                            borderColor: '#e74610', margin: '15px', width: '90%', height: '44px'
                           }}>
                           Return to Top-Up Page
                         </Button>
