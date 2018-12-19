@@ -41,7 +41,7 @@ class PublicTopErrorPage extends Component {
                 onClick={this.backHandler} 
                 type="primary" id="backError" size="large" 
                 style={{backgroundColor: '#e74610', 
-                  borderColor: '#e74610', margin: '4px', width: '90%'
+                  borderColor: '#e74610', margin: '15px', width: '90%'
                 }}>
                 Return to Top-Up Page
               </Button>
