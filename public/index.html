@@ -48,20 +48,20 @@
 
      function AndroidTopUpFailed() {
 
-       alert('back to top up ' );
+       //alert('back to top up ' );
         // For Adroid
         AndroidInterface.returnTopUpPage();
         
      }
 
      function iOStopUpSuccess() {
-       alert('top up success ' );
+       //alert('top up success ' );
        // For iOS
        window.webkit.messageHandlers.backToHomePage.postMessage({'ButtonId':'clickMeButton'})
      }
 
      function iOStopUpFailed() {
-       alert('back to top up' );
+       //alert('back to top up' );
        // For iOS
        window.webkit.messageHandlers.backToTopUp.postMessage({'ButtonId':'clickMeButton'})
      }
