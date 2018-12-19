@@ -65,7 +65,7 @@ class PublicTopSuccessPage extends Component {
 
     if (isAndroid) {
       // For Adoird isAndroid
-     // window.AndroidTopUpFailed()
+      window.AndroidTopUpFailed()
     }
   }
 
