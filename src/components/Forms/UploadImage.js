@@ -143,6 +143,7 @@ class UploadImage extends Component {
           ) :
           (
               <Upload
+                  style={{padding: '13px 22px'}}
                   name="avatar"
                   listType="picture-card"
                   className="avatar-uploader"
