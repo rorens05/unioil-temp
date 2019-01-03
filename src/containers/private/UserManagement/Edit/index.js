@@ -142,10 +142,7 @@ class EditUserManagement extends Component {
   }
 
   copyActionHandler = (props) => {
-    if(props.values.password) {
-      navigator.clipboard.writeText(props.values.password);
-      message.success('Password successfully copied.');
-    }
+    message.success('Password successfully copied.');
   }
 
   render() {

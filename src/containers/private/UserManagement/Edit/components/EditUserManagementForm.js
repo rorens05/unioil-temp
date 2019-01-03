@@ -139,6 +139,7 @@ function EditUserManagementForm(props) {
           action: ()=>generatePassword(props),
           name: "Generate",
           disabled: userInfo.disable_generate || isGenerated,
+          password: props.values.password,
           copyAction: (props.values.password && props.values.password !== "*******************") && (() => copyActionHandler(props))
         }}
         readOnly
