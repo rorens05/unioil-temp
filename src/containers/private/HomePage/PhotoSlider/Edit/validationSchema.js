@@ -10,8 +10,8 @@ export const userDetailsSchema = Yup.object().shape({
     .required('Title is required!'),
   description: Yup.string()
     .trim()
-    .max(32000, "Maximum character is 32,000.")
-    .required('Description is required!'),
+    .max(32000, "Maximum character is 32,000."),
+   // .required('Description is required!'),
   image: Yup.string()
     .required('Upload Image is required!'),
   date_start: Yup.string()
