@@ -29,7 +29,8 @@ function EditUserManagementForm(props) {
     loading,
     isGenerated,
     userInfo,
-    history
+    history,
+    copyActionHandler
   } = props;
   return (
     <Form noValidate>
@@ -137,7 +138,8 @@ function EditUserManagementForm(props) {
         withActionBtn={{
           action: ()=>generatePassword(props),
           name: "Generate",
-          disabled: userInfo.disable_generate || isGenerated
+          disabled: userInfo.disable_generate || isGenerated,
+          copyAction: (props.values.password && props.values.password !== "*******************") && (() => copyActionHandler(props))
         }}
         readOnly
         layout={formItemLayout}

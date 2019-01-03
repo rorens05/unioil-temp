@@ -141,6 +141,13 @@ class EditUserManagement extends Component {
     }
   }
 
+  copyActionHandler = (props) => {
+    if(props.values.password) {
+      navigator.clipboard.writeText(props.values.password);
+      message.success('Password successfully copied.');
+    }
+  }
+
   render() {
 
     if(!this.state.mounted) return null;
@@ -185,6 +192,7 @@ class EditUserManagement extends Component {
                   history={this.props.history}
                   generatePassword={this.generatePassword}
                   isGenerated={(isGenerated || userInfo.generated_password) && true}
+                  copyActionHandler={this.copyActionHandler}
                 />
               }
           />
