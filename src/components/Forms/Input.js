@@ -42,7 +42,7 @@ const InputForm = ({
             prefix={icon && <Icon type={icon} style={{ color: 'rgba(0,0,0,.25)' }} />} 
           /> 
         </Col>
-        <Col span={14}>
+        <Col span={15}>
           <Button 
             loading={loading}
             disabled={withActionBtn.disabled}
