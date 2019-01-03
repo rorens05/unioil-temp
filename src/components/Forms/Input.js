@@ -33,7 +33,7 @@ const InputForm = ({
       /> 
       : 
       <Row gutter={8}>
-        <Col span={12}>
+        <Col span={9}>
           <Input
             {...props}
             {...field}
@@ -41,11 +41,19 @@ const InputForm = ({
             prefix={icon && <Icon type={icon} style={{ color: 'rgba(0,0,0,.25)' }} />} 
           /> 
         </Col>
-        <Col span={12}>
+        <Col span={14}>
           <Button 
             loading={loading}
             disabled={withActionBtn.disabled}
-            style={{opacity: withActionBtn.disabled ? 0.8 : 'initial' ,background:  '#E74610', borderColor:'#E74610', color: '#fff'}} onClick={withActionBtn.action}>{withActionBtn.name}</Button>
+            style={{opacity: withActionBtn.disabled ? 0.8 : 'initial' ,background:  '#E74610', borderColor:'#E74610', color: '#fff'}} onClick={withActionBtn.action}>{withActionBtn.name}
+          </Button>
+          <Button 
+            loading={loading}
+            disabled={withActionBtn.copyAction ? false : true}
+            style={{opacity: withActionBtn.copyAction ? 'initial' : 0.8  , background:  '#E74610', borderColor:'#E74610', color: '#fff', marginLeft: '5px'}} 
+            onClick={withActionBtn.copyAction ? withActionBtn.copyAction : ()=> {return null} }>
+              Copy Password
+          </Button>
         </Col>
       </Row>
     }

@@ -29,7 +29,8 @@ function AddUserManagementForm(props) {
     generatePassword,
     loading,
     isGenerated,
-    history
+    history,
+    copyActionHandler
   } = props;
 
   return (
@@ -129,7 +130,8 @@ function AddUserManagementForm(props) {
         withActionBtn={{
           action: ()=>generatePassword(props),
           name: "Generate",
-          disabled: isGenerated
+          disabled: isGenerated,
+          copyAction: props.values.password && (() => copyActionHandler(props))
         }}
         readOnly
         layout={formItemLayout}

@@ -81,6 +81,13 @@ class CreateUserManagement extends Component {
     }
   }
 
+  copyActionHandler = (props) => {
+    if(props.values.password) {
+      navigator.clipboard.writeText(props.values.password);
+      message.success('Password successfully copied.');
+    }
+  }
+
   render() {
     const { userManagement } = this.props
     const { loading, isGenerated } = this.state;
@@ -120,6 +127,7 @@ class CreateUserManagement extends Component {
                   loading={userManagement.createRequestPending || loading}
                   generatePassword={this.generatePassword}
                   isGenerated={isGenerated}
+                  copyActionHandler={this.copyActionHandler}
                 />
               }
           />
