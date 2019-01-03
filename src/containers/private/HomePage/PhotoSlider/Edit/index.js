@@ -259,10 +259,10 @@ class EditPhotoSlider extends Component {
                 title: userInfo.title || '',
                 description: userInfo.description || '',
                 image: userInfo.image || '',
-                date_start: moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm:ss').format('YYYY-MM-DD') || '',
-                date_end: moment( userInfo.date_end, 'YYYY-MM-DDTHH:mm:ss').format('YYYY-MM-DD') || '',
-                start_time: moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss') || '',
-                end_time: moment(userInfo.date_end, 'YYYY-MM-DDTHH:mm:ss' ).format('HH:mm:ss') || '',
+                date_start: moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm').format('YYYY-MM-DD') || '',
+                date_end: moment( userInfo.date_end, 'YYYY-MM-DDTHH:mm').format('YYYY-MM-DD') || '',
+                start_time: moment(userInfo.date_start, 'YYYY-MM-DDTHH:mm').format('HH:mm') || '',
+                end_time: moment(userInfo.date_end, 'YYYY-MM-DDTHH:mm' ).format('HH:mm') || '',
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}

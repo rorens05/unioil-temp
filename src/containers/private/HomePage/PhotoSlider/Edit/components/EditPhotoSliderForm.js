@@ -141,7 +141,7 @@ function EditUserManagementForm(props) {
         icon=""
         disabledHours={()=> {
           if(props.values.promotion_uuid) {
-            let time =  dateStartEnd && dateStartEnd.date_start && moment(dateStartEnd.date_start, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss').replace(/[^0-9]/g,'').substring(0, 2)
+            let time =  dateStartEnd && dateStartEnd.date_start && moment(dateStartEnd.date_start, 'YYYY-MM-DDTHH:mm').format('HH:mm').replace(/[^0-9]/g,'').substring(0, 2)
             let disabledTime = [];
             let timeLimit = time;
 
@@ -164,7 +164,8 @@ function EditUserManagementForm(props) {
             return [] 
           }
         }}
-        defaultValue={moment(props.values.start_time, 'HH:mm:ss')}
+        defaultValue={moment(props.values.start_time, 'HH:mm')}
+        format={'HH:mm'}
         layout={formItemLayout}
         label="Start Time"
         placeholder="Start Time"
@@ -177,7 +178,7 @@ function EditUserManagementForm(props) {
         icon=""
         disabledHours={() => {
           if(props.values.promotion_uuid) {
-            let time =  dateStartEnd && dateStartEnd.date_end && moment(dateStartEnd.date_end, 'YYYY-MM-DDTHH:mm:ss').format('HH:mm:ss').replace(/[^0-9]/g,'').substring(0, 2)
+            let time =  dateStartEnd && dateStartEnd.date_end && moment(dateStartEnd.date_end, 'YYYY-MM-DDTHH:mm').format('HH:mm').replace(/[^0-9]/g,'').substring(0, 2)
             let disabledEndTime = [];
             let timeLimit = time;
 
@@ -201,7 +202,8 @@ function EditUserManagementForm(props) {
           }
           
         }}
-        defaultValue={moment(props.values.end_time, 'HH:mm:ss')}
+        defaultValue={moment(props.values.end_time, 'HH:mm')}
+        format={'HH:mm'}
         layout={formItemLayout}
         label="End Time"
         placeholder="End Time"

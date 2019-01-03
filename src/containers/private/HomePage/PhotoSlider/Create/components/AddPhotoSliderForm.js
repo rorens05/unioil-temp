@@ -172,7 +172,8 @@ function AddPhotoSliderForm(props) {
             return []
           }
         }}
-        defaultOpenValue={moment('00:00:00', 'HH:mm:ss')}
+        defaultOpenValue={moment('00:00', 'HH:mm')}
+        format={'HH:mm'}
         icon=""
         disabled={photoSliderLimit}
         layout={formItemLayout}
@@ -216,7 +217,8 @@ function AddPhotoSliderForm(props) {
             return []
           }
         }}
-        defaultOpenValue={moment('00:00:00', 'HH:mm:ss')}
+        defaultOpenValue={moment('00:00', 'HH:mm')}
+        format={'HH:mm'}
         icon=""
         disabled={photoSliderLimit}
         layout={formItemLayout}
