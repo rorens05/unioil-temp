@@ -83,8 +83,8 @@ class CreateUserManagement extends Component {
 
   copyActionHandler = (props) => {
     if(props.values.password) {
-      navigator.clipboard.writeText(props.values.password);
-      message.success('Password successfully copied.');
+      //navigator.clipboard.writeText(props.values.password);
+      window.copyTextHandler(props.values.password)
     }
   }
 

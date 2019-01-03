@@ -45,6 +45,7 @@
      // For iOS
      window.iOStopUpSuccess = iOStopUpSuccess;
      window.iOStopUpFailed = iOStopUpFailed;
+     window.copyTextHandler = copyTextHandler
 
      function AndroidTopUpFailed() {
         // For Adroid
@@ -62,6 +63,10 @@
        //alert('back to top up' );
        // For iOS
        window.webkit.messageHandlers.backToTopUp.postMessage({'ButtonId':'clickMeButton'})
+     }
+
+     function copyTextHandler(password) {
+       navigator.clipboard.writeText(password);
      }
 
     </script>
