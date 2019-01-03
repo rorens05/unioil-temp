@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Form, Icon, Input, Row, Col, Button } from 'antd';
+import CopyToClipboard from 'react-copy-to-clipboard';
 
 const FormItem = Form.Item;
 
@@ -47,13 +48,16 @@ const InputForm = ({
             disabled={withActionBtn.disabled}
             style={{opacity: withActionBtn.disabled ? 0.8 : 'initial' ,background:  '#E74610', borderColor:'#E74610', color: '#fff'}} onClick={withActionBtn.action}>{withActionBtn.name}
           </Button>
-          <Button 
-            loading={loading}
-            disabled={withActionBtn.copyAction ? false : true}
-            style={{opacity: withActionBtn.copyAction ? 'initial' : 0.8  , background:  '#E74610', borderColor:'#E74610', color: '#fff', marginLeft: '5px'}} 
-            onClick={withActionBtn.copyAction ? withActionBtn.copyAction : ()=> {return null} }>
-              Copy Password
-          </Button>
+          <CopyToClipboard text={withActionBtn.password} onCopy={withActionBtn.copyAction ? withActionBtn.copyAction : ()=> {return null}}>
+            <Button 
+              loading={loading}
+              disabled={withActionBtn.copyAction ? false : true}
+              style={{opacity: withActionBtn.copyAction ? 'initial' : 0.8  , background:  '#E74610', borderColor:'#E74610', color: '#fff', marginLeft: '5px'}} 
+             // onClick={withActionBtn.copyAction ? withActionBtn.copyAction : ()=> {return null} }
+            >
+                Copy Password
+            </Button>
+          </CopyToClipboard>
         </Col>
       </Row>
     }

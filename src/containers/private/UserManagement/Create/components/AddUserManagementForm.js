@@ -131,6 +131,7 @@ function AddUserManagementForm(props) {
           action: ()=>generatePassword(props),
           name: "Generate",
           disabled: isGenerated,
+          password: props.values.password,
           copyAction: props.values.password && (() => copyActionHandler(props))
         }}
         readOnly
