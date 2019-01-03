@@ -127,7 +127,8 @@ function AddPromotionForm(props) {
         name="start_time"
         type="date"
         icon=""
-        defaultOpenValue={moment('00:00:00', 'HH:mm:ss')}
+        defaultOpenValue={moment('00:00', 'HH:mm')}
+        format={'HH:mm'}
         layout={formItemLayout}
         label="Start Time"
         placeholder="Start Time"
@@ -138,7 +139,8 @@ function AddPromotionForm(props) {
         name="end_time"
         type="date"
         icon=""
-        defaultOpenValue={moment('00:00:00', 'HH:mm:ss')}
+        defaultOpenValue={moment('00:00', 'HH:mm')}
+        format={'HH:mm'}
         layout={formItemLayout}
         label="End Time"
         placeholder="End Time"

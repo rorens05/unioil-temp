@@ -133,7 +133,8 @@ function EditUserManagementForm(props) {
         type="date"
         icon=""
         //defaultValue={ moment(props.values.date_start, 'HH:mm:ss') }
-        defaultValue={moment(props.values.start_time, 'HH:mm:ss')}
+        defaultValue={moment(props.values.start_time, 'HH:mm')}
+        format={'HH:mm'}
         layout={formItemLayout}
         label="Start Time"
         placeholder="Start Time"
@@ -144,7 +145,8 @@ function EditUserManagementForm(props) {
         name="end_time"
         type="date"
         icon=""
-        defaultValue={moment(props.values.end_time, 'HH:mm:ss')}
+        defaultValue={moment(props.values.end_time, 'HH:mm')}
+        format={'HH:mm'}
         layout={formItemLayout}
         label="End Time"
         placeholder="End Time"

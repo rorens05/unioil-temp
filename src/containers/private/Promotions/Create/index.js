@@ -105,8 +105,20 @@ class PromotionsCreate extends Component {
           let date_start =  moment(values.date_start).format('YYYY-MM-DD');
           let start_time = moment(values.start_time).format('HH:mm:ss');
 
+          if(start_time == 'Invalid date') {
+            start_time = values.start_time
+          } else {
+            start_time = moment(values.start_time).format('HH:mm:ss');
+          }
+
           let date_end =  moment(values.date_end).format('YYYY-MM-DD');
           let end_time = moment(values.end_time).format('HH:mm:ss');
+
+          if(end_time == 'Invalid date') {
+            end_time = values.end_time
+          } else {
+            end_time = moment(values.end_time).format('HH:mm:ss');
+          }
 
           let startDateTime = moment(date_start + ' ' + start_time, 'YYYY-MM-DDTHH:mm:ss');
           let endDateTime = moment(date_end + ' ' + end_time, 'YYYY-MM-DDTHH:mm:ss');
