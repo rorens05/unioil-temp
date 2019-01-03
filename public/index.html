@@ -66,7 +66,11 @@
      }
 
      function copyTextHandler(password) {
-       navigator.clipboard.writeText(password);
+      navigator.clipboard.writeText(password).then(function() {
+        /* clipboard successfully set */
+      }, function() {
+        /* clipboard write failed */
+      });
      }
 
     </script>
