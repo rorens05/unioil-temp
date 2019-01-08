@@ -111,7 +111,7 @@ const DatePickerForm = ({
 
   let _props = {...props}; let _field = {...field};
   
-  if(isAutoFill)
+
     if(_field.value !== "") {
       _props.value =  _field.value && moment(_field.value,format)
     }
