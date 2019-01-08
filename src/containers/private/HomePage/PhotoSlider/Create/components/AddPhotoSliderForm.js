@@ -34,7 +34,8 @@ function AddPhotoSliderForm(props) {
     handleGetDate,
     photoSliderLimit,
     dateStartEnd,
-    history
+    history,
+    handleAutoFillDeatils
   } = props;
 
    return (
@@ -63,6 +64,7 @@ function AddPhotoSliderForm(props) {
         optionsList={promotionsOptions}
         handleGetDate={handleGetDate}
         component={Select}
+        handleAutoFillDeatils={handleAutoFillDeatils}
       />
 
       <Field
@@ -120,6 +122,7 @@ function AddPhotoSliderForm(props) {
         label="Start Appearance Date"
         placeholder="Start Appearance Date"
         component={DatePicker}
+        isAutoFill
       />
 
       <Field
@@ -129,12 +132,13 @@ function AddPhotoSliderForm(props) {
         disabledDateStart
         disabledDateStartEndPhotoSlider
         disabledDateStartEndPhotoSliderEndDate
-        dateStartEnd={dateStartEnd}
+        dateStartEnd={props.values.promotion_uuid ? dateStartEnd : null}
         disabled={photoSliderLimit}
         layout={formItemLayout}
         label="End Appearance Date"
         placeholder="End Appearance Date"
         component={DatePicker}
+        isAutoFill
       />
 
       <Field

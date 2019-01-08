@@ -168,6 +168,41 @@ class CreatePhotoSlider extends Component {
 
   }
 
+  handleAutoFillDeatils = async (id,setFieldValue) => {
+  
+    if(id) {
+
+      try {
+        let promotionsList = await API_GET(`promotion/${id}`);
+        let autofillData = {
+          ...promotionsList.data.data
+        }
+
+        setFieldValue('title', autofillData.title);
+        setFieldValue('description', autofillData.description);
+        //setFieldValue('image', `${autofillData.image}`);
+        setFieldValue('date_start',  moment(autofillData.date_start, 'YYYY-MM-DDTHH:mm'));
+        setFieldValue('date_end',  moment(autofillData.date_end, 'YYYY-MM-DDTHH:mm'));
+        setFieldValue('start_time',  moment(autofillData.date_start, 'YYYY-MM-DDTHH:mm').format('HH:mm') );
+        setFieldValue('end_time',  moment(autofillData.date_end, 'YYYY-MM-DDTHH:mm').format('HH:mm') );
+       
+        this.setState({
+          isAutofill: true
+        })
+        
+      } catch ({response: error}) {
+        notification.error({
+          message: 'Error',
+          description: <div>
+            Something went wrong autofill records.
+            - {error && error.data && error.data.message}
+          </div>
+        });
+      }
+    }
+
+  }
+
   render() {
 
     if (!this.state.mounted) return null;
@@ -213,6 +248,7 @@ class CreatePhotoSlider extends Component {
                 handleGetDate={this.handleGetDate}
                 dateStartEnd={dateStartEnd}
                 handleFileUpload={this.handleFileUpload}
+                handleAutoFillDeatils={this.handleAutoFillDeatils}
               />
             }
           />
