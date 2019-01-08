@@ -20,6 +20,7 @@ class SelectForm extends Component {
     
     if(this.props.handleGetDate) {
       this.props.handleGetDate(value);
+      this.props.handleAutoFillDeatils(value,setFieldValue,this.props);
     }
     // Add custom action `onChange`
     return setFieldValue(name, value);

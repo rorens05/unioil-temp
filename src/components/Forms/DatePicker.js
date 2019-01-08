@@ -19,11 +19,26 @@ const DatePickerForm = ({
   disabledDateStartEndPhotoSlider,
   disabledDateStartEndPhotoSliderEndDate,
   isEdit,
+  isAutoFill,
   ...props
 }) => {
 
   const onDateChange = (value, isDateRange = false) => {
-    value && setFieldValue(field.name, isDateRange ? [value[0].format(format), value[1].format(format)] : value.format(format))
+   
+    value && setFieldValue(field.name, isDateRange 
+      ? [value[0].format(format), value[1].format(format)] 
+      : value.format(format)
+    )
+
+    
+    if(value == null) {
+      setFieldValue(field.name, isDateRange 
+        ? [value[0].format(format), value[1].format(format)] 
+        : null
+      )
+    }
+   
+   
   }
 
   // Disable date less than `Today`
@@ -51,14 +66,15 @@ const DatePickerForm = ({
       if(dateStartEnd) {
         if(current && current.format() < moment(dateStartEnd.date_start).format()) {
           if(isEdit) {
-            return current && current.format() < moment(dateStartEnd.date_start).subtract(1,'days').format()
+            //return current && current.format() < moment(dateStartEnd.date_start).subtract(1,'days').format()
           }
           return current && current.format() < moment(dateStartEnd.date_start).format()
         } else {
           if(isEdit) {
             return current && current.format() > moment(dateStartEnd.date_end).format();
           }
-          return current && current.format() > moment(dateStartEnd.date_end).add(1,'days').format();
+          //return current && current.format() > moment(dateStartEnd.date_end).add(1,'days').format();
+          return current && current.format() > moment(dateStartEnd.date_end).format();
         }
       }
     }
@@ -74,7 +90,8 @@ const DatePickerForm = ({
           if(isEdit) {
             return current && current.format() > moment(dateStartEnd.date_end).format();
           }
-          return current && current.format() > moment(dateStartEnd.date_end).add(1,'days').format();
+          //return current && current.format() > moment(dateStartEnd.date_end).add(1,'days').format();
+          return current && current.format() > moment(dateStartEnd.date_end).format();
         }
       }
     }
@@ -92,6 +109,13 @@ const DatePickerForm = ({
     
   }
 
+  let _props = {...props}; let _field = {...field};
+  
+  if(isAutoFill)
+    if(_field.value !== "") {
+      _props.value =  _field.value && moment(_field.value,format)
+    }
+
   return (
     <FormItem
         {...layout}
@@ -102,13 +126,13 @@ const DatePickerForm = ({
         help={touched[field.name] && errors[field.name]}
     >
       { type === 'date'  && 
-        <DatePicker
-          {...props} 
-          onChange={(value) => onDateChange(value)}
-          format={format}
-          disabledDate={disabledDateStartEndPhotoSlider || disabledDateStart ? disabledDate : ()=> { return false }  }
-          style={{width: '250px'}}
-        /> 
+          <DatePicker
+            {..._props} 
+            onChange={(value) => onDateChange(value)}
+            format={format}
+            disabledDate={disabledDateStartEndPhotoSlider || disabledDateStart ? disabledDate : ()=> { return false }  }
+            style={{width: '250px'}}
+          /> 
       }
 
       { type === 'range' && 
