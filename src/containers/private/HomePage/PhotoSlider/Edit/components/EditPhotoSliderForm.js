@@ -33,7 +33,8 @@ function EditUserManagementForm(props) {
     handleFileUpload,
     dateStartEnd,
     handleGetDate,
-    history
+    history,
+    handleAutoFillDeatils,
   } = props;
 
   return (
@@ -63,6 +64,7 @@ function EditUserManagementForm(props) {
         optionsList={promotionsOptions}
         handleGetDate={handleGetDate}
         component={Select}
+        handleAutoFillDeatils={handleAutoFillDeatils}
       />
 
       <Field
@@ -117,6 +119,7 @@ function EditUserManagementForm(props) {
         label="Start Appearance Date"
         placeholder="Start Appearance Date"
         component={DatePicker}
+        isAutoFill
       />
 
       <Field
@@ -127,12 +130,13 @@ function EditUserManagementForm(props) {
         disabledDateStart
         disabledDateStartEndPhotoSlider
         disabledDateStartEndPhotoSliderEndDate
-        dateStartEnd={dateStartEnd}
+        dateStartEnd={props.values.promotion_uuid ? dateStartEnd : null }
         defaultValue={ moment(props.values.date_end, 'YYYY-MM-DD') }
         layout={formItemLayout}
         label="End Appearance Date"
         placeholder="End Appearance Date"
         component={DatePicker}
+        isAutoFill
       />
 
       <Field
