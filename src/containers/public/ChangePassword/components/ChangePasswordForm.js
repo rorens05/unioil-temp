@@ -7,7 +7,7 @@ import { InputPassword } from 'components/Forms'
 
 const content = (
   <div style={{fontSize: '10px'}}>
-    <div>- Must be at least ten(10) character long</div>
+    <div>- Must be at least ten(6) character long</div>
     <div>- Must be a combination of alphanumeric character <br/>
       (letters, numbers, punctuation mark)
     </div>
