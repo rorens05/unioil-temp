@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 export const changePasswordSchema = Yup.object().shape({
   newpassword: Yup.string()
     .required('New password is required!')
-    .min(10,'Password must be alteast 10 characters')
+    .min(6,'Password must be alteast 6 characters')
 
     // .matches(
     //   /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$/,
