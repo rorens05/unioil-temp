@@ -27,9 +27,9 @@ class UploadImage extends Component {
         imageUrl,
         loading: false,
       }));
-      this.props.form.setFieldValue("image", 'imageValue');
+      this.props.form.setFieldValue("image", this.state.imageUrl);
       this.props.form.setFieldValue("logo", 'imageValue');
-      
+
       handleFileUpload(info,this.props.form.setFieldValue)
     }
     
@@ -46,7 +46,7 @@ class UploadImage extends Component {
     const reader = new FileReader();
     reader.readAsDataURL(img);
     reader.addEventListener('load', () => callback(reader.result));
-   
+
   }
   
   beforeUpload =(file)=> {
@@ -116,7 +116,7 @@ class UploadImage extends Component {
       </div>
     );
 
-    const imageUrl = this.state.imageUrl;
+    const imageUrl = this.props.imageUrl ? this.props.imageUrl : this.state.imageUrl;
     return (
       <FormItem
         {...layout}

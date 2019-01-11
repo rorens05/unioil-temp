@@ -137,7 +137,12 @@ class EditPhotoSlider extends Component {
             fileUpload.forEach((t, i) => {
               formData.append( `image`, t.originFileObj);
             }); 
-          } 
+          } else {
+            if(values.image) {
+              let imageUrlPath = values.image
+              formData.append(`image`, imageUrlPath);
+            }
+          }
 
           let date_start =  moment(values.date_start).format('YYYY-MM-DD');
           let start_time = moment(values.start_time).format('HH:mm:ss');
@@ -245,7 +250,7 @@ class EditPhotoSlider extends Component {
 
         setFieldValue('title', autofillData.title);
         setFieldValue('description', autofillData.description);
-        //setFieldValue('image', `${autofillData.image}`);
+        setFieldValue('image', `${autofillData.image}`);
         setFieldValue('date_start',  moment(autofillData.date_start, 'YYYY-MM-DDTHH:mm'));
         setFieldValue('date_end',  moment(autofillData.date_end, 'YYYY-MM-DDTHH:mm'));
         setFieldValue('start_time',  moment(autofillData.date_start, 'YYYY-MM-DDTHH:mm').format('HH:mm') );
