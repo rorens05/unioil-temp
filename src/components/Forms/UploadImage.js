@@ -116,7 +116,8 @@ class UploadImage extends Component {
       </div>
     );
 
-    const imageUrl = this.props.imageUrl ? this.props.imageUrl : this.state.imageUrl;
+    let imageUrl = this.props.imageUrl;
+
     return (
       <FormItem
         {...layout}

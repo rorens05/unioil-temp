@@ -194,13 +194,6 @@ class PromotionsEdit extends Component {
           formData.append('is_gps', values.is_gps ? values.is_gps : 0);
           values.promo_type && (formData.append('promo_type', values.promo_type));
           
-          console.log(start_time , 'start_time', values.start_time)
-          console.log(end_time , 'end_time' , values.end_time)
-
-          // log formdata
-          // for (var pair of formData.entries()) {
-          //   console.log(pair[0]+ ', ' + pair[1]); 
-          // }
 
           let response = await API_UNI_OIL.post(`updatePromotion/${userInfo.promotion_uuid}`, formData , headers)
 
