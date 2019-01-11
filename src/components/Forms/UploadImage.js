@@ -29,10 +29,10 @@ class UploadImage extends Component {
       }));
 
       if(this.props.isPromotion) {
+        this.props.form.setFieldValue("image", 'imageValue');
+      } else {
         let imageUrl = this.state.imageUrl ? this.state.imageUrl : this.props.imageUrl;
         this.props.form.setFieldValue("image", imageUrl);
-      } else {
-        this.props.form.setFieldValue("image", 'imageValue');
       }
       
       this.props.form.setFieldValue("logo", 'imageValue');
