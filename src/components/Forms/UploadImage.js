@@ -27,7 +27,10 @@ class UploadImage extends Component {
         imageUrl,
         loading: false,
       }));
-      this.props.form.setFieldValue("image", this.state.imageUrl);
+
+      let imageUrl = this.state.imageUrl ? this.state.imageUrl : this.props.imageUrl;
+      
+      this.props.form.setFieldValue("image", imageUrl);
       this.props.form.setFieldValue("logo", 'imageValue');
 
       handleFileUpload(info,this.props.form.setFieldValue)
