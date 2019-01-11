@@ -38,8 +38,10 @@ class CreateUserManagement extends Component {
     } else { 
       values.status = "active"
     }
-
-
+    if(values.username) {
+      values.username = values.username.toLowerCase()
+    }
+    
     this.props.customAction({
       type: "USERMANAGEMENT_CREATE_REQUEST",
       payload: {

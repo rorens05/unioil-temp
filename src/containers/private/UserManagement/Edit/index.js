@@ -63,6 +63,10 @@ class EditUserManagement extends Component {
     const { userInfo, isGenerated } = this.state;
     let { history } = this.props;
 
+    if(values.username) {
+      values.username = values.username.toLowerCase()
+    }
+    
     const params = {
       ...values,
     }
