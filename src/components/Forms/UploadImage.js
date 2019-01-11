@@ -28,9 +28,13 @@ class UploadImage extends Component {
         loading: false,
       }));
 
-      let imageUrl = this.state.imageUrl ? this.state.imageUrl : this.props.imageUrl;
+      if(this.props.isPromotion) {
+        let imageUrl = this.state.imageUrl ? this.state.imageUrl : this.props.imageUrl;
+        this.props.form.setFieldValue("image", imageUrl);
+      } else {
+        this.props.form.setFieldValue("image", 'imageValue');
+      }
       
-      this.props.form.setFieldValue("image", imageUrl);
       this.props.form.setFieldValue("logo", 'imageValue');
 
       handleFileUpload(info,this.props.form.setFieldValue)
