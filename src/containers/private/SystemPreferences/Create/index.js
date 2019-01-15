@@ -114,6 +114,57 @@ class CreateSystemPreferences extends Component {
     return e && this.setState({fileUpload: e.fileList});
   }
 
+  syncStratuscast = async () => {
+    
+    this.setState({loading: true})
+    try {
+      let stratuscastAboutUs = await API_UNI_OIL.get('stratuscastAboutUs')
+    } catch (error) {
+      notification.error({ 
+        message: 'Error', 
+        description: <div>
+          Something went wrong in Stratuscast About Us.
+        </div>
+      });
+    }
+
+    try {
+      let stratuscastCityProvince = await API_UNI_OIL.get('stratuscastCityProvince')
+    } catch (error) {
+      notification.error({ 
+        message: 'Error', 
+        description: <div>
+          Something went wrong in Stratuscast City Province.
+        </div>
+      });
+    }
+
+    try {
+      let stratuscastProducts = await API_UNI_OIL.get('stratuscastProducts')
+    } catch (error) {
+      notification.error({ 
+        message: 'Error', 
+        description: <div>
+          Something went wrong in Stratuscast Products.
+        </div>
+      });
+    }
+
+    try {
+      let stratuscastStation = await API_UNI_OIL.get('stratuscastStation')
+    } catch (error) {
+      notification.error({ 
+        message: 'Error', 
+        description: <div>
+          Something went wrong in Stratuscast Station.
+        </div>
+      });
+    }
+
+    message.success('Successfully Sync Data.');
+    this.setState({loading: false})
+  }
+
   render() {
 
     
@@ -150,6 +201,7 @@ class CreateSystemPreferences extends Component {
                   {...props}
                   loading={loading}
                   handleFileUpload={this.handleFileUpload}
+                  syncStratuscast={this.syncStratuscast}
                 />
               }
           />

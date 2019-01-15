@@ -1,6 +1,6 @@
 // LIBRARIES
 import React from 'react';
-import { Row, Button, Col } from 'antd';
+import { Row, Button, Popover } from 'antd';
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
@@ -10,6 +10,18 @@ import { Input, UploadImage, InputNumberAntD,
         InputMaskNumber } from 'components/Forms';
 
 // HELPER FUNCTIONS
+
+
+const content = (
+  <div>
+    <div>Select this button to sync the below data from the 
+      Unioil Website to the Unioil Mobile App system.</div>
+    <div>- City and Province</div>
+    <div>- Products</div>
+    <div>- Stations</div>
+    <div>- About Us</div>
+  </div>
+);
 
 const formItemLayout = {
   labelCol: {
@@ -28,7 +40,8 @@ function CreateSystemPreferencesForm(props) {
     loading,
     handleSubmit,
     handleFileUpload,
-    onRemoveImage
+    onRemoveImage,
+    syncStratuscast
   } = props;
 
   return (
@@ -116,7 +129,19 @@ function CreateSystemPreferencesForm(props) {
         placeholder="Contact Number"
         component={Input}
       />
-      
+      <div style={styles.borderDivision}></div>
+      <h2 style={{margin: '25px 35px'}}>Update Details</h2>
+
+      <Popover placement="topRight" content={content} title="Info">
+        <Button  
+          loading={loading} 
+          onClick={syncStratuscast}
+          style={{ width: '250px', margin:'0 35px 30px'}}
+          type="primary" 
+        >
+          { loading ? "Syncing Data Please wait..." : "Sync Data"  } 
+        </Button>
+      </Popover>
     </Form>
   );
 };
