@@ -52,9 +52,14 @@ class Dashboard extends Component {
     return (
 
     <div style={{position: 'relative'}}>
-        <MainContent pageRoutes={userInfo.data.userInfo.role == 1 ? pageRoutes : []}>
+        <MainContent pageRoutes={
+            ( userInfo.data.userInfo.role == 1 
+              //|| userInfo.data.userInfo.role == 3
+            ) ? pageRoutes : []}>
           {
-            userInfo.data.userInfo.role == 1 
+            ( userInfo.data.userInfo.role == 1 
+              //|| userInfo.data.userInfo.role == 3
+            )
             ? 
             <Switch>
                 <Route exact path = "/user-management" component = { DashboardList } />

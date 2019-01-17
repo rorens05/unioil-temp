@@ -29,6 +29,7 @@ function MainSidebar(props) {
       path: "/user-management",
       icon: "team",
       access: userInfo && userInfo.role == 1 ? true : false,
+      //access: userInfo && (userInfo.role == 1 || userInfo.role == 3) ? true : false,
     },
     {
       key: 4 ,
