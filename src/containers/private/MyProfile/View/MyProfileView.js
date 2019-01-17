@@ -45,7 +45,13 @@ export default class MyProfileView extends Component {
             <div style={{margin: '12px 0 50px'}}>
               <h2 style={{fontWeight: 'bold', fontSize: '20px'}}>Access Role</h2>
               <Row>
-                <Col span={18} push={3}>{userInfo && userInfo.role == "1" ? "System Admin": userInfo && "Marketing Personnel" }</Col>
+                <Col span={18} push={3}>
+                  { 
+                    userInfo && (userInfo.role == "1" || userInfo.role == "3")
+                      ? (userInfo.role == "3" ? "Super Admin" :  "System Admin") 
+                      : userInfo && "Marketing Personnel" 
+                  }
+                </Col>
                 <Col span={3} pull={18}><span style={{fontWeight: '600'}}>Role:</span></Col>
               </Row>
             </div>
