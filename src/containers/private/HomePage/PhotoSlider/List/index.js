@@ -1,6 +1,6 @@
 // LIBRARIES
 import React, { Component } from 'react';
-import { notification } from 'antd';
+import { notification, Menu , Dropdown, Icon } from 'antd';
 import { connect } from "react-redux";
 import moment from 'moment'
 
@@ -76,6 +76,11 @@ class PhotoSliderList extends Component {
     }
   }
 
+  // updateDropDown = async(e) => {
+  //   let params = e.item.props.record;
+  //   //console.log(e.item.props.eventKey,' eventKey')
+  // }
+
   render() {
 
     if(!this.state.mounted) return null;
@@ -142,6 +147,42 @@ class PhotoSliderList extends Component {
                       return moment(date_end).format("DD-MMM-YYYY")
                   },
                 },
+                // {
+                //   title: 'Slider Arrangement',
+                //   dataIndex: 'status',
+                //   key: 'status',
+                //   sorter: true,
+                //   width: "17%",
+                //   render: (text, record) => {
+                //     const menu = (
+                //       <Menu>
+                //         <Menu.Item key="1" 
+                //           onClick={this.updateDropDown} 
+                //           record={record}>1 - First</Menu.Item>
+                //         <Menu.Item key="2" 
+                //           //onClick={this.updateDropDown} 
+                //           record={record}>2 - Second</Menu.Item>
+                //         <Menu.Item key="3" 
+                //           //onClick={this.updateDropDown} 
+                //           record={record}>3 - Third</Menu.Item>
+                //         <Menu.Item key="4" 
+                //           //onClick={this.updateDropDown} 
+                //           record={record}>4 - Fourth</Menu.Item>
+                //         <Menu.Item key="5" 
+                //           //onClick={this.updateDropDown} 
+                //           record={record}>5 - Fifth</Menu.Item>
+                //       </Menu>
+                //     );
+                //     return(
+                //       <Dropdown overlay={menu} trigger={['click']}>
+                //         <a className="ant-dropdown-link" href="#">
+                //           Choose Number<Icon type="caret-down" theme="outlined"
+                //           style={{ position: "relative", top: -4, fontSize: 7 }} />
+                //         </a>
+                //       </Dropdown>
+                //     )
+                //   },
+                // },
                 {
                   title: 'Action',
                   dataIndex: 'action',
