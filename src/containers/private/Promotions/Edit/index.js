@@ -24,7 +24,8 @@ class PromotionsEdit extends Component {
     branchDefaultValue: null,
     branchesOptions: null,
     promoTypeOptions: null,
-    responsePromotionTopUp: null
+    responsePromotionTopUp: null,
+    branchesOptionsTwo: [],
   }
 
   async componentDidMount() {
@@ -96,7 +97,8 @@ class PromotionsEdit extends Component {
     // options
     try {
 
-      let branchesOptions = []; let promoTypeOptions = []
+      let branchesOptions = []; let promoTypeOptions = [], branchesOptionsTwo = [];
+      
       let stationList = await API_GET('getStations');
       let promoTypesList = await API_GET('promoTypes');
 
@@ -106,6 +108,7 @@ class PromotionsEdit extends Component {
             label: item.description,
             value: item.station_uuid,
           })
+          branchesOptionsTwo.push(item.description)
         })
       }
 
@@ -123,6 +126,7 @@ class PromotionsEdit extends Component {
       this.setState({
         promoTypeOptions: promoTypeOptions,
         branchesOptions: branchesOptions,
+        branchesOptionsTwo: branchesOptionsTwo,
         mounted: true
       })
 
@@ -237,7 +241,7 @@ class PromotionsEdit extends Component {
 
     const { loading, userInfo, branchesOptions, promoTypeOptions, branchDefaultValue,
             branchDefaultKeyValue , promoTypeDefaultValue, promoTypeDefaultKeyValue, 
-            responsePromotionTopUp } = this.state
+            responsePromotionTopUp , branchesOptionsTwo} = this.state
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
@@ -282,6 +286,7 @@ class PromotionsEdit extends Component {
                   promoTypeDefaultValue={promoTypeDefaultValue}
                   responsePromotionTopUp={responsePromotionTopUp}
                   handleFileUpload={this.handleFileUpload}
+                  branchesOptionsTwo={branchesOptionsTwo}
                 />
               }
           />

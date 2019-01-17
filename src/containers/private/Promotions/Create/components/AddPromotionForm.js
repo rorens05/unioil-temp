@@ -34,6 +34,7 @@ function AddPromotionForm(props) {
     promoTypeOptions,
     handleFileUpload,
     responsePromotionTopUp,
+    branchesOptionsTwo,
     history
   } = props;
 
@@ -100,6 +101,7 @@ function AddPromotionForm(props) {
         placeholder="Select Branches"
         mode="multiple"
         optionsList={branchesOptions}
+        branchesOptionsTwo={branchesOptionsTwo}
         component={Select}
       />
 

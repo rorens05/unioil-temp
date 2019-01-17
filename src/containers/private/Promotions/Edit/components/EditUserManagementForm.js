@@ -35,6 +35,7 @@ function EditUserManagementForm(props) {
     branchDefaultValue ,
     promoTypeDefaultValue,
     responsePromotionTopUp,
+    branchesOptionsTwo,
     history
   } = props;
 
@@ -103,6 +104,7 @@ function EditUserManagementForm(props) {
         placeholder="Select Branches"
         mode="multiple"
         optionsList={branchesOptions}
+        branchesOptionsTwo={branchesOptionsTwo}
         component={Select}
       />
 

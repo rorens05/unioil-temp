@@ -45,6 +45,7 @@ class SelectForm extends Component {
       optionFilterProp,
       mode,
       optionsList,
+      branchesOptionsTwo,
       ...props
     } = this.props;
     
@@ -68,6 +69,14 @@ class SelectForm extends Component {
           children={children}
           >
           {
+            branchesOptionsTwo
+            ? 
+              branchesOptionsTwo.map(item => (
+                <Select.Option key={item} value={item}>
+                  {item}
+                </Select.Option>
+              ))
+            :
               optionsList && (optionsList.map((item,i) => {
                 return <Option value={item.value} key={`${i}-${field.name}`}>{item.label}</Option>
               }))

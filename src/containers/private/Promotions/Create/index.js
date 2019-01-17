@@ -19,6 +19,7 @@ class PromotionsCreate extends Component {
   state = {
     loading: false,
     branchesOptions: null,
+    branchesOptionsTwo: [],
     promoTypeOptions: null,
     mounted: false,
     responsePromotionTopUp: null
@@ -35,17 +36,19 @@ class PromotionsCreate extends Component {
 
       if(stationList) {
 
-        let branchesOptions = []
+        let branchesOptions = [] ,branchesOptionsTwo = [];
 
         await stationList.data.data.map(item => {
           branchesOptions.push({
             label: item.description,
             value: item.station_uuid
           })
+          branchesOptionsTwo.push(item.description)
         })
 
         this.setState({
           branchesOptions: branchesOptions,
+          branchesOptionsTwo: branchesOptionsTwo,
           mounted: true,
           responsePromotionTopUp : responsePromotionTopUp.data && responsePromotionTopUp.data.data.is_toppromotion
         })
@@ -85,9 +88,29 @@ class PromotionsCreate extends Component {
 
   handleSubmit = async (values, actions) => {
     
-    const { fileUpload } = this.state;
+    const { fileUpload, branchesOptions } = this.state;
     const { history } = this.props;
     const { setErrors } = actions;
+
+    if(branchesOptions && branchesOptions.length > 0)
+    {
+
+      if(values.station_uuid && values.station_uuid.length > 0) {
+
+        let newValue = [];
+
+        branchesOptions.map(branchesOptions => {
+          values.station_uuid.map(station_uuid=> {
+            if(branchesOptions.label == station_uuid) {
+              newValue.push(branchesOptions.value);
+            }
+          }) 
+        })
+
+        values.station_uuid = newValue
+
+      }
+    }
 
     this.setState({loading: true})
     try {
@@ -174,7 +197,7 @@ class PromotionsCreate extends Component {
 
     if(!this.state.mounted) return null;
 
-    const { branchesOptions, promoTypeOptions, responsePromotionTopUp, loading } = this.state
+    const { branchesOptions, branchesOptionsTwo,  promoTypeOptions, responsePromotionTopUp, loading } = this.state
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
@@ -213,6 +236,7 @@ class PromotionsCreate extends Component {
                   loading={loading}
                   history={this.props.history}
                   branchesOptions={branchesOptions}
+                  branchesOptionsTwo={branchesOptionsTwo}
                   promoTypeOptions={promoTypeOptions}
                   responsePromotionTopUp={responsePromotionTopUp}
                   handleFileUpload={this.handleFileUpload}
