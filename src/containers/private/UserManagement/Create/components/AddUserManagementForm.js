@@ -116,7 +116,11 @@ function AddUserManagementForm(props) {
           {
             label: "Marketing Personnel",
             value: 2,
-          }
+          },
+          // {
+          //   label: "Super Admin",
+          //   value: 3,
+          // }
         ]}
         label="User Role"
         component={Radio}
