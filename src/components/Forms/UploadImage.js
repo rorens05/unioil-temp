@@ -28,7 +28,7 @@ class UploadImage extends Component {
         loading: false,
       }));
 
-      if(this.props.isPromotion) {
+      if(this.props.isDefault) {
         this.props.form.setFieldValue("image", 'imageValue');
       } else {
         let imageUrl = this.state.imageUrl ? this.state.imageUrl : this.props.imageUrl;
@@ -123,7 +123,13 @@ class UploadImage extends Component {
       </div>
     );
 
-    let imageUrl = this.state.imageUrl ? this.state.imageUrl : this.props.imageUrl;
+    let imageUrl;
+    
+    if(this.props.isDefault) {
+      imageUrl = this.state.imageUrl
+    } else {
+      imageUrl = this.props.imageUrl
+    }
 
     return (
       <FormItem

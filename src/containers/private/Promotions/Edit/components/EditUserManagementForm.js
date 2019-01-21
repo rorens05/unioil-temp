@@ -91,7 +91,7 @@ function EditUserManagementForm(props) {
         imgWidth="294px"
         imgStyle={{width:"100%", height:"170"}}
         handleFileUpload={handleFileUpload}
-        isPromotion
+        isDefault
       />
 
       <Field

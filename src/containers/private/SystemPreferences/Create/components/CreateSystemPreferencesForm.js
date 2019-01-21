@@ -82,6 +82,7 @@ function CreateSystemPreferencesForm(props) {
         handleFileUpload={handleFileUpload}
         imgWidth="294px"
         beforeUpload={()=> { return false}}
+        isDefault
       />
       <div style={styles.borderDivision}></div>
       <h2 style={{margin: '25px 35px'}}>GPS Radius</h2>
