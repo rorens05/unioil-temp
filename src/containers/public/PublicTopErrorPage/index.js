@@ -26,7 +26,7 @@ class PublicTopErrorPage extends Component {
 
     return (
       <div align="center" id="1" style={{position: 'absolute', top: '50%', 
-          left: 0, right: 0, transform: 'translateY(-50%)', height: '100%'}}>
+          left: isIOS ? '30px' : 0, right: 0, transform: 'translateY(-50%)', height: '100%'}}>
            
 
           <div style={{marginTop: '16vmin'}}>
@@ -36,7 +36,7 @@ class PublicTopErrorPage extends Component {
               Transaction Failed.<br/>
               Your purchase for top-up is not <br/>successful. Please try again.
             </p>
-            <div style={{position: 'fixed', bottom: 0,width: '100%'}}>
+            <div style={{position: 'fixed', bottom: 0,width: '100%' , marginBottom: '3vmin'}}>
               <Button 
                 onClick={this.backHandler} 
                 type="primary" id="backError" size="large" 

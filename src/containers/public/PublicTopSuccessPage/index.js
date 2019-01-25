@@ -75,14 +75,14 @@ class PublicTopSuccessPage extends Component {
 
     return (
       <div align="center" id="1" style={{position: 'absolute', top: '50%', 
-          left: 0, right: 0, transform: loading ? 'initial' :'translateY(-50%)' , height: '100%'}}>
+          left: isIOS ? '30px' : 0, right: 0, transform: loading ? 'initial' :'translateY(-50%)' , height: '100%'}}>
           {
             loading 
               ? <div style={{fontSize: '6vmin'}}>
                   <Icon type="sync" spin /> Loading Top-Up Please wait...
               </div>
               :
-              <div style={{marginTop: '16vmin'}}>
+              <div style={{marginTop: '11vmin'}}>
                 {
                   status == 200 
                     ? 
@@ -103,7 +103,7 @@ class PublicTopSuccessPage extends Component {
                           <Col span={24}>{userInfo && `Card Number ${userInfo.card_number}`}</Col>
                           <Col span={24}>{userInfo && `Sales Invoice Number ${userInfo.invoice}`}</Col>
                         </Row>
-                        <div style={{marginTop: '5vmin'}}>
+                        <div style={{marginTop: '5vmin' , fontSize: '3.5vmin'}}>
                           <Row type="flex" justify="space-around">
                             <Col span={8} style={{textAlign: 'left'}}>Top-up Points Value</Col>
                             <Col span={8} style={{textAlign: 'right'}}>{userInfo && ` ${userInfo.points}`}</Col>
@@ -118,7 +118,7 @@ class PublicTopSuccessPage extends Component {
                           </Row>
                         </div>
                       </div>
-                      <div style={{position: 'fixed', bottom: 0,width: '100%'}}>
+                      <div style={{position: 'fixed', bottom: 0,width: '100%', marginBottom: '3vmin'}}>
                         <Button 
                           onClick={this.backHandlerSuccess}
                           type="primary" id="backSuccess" size="large" 
