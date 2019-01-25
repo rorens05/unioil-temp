@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== "production") {
 
 ReactDOM.render(
   <Provider store={store}>
-      <div style={{height: '100%'}}>
+      <div style={{height: '100%'}} className="appContainer">
         <Helmet titleTemplate="Unioil - %s" />
         <BrowserRouter hitstory={history}>
             <App />
