@@ -1,6 +1,6 @@
 // LIBRARIES
 import React from 'react';
-import { Row, Button, Popover } from 'antd';
+import { Button } from 'antd';
 import { Form, Field } from 'formik';
 import { connect } from 'react-redux';
 
@@ -133,16 +133,16 @@ function CreateSystemPreferencesForm(props) {
       <div style={styles.borderDivision}></div>
       <h2 style={{margin: '25px 35px'}}>Update Details</h2>
 
-      <Popover placement="topRight" content={content} title="Info">
-        <Button  
-          loading={loading} 
-          onClick={syncStratuscast}
-          style={{ width: '250px', margin:'0 35px 30px'}}
-          type="primary" 
-        >
-          { loading ? "Syncing Data Please wait..." : "Sync Data"  } 
-        </Button>
-      </Popover>
+     
+      <Button  
+        loading={loading} 
+        onClick={syncStratuscast}
+        style={{ width: '250px', margin:'0 35px 30px'}}
+        type="primary" 
+      >
+        { loading ? "Syncing Data Please wait..." : "Sync Data"  } 
+      </Button>
+     
     </Form>
   );
 };
