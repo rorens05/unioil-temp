@@ -120,12 +120,12 @@ class CreateSystemPreferences extends Component {
     try {
       let stratuscastAboutUs = await API_UNI_OIL.get('stratuscastAboutUs')
     } catch (error) {
-      notification.error({ 
-        message: 'Error', 
-        description: <div>
-          Something went wrong in Stratuscast About Us.
-        </div>
-      });
+      // notification.error({ 
+      //   message: 'Error', 
+      //   description: <div>
+      //     Something went wrong in Stratuscast About Us.
+      //   </div>
+      // });
     }
 
     try {
