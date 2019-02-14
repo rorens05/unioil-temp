@@ -180,7 +180,7 @@ class Login extends Component {
             <h4>Forgot {forgotUsername ? 'Username' : 'Password'}</h4>
             <p>
               To have your {forgotUsername ? 'username' : 'password reset'}, please contact <br/>
-              UniOil's admin at <a href={`mailto:${userEmail && userEmail}`} style={{color: '#005598'}}>{userEmail && userEmail}</a>
+              Unioil's admin at <a href={`mailto:${userEmail && userEmail}`} style={{color: '#005598'}}>{userEmail && userEmail}</a>
             </p>
             <div style={{display: 'flex', justifyContent: 'flex-end'}}>
               <Button 
