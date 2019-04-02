@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 // COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
-import { Input, Radio, UploadImage, InputTextArea } from 'components/Forms';
+import { Input, Checkbox, UploadImage, InputTextArea } from 'components/Forms';
 
 // HELPER FUNCTIONS
 
@@ -30,7 +30,7 @@ function AddCardForm(props) {
     handleFileUpload,
     history
   } = props;
-
+  
   return (
     <Form noValidate>
       <HeaderForm 
@@ -112,6 +112,27 @@ function AddCardForm(props) {
         rows={10}
         component={InputTextArea}
       />
+      <Field
+        name="id_number"
+        type="check"
+        icon=""
+        layout={formItemLayout}
+        label="ID Number Required?"
+        placeholder="Is ID Number Required?"
+        rows={10}
+        component={Checkbox}
+      />
+      <Field
+        name="id_number_description"
+        type="text"
+        icon=""
+        layout={formItemLayout}
+        label="Required ID Type Description"
+        placeholder="Required ID Type Description"
+        rows={10}
+        component={InputTextArea}
+      />
+
 
       
     </Form>

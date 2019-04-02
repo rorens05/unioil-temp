@@ -7,6 +7,8 @@ const CheckboxForm = ({
   form: { touched, errors, handleChange, setFieldValue, ...form },
   label,
   inline,
+  layout,
+  required,
   ...props,
 }) => {
 
@@ -26,13 +28,17 @@ const CheckboxForm = ({
   } else {
     return (
       <FormItem
+        {...layout}
+        required={required}
+        style={{marginBottom: '10px'}}
         validateStatus={touched[name] && errors[name] && 'error'}
         help={touched[name] && errors[name]}
       >
         <Checkbox
-        {...props}
-        {...field}
-        name={name}
+          {...props}
+          {...field}
+          style={{marginLeft: '50%'}}
+          name={name}
           type="checkbox"
           checked={field.value}
           onChange={this.handleChange = (value) => { setFieldValue(name, !field.value) }}

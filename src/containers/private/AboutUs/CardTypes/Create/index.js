@@ -46,11 +46,18 @@ class CardTypeCreate extends Component {
             }); 
           } 
           
+          if(values.id_number) {
+            values.id_number = 1;
+          } else {
+            values.id_number = 0;
+          }
           values.code && (formData.append('code', values.code));
           values.type && (formData.append('type', values.type));
           values.description && (formData.append('description', values.description));
           values.terms_and_conditions && (formData.append('terms_and_conditions', values.terms_and_conditions));
           values.faqs && (formData.append('faqs', values.faqs));
+          values.id_number && (formData.append('id_number', values.id_number));
+          values.id_number_description && (formData.append('id_number_description', values.id_number_description));
           
           let response = await API_UNI_OIL.post('cardType', formData , headers)
 
@@ -113,7 +120,9 @@ class CardTypeCreate extends Component {
                 description: '',
                 image: '',
                 terms_and_conditions: '',
-                faqs: ''
+                faqs: '',
+                id_number: '',
+                id_number_description: ''
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
