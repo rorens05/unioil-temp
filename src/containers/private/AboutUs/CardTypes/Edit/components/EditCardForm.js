@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 // COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
-import { Input, InputTextArea, UploadImage } from 'components/Forms';
+import { Input, Checkbox, InputTextArea, UploadImage } from 'components/Forms';
 
 // HELPER FUNCTIONS
 
@@ -90,6 +90,26 @@ function EditCardForm(props) {
         imgWidth="294px"
         handleFileUpload={handleFileUpload}
       />
+      <Field
+        name="id_number"
+        type="check"
+        icon=""
+        layout={formItemLayout}
+        label="ID Number Required?"
+        placeholder="Is ID Number Required?"
+        rows={10}
+        component={Checkbox}
+      />
+      <Field
+        name="id_number_description"
+        type="text"
+        icon=""
+        layout={formItemLayout}
+        label="Required ID Type Description"
+        placeholder="Required ID Type Description"
+        rows={4}
+        component={InputTextArea}
+      />
 
       <h4 style={{marginLeft: '109px'}}>DATA PRIVACY</h4>
       <Field
@@ -112,7 +132,6 @@ function EditCardForm(props) {
         rows={10}
         component={InputTextArea}
       />
-
     </Form>
   );
 };

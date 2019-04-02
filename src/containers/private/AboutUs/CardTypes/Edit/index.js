@@ -68,13 +68,18 @@ class CardTypeEdit extends Component {
             }); 
           } 
           
-          
+          if(values.id_number) {
+            values.id_number = 1;
+          } else {
+            values.id_number = 0;
+          }
           values.code && (formData.append('code', values.code));
           values.type && (formData.append('type', values.type));
           values.description && (formData.append('description', values.description));
           values.terms_and_conditions && (formData.append('terms_and_conditions', values.terms_and_conditions));
           values.faqs && (formData.append('faqs', values.faqs));
-          
+          values.id_number && (formData.append('id_number', values.id_number));
+          values.id_number_description && (formData.append('id_number_description', values.id_number_description));
 
           let response = await API_UNI_OIL.post(`cardTypeUpdate/${userInfo.cardtype_uuid}`, formData , headers)
 
@@ -121,16 +126,6 @@ class CardTypeEdit extends Component {
 
     return (
       <div style={{ border:'1px solid #E6ECF5' , paddingBottom: '10px'}}>
-        {/* <HeaderForm 
-          loading={loading}
-          title="Update Card Type"
-          action={this.handleEditCardTypes}
-          actionBtnName="Submit"
-          withConfirm={{message: "Save changes to this record?"}}
-          withCancelConfirm={{ message: 'Are you sure you want to discard changes?'}}
-          cancel={()=> { this.props.history.push("/about-us/card-types")}}
-          cancelBtnName="Cancel"
-        /> */}
         <div>
           <h2 style={{margin: '25px 35px'}}>Card Types Details</h2>
           <Formik
@@ -141,6 +136,8 @@ class CardTypeEdit extends Component {
                 image: userInfo.image || '',
                 terms_and_conditions: userInfo.terms_and_conditions || '',
                 faqs: userInfo.faqs || '',
+                id_number: userInfo.id_number || '',
+                id_number_description: userInfo.id_number_description || ''
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}

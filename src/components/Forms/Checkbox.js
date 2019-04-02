@@ -30,14 +30,14 @@ const CheckboxForm = ({
       <FormItem
         {...layout}
         required={required}
-        style={{marginBottom: '10px'}}
+        style={{marginBottom: '10px',marginLeft: '20.9%'}}
         validateStatus={touched[name] && errors[name] && 'error'}
         help={touched[name] && errors[name]}
       >
         <Checkbox
           {...props}
           {...field}
-          style={{marginLeft: '50%'}}
+         
           name={name}
           type="checkbox"
           checked={field.value}

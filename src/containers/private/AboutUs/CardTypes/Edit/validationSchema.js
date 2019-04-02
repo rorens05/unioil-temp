@@ -24,7 +24,13 @@ export const userDetailsSchema = Yup.object().shape({
   faqs: Yup.string()
     .trim()
 		.max(32000, "Maximum character is 32,000.")
-    .required('FAQs is required!')
+    .required('FAQs is required!'),
+  id_number: Yup.boolean()
+      .required('ID Number is required!'),
+  id_number_description: Yup.string()
+		  .trim()
+			.max(32000, "Maximum character is 32,000.")
+      .required('ID Type Description is required!')
 })
 
 
