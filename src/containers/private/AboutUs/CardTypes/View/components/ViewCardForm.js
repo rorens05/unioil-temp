@@ -22,19 +22,19 @@ function ViewCardForm(props) {
               {/*Account Details */}
               <h2 style={{fontWeight: 'bold', fontSize: '16px'}}>CARD DETAILS</h2>
               <Row>
-                <Col span={18} push={4}>{userInfo && userInfo.code}</Col>
-                <Col span={4} pull={18}><span style={{fontWeight: '600'}}>Card Code:</span></Col>
+                <Col span={18} push={5}>{userInfo && userInfo.code}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Card Code:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={4}>{userInfo && userInfo.name}</Col>
-                <Col span={4} pull={18}><span style={{fontWeight: '600'}}>Card Type:</span></Col>
+                <Col span={18} push={5}>{userInfo && userInfo.name}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Card Type:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={4}>{userInfo && userInfo.description}</Col>
-                <Col span={4} pull={18}><span style={{fontWeight: '600'}}>Short Description:</span></Col>
+                <Col span={18} push={5}>{userInfo && userInfo.description}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Short Description:</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={4}>
+                <Col span={18} push={5}>
                     <img 
                       src={userInfo && userInfo.image && `${userInfo.image}`} 
                       alt="avatar"
@@ -42,19 +42,27 @@ function ViewCardForm(props) {
                       style={{maxHeight: '250px'}}
                     />
                 </Col>
-                <Col span={4} pull={18}><span style={{fontWeight: '600'}}>Image:</span></Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Image:</span></Col>
+              </Row>
+              <Row>
+                <Col span={18} push={5}>{userInfo && userInfo.id_number && userInfo.id_number ? "Yes": "No"}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>ID Number Required:</span></Col>
+              </Row>
+              <Row>
+                <Col span={18} push={5}>{userInfo && userInfo.id_number_description}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Required ID Type Description:</span></Col>
               </Row>
             </div>
              {/*Account Details */}
             <div style={{margin: '12px 0'}}>
               <h2 style={{fontWeight: 'bold', fontSize: '16px'}}>DATA PRIVACY DETAILS</h2>
               <Row>
-                <Col span={18} push={4}>{userInfo && userInfo.terms_and_conditions}</Col>
-                <Col span={4} pull={18}><span style={{fontWeight: '600'}}>{`Terms & Conditions:`}</span></Col>
+                <Col span={18} push={5}>{userInfo && userInfo.terms_and_conditions}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>{`Terms & Conditions:`}</span></Col>
               </Row>
               <Row>
-                <Col span={18} push={4}>{userInfo && userInfo.faqs}</Col>
-                <Col span={4} pull={18}><span style={{fontWeight: '600'}}>FAQs:</span></Col>
+                <Col span={18} push={5}>{userInfo && userInfo.faqs}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>FAQs:</span></Col>
               </Row>
             </div>
         </div>
