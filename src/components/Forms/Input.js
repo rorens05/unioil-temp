@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Icon, Input, Row, Col, Button } from 'antd';
+import { Form, Icon, Input, Row, Col, Button, message } from 'antd';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
 const FormItem = Form.Item;
@@ -27,11 +27,30 @@ const InputForm = ({
     {
       !withActionBtn 
       ?
-      <Input
-        {...props}
-        {...field}
-        prefix={icon && <Icon type={icon} style={{ color: 'rgba(0,0,0,.25)' }} />} 
-      /> 
+      <div style={{display: 'flex'}}>
+        <Input
+          {...props}
+          {...field}
+          prefix={icon && <Icon type={icon} style={{ color: 'rgba(0,0,0,.25)' }} />} 
+        />
+        {
+          field.name == "username" && (
+            <CopyToClipboard text={field.value}>
+              <Button 
+                  loading={loading}
+                  disabled={
+                    field.value.length > 0 ? false : true
+                  }
+                  style={{ opacity: field.value.length > 0 ? 'initial' : 0.8,
+                    margin: '0 0 0 10px',background:  '#E74610', borderColor:'#E74610', color: '#fff'
+                  }} 
+                  onClick={()=> message.success('Username successfully copied.')}>
+                  Copy Username
+              </Button> 
+            </CopyToClipboard>
+          )
+        }
+      </div> 
       : 
       <Row gutter={8}>
         <Col span={9}>
