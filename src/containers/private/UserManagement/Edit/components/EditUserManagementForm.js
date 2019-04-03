@@ -46,6 +46,7 @@ function EditUserManagementForm(props) {
         cancelBtnName="Cancel"
       />
       <Field
+        isCopyUsername
         name="username"
         type="text"
         icon="user"

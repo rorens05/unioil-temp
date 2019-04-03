@@ -13,6 +13,7 @@ const InputForm = ({
   withActionBtn,
   action,
   loading,
+  isCopyUsername,
   ...props
 }) => {
   return (
@@ -34,7 +35,7 @@ const InputForm = ({
           prefix={icon && <Icon type={icon} style={{ color: 'rgba(0,0,0,.25)' }} />} 
         />
         {
-          field.name == "username" && (
+          isCopyUsername && (
             <CopyToClipboard text={field.value}>
               <Button 
                   loading={loading}
