@@ -43,7 +43,7 @@ const InputForm = ({
                     field.value.length > 0 ? false : true
                   }
                   style={{ 
-                    padding: '0 25px',
+                    padding: '0 30px',
                     opacity: field.value.length > 0 ? 'initial' : 0.8,
                     margin: '0 0 0 10px',background:  '#E74610', borderColor:'#E74610', color: '#fff'
                   }} 
@@ -56,7 +56,7 @@ const InputForm = ({
       </div> 
       : 
       <Row gutter={8}>
-        <Col span={9}>
+        <Col span={13}>
           <Input
             {...props}
             {...field}
@@ -64,7 +64,7 @@ const InputForm = ({
             prefix={icon && <Icon type={icon} style={{ color: 'rgba(0,0,0,.25)' }} />} 
           /> 
         </Col>
-        <Col span={15}>
+        <Col span={11}>
           <Button 
             loading={loading}
             disabled={withActionBtn.disabled}
@@ -75,11 +75,11 @@ const InputForm = ({
               loading={loading}
               disabled={withActionBtn.copyAction ? false : true}
               style={{
-                padding: '0 25px',
+                padding: '0 30px',
                 opacity: withActionBtn.copyAction ? 'initial' : 0.8  , background:  '#E74610', borderColor:'#E74610', color: '#fff', marginLeft: '5px'}} 
              // onClick={withActionBtn.copyAction ? withActionBtn.copyAction : ()=> {return null} }
             >
-                Copy
+              Copy
             </Button>
           </CopyToClipboard>
         </Col>
