@@ -28,18 +28,16 @@ const InputTextArea = ({
       help={touched[field.name] && errors[field.name]}
     >
     
-    <div>
       <TextArea 
-          {...props}
-          {...field}
-          onKeyPress={(e)=> { if(onCountText) onCountText(e) }}
-          prefix={icon && <Icon type={icon} style={{ color: 'rgba(0,0,0,.25)' }} />} 
+        {...props}
+        {...field}
+        prefix={icon && <Icon type={icon} style={{ color: 'rgba(0,0,0,.25)' }} />} 
       />
-      {onCountText && <div style={{display: 'flex',flexDirection: 'row-reverse'}}>
-          <div>{pagecount ? pagecount : 0}/{charsperpage && charsperpage}</div>
-      </div>} 
-    </div>
-      
+      {onCountText && <div style={{position: 'relative'}}>
+          <div style={{position: 'absolute',right: '0%', top: '-18px'}}>
+          {field.value.length}/{charsperpage && charsperpage}</div>
+      </div>
+      } 
     </FormItem>
   );
 };
