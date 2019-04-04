@@ -66,6 +66,9 @@ function EditCardForm(props) {
       />
 
       <Field
+        onCountText
+        charsperpage={140}
+        style={{marginBottom: '10px'}}
         name="description"
         type="text"
         icon=""

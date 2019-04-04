@@ -65,16 +65,19 @@ function AddCardForm(props) {
         component={Input}
       />
 
-      <Field
-        name="description"
-        type="text"
-        icon=""
-        layout={formItemLayout}
-        label="Card Type Short Description"
-        placeholder="Short Description"
-        rows={4}
-        component={InputTextArea}
-      />
+        <Field
+          onCountText
+          charsperpage={140}
+          style={{marginBottom: '10px'}}
+          name="description"
+          type="text"
+          icon=""
+          layout={formItemLayout}
+          label="Card Type Short Description"
+          placeholder="Short Description"
+          rows={4}
+          component={InputTextArea}
+        />
 
       <Field
         limit100kb

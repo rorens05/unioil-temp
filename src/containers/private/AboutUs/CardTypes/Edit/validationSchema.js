@@ -13,7 +13,7 @@ export const userDetailsSchema = Yup.object().shape({
     .required('Card Type Description is required!'),
   description: Yup.string()
     .trim()
-    .max(32000, "Maximum character is 32,000.")
+    .max(140, "Maximum character is 140.")
     .required('Card Type Short Description is required!'),
   image: Yup.string()
     .required('Upload Card Type Image is required!'),
