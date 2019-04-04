@@ -51,7 +51,7 @@ class CardTypeEdit extends Component {
 
   handleSubmit = async (values, actions) => {
     
-    const { fileUpload, userInfo } = this.state;
+    const { fileUpload, userInfo, fileUploadBackground } = this.state;
     const { history } = this.props;
     const { setErrors } = actions;
 
@@ -67,8 +67,13 @@ class CardTypeEdit extends Component {
               formData.append( `image`, t.originFileObj);
             }); 
           } 
+          if(fileUploadBackground) {
+            fileUploadBackground.forEach((t, i) => {
+              formData.append( `bg_image`, t.originFileObj);
+            }); 
+          } 
           
-          if(values.id_number) {
+          if(values.id_number == 1) {
             values.id_number = 1;
           } else {
             values.id_number = 0;
@@ -78,7 +83,7 @@ class CardTypeEdit extends Component {
           values.description && (formData.append('description', values.description));
           values.terms_and_conditions && (formData.append('terms_and_conditions', values.terms_and_conditions));
           values.faqs && (formData.append('faqs', values.faqs));
-          values.id_number && (formData.append('id_number', values.id_number));
+          formData.append('id_number', values.id_number);
           values.id_number_description && (formData.append('id_number_description', values.id_number_description));
 
           let response = await API_UNI_OIL.post(`cardTypeUpdate/${userInfo.cardtype_uuid}`, formData , headers)
@@ -118,6 +123,13 @@ class CardTypeEdit extends Component {
     return e && this.setState({fileUpload: e.fileList});
   }
 
+  handleFileUploadBackground =(e)=> {
+    if (Array.isArray(e)) {
+      return this.setState({fileUploadBackground: e});
+    }
+    return e && this.setState({fileUploadBackground: e.fileList});
+  }
+
   render() {
 
     if(!this.state.mounted) return null;
@@ -136,8 +148,9 @@ class CardTypeEdit extends Component {
                 image: userInfo.image || '',
                 terms_and_conditions: userInfo.terms_and_conditions || '',
                 faqs: userInfo.faqs || '',
-                id_number: userInfo.id_number || '',
-                id_number_description: userInfo.id_number_description || ''
+                id_number: userInfo.id_number && userInfo.id_number == 1 ? userInfo.id_number : 2 || '',
+                id_number_description: userInfo.id_number_description || '',
+                bg_image: userInfo.bg_image || ''
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
@@ -149,6 +162,7 @@ class CardTypeEdit extends Component {
                   loading={loading}
                   history={this.props.history}
                   handleFileUpload={this.handleFileUpload}
+                  handleFileUploadBackground={this.handleFileUploadBackground}
                 />
               }
           />
