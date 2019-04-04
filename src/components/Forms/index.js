@@ -11,7 +11,7 @@ import MultiSelectOptions from './MultiSelectOptions';
 import InputMaskNumber from './InputMaskNumber';
 import TimePickerForm from './TimePicker'
 import InputNumberAntD from './InputNumberAntD'
-
+import SingleUploadImage from './SingleUploadImage'
 
 export {
   Checkbox,
@@ -26,5 +26,6 @@ export {
   MultiSelectOptions,
   InputMaskNumber,
   TimePickerForm,
-  InputNumberAntD
+  InputNumberAntD,
+  SingleUploadImage
 }

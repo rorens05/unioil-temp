@@ -5,7 +5,7 @@ import filesize from 'filesize';
 const FormItem = Form.Item;
 
 
-class UploadImage extends Component {
+class BackgroundUploadImage extends Component {
   constructor(props) {
       super(props);
 
@@ -28,14 +28,10 @@ class UploadImage extends Component {
         loading: false,
       }));
 
-      if(this.props.isDefault) {
-        this.props.form.setFieldValue("image", 'imageValue');
-      } else {
-        let imageUrl = this.state.imageUrl ? this.state.imageUrl : this.props.imageUrl;
-        this.props.form.setFieldValue("image", imageUrl);
-      }
+      let imageUrl = this.state.imageUrl;
+      this.props.form.setFieldValue(this.props.field.name, imageUrl);
       
-      this.props.form.setFieldValue("logo", 'imageValue');
+     // this.props.form.setFieldValue("logo", 'imageValue');
 
       handleFileUpload(info,this.props.form.setFieldValue)
     }
@@ -57,9 +53,16 @@ class UploadImage extends Component {
   }
   
   beforeUpload =(file)=> {
+    const {notAcceptedImg} = this.props;
     const isJPG = file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/gif' ;
     if (!isJPG) {
       message.error('You can only upload JPG, PNG or GIF file!');
+    }
+
+    if(notAcceptedImg && notAcceptedImg.length > 0) {
+      notAcceptedImg.map(item => {
+        if(file.type == item) return message.error('You can only upload JPG or PNG file!');
+      })
     }
 
     let fileSize; let isLt2M;
@@ -100,6 +103,7 @@ class UploadImage extends Component {
       imgWidth,
       imgStyle,
       isRatioMessage,
+      notAcceptedImg,
       ...props
     } = this.props;
 
@@ -122,14 +126,6 @@ class UploadImage extends Component {
         <div className="ant-upload-text">Upload</div>
       </div>
     );
-
-    let imageUrl;
-    
-    if(this.props.isDefault) {
-      imageUrl = this.state.imageUrl
-    } else {
-      imageUrl = this.props.imageUrl
-    }
 
     return (
       <FormItem
@@ -163,11 +159,12 @@ class UploadImage extends Component {
                   className="avatar-uploader"
                   accept=".jpg , .png , .gif"
                   showUploadList={false}
+                  notAcceptedImg={notAcceptedImg}
                   beforeUpload={this.beforeUpload}
                   onChange={this.normFile}
                   className="upload-image"
                 >
-                  {imageUrl ? <img src={imageUrl} alt="avatar" width={imgStyle ? imgStyle.width : "100%" } height={imgStyle ? imgStyle.height : "135"} /> : uploadButton}
+                  {this.state.imageUrl ? <img src={this.state.imageUrl} alt="avatar" width={imgStyle ? imgStyle.width : "100%" } height={imgStyle ? imgStyle.height : "135"} /> : uploadButton}
                   <div style={{width: imgWidth ? imgWidth : 'initial', margin: '0 auto'}}>
                     <p className="ant-upload-text">Click or drag file to this area to upload.</p>
                     <p className="ant-upload-hint">Support for a single upload only.</p>
@@ -182,4 +179,4 @@ class UploadImage extends Component {
   }
 }
 
-export default UploadImage;
+export default BackgroundUploadImage;
