@@ -42,11 +42,13 @@ const InputForm = ({
                   disabled={
                     field.value.length > 0 ? false : true
                   }
-                  style={{ opacity: field.value.length > 0 ? 'initial' : 0.8,
+                  style={{ 
+                    padding: '0 25px',
+                    opacity: field.value.length > 0 ? 'initial' : 0.8,
                     margin: '0 0 0 10px',background:  '#E74610', borderColor:'#E74610', color: '#fff'
                   }} 
                   onClick={()=> message.success('Username successfully copied.')}>
-                  Copy Username
+                  Copy
               </Button> 
             </CopyToClipboard>
           )
@@ -72,10 +74,12 @@ const InputForm = ({
             <Button 
               loading={loading}
               disabled={withActionBtn.copyAction ? false : true}
-              style={{opacity: withActionBtn.copyAction ? 'initial' : 0.8  , background:  '#E74610', borderColor:'#E74610', color: '#fff', marginLeft: '5px'}} 
+              style={{
+                padding: '0 25px',
+                opacity: withActionBtn.copyAction ? 'initial' : 0.8  , background:  '#E74610', borderColor:'#E74610', color: '#fff', marginLeft: '5px'}} 
              // onClick={withActionBtn.copyAction ? withActionBtn.copyAction : ()=> {return null} }
             >
-                Copy Password
+                Copy
             </Button>
           </CopyToClipboard>
         </Col>
