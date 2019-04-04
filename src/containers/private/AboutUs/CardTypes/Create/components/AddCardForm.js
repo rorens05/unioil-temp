@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 // COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
-import { Input, Checkbox, UploadImage, InputTextArea } from 'components/Forms';
+import { Input, Checkbox, Radio, UploadImage, InputTextArea, SingleUploadImage } from 'components/Forms';
 
 // HELPER FUNCTIONS
 
@@ -28,6 +28,7 @@ function AddCardForm(props) {
     handleSubmit,
     loading,
     handleFileUpload,
+    handleFileUploadBackground,
     history
   } = props;
 
@@ -76,29 +77,56 @@ function AddCardForm(props) {
       />
 
       <Field
+        limit100kb
         name="image"
         type="file"
         accept=".jpg , .png, .gif"
+        notAcceptedImg={["image/gif"]}
         multiple={false}
         imageUrl={props.values.image && `${props.values.image}`}
         className="upload-list-inline"
         icon="user"
         layout={formItemLayout}
-        label="Upload Image"
-        placeholder="Upload Image"
-        component={UploadImage}
+        label="Upload Card Type Image"
+        placeholder="Upload Card Type Image"
+        component={SingleUploadImage}
         imgWidth="294px"
         handleFileUpload={handleFileUpload}
       />
+
+      <Field
+        limit100kb
+        name="bg_image"
+        type="file"
+        multiple={false}
+        notAcceptedImg={["image/gif"]}
+        imageUrl={props.values.image && `${props.values.bg_image}`}
+        className="upload-list-inline"
+        icon="user"
+        layout={formItemLayout}
+        label="Upload Card Type Cover Image"
+        placeholder="Upload Card Type Cover Image"
+        component={SingleUploadImage}
+        imgWidth="294px"
+        handleFileUpload={handleFileUploadBackground}
+      />
+     
       <Field
         name="id_number"
-        type="check"
         icon=""
         layout={formItemLayout}
+        optionsList={[
+          {
+            label: "Yes",
+            value: 1
+          },
+          {
+            label: "No",
+            value: 2,
+          }
+        ]}
         label="ID Number Required?"
-        placeholder="Is ID Number Required?"
-        rows={10}
-        component={Checkbox}
+        component={Radio}
       />
       <Field
         name="id_number_description"

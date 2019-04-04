@@ -20,7 +20,8 @@ class CardTypeCreate extends Component {
     generated_password: null,
     userInfo: null,
     loading: false,
-    fileUpload: null
+    fileUpload: null,
+    fileUploadBackground: null
   }
 
   componentDidMount() {
@@ -29,7 +30,7 @@ class CardTypeCreate extends Component {
 
   handleSubmit = async (values, actions) => {
     
-    const { fileUpload } = this.state;
+    const { fileUpload, fileUploadBackground } = this.state;
     const { history } = this.props;
     const { setErrors } = actions;
 
@@ -45,8 +46,13 @@ class CardTypeCreate extends Component {
               formData.append( `image`, t.originFileObj);
             }); 
           } 
+          if(fileUploadBackground) {
+            fileUploadBackground.forEach((t, i) => {
+              formData.append( `bg_image`, t.originFileObj);
+            }); 
+          } 
           
-          if(values.id_number) {
+          if(values.id_number == 1) {
             values.id_number = 1;
           } else {
             values.id_number = 0;
@@ -56,7 +62,7 @@ class CardTypeCreate extends Component {
           values.description && (formData.append('description', values.description));
           values.terms_and_conditions && (formData.append('terms_and_conditions', values.terms_and_conditions));
           values.faqs && (formData.append('faqs', values.faqs));
-          values.id_number && (formData.append('id_number', values.id_number));
+          formData.append('id_number', values.id_number);
           values.id_number_description && (formData.append('id_number_description', values.id_number_description));
           
           let response = await API_UNI_OIL.post('cardType', formData , headers)
@@ -96,6 +102,15 @@ class CardTypeCreate extends Component {
     return e && this.setState({fileUpload: e.fileList});
   }
 
+  handleFileUploadBackground =(e)=> {
+    if (Array.isArray(e)) {
+      return this.setState({fileUploadBackground: e});
+    }
+    return e && this.setState({fileUploadBackground: e.fileList});
+  }
+
+  
+
   render() {
     const { userManagement } = this.props
     const { loading, isGenerated } = this.state;
@@ -122,7 +137,8 @@ class CardTypeCreate extends Component {
                 terms_and_conditions: '',
                 faqs: '',
                 id_number: '',
-                id_number_description: ''
+                id_number_description: '',
+                bg_image: ''
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
@@ -134,6 +150,7 @@ class CardTypeCreate extends Component {
                   loading={loading}
                   history={this.props.history}
                   handleFileUpload={this.handleFileUpload}
+                  handleFileUploadBackground={this.handleFileUploadBackground}
                 />
               }
           />
