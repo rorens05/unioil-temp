@@ -13,7 +13,7 @@ import { Input, Radio, InputTextArea, UploadImage,SingleUploadImage } from 'comp
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
-    sm: { span: 5 },
+    sm: { span: 6 },
   },
   wrapperCol: {
     xs: { span: 24 },
@@ -140,7 +140,7 @@ function EditCardForm(props) {
         component={InputTextArea}
       /> */}
 
-      <h4 style={{marginLeft: '109px'}}>DATA PRIVACY</h4>
+      <h4 style={{marginLeft: '190px'}}>DATA PRIVACY</h4>
       <Field
         name="terms_and_conditions"
         type="text"

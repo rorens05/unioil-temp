@@ -31,7 +31,7 @@ function AddCardForm(props) {
     handleFileUploadBackground,
     history
   } = props;
-  
+
   return (
     <Form noValidate>
       <HeaderForm 
@@ -143,7 +143,7 @@ function AddCardForm(props) {
         component={InputTextArea}
       /> */}
       
-      <h4 style={{marginLeft: '109px'}}>DATA PRIVACY</h4>
+      <h4 style={{marginLeft: '190px'}}>DATA PRIVACY</h4>
       <Field
         name="terms_and_conditions"
         type="text"
