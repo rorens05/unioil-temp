@@ -35,7 +35,7 @@ const InputTextArea = ({
       />
       {onCountText && <div style={{position: 'relative'}}>
           <div style={{position: 'absolute',right: '0%', top: '-18px'}}>
-          {field.value.length}/{charsperpage && charsperpage}</div>
+          <span style={{color: field.value.length > charsperpage ? 'red' : 'rgba(0, 0, 0, 0.65)'}}>{field.value.length}</span>/{charsperpage && charsperpage}</div>
       </div>
       } 
     </FormItem>
