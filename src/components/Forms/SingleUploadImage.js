@@ -48,8 +48,11 @@ class BackgroundUploadImage extends Component {
   getBase64 =(img, callback)=> {
     const reader = new FileReader();
     reader.readAsDataURL(img);
-    reader.addEventListener('load', () => callback(reader.result));
-
+    reader.addEventListener('load', () => {
+      callback(reader.result)
+      this.props.form.setFieldValue(this.props.field.name, reader.result);
+    });
+   
   }
   
   beforeUpload =(file)=> {
