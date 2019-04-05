@@ -29,10 +29,10 @@ export const userDetailsSchema = Yup.object().shape({
     .required('FAQs is required!'),
   id_number: Yup.string()
       .required('ID Number is required!'),
-  id_number_description: Yup.string()
-		  .trim()
-			.max(32000, "Maximum character is 32,000.")
-      .required('ID Type Description is required!')
+  // id_number_description: Yup.string()
+	// 	  .trim()
+	// 		.max(32000, "Maximum character is 32,000.")
+  //     .required('ID Type Description is required!')
 })
 
 

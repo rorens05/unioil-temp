@@ -31,7 +31,7 @@ function AddCardForm(props) {
     handleFileUploadBackground,
     history
   } = props;
-
+  
   return (
     <Form noValidate>
       <HeaderForm 
@@ -131,7 +131,7 @@ function AddCardForm(props) {
         label="ID Number Required?"
         component={Radio}
       />
-      <Field
+      {/* <Field
         name="id_number_description"
         type="text"
         icon=""
@@ -140,7 +140,7 @@ function AddCardForm(props) {
         placeholder="Required ID Type Description"
         rows={4}
         component={InputTextArea}
-      />
+      /> */}
       
       <h4 style={{marginLeft: '109px'}}>DATA PRIVACY</h4>
       <Field

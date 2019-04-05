@@ -129,7 +129,7 @@ function EditCardForm(props) {
         label="ID Number Required?"
         component={Radio}
       />
-      <Field
+      {/* <Field
         name="id_number_description"
         type="text"
         icon=""
@@ -138,7 +138,7 @@ function EditCardForm(props) {
         placeholder="Required ID Type Description"
         rows={4}
         component={InputTextArea}
-      />
+      /> */}
 
       <h4 style={{marginLeft: '109px'}}>DATA PRIVACY</h4>
       <Field

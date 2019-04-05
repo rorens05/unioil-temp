@@ -84,7 +84,7 @@ class CardTypeEdit extends Component {
           values.terms_and_conditions && (formData.append('terms_and_conditions', values.terms_and_conditions));
           values.faqs && (formData.append('faqs', values.faqs));
           formData.append('id_number', values.id_number);
-          values.id_number_description && (formData.append('id_number_description', values.id_number_description));
+          //values.id_number_description && (formData.append('id_number_description', values.id_number_description));
 
           let response = await API_UNI_OIL.post(`cardTypeUpdate/${userInfo.cardtype_uuid}`, formData , headers)
 
@@ -149,7 +149,7 @@ class CardTypeEdit extends Component {
                 terms_and_conditions: userInfo.terms_and_conditions || '',
                 faqs: userInfo.faqs || '',
                 id_number: userInfo.id_number && userInfo.id_number == 1 ? userInfo.id_number : 2 || '',
-                id_number_description: userInfo.id_number_description || '',
+                //id_number_description: userInfo.id_number_description || '',
                 bg_image: userInfo.bg_image || ''
               }}
               ref={node => (this.form = node)}
