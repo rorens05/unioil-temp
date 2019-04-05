@@ -168,7 +168,7 @@ class BackgroundUploadImage extends Component {
                   <div style={{width: imgWidth ? imgWidth : 'initial', margin: '0 auto'}}>
                     <p className="ant-upload-text">Click or drag file to this area to upload.</p>
                     <p className="ant-upload-hint">Support for a single upload only.</p>
-                    { isRatioMessage && <p className="ant-upload-hint">Aspect Ratio 4:3 (ex. 1024 x 768).</p> }
+                    { isRatioMessage && <p className="ant-upload-hint">{isRatioMessage.isRatioMessage && isRatioMessage.isRatioMessage}</p> }
                   </div>
               </Upload>
           )

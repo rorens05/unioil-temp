@@ -14,7 +14,7 @@ import { Input, Checkbox, Radio, UploadImage, InputTextArea, SingleUploadImage }
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
-    sm: { span: 5 },
+    sm: { span: 6 },
   },
   wrapperCol: {
     xs: { span: 24 },
@@ -103,6 +103,7 @@ function AddCardForm(props) {
         type="file"
         multiple={false}
         notAcceptedImg={["image/gif"]}
+        isRatioMessage={{isRatioMessage: 'Image Size (ex. 375 x 260).'}}
         imageUrl={props.values.image && `${props.values.bg_image}`}
         className="upload-list-inline"
         icon="user"
