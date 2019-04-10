@@ -57,8 +57,8 @@ class CardTypeList extends Component {
                 },
                 {
                   title: 'Card Type Description',
-                  dataIndex: 'description',
-                  key: 'description',
+                  dataIndex: 'name',
+                  key: 'name',
                   sorter: true,
                   filters:[],
                 },
