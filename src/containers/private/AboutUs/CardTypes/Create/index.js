@@ -136,7 +136,7 @@ class CardTypeCreate extends Component {
                 image: '',
                 terms_and_conditions: '',
                 faqs: '',
-                id_number: '',
+                id_number: 1,
                 //id_number_description: '',
                 bg_image: ''
               }}

@@ -73,8 +73,8 @@ function EditCardForm(props) {
         type="text"
         icon=""
         layout={formItemLayout}
-        label="Short Description"
-        placeholder="Short Description"
+        label="Card Type Short Description"
+        placeholder="Card Type Short Description"
         rows={4}
         component={InputTextArea}
       />

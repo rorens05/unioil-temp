@@ -53,11 +53,11 @@ function ViewCardForm(props) {
                       style={{maxHeight: '250px'}}
                     />
                 </Col>
-                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Cover Card Type Image:</span></Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Card Type Cover Image:</span></Col>
               </Row>
               <Row style={styles.marginTop}>
                 <Col span={18} push={5}>{userInfo && userInfo.id_number && userInfo.id_number ? "Yes": "No"}</Col>
-                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>ID Number Required:</span></Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>ID Number Required?:</span></Col>
               </Row>
             </div>
              {/*Account Details */}
@@ -65,7 +65,7 @@ function ViewCardForm(props) {
               <h2 style={{fontWeight: 'bold', fontSize: '16px'}}>DATA PRIVACY DETAILS</h2>
               <Row style={styles.marginTop}>
                 <Col span={18} push={5}>{userInfo && userInfo.terms_and_conditions}</Col>
-                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>{`Terms & Conditions:`}</span></Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>{`Terms and Conditions:`}</span></Col>
               </Row>
               <Row style={styles.marginTop}>
                 <Col span={18} push={5}>{userInfo && userInfo.faqs}</Col>
