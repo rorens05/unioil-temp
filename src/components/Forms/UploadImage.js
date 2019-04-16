@@ -28,12 +28,12 @@ class UploadImage extends Component {
         loading: false,
       }));
 
-      if(this.props.isDefault) {
-        this.props.form.setFieldValue("image", 'imageValue');
-      } else {
-        let imageUrl = this.state.imageUrl ? this.state.imageUrl : this.props.imageUrl;
-        this.props.form.setFieldValue("image", imageUrl);
-      }
+      // if(this.props.isDefault) {
+      //   this.props.form.setFieldValue("image", 'imageValue');
+      // } else {
+      //   let imageUrl = this.state.imageUrl ? this.state.imageUrl : this.props.imageUrl;
+      //   this.props.form.setFieldValue("image", imageUrl);
+      // }
       
       this.props.form.setFieldValue("logo", 'imageValue');
 
@@ -52,8 +52,11 @@ class UploadImage extends Component {
   getBase64 =(img, callback)=> {
     const reader = new FileReader();
     reader.readAsDataURL(img);
-    reader.addEventListener('load', () => callback(reader.result));
-
+    //reader.addEventListener('load', () => callback(reader.result));
+    reader.addEventListener('load', () => {
+      callback(reader.result)
+      this.props.form.setFieldValue(this.props.field.name, reader.result);
+    });
   }
   
   beforeUpload =(file)=> {
