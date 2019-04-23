@@ -96,7 +96,7 @@ function EditCardForm(props) {
         imgWidth="294px"
         handleFileUpload={handleFileUpload}
       />
-      <Field
+      {/* <Field
         limit100kb
         name="bg_image"
         type="file"
@@ -128,7 +128,7 @@ function EditCardForm(props) {
         ]}
         label="ID Number Required?"
         component={Radio}
-      />
+      /> */}
       {/* <Field
         name="id_number_description"
         type="text"

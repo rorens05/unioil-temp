@@ -79,7 +79,7 @@ function AddCardForm(props) {
           component={InputTextArea}
         />
 
-      <Field
+       <Field
         limit100kb
         name="image"
         type="file"
@@ -96,7 +96,7 @@ function AddCardForm(props) {
         imgWidth="294px"
         handleFileUpload={handleFileUpload}
       />
-
+    {/*
       <Field
         limit100kb
         name="bg_image"
@@ -131,7 +131,7 @@ function AddCardForm(props) {
         ]}
         label="ID Number Required?"
         component={Radio}
-      />
+      /> */}
       {/* <Field
         name="id_number_description"
         type="text"
