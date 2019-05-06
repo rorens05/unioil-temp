@@ -44,7 +44,11 @@ function ViewCardForm(props) {
                 </Col>
                 <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Card Type Image:</span></Col>
               </Row>
-              {/* <Row style={styles.marginTop}>
+              <Row style={styles.marginTop}>
+                <Col span={18} push={5}>{userInfo && userInfo.virtual_card_font_color && userInfo.virtual_card_font_color ? userInfo.virtual_card_font_color: "White"}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Virtual Card Font Color:</span></Col>
+              </Row>
+              <Row style={styles.marginTop}>
                 <Col span={18} push={5}>
                     <img 
                       src={userInfo && userInfo.image && `${userInfo.bg_image}`} 
@@ -58,7 +62,11 @@ function ViewCardForm(props) {
               <Row style={styles.marginTop}>
                 <Col span={18} push={5}>{userInfo && userInfo.id_number && userInfo.id_number ? "Yes": "No"}</Col>
                 <Col span={5} pull={18}><span style={{fontWeight: '600'}}>ID Number Required?:</span></Col>
-              </Row> */}
+              </Row>
+              <Row style={styles.marginTop}>
+                <Col span={18} push={5}>{userInfo && userInfo.id_number_description}</Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>ID Number Description:</span></Col>
+              </Row>
             </div>
              {/*Account Details */}
             <div style={{margin: '15px 0 10px'}}>
