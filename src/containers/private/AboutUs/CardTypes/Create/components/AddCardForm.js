@@ -96,7 +96,25 @@ function AddCardForm(props) {
         imgWidth="294px"
         handleFileUpload={handleFileUpload}
       />
-    {/*
+    
+      <Field
+        name="virtual_card_font_color"
+        icon=""
+        layout={formItemLayout}
+        optionsList={[
+          {
+            label: "White",
+            value: 1
+          },
+          {
+            label: "Black",
+            value: 2,
+          }
+        ]}
+        label="Virtual Card Font Color"
+        component={Radio}
+      />
+
       <Field
         limit100kb
         name="bg_image"
@@ -131,17 +149,22 @@ function AddCardForm(props) {
         ]}
         label="ID Number Required?"
         component={Radio}
-      /> */}
-      {/* <Field
+      />
+
+      <Field
+        onCountText
+        charsperpage={40}
+        style={{marginBottom: '10px'}}
+        disabled={props.values.id_number && props.values.id_number == 2 ? true: false}
         name="id_number_description"
         type="text"
         icon=""
         layout={formItemLayout}
-        label="Required ID Type Description"
-        placeholder="Required ID Type Description"
-        rows={4}
+        label="ID Number Description"
+        placeholder="ID Number Description"
+        rows={2}
         component={InputTextArea}
-      /> */}
+      />
       
       <h4 style={{marginLeft: '190px'}}>DATA PRIVACY</h4>
       <Field

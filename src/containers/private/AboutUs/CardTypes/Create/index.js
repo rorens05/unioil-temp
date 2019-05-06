@@ -54,6 +54,17 @@ class CardTypeCreate extends Component {
           
           if(values.id_number == 1) {
             values.id_number = 1;
+            if(!values.id_number_description) {
+              setErrors({id_number_description: "ID Number Description is required!"})
+              notification.error({ 
+                message: 'Error', 
+                description: <div>
+                  Something went wrong creating new record.
+                  <div>- ID Number Description is required!</div>
+                </div>
+              }); 
+              return this.setState({loading: false})
+            }
           } else {
             values.id_number = 0;
           }
@@ -63,7 +74,8 @@ class CardTypeCreate extends Component {
           values.terms_and_conditions && (formData.append('terms_and_conditions', values.terms_and_conditions));
           values.faqs && (formData.append('faqs', values.faqs));
           formData.append('id_number', values.id_number);
-          //values.id_number_description && (formData.append('id_number_description', values.id_number_description));
+          values.id_number_description && (formData.append('id_number_description', values.id_number_description));
+          values.virtual_card_font_color && (formData.append('virtual_card_font_color', values.virtual_card_font_color));
           
           let response = await API_UNI_OIL.post('cardType', formData , headers)
 
@@ -136,9 +148,10 @@ class CardTypeCreate extends Component {
                 image: '',
                 terms_and_conditions: '',
                 faqs: '',
+                virtual_card_font_color: 1,
+                bg_image: '',
                 id_number: 2,
-                //id_number_description: '',
-                bg_image: ''
+                id_number_description: '',
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
