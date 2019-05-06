@@ -75,6 +75,17 @@ class CardTypeEdit extends Component {
           
           if(values.id_number == 1) {
             values.id_number = 1;
+            if(!values.id_number_description) {
+              setErrors({id_number_description: "ID Number Description is required!"})
+              notification.error({ 
+                message: 'Error', 
+                description: <div>
+                  Something went wrong.
+                  <div>- ID Number Description is required!</div>
+                </div>
+              }); 
+              return this.setState({loading: false})
+            }
           } else {
             values.id_number = 0;
           }
@@ -84,7 +95,8 @@ class CardTypeEdit extends Component {
           values.terms_and_conditions && (formData.append('terms_and_conditions', values.terms_and_conditions));
           values.faqs && (formData.append('faqs', values.faqs));
           formData.append('id_number', values.id_number);
-          //values.id_number_description && (formData.append('id_number_description', values.id_number_description));
+          values.id_number_description && (formData.append('id_number_description', values.id_number_description));
+          values.virtual_card_font_color && (formData.append('virtual_card_font_color', values.virtual_card_font_color));
 
           let response = await API_UNI_OIL.post(`cardTypeUpdate/${userInfo.cardtype_uuid}`, formData , headers)
 
@@ -149,8 +161,10 @@ class CardTypeEdit extends Component {
                 terms_and_conditions: userInfo.terms_and_conditions || '',
                 faqs: userInfo.faqs || '',
                 id_number: userInfo.id_number && userInfo.id_number == 1 ? userInfo.id_number : 2 || '',
-                //id_number_description: userInfo.id_number_description || '',
-                bg_image: userInfo.bg_image || ''
+                id_number_description: userInfo.id_number_description || '',
+                virtual_card_font_color: userInfo.virtual_card_font_color || 1,
+                bg_image: userInfo.bg_image || '',
+                id_number_description: userInfo.id_number_description || '',
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}
