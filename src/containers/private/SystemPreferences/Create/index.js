@@ -191,6 +191,7 @@ class CreateSystemPreferences extends Component {
                 contact_email_address_mobile: systemPreference.contact_email_address_mobile || '',
                 contact_number_mobile: systemPreference.contact_number_mobile || '',
                 contact_details: systemPreference.contact_details  || '',
+                information_guide_details: systemPreference.information_guide_details || ''
               }}
               ref={node => (this.form = node)}
               enableReinitialize={true}

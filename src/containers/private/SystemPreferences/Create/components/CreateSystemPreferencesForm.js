@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 // COMPONENTS
 import HeaderForm from "components/Forms/HeaderForm"
 import { Input, UploadImage, InputNumberAntD, 
-        InputMaskNumber } from 'components/Forms';
+        InputMaskNumber, InputTextArea } from 'components/Forms';
 
 // HELPER FUNCTIONS
 
@@ -129,6 +129,22 @@ function CreateSystemPreferencesForm(props) {
         label="Contact Details"
         placeholder="Contact Number"
         component={Input}
+      />
+      <div style={styles.borderDivision}></div>
+      <h2 style={{margin: '25px 35px'}}>Information Guide Details</h2>
+      <Field
+        hasIcon
+        onCountText
+        charsperpage={100}
+        style={{marginBottom: '10px'}}
+        name="information_guide_details"
+        type="text"
+        icon=""
+        layout={formItemLayout}
+        label="Details"
+        placeholder="Details"
+        rows={4}
+        component={InputTextArea}
       />
       <div style={styles.borderDivision}></div>
       <h2 style={{margin: '25px 35px'}}>Update Details</h2>

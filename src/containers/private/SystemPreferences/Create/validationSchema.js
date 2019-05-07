@@ -19,7 +19,10 @@ export const userDetailsSchema = Yup.object().shape({
     .trim()
 		.max(128, "Maximum character is 128.")
     .email("Invalid Contact Details.")
-    .required('Contact Details is required!')
+    .required('Contact Details is required!'),
+  information_guide_details: Yup.string()
+    .trim()
+    .max(100, "Maximum character is 100.")
 })
 
 
