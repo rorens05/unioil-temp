@@ -45,7 +45,7 @@ function ViewCardForm(props) {
                 <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Card Type Image:</span></Col>
               </Row>
               <Row style={styles.marginTop}>
-                <Col span={18} push={5}>{userInfo && userInfo.virtual_card_font_color && userInfo.virtual_card_font_color ? userInfo.virtual_card_font_color: "White"}</Col>
+                <Col span={18} push={5}>{userInfo && userInfo.virtual_card_font_color && userInfo.virtual_card_font_color ? "Black": "White"}</Col>
                 <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Virtual Card Font Color:</span></Col>
               </Row>
               <Row style={styles.marginTop}>

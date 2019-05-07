@@ -68,6 +68,13 @@ class CardTypeCreate extends Component {
           } else {
             values.id_number = 0;
           }
+
+          if(values.virtual_card_font_color == 2) {
+            values.virtual_card_font_color = 1
+          } else {
+            values.virtual_card_font_color = 0
+          }
+
           values.code && (formData.append('code', values.code));
           values.type && (formData.append('type', values.type));
           values.description && (formData.append('description', values.description));
@@ -75,8 +82,7 @@ class CardTypeCreate extends Component {
           values.faqs && (formData.append('faqs', values.faqs));
           formData.append('id_number', values.id_number);
           values.id_number_description && (formData.append('id_number_description', values.id_number_description));
-          values.virtual_card_font_color && (formData.append('virtual_card_font_color', values.virtual_card_font_color));
-          
+          formData.append('virtual_card_font_color', values.virtual_card_font_color);
           let response = await API_UNI_OIL.post('cardType', formData , headers)
 
           if(response) {
