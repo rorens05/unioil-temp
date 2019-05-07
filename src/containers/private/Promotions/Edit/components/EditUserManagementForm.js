@@ -75,7 +75,9 @@ function EditUserManagementForm(props) {
       />
 
       <Field
-        isRatioMessage
+        isRatioMessage={{
+          message: "Aspect Ratio 4:3 (ex. 1020 x 621)."
+        }}
         limit100kb
         name="image"
         type="file"
