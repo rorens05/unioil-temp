@@ -74,6 +74,7 @@ class CreateSystemPreferences extends Component {
           values.contact_email_address_mobile && (formData.append('contact_email_address_mobile', values.contact_email_address_mobile))
           values.contact_details && (formData.append('contact_details', values.contact_details));
           newNumber && (formData.append('contact_number_mobile', newNumber ));
+          values.information_guide_details && (formData.append('information_guide_details', values.information_guide_details));
           
           let response = await API_UNI_OIL.post('systemPreference', formData , headers)
 
