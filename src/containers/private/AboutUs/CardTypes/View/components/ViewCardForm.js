@@ -27,11 +27,11 @@ function ViewCardForm(props) {
               </Row>
               <Row style={styles.marginTop}>
                 <Col span={18} push={5}>{userInfo && userInfo.name}</Col>
-                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Card Type:</span></Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Card Type Description:</span></Col>
               </Row>
               <Row style={styles.marginTop}>
                 <Col span={18} push={5}>{userInfo && userInfo.description}</Col>
-                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Short Description:</span></Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Card Type Short Description:</span></Col>
               </Row>
               <Row style={styles.marginTop}>
                 <Col span={18} push={5}>
@@ -42,7 +42,7 @@ function ViewCardForm(props) {
                       style={{maxHeight: '250px'}}
                     />
                 </Col>
-                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Card Type Image:</span></Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>Card Type Cover Image:</span></Col>
               </Row>
               <Row style={styles.marginTop}>
                 <Col span={18} push={5}>{userInfo && userInfo.virtual_card_font_color && userInfo.virtual_card_font_color ? "Black": "White"}</Col>
@@ -61,7 +61,7 @@ function ViewCardForm(props) {
               </Row>
               <Row style={styles.marginTop}>
                 <Col span={18} push={5}>{userInfo && userInfo.id_number && userInfo.id_number ? "Yes": "No"}</Col>
-                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>ID Number Required?:</span></Col>
+                <Col span={5} pull={18}><span style={{fontWeight: '600'}}>ID Number Required:</span></Col>
               </Row>
               <Row style={styles.marginTop}>
                 <Col span={18} push={5}>{userInfo && userInfo.id_number_description}</Col>

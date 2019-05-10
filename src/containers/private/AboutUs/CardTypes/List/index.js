@@ -48,7 +48,7 @@ class CardTypeList extends Component {
             columns={
               [
                 {
-                  title: 'Card Code',
+                  title: 'Card Type Code',
                   dataIndex: 'code',
                   key: 'code',
                   sorter: true,
