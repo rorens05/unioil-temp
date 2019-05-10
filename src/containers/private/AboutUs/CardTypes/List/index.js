@@ -53,7 +53,7 @@ class CardTypeList extends Component {
                   key: 'code',
                   sorter: true,
                   filters: [],
-                  width: "14%",
+                  width: "17%",
                 },
                 {
                   title: 'Card Type Description',
