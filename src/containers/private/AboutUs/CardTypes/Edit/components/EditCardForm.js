@@ -68,6 +68,7 @@ function EditCardForm(props) {
       <Field
         onCountText
         charsperpage={140}
+        maxLength="140"
         style={{marginBottom: '10px'}}
         name="description"
         type="text"
@@ -152,6 +153,7 @@ function EditCardForm(props) {
       <Field
         onCountText
         charsperpage={40}
+        maxLength="40"
         style={{marginBottom: '10px'}}
         disabled={props.values.id_number && props.values.id_number == 2 ? true: false}
         name="id_number_description"

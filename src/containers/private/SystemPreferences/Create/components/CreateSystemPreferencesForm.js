@@ -136,6 +136,7 @@ function CreateSystemPreferencesForm(props) {
         hasIcon
         onCountText
         charsperpage={100}
+        maxLength="100"
         style={{marginBottom: '10px'}}
         name="information_guide_details"
         type="text"
