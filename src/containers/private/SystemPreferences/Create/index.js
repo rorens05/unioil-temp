@@ -81,6 +81,14 @@ class CreateSystemPreferences extends Component {
           if(response) {
             message.success('Record was successfully update.');  
             this.setState({loading: false})
+
+            this.props.customAction({
+              type: "SYSTEMPREFERENCES_CREATE_REQUEST",
+              payload: {
+                values
+              }
+            });
+            
           }
           
         

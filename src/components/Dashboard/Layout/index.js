@@ -23,10 +23,24 @@ class DashboardLayout extends React.Component {
 
     this.state = {
       collapsed: false,
-      userInfo: null
+      userInfo: null,
+      updatedLogo: null
     };
   }
 
+  componentWillReceiveProps(nexProps, prevProps) {
+    if(nexProps && nexProps.systemPreferences) {
+      if(nexProps.systemPreferences.data && nexProps.systemPreferences.data) {
+        this.setState({
+          updatedLogo: nexProps.systemPreferences.data.logo
+        })
+      }
+    }
+  }
+
+  componentDidUpdate(nexProps) {
+    
+  }
 
   handleActive(e) {
     // console.log('user is active', e)
@@ -55,7 +69,7 @@ class DashboardLayout extends React.Component {
 
     return (
       <Layout style={{ height: '100%' }}>
-        <MainSidebar collapsed={this.state.collapsed}  userInfo={userInfo.data.userInfo}/>
+        <MainSidebar collapsed={this.state.collapsed}  userInfo={userInfo.data.userInfo} systemPreferences={this.state.updatedLogo}/>
         <Layout style={{background: '#fcfcfc', paddingBottom: '10px'}}>
           <MainHeader
             collapsed={this.state.collapsed}
@@ -84,7 +98,8 @@ class DashboardLayout extends React.Component {
 DashboardLayout = connect(
   state => ({
     // pull initial values from account reducer
-    userInfo: state.login
+    userInfo: state.login,
+    systemPreferences: state.systemPreferences
   }),
   { customAction }
 )(DashboardLayout);

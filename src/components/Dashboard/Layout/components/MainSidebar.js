@@ -20,7 +20,7 @@ const LogoPlaceholder = styled.div`
 
 function MainSidebar(props) {
 
-  const { collapsed, match, location, userInfo } = props;
+  const { collapsed, match, location, userInfo, systemPreferences } = props;
 
   const navigation = [
     {
@@ -152,7 +152,7 @@ function MainSidebar(props) {
   if(appendedUrl == 'create' || appendedUrl == 'view' || appendedUrl == 'edit' ) appendedUrl = null
   let isSeondDaryPathExist = appendedUrl ? `/${appendedUrl}` : ''
   let secondaryURL = `${match.path}${isSeondDaryPathExist}`
-
+  
   return (
     <Sider
       trigger={null}
@@ -165,11 +165,11 @@ function MainSidebar(props) {
       !collapsed 
       ? <div style={{height: '65px', padding: '12px 0', textAlign: 'center', borderBottom: '1px solid #e6ecf5'}}>
           {/* <img src={ require("assets/img/logo_unioil.png") } style={{ height: 40 }} /> */}
-          {userInfo && (<img src={ `${userInfo.logo}` } style={{ height: '100%' }} />) }
+          {userInfo && (<img src={ `${systemPreferences ? systemPreferences : userInfo.logo}` } style={{ height: '100%' }} />) }
         </div> 
       : <LogoPlaceholder 
             className="logo" 
-            style={{ backgroundImage: `url(${userInfo.logo})` }}
+            style={{ backgroundImage: `url(${systemPreferences ? systemPreferences : userInfo.logo})` }}
         />
     }
     
