@@ -91,7 +91,13 @@ function AddPhotoSliderForm(props) {
       />
 
       <Field
-        isRatioMessage
+        isRatioMessage={{
+          message: <div style={{fontSize: '13px'}} >
+            <div>Image Size: 1020 x 621</div>
+            <div>Maximum File Size: 100KB</div>
+          </div>,
+          // dimensions: [1021,621]
+        }}
         limit100kb
         name="image"
         type="file"

@@ -121,8 +121,11 @@ class UploadImage extends Component {
 
     const uploadButton = (
       <div>
-        <Icon type={this.state.loading ? 'loading' : 'plus'} />
-        <div className="ant-upload-text">Upload</div>
+        <Icon 
+          style={{fontSize: '30px'}}
+          type={this.state.loading ? 'loading' : 'plus'} 
+        />
+        {/* <div className="ant-upload-text">Upload</div> */}
       </div>
     );
 
@@ -172,12 +175,18 @@ class UploadImage extends Component {
                 >
                   {imageUrl ? <img src={imageUrl} alt="avatar" width={imgStyle ? imgStyle.width : "100%" } height={imgStyle ? imgStyle.height : "135"} /> : uploadButton}
                   <div style={{width: imgWidth ? imgWidth : 'initial', margin: '0 auto'}}>
-                    <p className="ant-upload-text">Click or drag file to this area to upload.</p>
-                    <p className="ant-upload-hint">Support for a single upload only.</p>
+                    <p 
+                      style={{fontWeight: 'bold',marginTop:'3px'}}
+                      className="ant-upload-text"
+                    >Click or drag file to this area to upload</p>
+                    <p 
+                      style={{fontSize: '13px'}} 
+                      className="ant-upload-hint"
+                    >Support for a single upload only</p>
                     { isRatioMessage && 
-                      <p className="ant-upload-hint">
-                        {isRatioMessage.message ? isRatioMessage.message : "Aspect Ratio 4:3 (ex. 1024 x 768)."}
-                      </p> 
+                      <div className="ant-upload-hint">
+                        {isRatioMessage.message ? isRatioMessage.message : "Aspect Ratio 4:3 (ex. 1024 x 768)"}
+                      </div> 
                     }
                   </div>
               </Upload>
