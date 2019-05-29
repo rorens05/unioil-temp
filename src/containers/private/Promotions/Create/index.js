@@ -170,9 +170,8 @@ class PromotionsCreate extends Component {
       notification.error({ 
         message: 'Error', 
         description: <div>
-          Something went wrong creating new record.
           { error && error.data && error.data.data  && error.data.data.image 
-                && (<div>- {error.data.data.image[0]} </div>) }
+                && (<div>{error.data.data.image[0] ? `- ${error.data.data.image[0]}` : "Something went wrong creating new record."} </div>) }
         </div>
       }); 
       this.setState({loading: false})
