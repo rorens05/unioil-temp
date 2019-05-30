@@ -12,7 +12,7 @@ services:
       args:
         # - REACT_APP_DOMAIN=http://mobilecorelb-1807532632.ap-southeast-1.elb.amazonaws.com/
         # - REACT_APP_DOMAIN=https://mobilelink.unioil.com
-        - REACT_APP_DOMAIN=https://mobileapp.unioil.com/api/
+        - REACT_APP_DOMAIN=https://mobileapp.unioil.com
         - REACT_APP_PATH=api/cms
         - REACT_APP_IMG_PATH=unioilQA/
     restart: always
