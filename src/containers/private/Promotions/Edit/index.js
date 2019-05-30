@@ -39,7 +39,7 @@ class PromotionsEdit extends Component {
     try {
       let response = await API_UNI_OIL.get(`promotion/${match.params.id}`);
 
-      let responsePromotionTopUp = await API_UNI_OIL.get(`promotionDisableTopTwo?${match.params.id}`);
+      let responsePromotionTopUp = await API_UNI_OIL.get(`promotionDisableTopTwo?promotion_uuid=${match.params.id}`);
 
       // default options branch
       response.data.data.stations.map(item => {
