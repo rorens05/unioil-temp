@@ -26,7 +26,7 @@ class PublicTopErrorPage extends Component {
 
     return (
       <div align="center" id="1" style={{position: 'absolute', top: '50%', 
-          left: isIOS ? '30px' : 0, right: 0, transform: 'translateY(-50%)', height: '100%'}}>
+          left: 0, right: 0, transform: 'translateY(-50%)', height: '100%'}}>
            
 
           <div style={{marginTop: '16vmin'}}>
