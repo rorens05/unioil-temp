@@ -122,6 +122,7 @@ function EditCardForm(props) {
         type="file"
         multiple={false}
         notAcceptedImg={["image/gif"]}
+        isRatioMessage={{isRatioMessage: 'Image Size (ex. 375 x 260).'}}
         imageUrl={props.values.image && `${props.values.bg_image}`}
         className="upload-list-inline"
         icon="user"
