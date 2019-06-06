@@ -64,7 +64,7 @@ const styles = {
   topAlign: {
     position: 'absolute',
     right: '0',
-    top: '0',
+    top: '10%',
     left: '0',
     padding: '1rem',
     textAlign: 'center'

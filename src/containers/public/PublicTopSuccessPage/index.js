@@ -132,7 +132,7 @@ class PublicTopSuccessPage extends Component {
                     </div>
                     : 
                     <div>
-                      <div style={{...styles.topAlign}}>
+                      <div style={{...styles.topAlign, top: '10%'}}>
                         <img src={ require("assets/img/ic_error.svg") } style={{ width: '24vmin'}} />
                         <p style={{ lineHeight: '7vmin', fontSize: '5vmin', fontWeight: 'bold', marginTop: '5vmin', color:'#4D4D4D' }}>
                           {/* Your purchase for top-up is not <br/>successful. Please try again. */}
