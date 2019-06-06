@@ -76,7 +76,7 @@ class PublicTopSuccessPage extends Component {
     return (
       <div id="1">
           {
-            !loading 
+            loading 
               ? <div style={{fontSize: '6vmin',...styles.topAlign, top:'45%'}}>
                   <Icon type="sync" spin /> Loading Top-Up Please wait...
               </div>
