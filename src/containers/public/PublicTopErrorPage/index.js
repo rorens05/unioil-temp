@@ -58,7 +58,7 @@ const styles = {
     right: '0',
     bottom: '0',
     left: '0',
-    padding: '1rem',
+    margin: '20px',
     textAlign: 'center'
   },
   topAlign: {
@@ -66,7 +66,7 @@ const styles = {
     right: '0',
     top: '10%',
     left: '0',
-    padding: '1rem',
+    margin: '20px',
     textAlign: 'center'
   },
 }
