@@ -64,7 +64,7 @@ Up the server for staging QA/Testing run:
 Stop the server run:
 ### `make test-public-callback-server-stop`
 
-## Public QA/Testing Server Scripts
+## Public Production Server Scripts
 
 Up the server for staging QA/Testing run:
 ### `make prod-public-callback-server`
